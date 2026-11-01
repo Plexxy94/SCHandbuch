@@ -1114,10 +1114,6 @@
   "agricium": {
    "ref": [
     [
-     12000,
-     "ARC-L4"
-    ],
-    [
      11000,
      "Rod's Fuel"
     ],
@@ -1132,6 +1128,10 @@
     [
      10000,
      "CBD Lorville"
+    ],
+    [
+     10000,
+     "ARC-L3"
     ]
    ]
   },
@@ -1264,10 +1264,6 @@
   "copper": {
    "ref": [
     [
-     4300,
-     "Pyro Gateway (Stanton)"
-    ],
-    [
      4200,
      "Rat's Nest"
     ],
@@ -1282,6 +1278,10 @@
     [
      3700,
      "TDD New Babbage"
+    ],
+    [
+     3700,
+     "CBD Lorville"
     ]
    ],
    "raw": [
@@ -1378,10 +1378,6 @@
      "TDD New Babbage"
     ],
     [
-     5100,
-     "MIC-L5"
-    ],
-    [
      4800,
      "TDD Area 18"
     ],
@@ -1392,6 +1388,10 @@
     [
      4800,
      "TDD Orison"
+    ],
+    [
+     4800,
+     "CRU-L1"
     ]
    ]
   },
@@ -1460,16 +1460,16 @@
      "TDD New Babbage"
     ],
     [
+     9100,
+     "TDD Orison"
+    ],
+    [
      8700,
      "CBD Lorville"
     ],
     [
      8700,
      "Ruin Station"
-    ],
-    [
-     8700,
-     "Endgame"
     ]
    ]
   },
@@ -1528,10 +1528,6 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     5200,
-     "Pyro Gateway (Stanton)"
-    ],
-    [
      4700,
      "Seraphim"
     ],
@@ -1542,6 +1538,10 @@
     [
      4600,
      "Nyx Gateway (Stanton)"
+    ],
+    [
+     4500,
+     "Pyro Gateway (Stanton)"
     ]
    ]
   },
@@ -1776,11 +1776,11 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     11000,
-     "Pyro Gateway (Stanton)"
+     10000,
+     "TDD Area 18"
     ]
    ]
   }
  },
- "updated": "2026-11-01T13:28:04+00:00"
+ "updated": "2026-11-01T18:57:14+00:00"
 }
