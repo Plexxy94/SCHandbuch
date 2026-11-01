@@ -1142,6 +1142,10 @@
      "Everus Harbor"
     ],
     [
+     4100,
+     "Terra Gateway (Stanton)"
+    ],
+    [
      3800,
      "TDD Area 18"
     ],
@@ -1152,10 +1156,6 @@
     [
      3800,
      "CBD Lorville"
-    ],
-    [
-     3800,
-     "TDD Orison"
     ]
    ]
   },
@@ -1264,6 +1264,10 @@
   "copper": {
    "ref": [
     [
+     4700,
+     "Terra Gateway (Stanton)"
+    ],
+    [
      4300,
      "Pyro Gateway (Stanton)"
     ],
@@ -1274,10 +1278,6 @@
     [
      4200,
      "Rat's Nest"
-    ],
-    [
-     4000,
-     "Terra Gateway (Stanton)"
     ],
     [
      3900,
@@ -1310,7 +1310,7 @@
      "Orbituary"
     ],
     [
-     4100,
+     4000,
      "Terra Gateway (Stanton)"
     ],
     [
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-10-31T23:24:53+00:00"
+ "updated": "2026-11-01T06:08:59+00:00"
 }
