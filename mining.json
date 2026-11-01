@@ -1114,10 +1114,6 @@
   "agricium": {
    "ref": [
     [
-     11000,
-     "Rod's Fuel"
-    ],
-    [
      10000,
      "TDD Area 18"
     ],
@@ -1132,15 +1128,15 @@
     [
      10000,
      "ARC-L3"
+    ],
+    [
+     10000,
+     "HUR-L4"
     ]
    ]
   },
   "aluminum": {
    "ref": [
-    [
-     4600,
-     "Port Tressler"
-    ],
     [
      4300,
      "Terra Gateway (Stanton)"
@@ -1156,6 +1152,10 @@
     [
      3800,
      "TDD New Babbage"
+    ],
+    [
+     3800,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1215,19 +1215,19 @@
     ],
     [
      30000,
-     "Rod's Fuel"
-    ],
-    [
-     30000,
-     "Endgame"
-    ],
-    [
-     30000,
      "Jackson's Swap"
     ],
     [
      30000,
      "Dudley & Daughters"
+    ],
+    [
+     30000,
+     "Canard View"
+    ],
+    [
+     29000,
+     "TDD Area 18"
     ]
    ]
   },
@@ -1264,6 +1264,10 @@
   "copper": {
    "ref": [
     [
+     4300,
+     "Rod's Fuel"
+    ],
+    [
      4200,
      "Rat's Nest"
     ],
@@ -1278,10 +1282,6 @@
     [
      3700,
      "TDD New Babbage"
-    ],
-    [
-     3700,
-     "CBD Lorville"
     ]
    ],
    "raw": [
@@ -1302,7 +1302,7 @@
   "corundum": {
    "ref": [
     [
-     4400,
+     4300,
      "Rod's Fuel"
     ],
     [
@@ -1452,10 +1452,6 @@
   "laranite": {
    "ref": [
     [
-     9500,
-     "Rod's Fuel"
-    ],
-    [
      9100,
      "TDD New Babbage"
     ],
@@ -1470,6 +1466,10 @@
     [
      8700,
      "Ruin Station"
+    ],
+    [
+     8700,
+     "Starlight Service"
     ]
    ]
   },
@@ -1712,10 +1712,6 @@
   "titanium": {
    "ref": [
     [
-     8700,
-     "Starlight Service"
-    ],
-    [
      8300,
      "TDD Area 18"
     ],
@@ -1730,6 +1726,10 @@
     [
      8300,
      "Ruin Station"
+    ],
+    [
+     8300,
+     "Checkmate"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-01T18:57:14+00:00"
+ "updated": "2026-11-01T22:50:47+00:00"
 }
