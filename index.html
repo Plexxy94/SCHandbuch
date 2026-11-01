@@ -145,7 +145,7 @@ kbd {
 .step.done .num { background: var(--ok); border-color: var(--ok); color: var(--panel); }
 .step h3 { font-family: var(--f-display); font-size: 21px; font-weight: 600; margin: 4px 0 0; }
 .step .body { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
-.step ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.step ol, .step ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
 .step ol li::marker { color: var(--accent); font-family: var(--f-mono); font-size: 13px; }
 .oops { background: var(--warn-soft); border-radius: 6px; padding: 10px 14px; font-size: 14px; }
 .oops strong { color: var(--warn); }
@@ -682,6 +682,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     <div class="subnav-in" role="list" aria-label="Berufe" data-group="berufe">
       <a href="#mining" role="listitem">Mining</a>
       <a href="#salvage" role="listitem">Salvage</a>
+      <a href="#hauling" role="listitem">Hauling</a>
       <a href="#crafting" role="listitem">Crafting</a>
     </div>
     <div class="subnav-in" role="list" aria-label="Einsätze" data-group="einsaetze">
@@ -735,6 +736,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <h3>Salvage</h3>
       <p>Schiffe und Puffer, wo RMC am meisten bringt, Baumaterial, Bricking und Regeln.</p>
       <span class="go">Bergen →</span>
+    </a>
+    <a class="chapter" href="#hauling">
+      <span class="no">NACHSCHLAGEN</span>
+      <h3>Hauling</h3>
+      <p>Frachtaufträge und Handel: welches Schiff wann, Ränge, Kistengrößen und ein Frachter-Finder.</p>
+      <span class="go">Laden →</span>
     </a>
     <a class="chapter" href="#crafting">
       <span class="no">NACHSCHLAGEN</span>
@@ -2271,6 +2278,261 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   </section>
 </section>
 
+<!-- ============ HAULING ============ -->
+<section class="view" id="view-hauling" data-view="hauling" hidden>
+  <div class="head">
+    <div class="stamp"><span>Nachschlagen</span><span>Stand Alpha 4.10.2</span><span>Preise schwanken</span></div>
+    <h1>Hauling</h1>
+    <p class="lede">Hauling heißt Fracht fahren: Kisten an einem Ort abholen und an einem anderen abliefern. Mit Frachtaufträgen bekommst du dafür einen festen Lohn und riskierst kein eigenes Geld. Hier steht, welches Schiff du wann brauchst, wie du im Rang aufsteigst und was es bringt.</p>
+    <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
+  </div>
+
+  <section>
+    <h2>Zwei Wege mit Fracht</h2>
+    <div class="two">
+      <div class="card-plain">
+        <h3>Frachtaufträge <i class="gb">Hauling Contracts</i> <span class="pill go">ohne Risiko</span></h3>
+        <p class="small" style="font-size:14px">Eine Firma stellt die Ware, du fährst sie. Du bekommst einen festen Lohn und Ruf <i class="gb">Reputation</i> bei der Firma. Eigenes Geld brauchst du nicht. Welche Aufträge du siehst, hängt aber von deinem Rang ab.</p>
+      </div>
+      <div class="card-plain">
+        <h3>Handel <i class="gb">Trading</i> <span class="pill later">eigenes Geld</span></h3>
+        <p class="small" style="font-size:14px">Du kaufst Waren und verkaufst sie woanders teurer. Einen Rang brauchst du nicht, der Gewinn wächst mit dem Laderaum. Geht die Fracht verloren, ist dein Geld weg.</p>
+      </div>
+    </div>
+    <div class="hint" style="margin-top:12px">Der übliche Weg: mit Aufträgen anfangen, dabei Rang und Geld aufbauen, später mit einem großen Schiff nebenbei handeln.</div>
+  </section>
+
+  <section>
+    <h2>So läuft ein Auftrag</h2>
+    <div class="card-plain">
+      <ol>
+        <li><b>Annehmen:</b> Im mobiGlas unter Aufträge <i class="gb">Contracts</i> → Hauling einen Auftrag wählen. Vorher zwei Zahlen prüfen: die Menge in SCU und die größte Kiste <i class="gb">Max Container Size</i>.</li>
+        <li><b>Abholen:</b> Am Abholort zum Frachtaufzug <i class="gb">Freight Elevator</i> gehen. Am Terminal <i class="gb">Freight Manager</i> die Kisten des Auftrags auswählen und die Plattform hochfahren.</li>
+        <li><b>Einladen:</b> Die Kisten mit dem Traktorstrahl <i class="gb">Tractor Beam</i> aufs Frachtgitter <i class="gb">Cargo Grid</i> stellen, bis sie einrasten. Dafür brauchst du ein Multitool mit TruHold-Aufsatz oder den MaxLift-Traktorstrahl. Große Kisten gehen leichter mit dem Traktorstrahl des Schiffs oder dem ATLS-Lastenanzug, der laut CIG Kisten bis 32 SCU bewegt.</li>
+        <li><b>Fliegen:</b> Ziel in der Sternenkarte setzen, Quantensprung, landen.</li>
+        <li><b>Abliefern:</b> Die Kisten auf den Frachtaufzug am Ziel stellen, Plattform runterfahren, im Freight Manager die Abgabe bestätigen und im mobiGlas den Auftrag abschließen. Lohn und Ruf kommen sofort.</li>
+      </ol>
+      <div class="hint">Bei mehreren Stopps bekommt jeder Stopp eine eigene Markierung. Seit 4.10.2 verschwindet der Rest nicht mehr, wenn du am ersten Stopp alles abgibst.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ränge: was du wann fahren darfst</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Rang</th><th>Auftragsgrößen</th><th>Strecken</th><th>Was neu dazukommt</th></tr></thead>
+        <tbody>
+          <tr><th>1 · Trainee</th><td>Extra Small</td><td>Direkt (nur 2 Orte)</td><td>Einstieg, Kisten nur 1 SCU</td></tr>
+          <tr><th>2 · Rookie</th><td>Extra Small, Small</td><td>Direkt, planetar</td><td>Small-Aufträge bis ~24 SCU, Kisten bis 4 SCU</td></tr>
+          <tr><th>3 · Junior</th><td>Small, Medium</td><td>Direkt, planetar</td><td>Medium-Aufträge, Kisten bis 8 SCU</td></tr>
+          <tr><th>4 · Member</th><td>Small, Medium bis 126 SCU</td><td>+ Solar (zwischen Planeten)</td><td>Längere Strecken, mehr Stopps</td></tr>
+          <tr class="rec"><th>5 · Experienced</th><td>Medium 200–600 SCU, Large</td><td>wie Member</td><td>Large über 600 SCU mit 32er-Kisten, Medium-Kisten bis 16 SCU. <b>Ab hier brauchst du ein großes Schiff.</b></td></tr>
+          <tr><th>6 · Senior</th><td>wie Experienced</td><td>wie Member</td><td>Mehr Lohn, mehr Stopps</td></tr>
+          <tr><th>7 · Master</th><td>wie Experienced</td><td>+ interstellar</td><td>Höchster Rang. Aufträge zwischen Sternensystemen gibt es spätestens jetzt, je nach Firma und Quelle schon ab Member oder früher.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ores" style="margin-top:12px">
+      <div class="ore"><b>Extra Small</b><span class="v">bis 10 SCU</span><span class="w">Kisten 1 SCU</span></div>
+      <div class="ore"><b>Small</b><span class="v">bis ~24 SCU</span><span class="w">nie über 26 SCU, Kisten bis 4 SCU</span></div>
+      <div class="ore"><b>Medium</b><span class="v">bis 126 SCU</span><span class="w">bis Member, Kisten bis 8 SCU</span></div>
+      <div class="ore"><b>Medium ab Experienced</b><span class="v">200–600 SCU</span><span class="w">Kisten bis 16 SCU</span></div>
+      <div class="ore hot"><b>Large</b><span class="v">über 600 SCU</span><span class="w">Kisten 32 SCU</span></div>
+    </div>
+    <div class="facts" style="margin-top:16px">
+      <div class="fact"><strong>Ruf gilt pro Firma</strong><p>Covalex Shipping, Red Wind Linehaul und Ling Family Hauling zählen getrennt. Bleib bei einer Firma, sonst steigst du dreimal langsam auf.</p></div>
+      <div class="fact"><strong>Wie lange dauert ein Rang?</strong><p>Richtwert aus einem Community-Guide für Red Wind (Ende 2025): 10 Junior-Aufträge bis Member, 20 Member-Aufträge bis Experienced. Kann sich mit Patches ändern.</p></div>
+      <div class="fact"><strong>Liste leer oder schlecht?</strong><p>Laut Spielern frischt das Abbrechen eines Auftrags die Liste auf. Mehrere Aufträge mit demselben Ziel kannst du gleichzeitig fahren, wenn der Platz reicht.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Die Kiste entscheidet, nicht die SCU</h2>
+    <p class="lede" style="font-size:15px">Jedes Frachtgitter nimmt nur Kisten bis zu einer bestimmten Größe. Ein Schiff mit viel SCU nützt nichts, wenn die Kisten des Auftrags nicht hineinpassen. Deshalb vor jedem Auftrag die größte Kiste mit deinem Schiff vergleichen.</p>
+    <div class="ores">
+      <div class="ore"><b>1 SCU</b><span class="v">1,25 × 1,25 × 1,25 m</span><span class="w">passt fast überall</span></div>
+      <div class="ore"><b>2 SCU</b><span class="v">2,5 × 1,25 × 1,25 m</span></div>
+      <div class="ore"><b>4 SCU</b><span class="v">2,5 × 2,5 × 1,25 m</span></div>
+      <div class="ore"><b>8 SCU</b><span class="v">2,5 × 2,5 × 2,5 m</span></div>
+      <div class="ore"><b>16 SCU</b><span class="v">5 × 2,5 × 2,5 m</span></div>
+      <div class="ore"><b>24 SCU</b><span class="v">7,5 × 2,5 × 2,5 m</span></div>
+      <div class="ore hot"><b>32 SCU</b><span class="v">10 × 2,5 × 2,5 m</span><span class="w">nur große Laderäume</span></div>
+    </div>
+    <div class="facts" style="margin-top:16px">
+      <div class="fact"><strong>Caterpillar</strong><p>576 SCU, aber keine einzige 32er-Kiste passt. Für Large-Aufträge ungeeignet.</p></div>
+      <div class="fact"><strong>Hull C</strong><p>Nimmt <b>nur</b> 32er-Kisten. Kleine Aufträge gehen damit gar nicht.</p></div>
+      <div class="fact"><strong>Cutlass Black</strong><p>Laut Spieldaten nur Kisten bis 2 SCU, obwohl mehr Platz wäre. Für größere Aufträge vorher testen.</p></div>
+      <div class="fact"><strong>Türen und Rampen</strong><p>Auch wenn das Gitter passt, kann eine enge Tür eine 32er-Kiste blockieren (z. B. Hermes). Dann zwei 16er nehmen.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Der Weg nach oben</h2>
+    <p class="lede" style="font-size:15px">Fünf Stufen vom Startschiff bis zur Hull C. Kauf das nächste Schiff erst, wenn dein Rang die passenden Aufträge freigibt. Sonst fliegst du leeren Laderaum spazieren.</p>
+    <div class="steps">
+      <article class="step">
+        <span class="num">1</span>
+        <h3>Trainee und Rookie: dein Startschiff</h3>
+        <div class="body">
+          <ul>
+            <li><b>Schiff:</b> Was du hast. Eine <a class="ship-a" href="#s-aegs-avenger-titan">Avenger Titan</a> (8 SCU, Kisten bis 4) reicht für Extra Small und kleine Small-Aufträge, eine <a class="ship-a" href="#s-cnou-nomad">Nomad</a> (24 SCU, Kisten bis 8) für ganze Small-Aufträge. Aurora oder Cutter mit 3–6 SCU schaffen nur die kleinsten.</li>
+            <li><b>Kosten:</b> 0 aUEC. Wer mehr Platz will, mietet eine <a class="ship-a" href="#s-misc-hull-a">Hull A</a> (64 SCU) ab ~32.300 aUEC pro Tag.</li>
+            <li><b>Lohn (4.10.2):</b> Trainee 5.000–25.000, Rookie um 40.000 aUEC pro Auftrag.</li>
+          </ul>
+          <div class="hint"><b>Weiter, wenn:</b> du Rookie bist und etwa 1,2–1,7 Mio. aUEC hast.</div>
+        </div>
+      </article>
+      <article class="step">
+        <span class="num">2</span>
+        <h3>Rookie und Junior: 64 SCU</h3>
+        <div class="body">
+          <ul>
+            <li><a class="ship-a" href="#s-drak-golem-ox">Golem OX</a> · <b>1,15 Mio.</b> Günstigster 64-SCU-Frachter, fliegt allein. Nicht mietbar. Laut Drake nimmt er Kisten bis 32 SCU, die Spieldaten sagen weniger: erst mit kleiner Ladung testen.</li>
+            <li><a class="ship-a" href="#s-misc-hull-a">Hull A</a> · <b>1,62 Mio.</b> Kisten bis 16 SCU, Ladung außen. Mietbar ab ~32.300 pro Tag, ideal zum Ausprobieren.</li>
+            <li><a class="ship-a" href="#s-crus-spirit-c1">C1 Spirit</a> · <b>3,12 Mio.</b> Kisten bis 32, Ladung innen geschützt, stärkere Schilde. Mietbar ~62.400 pro Tag.</li>
+          </ul>
+          <p class="small">Small-Aufträge passen komplett. Junior-Aufträge mit 80–112 SCU (59.750–73.000 aUEC) brauchen zwei Fahrten.</p>
+          <div class="hint"><b>Weiter, wenn:</b> deine Medium-Aufträge regelmäßig über 64 SCU liegen und du 3,4–4 Mio. aUEC hast.</div>
+        </div>
+      </article>
+      <article class="step">
+        <span class="num">3</span>
+        <h3>Junior und Member: 120–192 SCU</h3>
+        <div class="body">
+          <ul>
+            <li><a class="ship-a" href="#s-argo-raft">RAFT</a> · <b>3,37 Mio.</b> 192 SCU, Kisten bis 32. Bester Preis pro SCU dieser Klasse, aber langsam (SCM 140 m/s) und die Ladung sitzt außen. Mietbar ~67.300 pro Tag.</li>
+            <li><a class="ship-a" href="#s-misc-freelancer-max">Freelancer MAX</a> · <b>4,04 Mio.</b> 120 SCU innen, Kisten bis 32, mit Waffen. Mietbar ~80.800 pro Tag.</li>
+            <li><a class="ship-a" href="#s-rsi-constellation-taurus">Constellation Taurus</a> · <b>7,64 Mio.</b> 174 SCU, starke Schilde und Türme. Wenn du auch durch unsichere Gegenden fliegst.</li>
+          </ul>
+          <p class="small">Member-Aufträge bis 126 SCU gehen jetzt in einer Fahrt.</p>
+          <div class="hint"><b>Weiter, wenn:</b> du Experienced bist. Ab dann gibt es Medium mit 200–600 SCU und Large über 600 SCU.</div>
+        </div>
+      </article>
+      <article class="step">
+        <span class="num">4</span>
+        <h3>Experienced und Senior: 288–696 SCU</h3>
+        <div class="body">
+          <ul>
+            <li><a class="ship-a" href="#s-misc-hull-b">Hull B</a> · <b>7,54 Mio.</b> 512 SCU, Kisten bis 32, landet voll beladen auf Planeten. Das beste Verhältnis von Preis zu Laderaum in dieser Stufe.</li>
+            <li><a class="ship-a" href="#s-rsi-hermes">Hermes</a> · <b>7,11 Mio.</b> 288 SCU, schnell (bis 1.200 m/s). Mietbar ~187.100 pro Tag. Die Tür ist eng für 32er-Kisten.</li>
+            <li><a class="ship-a" href="#s-drak-caterpillar">Caterpillar</a> · <b>11,85 Mio.</b> 576 SCU, aber keine 32er-Kisten und laut Daten nur ~154 Gm Quantum-Reichweite. Gut für Medium-Aufträge.</li>
+            <li><a class="ship-a" href="#s-crus-starlifter-c2">C2 Hercules</a> · <b>18,9 Mio.</b> 696 SCU innen, Kisten bis 32, landet überall. Das Standard-Schiff für Large-Aufträge.</li>
+          </ul>
+          <p class="small">Lohn (4.10.2): 138.000–267.000 aUEC je Auftrag mit 244–2.816 SCU.</p>
+          <div class="hint"><b>Weiter, wenn:</b> du regelmäßig Large-Aufträge über 700 SCU siehst und 16 Mio. aUEC übrig hast.</div>
+        </div>
+      </article>
+      <article class="step">
+        <span class="num">5</span>
+        <h3>Senior und Master: Hull C</h3>
+        <div class="body">
+          <ul>
+            <li><a class="ship-a" href="#s-misc-hull-c">Hull C</a> · <b>15,71 Mio.</b> 4.608 SCU, nimmt <b>nur</b> 32er-Kisten. Für Large-Aufträge, vor allem zwischen Raumstationen.</li>
+            <li><b>Beladen:</b> Spindeln ausfahren, dann bei der Station die Frachtdienste <i class="gb">External Freight / Cargo Services</i> anfordern und in die zugewiesene Ladezone fliegen.</li>
+            <li><b>Bericht aus 4.10:</b> ~2.500 SCU Large Solar brachten 313.000 aUEC. Weil das automatische Laden hakte, gingen 30–50 SCU verloren, am Ende waren es ~240.000.</li>
+          </ul>
+          <div class="oops"><strong>Achtung 4.10:</strong> Das automatische Laden der Hull C ist unzuverlässig: Es startet nicht, stapelt alles auf eine Spindel oder entlädt nur einen Teil. Erst mit einer einzelnen Kiste testen. Handel mit der Hull C ist noch fehleranfälliger als Aufträge.</div>
+          <div class="hint">Alternative ohne Hull C: mit der C2 mehrere Large-Aufträge gleichzeitig fahren. Die bewaffnete <a class="ship-a" href="#s-crus-starlifter-m2">M2 Hercules</a> (28 Mio., 522 SCU) ist für gefährliche Routen gedacht.</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Passt mein Schiff?</h2>
+    <div class="tool" id="hq-tool">
+      <div class="tool-head"><span class="tool-tag">Werkzeug</span><h3>Frachter-Finder</h3></div>
+      <p class="tool-lede">Gib Menge und größte Kiste aus dem Auftrag ein. Du siehst, welche Schiffe ihn in einer Fahrt schaffen, sortiert nach Preis.</p>
+      <div class="search"><input id="hq-scu" class="tool-input" type="text" inputmode="numeric" placeholder="Menge in SCU, z. B. 112" aria-label="Menge in SCU"></div>
+      <div class="chips" id="hq-box" aria-label="Größte Kiste"><span class="small">Größte Kiste:</span></div>
+      <label class="check" style="font-weight:500;font-family:var(--f-body)"><input type="checkbox" id="hq-rent"> nur mietbare Schiffe</label>
+      <div id="hq-out" class="rs-out" aria-live="polite"><span class="small">Noch keine Menge eingegeben.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Alle Frachter im Vergleich</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Schiff</th><th>Fracht</th><th>Größte Kiste</th><th>Crew</th><th>Kauf</th><th>Miete/Tag</th><th>aUEC pro SCU</th><th>Für dich</th></tr></thead>
+        <tbody id="hq-table"></tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:8px">Fracht, Preise und Kistengrößen aus den Spieldaten von Patch 4.10.2 (Star Citizen Wiki API, günstigster bekannter Händler). Die größte Kiste ist aus den Maßen der Frachtgitter berechnet. Bei Golem OX und Hermes nennen die Spieldaten nur 1 SCU, Hersteller und Spieler bestätigen aber Kisten bis 32 SCU (*).</p>
+  </section>
+
+  <section>
+    <h2>Mieten oder kaufen?</h2>
+    <div class="facts">
+      <div class="fact"><strong>Erst mieten</strong><p>Ein Tag Miete kostet etwa 2–2,5 % des Kaufpreises. Ein Kauf rechnet sich also erst nach rund 40–50 Miettagen. Probier ein Schiff vorher aus.</p></div>
+      <div class="fact"><strong>Wann sich ein Kauf lohnt</strong><p>Kaufpreis geteilt durch deinen Verdienst pro Stunde. Rechenbeispiel: RAFT für 3,37 Mio. bei 120.000 aUEC pro Stunde hat sich nach etwa 28 Stunden bezahlt.</p></div>
+      <div class="fact"><strong>Größer ist nicht besser</strong><p>Ein großes Schiff mit kleinem Auftrag kostet mehr Treibstoff. Seit 4.10 hängt auch die Wartezeit beim Anfordern <i class="gb">Claim</i> am Schiffswert.</p></div>
+      <div class="fact"><strong>Wipe-Risiko</strong><p>Im Spiel gekaufte Schiffe und aUEC können bei einem Wipe verschwinden, zuletzt mit 4.8.0 am 14. Mai 2026. Gekaufte Pledge-Schiffe bleiben.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Was es bringt</h2>
+    <div class="ores">
+      <div class="ore"><b>Trainee</b><span class="v">5.000–25.000 aUEC</span><span class="w">mehrere Abhol- oder Abgabeorte</span></div>
+      <div class="ore"><b>Rookie</b><span class="v">~40.000 aUEC</span><span class="w">8–16 SCU</span></div>
+      <div class="ore"><b>Junior</b><span class="v">59.750–73.000 aUEC</span><span class="w">80–112 SCU</span></div>
+      <div class="ore"><b>Experienced</b><span class="v">138.250–202.250 aUEC</span><span class="w">244–640 SCU</span></div>
+      <div class="ore"><b>Experienced, Large</b><span class="v">~267.250 aUEC</span><span class="w">1.024–2.816 SCU</span></div>
+      <div class="ore"><b>Hull C, Large Solar</b><span class="v">~313.000 aUEC</span><span class="w">~2.500 SCU, Spielerbericht</span></div>
+    </div>
+    <p class="small" style="margin-top:8px">Beispiel-Aufträge aus Patch 4.10.2 (Community-Guides, Oktober 2026). Pro Stunde ergibt das mit einem einzelnen Auftrag etwa 75.000–150.000 aUEC. Wer mehrere Aufträge mit demselben Ziel gleichzeitig fährt, kommt höher.</p>
+    <div class="hint" style="margin-top:10px">In Patch 4.8 lagen die Löhne viel höher (Member ~745.000, Senior 1,3–1,7 Mio. aUEC). Ältere Videos und Guides versprechen deshalb Millionen pro Stunde, das gilt heute nicht mehr. Die Testversion von 4.10.3 bringt laut Patch Notes eine weitere Überarbeitung der Auftragslöhne.</div>
+  </section>
+
+  <section>
+    <h2>Handel nebenbei</h2>
+    <div class="two">
+      <div class="card-plain">
+        <h3>Beispiele <span class="pill later">26. Okt. 2026</span></h3>
+        <ul>
+          <li><b>Medizinische Güter</b> <i class="gb">Medical Supplies</i>: MIC-L1 → CRU-L1, ~2.000 aUEC Gewinn pro SCU. 120 SCU kosten ~433.000 und bringen ~239.000 Rohgewinn. Vorrat oft nur ~120 SCU.</li>
+          <li><b>Methan</b> <i class="gb">Methane</i>: CRU-L1 → ARC-L2, ~1.070 aUEC pro SCU.</li>
+          <li><b>Verarbeitete Nahrung</b> <i class="gb">Processed Food</i>: Area18 → MIC-L4, nur ~300 pro SCU, aber gut zum Üben.</li>
+        </ul>
+        <p class="small">Rohgewinn laut UEX vor Treibstoff und Verlusten. Preise ändern sich ständig.</p>
+      </div>
+      <div class="card-plain">
+        <h3>Regeln</h3>
+        <ul>
+          <li>Preise direkt vor dem Kauf prüfen. Terminals aktualisieren sie etwa alle 8–10 Minuten.</li>
+          <li>Nie mehr einsetzen, als du verlieren kannst. Eine verlorene Ladung frisst den Gewinn von mehreren Fahrten.</li>
+          <li>Große Mengen auf mehrere Terminals verteilen, sonst sinkt der Verkaufspreis.</li>
+          <li>1 SCU sind 100 Einheiten einer Ware.</li>
+        </ul>
+        <p class="small">Aktuelle Routen: <a href="https://uexcorp.space" target="_blank" rel="noopener">UEX</a> und <a href="https://sc-trade.tools" target="_blank" rel="noopener">SC Trade Tools</a> (rechnet mit deinem Laderaum und Budget).</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Gefahren und Bugs (4.10.2)</h2>
+    <div class="facts">
+      <div class="fact"><strong>Absturz oder Server-Crash</strong><p>Gekaufte Ware ist bei einem Absturz verloren. Auftragsfracht auch, dann scheitert der Auftrag. Gekaufte Ersatzkisten zählen nicht sicher als Auftragsfracht.</p></div>
+      <div class="fact"><strong>Frachtaufzug</strong><p>Seit 4.10.2 gibt es ein Limit, wie viele Kisten du auf einmal holen kannst, und die Plattform bleibt nicht mehr oben hängen. Fehlt Fracht: anderen Aufzug am selben Ort probieren, neu einloggen oder Server wechseln.</p></div>
+      <div class="fact"><strong>Nur eingerastete Kisten</strong><p>Lose Kisten neben dem Gitter rutschen im Flug herum. Erst losfliegen, wenn alles eingerastet ist.</p></div>
+      <div class="fact"><strong>Pyro</strong><p>Hauling in Pyro ist seit dem Start unzuverlässig und dort lauern Piraten. Erst in Stanton sicher werden.</p></div>
+      <div class="fact"><strong>Piraten</strong><p>Volle Frachter sind beliebte Ziele, auch per Quantum-Abfang <i class="gb">Interdiction</i>. Wertvolle Ladung nicht allein durch unsichere Gegenden fliegen.</p></div>
+      <div class="fact"><strong>Treibstoff</strong><p>Seit 4.10 kosten Wasserstoff und Quantum-Treibstoff deutlich mehr. Lange Strecken fressen mehr vom Gewinn.</p></div>
+      <div class="fact"><strong>Fracht bleibt erhalten</strong><p>Seit 4.10 überstehen Warenkisten im Lager <i class="gb">Long Term Persistence</i> künftige Patches.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Hauling, Mining oder Salvage?</h2>
+    <div class="two">
+      <div class="card-plain"><h3>Hauling passt, wenn …</h3><ul><li>du entspannt fliegen und dabei Musik oder Podcasts hören willst</li><li>du ohne eigenes Risiko Geld und Ruf aufbauen willst</li><li>du später mit großen Schiffen handeln möchtest</li></ul></div>
+      <div class="card-plain"><h3>Lieber etwas anderes, wenn …</h3><ul><li>du Fingerspitzengefühl am Laser magst: <a href="#mining">Mining</a></li><li>du lieber Wracks zerlegst: <a href="#salvage">Salvage</a></li><li>du keine Lust auf Kisten-Tetris am Frachtaufzug hast</li></ul></div>
+    </div>
+    <p class="small" style="margin-top:12px">Quellen: <a href="https://starcitizen.tools/Hauling" target="_blank" rel="noopener">Star Citizen Wiki: Hauling</a> und <a href="https://starcitizen.tools/Covalex_Shipping" target="_blank" rel="noopener">Covalex Shipping</a> (Ränge, Größen), <a href="https://expcarry.com/star-citizen-best-trade-routes" target="_blank" rel="noopener">expcarry</a> (Löhne und Handel 4.10.2), <a href="https://timesaver.gg/blog/star-citizen-hauling-guide-alpha-4-10" target="_blank" rel="noopener">Timesaver</a> (4.10, Hull C), <a href="https://bustedloops.com/workarounds/hull-c-automated-loading" target="_blank" rel="noopener">Busted Loops</a> (Hull-C-Laden), <a href="https://starcitizen.tools/Update:Star_Citizen_Alpha_4.10.2" target="_blank" rel="noopener">Patch 4.10.2</a>. Schiffsdaten: Star Citizen Wiki API.</p>
+  </section>
+</section>
+
 <!-- ============ CRAFTING ============ -->
 <section class="view" id="view-crafting" data-view="crafting" hidden>
   <div class="head">
@@ -2629,7 +2891,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       var cr = cur.getBoundingClientRect(), br = tabsBox.getBoundingClientRect();
       if (cr.left < br.left) tabsBox.scrollLeft += cr.left - br.left - 8; else if (cr.right > br.right) tabsBox.scrollLeft += cr.right - br.right + 16;
     }
-    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', crafting: 'Crafting · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
+    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', crafting: 'Crafting · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
     document.title = titles[h];
     Array.prototype.forEach.call(sub.querySelectorAll('a'), function (a) {
       if (a.getAttribute('href') === '#' + h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
@@ -4171,6 +4433,92 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     sel = r.w > 0.02 && r.h > 0.02 ? r : null; show(sel); lastKey = '';
     if (img) { say('Lese Ausschnitt …'); read(); }
   });
+})();
+</script>
+<script>
+/* ---------- Hauling: Frachter-Finder und Vergleich ----------
+   Platz je Kistengröße (1, 2, 4, 8, 16, 24, 32 SCU), berechnet aus den Frachtgittern der Spieldaten 4.10.2
+   (Grenze des Gitters und seine Maße, nur eine Kistengröße pro Gitter). Golem OX und Hermes: Spieldaten nennen
+   1 SCU, Hersteller-Q&A und Spieler bestätigen bis 32 SCU, darum mit 32 gerechnet. Miete: günstigster Tagespreis. */
+(function () {
+  var BOX = [1, 2, 4, 8, 16, 24, 32];
+  var HAUL = [
+    ['aegs-avenger-titan', [8, 8, 8, 0, 0, 0, 0], 27165, 'Startschiff, nur kleine Aufträge'],
+    ['cnou-nomad', [24, 24, 24, 16, 0, 0, 0], 28728, 'Starter mit etwas mehr Platz'],
+    ['drak-cutlass-black', [46, 40, 0, 0, 0, 0, 0], 50274, 'Allrounder, laut Spieldaten nur kleine Kisten'],
+    ['drak-golem-ox', [64, 64, 64, 64, 64, 48, 64], null, 'Günstigster 64-SCU-Frachter', 1],
+    ['misc-hull-a', [64, 64, 64, 64, 64, 0, 0], 32319, 'Billig mieten und ausprobieren'],
+    ['crus-spirit-c1', [64, 64, 64, 64, 64, 48, 64], 62370, 'Robust, Ladung innen'],
+    ['misc-freelancer-max', [120, 120, 96, 64, 64, 48, 64], 80797, 'Ladung innen, mit Waffen'],
+    ['rsi-zeus-cl', [128, 128, 104, 64, 64, 48, 64], null, 'Ladung innen'],
+    ['crus-star-runner', [114, 114, 112, 72, 48, 72, 0], null, 'Teuer, keine 32er-Kisten'],
+    ['rsi-constellation-taurus', [174, 174, 172, 112, 112, 96, 64], null, 'Starke Schilde und Türme'],
+    ['argo-raft', [192, 192, 192, 192, 192, 192, 192], 67331, 'Bester Preis pro SCU, langsam'],
+    ['misc-starlancer-max', [224, 224, 224, 192, 192, 144, 192], null, 'Große Quantum-Reichweite'],
+    ['rsi-hermes', [288, 288, 288, 288, 288, 288, 256], 187110, 'Schnell, mietbar, enge Tür', 1],
+    ['misc-hull-b', [512, 512, 512, 512, 512, 384, 512], null, 'Landet voll beladen, viel SCU fürs Geld'],
+    ['crus-starlifter-m2', [522, 522, 480, 320, 320, 288, 320], null, 'Bewaffnet, für gefährliche Routen'],
+    ['drak-caterpillar', [576, 576, 452, 432, 432, 384, 0], null, 'Keine 32er-Kisten, kurze Quantum-Reichweite'],
+    ['crus-starlifter-c2', [696, 696, 696, 640, 640, 576, 640], null, 'Standard für Large-Aufträge'],
+    ['misc-hull-c', [0, 0, 0, 0, 0, 0, 4608], null, 'Nur 32er-Kisten, Laden über die Station']
+  ];
+  var bySlug = {};
+  (window.SHIPS || []).forEach(function (s) { bySlug[s.slug] = s; });
+  var list = HAUL.filter(function (h) { return bySlug[h[0]]; }).map(function (h) {
+    var s = bySlug[h[0]];
+    var big = 0; h[1].forEach(function (c, i) { if (c > 0) big = BOX[i]; });
+    return { slug: h[0], n: s.n, scu: s.scu, cap: h[1], rent: h[2], note: h[3], star: h[4], buy: s.b ? s.b[0] : null, cr: s.cr, big: big, only32: h[1][5] === 0 && h[1][0] === 0 };
+  });
+  var fmt = function (n) { return n.toLocaleString('de-DE'); };
+  var mio = function (n) { return n >= 1e6 ? (n / 1e6).toLocaleString('de-DE', { maximumFractionDigits: 2 }) + ' Mio.' : fmt(n); };
+  var crew = function (s) { return s.cr[0] === s.cr[1] ? s.cr[0] : s.cr[0] + '–' + s.cr[1]; };
+  var link = function (s) { return '<a class="ship-a" href="#s-' + s.slug + '">' + s.n + '</a>'; };
+  var bigTxt = function (s) { return s.only32 ? 'nur 32' : s.big + (s.star ? '*' : ''); };
+
+  /* Vergleichstabelle */
+  var tb = document.getElementById('hq-table');
+  if (tb) tb.innerHTML = list.slice().sort(function (a, b) { return a.scu - b.scu; }).map(function (s) {
+    return '<tr><th>' + link(s) + '</th><td class="num">' + fmt(s.scu) + ' SCU</td><td class="num">' + bigTxt(s) + ' SCU</td><td class="num">' + crew(s) + '</td>' +
+      '<td class="num">' + (s.buy ? mio(s.buy) : '–') + '</td><td class="num">' + (s.rent ? fmt(s.rent) : '–') + '</td>' +
+      '<td class="num">' + (s.buy ? fmt(Math.round(s.buy / s.scu)) : '–') + '</td><td>' + s.note + '</td></tr>';
+  }).join('');
+
+  /* Finder */
+  var inp = document.getElementById('hq-scu'), out = document.getElementById('hq-out'), boxEl = document.getElementById('hq-box'), rentEl = document.getElementById('hq-rent');
+  if (!inp) return;
+  var box = 8;
+  BOX.forEach(function (b) {
+    var c = document.createElement('button'); c.type = 'button'; c.className = 'chip'; c.textContent = b + ' SCU';
+    c.setAttribute('aria-pressed', b === box ? 'true' : 'false');
+    c.addEventListener('click', function () {
+      box = b;
+      Array.prototype.forEach.call(boxEl.querySelectorAll('.chip'), function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      draw();
+    });
+    boxEl.appendChild(c);
+  });
+  function draw() {
+    var v = parseInt(inp.value.replace(/[^0-9]/g, ''), 10);
+    if (!v) { out.innerHTML = '<span class="small">Noch keine Menge eingegeben.</span>'; return; }
+    var bi = BOX.indexOf(box);
+    var hits = list.filter(function (s) { return s.cap[bi] > 0 && s.buy && (!rentEl.checked || s.rent); }).map(function (s) {
+      return { s: s, trips: Math.ceil(v / s.scu), tight: s.cap[bi] < Math.min(v, s.scu) };
+    });
+    /* Erst alles, was in einer Fahrt passt (billigstes zuerst), dann nach Zahl der Fahrten */
+    hits.sort(function (a, b) {
+      return (a.trips > 1) - (b.trips > 1) || (a.trips > 1 ? a.trips - b.trips : 0) || (rentEl.checked ? a.s.rent - b.s.rent : a.s.buy - b.s.buy);
+    });
+    if (!hits.length) { out.innerHTML = '<span class="small">Kein Schiff aus der Liste nimmt Kisten dieser Größe' + (rentEl.checked ? ' und ist mietbar' : '') + '.</span>'; return; }
+    out.innerHTML = hits.slice(0, 8).map(function (h, i) {
+      var s = h.s;
+      var price = rentEl.checked ? 'Miete ' + fmt(s.rent) + ' aUEC/Tag' : 'Kauf ' + mio(s.buy) + ' aUEC' + (s.rent ? ' · Miete ' + fmt(s.rent) + '/Tag' : '');
+      var trips = h.trips === 1 ? '<span class="pill go">1 Fahrt</span>' : '<span class="pill later">' + h.trips + ' Fahrten</span>';
+      var warn = h.tight ? '<br><span class="small">Mit lauter ' + box + '-SCU-Kisten passen nur ' + fmt(s.cap[bi]) + ' SCU. Kleinere Kisten gehen besser.</span>' : '';
+      return '<div class="rs-hit' + (i === 0 && h.trips === 1 ? ' top' : '') + '"><span><b>' + link(s) + '</b> ' + trips + '<br><span class="small">' + fmt(s.scu) + ' SCU · ' + price + '</span>' + warn + '</span></div>';
+    }).join('') + (box === 32 ? '<span class="small">Hull C nimmt nur 32er-Kisten und lohnt sich erst bei sehr großen Mengen.</span>' : '');
+  }
+  inp.addEventListener('input', draw);
+  rentEl.addEventListener('change', draw);
 })();
 </script>
 <script>
