@@ -1114,6 +1114,10 @@
   "agricium": {
    "ref": [
     [
+     12000,
+     "ARC-L4"
+    ],
+    [
      11000,
      "Rod's Fuel"
     ],
@@ -1128,22 +1132,22 @@
     [
      10000,
      "CBD Lorville"
-    ],
-    [
-     10000,
-     "ARC-L3"
     ]
    ]
   },
   "aluminum": {
    "ref": [
     [
-     4200,
-     "Everus Harbor"
+     4600,
+     "Port Tressler"
     ],
     [
-     4100,
+     4300,
      "Terra Gateway (Stanton)"
+    ],
+    [
+     4200,
+     "Everus Harbor"
     ],
     [
      3800,
@@ -1152,10 +1156,6 @@
     [
      3800,
      "TDD New Babbage"
-    ],
-    [
-     3800,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1215,7 +1215,7 @@
     ],
     [
      30000,
-     "Patch City"
+     "Rod's Fuel"
     ],
     [
      30000,
@@ -1264,16 +1264,8 @@
   "copper": {
    "ref": [
     [
-     4700,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      4300,
      "Pyro Gateway (Stanton)"
-    ],
-    [
-     4200,
-     "Rod's Fuel"
     ],
     [
      4200,
@@ -1282,6 +1274,14 @@
     [
      3900,
      "Baijini Point"
+    ],
+    [
+     3700,
+     "TDD Area 18"
+    ],
+    [
+     3700,
+     "TDD New Babbage"
     ]
    ],
    "raw": [
@@ -1306,11 +1306,11 @@
      "Rod's Fuel"
     ],
     [
-     4400,
+     4300,
      "Orbituary"
     ],
     [
-     4000,
+     4100,
      "Terra Gateway (Stanton)"
     ],
     [
@@ -1326,6 +1326,10 @@
   "diamond": {
    "ref": [
     [
+     9700,
+     "HUR-L1"
+    ],
+    [
      8300,
      "ARC-L5"
     ],
@@ -1336,10 +1340,6 @@
     [
      7700,
      "CBD Lorville"
-    ],
-    [
-     7700,
-     "Rod's Fuel"
     ],
     [
      7700,
@@ -1452,11 +1452,15 @@
   "laranite": {
    "ref": [
     [
+     9500,
+     "Rod's Fuel"
+    ],
+    [
      9100,
      "TDD New Babbage"
     ],
     [
-     8900,
+     8700,
      "CBD Lorville"
     ],
     [
@@ -1465,11 +1469,7 @@
     ],
     [
      8700,
-     "Rod's Fuel"
-    ],
-    [
-     8700,
-     "Patch City"
+     "Endgame"
     ]
    ]
   },
@@ -1548,15 +1548,11 @@
   "riccite": {
    "ref": [
     [
-     91000,
-     "ArcCorp 157"
-    ],
-    [
      84000,
      "Ashland"
     ],
     [
-     83000,
+     77000,
      "ArcCorp 141"
     ],
     [
@@ -1566,6 +1562,10 @@
     [
      74000,
      "The Golden Riviera"
+    ],
+    [
+     74000,
+     "Sacren's Plot"
     ]
    ]
   },
@@ -1616,6 +1616,10 @@
   "silicon": {
    "ref": [
     [
+     3100,
+     "Terra Gateway (Stanton)"
+    ],
+    [
      2900,
      "Patch City"
     ],
@@ -1630,10 +1634,6 @@
     [
      2400,
      "Seraphim"
-    ],
-    [
-     2400,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1642,10 +1642,6 @@
     [
      150000,
      "Deakins Research"
-    ],
-    [
-     140000,
-     "CBD Lorville"
     ],
     [
      140000,
@@ -1658,6 +1654,10 @@
     [
      140000,
      "Rayari Kaltag"
+    ],
+    [
+     140000,
+     "Terra Mills"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-01T06:08:59+00:00"
+ "updated": "2026-11-01T13:28:04+00:00"
 }
