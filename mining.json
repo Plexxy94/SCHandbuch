@@ -1138,10 +1138,6 @@
   "aluminum": {
    "ref": [
     [
-     4300,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      4200,
      "Everus Harbor"
     ],
@@ -1156,6 +1152,10 @@
     [
      3800,
      "CBD Lorville"
+    ],
+    [
+     3800,
+     "TDD Orison"
     ]
    ]
   },
@@ -1210,6 +1210,10 @@
   "bexalite": {
    "ref": [
     [
+     33000,
+     "Rat's Nest"
+    ],
+    [
      32000,
      "The Golden Riviera"
     ],
@@ -1224,10 +1228,6 @@
     [
      30000,
      "Canard View"
-    ],
-    [
-     29000,
-     "TDD Area 18"
     ]
    ]
   },
@@ -1273,15 +1273,15 @@
     ],
     [
      3900,
+     "Terra Gateway (Stanton)"
+    ],
+    [
+     3900,
      "Baijini Point"
     ],
     [
      3700,
      "TDD Area 18"
-    ],
-    [
-     3700,
-     "TDD New Babbage"
     ]
    ],
    "raw": [
@@ -1310,25 +1310,21 @@
      "Orbituary"
     ],
     [
-     4100,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      4000,
      "Everus Harbor"
     ],
     [
      3700,
      "TDD Area 18"
+    ],
+    [
+     3700,
+     "TDD New Babbage"
     ]
    ]
   },
   "diamond": {
    "ref": [
-    [
-     9700,
-     "HUR-L1"
-    ],
     [
      8300,
      "ARC-L5"
@@ -1344,6 +1340,10 @@
     [
      7700,
      "Pickers Field"
+    ],
+    [
+     7700,
+     "Rappel"
     ]
    ]
   },
@@ -1528,16 +1528,16 @@
      "Stanton Gateway (Pyro)"
     ],
     [
+     5300,
+     "Nyx Gateway (Stanton)"
+    ],
+    [
      4700,
      "Seraphim"
     ],
     [
      4600,
      "Patch City"
-    ],
-    [
-     4600,
-     "Nyx Gateway (Stanton)"
     ],
     [
      4500,
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-01T22:50:47+00:00"
+ "updated": "2026-11-02T02:33:23+00:00"
 }
