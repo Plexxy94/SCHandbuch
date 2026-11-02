@@ -1131,7 +1131,7 @@
     ],
     [
      10000,
-     "HUR-L4"
+     "HUR-L3"
     ]
    ]
   },
@@ -1276,7 +1276,7 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     3800,
+     3900,
      "Baijini Point"
     ],
     [
@@ -1310,16 +1310,16 @@
      "Orbituary"
     ],
     [
+     4100,
+     "Terra Gateway (Stanton)"
+    ],
+    [
      4000,
      "Everus Harbor"
     ],
     [
      3700,
      "TDD Area 18"
-    ],
-    [
-     3700,
-     "TDD New Babbage"
     ]
    ]
   },
@@ -1528,7 +1528,7 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     5300,
+     5400,
      "Nyx Gateway (Stanton)"
     ],
     [
@@ -1645,10 +1645,6 @@
     ],
     [
      140000,
-     "TDD Area 18"
-    ],
-    [
-     140000,
      "TDD New Babbage"
     ],
     [
@@ -1658,6 +1654,10 @@
     [
      140000,
      "Terra Mills"
+    ],
+    [
+     140000,
+     "Hickes Research"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-02T11:13:00+00:00"
+ "updated": "2026-11-02T20:48:03+00:00"
 }
