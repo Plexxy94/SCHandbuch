@@ -2892,6 +2892,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     <div class="sh-opts">
       <label class="check"><input type="checkbox" id="shtip"> Nur Einsteiger-Tipps</label>
       <label class="check"><input type="checkbox" id="shbuy"> Im Spiel kaufbar</label>
+      <label class="check"><input type="checkbox" id="shrent"> Mietbar</label>
       <label class="check"><input type="checkbox" id="shveh"> Bodenfahrzeuge zeigen</label>
       <label class="sh-sel">Crew
         <select id="shcrew"><option value="">egal</option><option value="1">solo</option><option value="3">bis 3</option><option value="4">4 und mehr</option></select>
@@ -4084,7 +4085,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 
   function apply() {
     var v = q.value.trim().toLowerCase();
-    var tip = $('shtip').checked, buy = $('shbuy').checked, veh = $('shveh').checked;
+    var tip = $('shtip').checked, buy = $('shbuy').checked, rent = $('shrent').checked, veh = $('shveh').checked;
     var crew = $('shcrew').value, sort = $('shsort').value;
     var shown = SH.filter(function (s) {
       if (v && s._t.indexOf(v) === -1) return false;
@@ -4093,6 +4094,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       if (s.veh && !veh) return false;
       if (tip && !s.tip) return false;
       if (buy && !s.b) return false;
+      if (rent && !s.r) return false;
       if (crew === '1' && s.cr[0] > 1) return false;
       if (crew === '3' && s.cr[0] > 3) return false;
       if (crew === '4' && s.cr[1] < 4) return false;
@@ -4111,7 +4113,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     cnt.textContent = shown.length + ' von ' + SH.length;
     none.hidden = shown.length > 0;
   }
-  [q, $('shtip'), $('shbuy'), $('shveh'), $('shcrew'), $('shsort')].forEach(function (e) { e.addEventListener(e === q ? 'input' : 'change', apply); });
+  [q, $('shtip'), $('shbuy'), $('shrent'), $('shveh'), $('shcrew'), $('shsort')].forEach(function (e) { e.addEventListener(e === q ? 'input' : 'change', apply); });
   apply();
 
   /* 3D-Viewer: three.js r147 mit glTF- und Draco-Loader, erst beim ersten Öffnen geladen */
