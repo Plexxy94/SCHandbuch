@@ -4502,19 +4502,20 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     if (!v) { out.innerHTML = '<span class="small">Noch keine Menge eingegeben.</span>'; return; }
     var bi = BOX.indexOf(box);
     var hits = list.filter(function (s) { return s.cap[bi] > 0 && s.buy && (!rentEl.checked || s.rent); }).map(function (s) {
-      return { s: s, trips: Math.ceil(v / s.scu), tight: s.cap[bi] < Math.min(v, s.scu) };
+      /* Wenige Fahrten: Laderaum voll genutzt (gemischte Kisten). Viele: alles in der größten Kiste. */
+      return { s: s, trips: Math.ceil(v / s.scu), most: Math.ceil(v / s.cap[bi]), tight: s.cap[bi] < Math.min(v, s.scu) };
     });
-    /* Erst alles, was in einer Fahrt passt (billigstes zuerst), dann nach Zahl der Fahrten */
+    /* Erst alles, was sicher in einer Fahrt passt (billigstes zuerst), dann nach Zahl der Fahrten im schlechtesten Fall */
     hits.sort(function (a, b) {
-      return (a.trips > 1) - (b.trips > 1) || (a.trips > 1 ? a.trips - b.trips : 0) || (rentEl.checked ? a.s.rent - b.s.rent : a.s.buy - b.s.buy);
+      return (a.most > 1) - (b.most > 1) || (a.most > 1 ? a.most - b.most || a.trips - b.trips : 0) || (rentEl.checked ? a.s.rent - b.s.rent : a.s.buy - b.s.buy);
     });
     if (!hits.length) { out.innerHTML = '<span class="small">Kein Schiff aus der Liste nimmt Kisten dieser Größe' + (rentEl.checked ? ' und ist mietbar' : '') + '.</span>'; return; }
     out.innerHTML = hits.slice(0, 8).map(function (h, i) {
       var s = h.s;
       var price = rentEl.checked ? 'Miete ' + fmt(s.rent) + ' aUEC/Tag' : 'Kauf ' + mio(s.buy) + ' aUEC' + (s.rent ? ' · Miete ' + fmt(s.rent) + '/Tag' : '');
-      var trips = h.trips === 1 ? '<span class="pill go">1 Fahrt</span>' : '<span class="pill later">' + h.trips + ' Fahrten</span>';
-      var warn = h.tight ? '<br><span class="small">Mit lauter ' + box + '-SCU-Kisten passen nur ' + fmt(s.cap[bi]) + ' SCU. Kleinere Kisten gehen besser.</span>' : '';
-      return '<div class="rs-hit' + (i === 0 && h.trips === 1 ? ' top' : '') + '"><span><b>' + link(s) + '</b> ' + trips + '<br><span class="small">' + fmt(s.scu) + ' SCU · ' + price + '</span>' + warn + '</span></div>';
+      var trips = h.most === 1 ? '<span class="pill go">1 Fahrt</span>' : '<span class="pill later">' + (h.most > h.trips ? h.trips + '–' + h.most : h.most) + ' Fahrten</span>';
+      var warn = h.tight ? '<br><span class="small">Mit lauter ' + box + '-SCU-Kisten passen nur ' + fmt(s.cap[bi]) + ' SCU pro Fahrt. Mit kleineren Kisten im Auftrag reichen weniger Fahrten.</span>' : '';
+      return '<div class="rs-hit' + (i === 0 && h.most === 1 ? ' top' : '') + '"><span><b>' + link(s) + '</b> ' + trips + '<br><span class="small">' + fmt(s.scu) + ' SCU · ' + price + '</span>' + warn + '</span></div>';
     }).join('') + (box === 32 ? '<span class="small">Hull C nimmt nur 32er-Kisten und lohnt sich erst bei sehr großen Mengen.</span>' : '');
   }
   inp.addEventListener('input', draw);
