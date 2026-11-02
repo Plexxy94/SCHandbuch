@@ -1138,10 +1138,6 @@
   "aluminum": {
    "ref": [
     [
-     4200,
-     "Everus Harbor"
-    ],
-    [
      3800,
      "TDD Area 18"
     ],
@@ -1156,6 +1152,10 @@
     [
      3800,
      "TDD Orison"
+    ],
+    [
+     3800,
+     "Stanton Gateway (Nyx)"
     ]
    ]
   },
@@ -1219,15 +1219,15 @@
     ],
     [
      30000,
+     "Endgame"
+    ],
+    [
+     30000,
      "Jackson's Swap"
     ],
     [
      30000,
      "Dudley & Daughters"
-    ],
-    [
-     30000,
-     "Canard View"
     ]
    ]
   },
@@ -1276,7 +1276,7 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     3900,
+     3800,
      "Baijini Point"
     ],
     [
@@ -1391,7 +1391,7 @@
     ],
     [
      4800,
-     "CRU-L1"
+     "ARC-L4"
     ]
    ]
   },
@@ -1452,12 +1452,12 @@
   "laranite": {
    "ref": [
     [
-     9100,
-     "TDD New Babbage"
+     9900,
+     "CRU-L1"
     ],
     [
      9100,
-     "TDD Orison"
+     "TDD New Babbage"
     ],
     [
      8700,
@@ -1664,12 +1664,12 @@
   "taranite": {
    "ref": [
     [
-     28000,
-     "TDD New Babbage"
+     29000,
+     "TDD Orison"
     ],
     [
      28000,
-     "TDD Orison"
+     "TDD New Babbage"
     ],
     [
      28000,
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-02T02:33:23+00:00"
+ "updated": "2026-11-02T11:13:00+00:00"
 }
