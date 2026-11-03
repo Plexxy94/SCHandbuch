@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Star-Citizen-Einstieg auf Deutsch (Alpha 4.10, QWERTZ): erste Schritte, alle wichtigen Tasten und Mining für Anfänger.">
 <title>Star Citizen Handbuch</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* Layout: Flughandbuch – feste Navigationsleiste, Startseite mit drei Kapitel-Kacheln, jedes Kapitel als eigene Ansicht (#erste-schritte, #tasten, #mining) */
 :root {
@@ -651,6 +650,9 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 .bug-official details { border-top: 1px solid var(--line); padding: 8px 0; }
 .bug-official summary { cursor: pointer; font-weight: 600; }
 .bug-official ul { margin: 8px 0 4px; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.kekse { margin-top: 14px; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 8px; }
+.kekse strong { font-family: var(--f-display); font-size: 15px; color: var(--ink); }
+.kekse p { margin: 4px 0 0; }
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 48px; }
 .empty { color: var(--muted); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -3458,6 +3460,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   Schiffsdaten: <a href="https://api.star-citizen.wiki" target="_blank" rel="noopener">Star Citizen Wiki API</a> (Spielversion 4.10.2), Preise im Spiel über <a href="https://uexcorp.space" target="_blank" rel="noopener">UEX</a>.
   Schiffsbilder und 3D-Modelle werden von <a href="https://fleetyards.net" target="_blank" rel="noopener">FleetYards.net</a> geladen, Stadtbilder vom <a href="https://starcitizen.tools" target="_blank" rel="noopener">Star Citizen Wiki</a>. Karten der Contested Zones: Terada und Kerast (CC BY-SA 4.0), ebenfalls über das Wiki.
   Angaben ohne Gewähr.
+  <div class="kekse">
+    <strong>Kekse? Gibt's hier keine.</strong>
+    <p>Keine Cookies, kein Tracking, keine Statistik und darum auch kein Banner, das du wegklicken musst. Die einzigen Kekse in diesem Universum stecken im Snack-Automaten der nächsten Raumstation.</p>
+    <p>Deine Häkchen bei „Erste Schritte“ und beim Executive Hangar und wann du zuletzt die News gelesen hast, merkt sich nur dein Browser. Wir sehen davon nichts. Loswerden kannst du das, indem du die Website-Daten im Browser löschst. Die Signatur-Erkennung im Mining läuft komplett bei dir, kein Screenshot verlässt deinen Rechner.</p>
+    <p>Wie bei jeder Website sehen die Server, von denen etwas geladen wird, deine IP-Adresse: GitHub Pages (dort liegt die Seite), FleetYards.net (Schiffsbilder und 3D-Modelle), das Star Citizen Wiki (Stadtbilder und Karten) und jsDelivr (3D-Ansicht und Texterkennung, erst wenn du sie benutzt). Die Schriften liegen hier selbst, Google bekommt also nichts mit.</p>
+  </div>
   <div class="legal">
     <p>Inoffizielle, nicht-kommerzielle Fan-Seite. Nicht verbunden mit Cloud Imperium Games oder Roberts Space Industries. Alle Spielinhalte, Schiffs- und Stadtbilder sowie 3D-Modelle © Cloud Imperium Rights LLC und Cloud Imperium Rights Ltd. Star Citizen®, Squadron 42®, Roberts Space Industries® und Cloud Imperium® sind eingetragene Marken von Cloud Imperium Rights LLC.</p>
   </div>
