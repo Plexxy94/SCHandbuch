@@ -1264,16 +1264,16 @@
   "copper": {
    "ref": [
     [
+     4700,
+     "Terra Gateway (Stanton)"
+    ],
+    [
      4300,
      "Rod's Fuel"
     ],
     [
      4200,
      "Rat's Nest"
-    ],
-    [
-     3900,
-     "Terra Gateway (Stanton)"
     ],
     [
      3900,
@@ -1374,8 +1374,12 @@
   "hephaestanite": {
    "ref": [
     [
-     5400,
+     5500,
      "MIC-L5"
+    ],
+    [
+     5500,
+     "Ruin Station"
     ],
     [
      5300,
@@ -1388,10 +1392,6 @@
     [
      4800,
      "CBD Lorville"
-    ],
-    [
-     4800,
-     "TDD Orison"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-03T02:55:42+00:00"
+ "updated": "2026-11-03T10:54:50+00:00"
 }
