@@ -1114,6 +1114,10 @@
   "agricium": {
    "ref": [
     [
+     12000,
+     "ARC-L4"
+    ],
+    [
      10000,
      "TDD Area 18"
     ],
@@ -1128,15 +1132,19 @@
     [
      10000,
      "ARC-L3"
-    ],
-    [
-     10000,
-     "HUR-L3"
     ]
    ]
   },
   "aluminum": {
    "ref": [
+    [
+     4300,
+     "Terra Gateway (Stanton)"
+    ],
+    [
+     4200,
+     "Everus Harbor"
+    ],
     [
      3800,
      "TDD Area 18"
@@ -1148,14 +1156,6 @@
     [
      3800,
      "CBD Lorville"
-    ],
-    [
-     3800,
-     "TDD Orison"
-    ],
-    [
-     3800,
-     "Stanton Gateway (Nyx)"
     ]
    ]
   },
@@ -1219,15 +1219,15 @@
     ],
     [
      30000,
+     "Rod's Fuel"
+    ],
+    [
+     30000,
      "Endgame"
     ],
     [
      30000,
      "Jackson's Swap"
-    ],
-    [
-     30000,
-     "Dudley & Daughters"
     ]
    ]
   },
@@ -1264,11 +1264,7 @@
   "copper": {
    "ref": [
     [
-     4700,
-     "Terra Gateway (Stanton)"
-    ],
-    [
-     4300,
+     4200,
      "Rod's Fuel"
     ],
     [
@@ -1282,6 +1278,10 @@
     [
      3700,
      "TDD Area 18"
+    ],
+    [
+     3700,
+     "TDD New Babbage"
     ]
    ],
    "raw": [
@@ -1302,7 +1302,7 @@
   "corundum": {
    "ref": [
     [
-     4300,
+     4400,
      "Rod's Fuel"
     ],
     [
@@ -1374,12 +1374,12 @@
   "hephaestanite": {
    "ref": [
     [
-     5500,
-     "MIC-L5"
+     6000,
+     "CRU-L4"
     ],
     [
      5500,
-     "Ruin Station"
+     "MIC-L5"
     ],
     [
      5300,
@@ -1461,15 +1461,15 @@
     ],
     [
      8700,
-     "CBD Lorville"
-    ],
-    [
-     8700,
      "Ruin Station"
     ],
     [
      8700,
      "Starlight Service"
+    ],
+    [
+     8700,
+     "Endgame"
     ]
    ]
   },
@@ -1528,10 +1528,6 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     5400,
-     "Nyx Gateway (Stanton)"
-    ],
-    [
      4700,
      "Seraphim"
     ],
@@ -1542,6 +1538,10 @@
     [
      4500,
      "Pyro Gateway (Stanton)"
+    ],
+    [
+     4400,
+     "TDD Area 18"
     ]
    ]
   },
@@ -1616,10 +1616,6 @@
   "silicon": {
    "ref": [
     [
-     3100,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      2900,
      "Patch City"
     ],
@@ -1634,6 +1630,10 @@
     [
      2400,
      "Seraphim"
+    ],
+    [
+     2400,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1642,6 +1642,10 @@
     [
      150000,
      "Deakins Research"
+    ],
+    [
+     140000,
+     "CBD Lorville"
     ],
     [
      140000,
@@ -1654,10 +1658,6 @@
     [
      140000,
      "Terra Mills"
-    ],
-    [
-     140000,
-     "Hickes Research"
     ]
    ]
   },
@@ -1712,16 +1712,16 @@
   "titanium": {
    "ref": [
     [
+     8900,
+     "ARC-L3"
+    ],
+    [
      8300,
      "TDD Area 18"
     ],
     [
      8300,
      "TDD New Babbage"
-    ],
-    [
-     8300,
-     "CBD Lorville"
     ],
     [
      8300,
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-03T10:54:50+00:00"
+ "updated": "2026-11-03T18:27:51+00:00"
 }
