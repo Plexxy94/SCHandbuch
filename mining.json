@@ -1452,10 +1452,6 @@
   "laranite": {
    "ref": [
     [
-     9900,
-     "CRU-L1"
-    ],
-    [
      9100,
      "TDD New Babbage"
     ],
@@ -1470,6 +1466,10 @@
     [
      8700,
      "Endgame"
+    ],
+    [
+     8700,
+     "Gaslight"
     ]
    ]
   },
@@ -1664,12 +1664,12 @@
   "taranite": {
    "ref": [
     [
-     29000,
-     "TDD Orison"
+     28000,
+     "TDD New Babbage"
     ],
     [
      28000,
-     "TDD New Babbage"
+     "TDD Orison"
     ],
     [
      28000,
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-03T18:27:51+00:00"
+ "updated": "2026-11-03T23:59:23+00:00"
 }
