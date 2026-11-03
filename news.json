@@ -276,5 +276,282 @@
   "start": 1792860059,
   "src": "contestedzonetimers.com"
  },
- "updated": "2026-11-03T10:54:49+00:00"
+ "issues": {
+  "title": "Star Citizen Alpha 4.10.2 Known Issues",
+  "url": "https://support.robertsspaceindustries.com/hc/en-us/articles/360056254754-Star-Citizen-Alpha-4-10-2-Known-Issues",
+  "updated": "2026-10-09T14:38:10Z",
+  "cats": [
+   {
+    "name": "Technical Issues",
+    "items": [
+     {
+      "t": "Error 403 - API Denied Issues",
+      "id": "h_01KZXY365GMGKGHYDK8ME27KE8",
+      "wa": true
+     },
+     {
+      "t": "Player Loses Mouse and Game Interactivity",
+      "id": "h_01KXKK2E0FZ5GR96EAJ3KM2XSV",
+      "wa": false,
+      "new": true
+     },
+     {
+      "t": "Error 41013",
+      "id": "h_01KACAV7QC8GEQKCCRYAKPKAGW",
+      "wa": true
+     },
+     {
+      "t": "Error 41070",
+      "id": "h_01M1CWYG8P826MYG8RSMV31DGR",
+      "wa": true
+     },
+     {
+      "t": "Error 19k, 30k, 60k, and infinite loading issues",
+      "id": "h_01K7Y7B66MC77MADBQV6F62S8N",
+      "wa": true,
+      "new": true
+     },
+     {
+      "t": "Potential Vulkan Issues",
+      "id": "h_01HWX1MHQG0JCDHAZ76JMDVN2G",
+      "wa": true
+     },
+     {
+      "t": "Game/Launcher Issues after a Server Crash",
+      "id": "h_01FKGVCGGSEFNXH0EJPS0VHNM5",
+      "wa": true
+     }
+    ]
+   },
+   {
+    "name": "Ship Issues",
+    "items": [
+     {
+      "t": "Docked Ships Inside Another Ship Despawn After a Bed Log",
+      "id": "h_01M0JHWA5V1Q0A9JN4QQ8D9SAG",
+      "wa": false
+     },
+     {
+      "t": "Quantum Snares and Dampeners Are Absent From the Vehicle Console",
+      "id": "h_01KXH76HJN253CXVW2862G6E32",
+      "wa": true,
+      "new": true
+     },
+     {
+      "t": "Rental Ships Are Not Showing in ASOP Terminals",
+      "id": "h_01KS2KKW7QNDGG43ENW7BBN06Z",
+      "wa": true
+     },
+     {
+      "t": "Drake Command Module Radar is Not Functioning",
+      "id": "h_01KRGQYN4YR5Y5P4EJFG0T0JR1",
+      "wa": true
+     },
+     {
+      "t": "Salvaging Audio is Looping Continuously",
+      "id": "h_01KMK0X4HT4SG90AMZHDV844K9",
+      "wa": true
+     },
+     {
+      "t": "Unexpected Components Can Catch Fire",
+      "id": "h_01K5RXVM6QF54X0HXF65EC6CHK",
+      "wa": false
+     },
+     {
+      "t": "Idris Shields Don't Stop Laser Weapons",
+      "id": "h_01JA84CFANGESKFQVJ2EXQ30PT",
+      "wa": false
+     },
+     {
+      "t": "Naming a Ship Deletes Equipped Items",
+      "id": "h_01K0D4M9TGKA3ET0VHJ60MJ276",
+      "wa": true
+     },
+     {
+      "t": "Ships are Unable to Activate the Quantum Interdiction Device",
+      "id": "h_01JY48J7B3K0WV5YT1629QDYHR",
+      "wa": false
+     },
+     {
+      "t": "Hull-A is Spawning with Cargo Spindles Partially Extended",
+      "id": "h_01J65AXB6QHNB6NVMPZSNE6QZT",
+      "wa": true
+     }
+    ]
+   },
+   {
+    "name": "Location Issues",
+    "items": [
+     {
+      "t": "Some ASOP Terminals Do Not Show \"Deliver\" Options",
+      "id": "h_01M0JGF2XRJE77SKXENNFCT7WS",
+      "wa": true
+     },
+     {
+      "t": "Players Get Stuck If they Jump Over Railings at Levski",
+      "id": "h_01KRGQGGNATJYF08C0S55ANMYS",
+      "wa": true,
+      "new": true
+     },
+     {
+      "t": "Storing a Ship Results in an Error at Area18",
+      "id": "h_01KG2GYHMBVPC5GCV231DY1ES8",
+      "wa": true
+     },
+     {
+      "t": "Lorville Trams from Metro Centre to Teasa Spaceport Can Kill the Player",
+      "id": "h_01KG2GY724G6AXR8XJ54M4CVBX",
+      "wa": true
+     },
+     {
+      "t": "Visiting Players are Sent Under the Station when Hangar Owner Leaves",
+      "id": "h_01KCPPFV8RYAZE6SY3X358NSMP",
+      "wa": false
+     },
+     {
+      "t": "Keycard Printer Timers Are Not Working",
+      "id": "h_01KACAV7QCKM4Y90F9K1PDBQ0A",
+      "wa": true
+     },
+     {
+      "t": "Klescher Prison Timers Are Resetting",
+      "id": "h_01JRG6YGMR7BM9E4GGYY7S36W0",
+      "wa": true
+     },
+     {
+      "t": "Hangars Have No Audio",
+      "id": "h_01JN1FF9BSWD12KPTDQ6MRV1ZP",
+      "wa": false
+     },
+     {
+      "t": "Repair/Refuel/Restock is Not Available at Service Locations",
+      "id": "h_01JFDJX0C7WNVEW63CFNJD7YN5",
+      "wa": true
+     },
+     {
+      "t": "The Landing Services mobiGlas App Does Not Update",
+      "id": "h_01JD4VRWBMXW7FMGPYDJJQ4E7S",
+      "wa": true
+     }
+    ]
+   },
+   {
+    "name": "Inventory and Item Issues",
+    "items": [
+     {
+      "t": "The Bosco Weapon Display Rack is Gray",
+      "id": "h_01M1F5K17B1X2SM9A5HPFCNQXS",
+      "wa": true
+     },
+     {
+      "t": "Items Have Been Replaced with Fire Extinguishers",
+      "id": "h_01KXNX5XCJDP3T8XYSF2DSQ98S",
+      "wa": false,
+      "new": true
+     },
+     {
+      "t": "Hand-Held Items Are Gone When Returning to the Game",
+      "id": "h_01KXNYGR98R988C29T15CCAMF1",
+      "wa": true
+     },
+     {
+      "t": "Crafted Items Show No Improved Stats",
+      "id": "h_01KXH6KM3QQRCJTYQENAWTWKNT",
+      "wa": true
+     },
+     {
+      "t": "Certain Pledge Items Are Not Being Attributed",
+      "id": "h_01KS2RAFJZ0A9FQ2WN1B9NHZH2",
+      "wa": true
+     },
+     {
+      "t": "Mining Gadgets Cannot Be Placed While in EVA Mode",
+      "id": "h_01KRJ63F0T731JGD57MN47AZ4G",
+      "wa": false
+     },
+     {
+      "t": "Various Inventory Items Are Missing After a Patch",
+      "id": "h_01KG5EX4YFN86943E6WEXAFDM9",
+      "wa": true
+     },
+     {
+      "t": "Unexplained Asphyxiation or Encumbrance and Movement Issues",
+      "id": "h_01KACAV7QC8VKXYDFEKENB199W",
+      "wa": true
+     },
+     {
+      "t": "Items Vanish when Swapping Armor via Looting",
+      "id": "h_01K0D4M9TGM687DA326PDS0642",
+      "wa": false
+     },
+     {
+      "t": "Assets mobiGlas App Gets Stuck Loading",
+      "id": "h_01JA5V11K4EEKHJDQEGXD6DSD9",
+      "wa": false
+     },
+     {
+      "t": "Weapon Attachments Cannot be Interacted With",
+      "id": "h_01HHFVS2E6GFSMFZP91GRBE3HG",
+      "wa": true
+     }
+    ]
+   },
+   {
+    "name": "Mission Issues",
+    "items": [
+     {
+      "t": "Exiting the Game Client Wipes Mission History",
+      "id": "h_01JJQDJ1MEVZ0G6A9TJXWKZP7N",
+      "wa": true
+     },
+     {
+      "t": "\"Evict Illegal Occupants\" Derelict Outpost Mission Target NPCs are not Spawning",
+      "id": "h_01J6ANJFV948EJQV5QS7ZDTD02",
+      "wa": false
+     },
+     {
+      "t": "No Tresspass Warning when Accessing an Underground Facility",
+      "id": "h_01HWX8FMYJJVT2VJT0Y90GME74",
+      "wa": true
+     },
+     {
+      "t": "Mission Targets for the \"Repel Raid on Orision\" Mission are not Spawning",
+      "id": "h_01HX9JBRSK5TF4PVG1QQS17QE7",
+      "wa": false
+     }
+    ]
+   },
+   {
+    "name": "Arena Commander",
+    "items": [
+     {
+      "t": "Certain Ships Cannot Allocate Power to Thrusters",
+      "id": "h_01M4BW2QZKMM6S2XQPXZK8XWD7",
+      "wa": false
+     },
+     {
+      "t": "Several Loadout Options are Missing",
+      "id": "h_01J6AHRGMTCN1HTRY4350RN35D",
+      "wa": false
+     }
+    ]
+   },
+   {
+    "name": "Other Issues",
+    "items": [
+     {
+      "t": "Opening/Closing the Starmap Causes Framerate Drop",
+      "id": "h_01KMJFY9XSVHPMH2DKHMB6ZZMJ",
+      "wa": false
+     },
+     {
+      "t": "Select System Menu is Empty",
+      "id": "h_01KACAV7QD7D2EW7YVKGA2AYQF",
+      "wa": true
+     }
+    ]
+   }
+  ]
+ },
+ "updated": "2026-11-03T11:23:39+00:00"
 }

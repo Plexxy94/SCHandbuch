@@ -140,18 +140,55 @@ def exec_timer():
     return {"start": int(m.group(1)) // 1000 - 2 * 3600, "src": "grimhex.net"}
 
 
+def known_issues():
+    """Offizielle Known-Issues-Liste von RSI (Zendesk-Hilfecenter, öffentliche API).
+    Nimmt den neuesten Artikel „Star Citizen Alpha x.y.z Known Issues“ und liest die Überschriften:
+    h1 = Bereich, h2 = einzelner Bug. „Neu“ steht in der Sprungliste per Bild, „kein Workaround“ im Text."""
+    base = "https://support.robertsspaceindustries.com/api/v2/help_center/en-us"
+    arts = json.loads(get(base + "/sections/360002667153/articles.json?per_page=50&sort_by=updated_at&sort_order=desc"))["articles"]
+    vers = lambda a: tuple(int(x) for x in re.search(r"Alpha ([\d.]+) Known Issues", a["title"]).group(1).split("."))
+    arts = [a for a in arts if re.search(r"Alpha [\d.]+ Known Issues", a["title"])]
+    if not arts:
+        raise RuntimeError("kein Known-Issues-Artikel")
+    a = max(arts, key=vers)
+    body = a["body"]
+    new_ids = set(re.findall(r'href="#(h_[0-9A-Z]+)"[^<]*(?:<[^>]+>[^<]*)*?</a>\s*<img[^>]*New-Issue-Icon', body))
+    heads = list(re.finditer(r'<h([12])[^>]*id="(h_[0-9A-Z]+)"[^>]*>(.*?)</h\1>', body, re.S))
+    cats = []
+    for i, m in enumerate(heads):
+        title = html.unescape(re.sub(r"<[^>]+>", "", m.group(3))).replace("\xa0", " ").strip()
+        if not title:
+            continue
+        if m.group(1) == "1":
+            cats.append({"name": title, "items": []})
+            continue
+        end = heads[i + 1].start() if i + 1 < len(heads) else len(body)
+        text = re.sub(r"<[^>]+>", " ", body[m.end():end])
+        item = {"t": title, "id": m.group(2), "wa": not re.search(r"no(?:t a)? work ?around|no way to work around", text, re.I)}
+        if m.group(2) in new_ids:
+            item["new"] = True
+        if cats:
+            cats[-1]["items"].append(item)
+    return {
+        "title": a["title"],
+        "url": a["html_url"],
+        "updated": a["updated_at"],
+        "cats": [c for c in cats if c["items"]],
+    }
+
+
 def main(path):
     try:
         old = json.load(open(path, encoding="utf-8"))
     except (OSError, ValueError):
         old = {}
     new = {}
-    for key, fn in (("status", status), ("videos", videos), ("commlinks", lambda: commlinks(old.get("commlinks") or [])), ("exec", exec_timer)):
+    for key, fn in (("status", status), ("videos", videos), ("commlinks", lambda: commlinks(old.get("commlinks") or [])), ("exec", exec_timer), ("issues", known_issues)):
         try:
             new[key] = fn()
         except Exception as exc:  # eine Quelle darf ausfallen, die anderen bleiben aktuell
             print(f"{key}: Fehler {exc}", file=sys.stderr)
-    for key in ("status", "videos", "commlinks", "exec"):
+    for key in ("status", "videos", "commlinks", "exec", "issues"):
         if key not in new and key in old:
             new[key] = old[key]
     if {k: old.get(k) for k in new} == new:

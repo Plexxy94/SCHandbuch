@@ -609,7 +609,7 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 @media (max-width: 640px) {
   .nav-in { flex-wrap: wrap; row-gap: 4px; padding-block: 8px 6px; }
   .nav-news { padding: 4px 10px; font-size: 13px; }
-  .tabs { order: 3; flex: 1 0 100%; display: grid; grid-template-columns: repeat(5, auto); justify-content: space-between; gap: 0; overflow: visible; }
+  .tabs { order: 3; flex: 1 0 100%; display: grid; grid-template-columns: repeat(6, auto); justify-content: space-between; gap: 0; overflow: visible; }
   .tabs a { font-size: clamp(11px, 3.5vw, 13px); letter-spacing: 0; padding: 6px clamp(3px, 1.2vw, 8px); text-align: center; }
   .tabs a.has-sub::after { display: none; }
   .tabs a.nav-opt { display: none; }
@@ -638,6 +638,19 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 .xh-map figcaption ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
 .xh-map figcaption p { margin: 6px 0 0; }
 .xh-maplink { white-space: nowrap; font-size: 13px; font-weight: 600; margin-left: 4px; }
+.bugs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 12px; margin-top: 14px; }
+.bug { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.bug h3 { font-family: var(--f-display); font-size: 17px; font-weight: 600; margin: 0; }
+.bug p { margin: 0; font-size: 14px; }
+.bug .wa { border-left: 2px solid var(--ok); padding-left: 10px; }
+.bug .wa.none { border-left-color: var(--warn); color: var(--muted); }
+.bug .bug-meta { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; padding-top: 4px; }
+.bug code, .card-plain code { font-family: var(--f-mono); font-size: 12.5px; background: var(--key-bg); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+.bug-status { margin-top: 12px; font-size: 14px; border-radius: 6px; padding: 8px 12px; background: var(--ok-soft); }
+.bug-status.bad { background: var(--warn-soft); }
+.bug-official details { border-top: 1px solid var(--line); padding: 8px 0; }
+.bug-official summary { cursor: pointer; font-weight: 600; }
+.bug-official ul { margin: 8px 0 4px; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 48px; }
 .empty { color: var(--muted); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -659,6 +672,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <a href="#berufe" role="listitem" class="has-sub" data-group="berufe" aria-haspopup="true" aria-controls="subnav">Berufe</a>
       <a href="#einsaetze" role="listitem" class="has-sub" data-group="einsaetze" aria-haspopup="true" aria-controls="subnav">Einsätze</a>
       <a href="#schiffe" role="listitem">Schiffe</a>
+      <a href="#bugs" role="listitem">Bugs</a>
       <a href="#glossar" role="listitem" class="nav-opt">Glossar</a>
     </div>
     <a class="nav-news" href="#news">News<span class="news-dot" id="newsdot" title="Neue Beiträge" hidden></span></a>
@@ -764,6 +778,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <p>Alle flugfähigen Schiffe mit Einsatzzweck, Fracht, Crew und Preisen im Spiel. Mit Bild und 3D-Modell zum Drehen.</p>
       <span class="go">Hangar öffnen →</span>
     </a>
+    <a class="chapter" href="#bugs">
+      <span class="no">HILFE</span>
+      <h3>Bugs &amp; Workarounds</h3>
+      <p>Was gerade hakt und was dagegen hilft: Aufzüge, Hangar, Fracht, Fehlercodes. Mit Suche und der offiziellen Liste von CIG.</p>
+      <span class="go">Hilfe finden →</span>
+    </a>
     <a class="chapter" href="#glossar">
       <span class="no">NACHSCHLAGEN</span>
       <h3>Glossar</h3>
@@ -775,7 +795,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   <section>
     <h2>Gut zu wissen</h2>
     <div class="facts">
-      <div class="fact"><strong>Es ist eine Alpha</strong><p>Bugs gehören dazu. Hängt etwas, hilft oft neu einloggen oder ein anderer Server.</p></div>
+      <div class="fact"><strong>Es ist eine Alpha</strong><p>Bugs gehören dazu. Hängt etwas, hilft oft neu einloggen oder ein anderer Server. <a href="#bugs">Bekannte Bugs →</a></p></div>
       <div class="fact"><strong>aUEC ist Spielgeld</strong><p>Alles, was du im Spiel kaufst, kann bei einem großen Patch zurückgesetzt werden. Gekaufte Pledge-Schiffe bleiben.</p></div>
       <div class="fact"><strong>Nichts überstürzen</strong><p>Erst mieten, dann kaufen. Mieten kostet einen Bruchteil und zeigt dir, ob dir etwas Spaß macht.</p></div>
       <div class="fact"><strong>Wo wohnen?</strong><p>Vier Städte zur Wahl, jede mit eigenen Vor- und Nachteilen. <a href="#heimat">Zum Vergleich →</a></p></div>
@@ -1077,7 +1097,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
         <li><b>Aufzug kommt nicht:</b> Erst ein paar Sekunden warten und neu rufen. Hilft das nicht, ausloggen und auf einen anderen Server gehen.</li>
         <li><b>Frachtaufzug bei Aufträgen:</b> Erst den Kiosk benutzen, dann die Ladung abstellen. Sonst kann sie verschwinden.</li>
       </ul>
-      <p class="small" style="margin:0">Quellen: <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360056254754" target="_blank" rel="noopener">Known Issues von RSI</a> und Spielermeldungen auf <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a> (Fan-Seite, aktuellster Stand). Bugs ändern sich mit jedem Hotfix. Laut Wiki kannst du auch Levski in Nyx oder Stationen in Pyro als Wohnort wählen. Für den Anfang raten aber alle Guides zu Stanton, Pyro ist gesetzlos.</p>
+      <p class="small" style="margin:0">Quellen: <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360056254754" target="_blank" rel="noopener">Known Issues von RSI</a> und Spielermeldungen auf <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a> (Fan-Seite, aktuellster Stand). Bugs ändern sich mit jedem Hotfix. Alle bekannten Bugs mit Workarounds stehen unter <a href="#bugs">Bugs</a>. Laut Wiki kannst du auch Levski in Nyx oder Stationen in Pyro als Wohnort wählen. Für den Anfang raten aber alle Guides zu Stanton, Pyro ist gesetzlos.</p>
     </div>
   </section>
 
@@ -1191,6 +1211,395 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     </div>
     <p class="small" style="margin-top:12px">Stand laut Community-Guides und Star Citizen Wiki für Alpha 4.10.2. Genaue Wartezeiten, Strafhöhen und Gefängniszeiten nennt CIG nicht, sie hängen vom Schiff und von den Vergehen ab. Quellen: <a href="https://starcitizen.tools/Medical" target="_blank" rel="noopener">Star Citizen Wiki: Medical</a> und <a href="https://starcitizen.tools/Ship_Insurance" target="_blank" rel="noopener">Ship Insurance</a>, <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360008162913-Crime-Rating" target="_blank" rel="noopener">RSI Support: Crime Rating</a>, <a href="https://timesaver.gg/blog/star-citizen-ship-claiming-paint-gone-fix-alpha-4-10-1" target="_blank" rel="noopener">Timesaver (Claim in 4.10)</a>, <a href="https://expcarry.com/star-citizen-crimestat-prison-guide" target="_blank" rel="noopener">expcarry (CrimeStat und Klescher in 4.10.2)</a>, <a href="https://atlasreeve.com/guides/medical-imprints/" target="_blank" rel="noopener">AtlasReeve</a>.</p>
   </section>
+</section>
+
+<!-- ============ BUGS & WORKAROUNDS ============ -->
+<section class="view" id="view-bugs" data-view="bugs" hidden>
+  <div class="head">
+    <div class="stamp"><span>Nachschlagen</span><span>LIVE 4.10.2 · 4.10.3 im Test</span><span>Stand 3. Nov. 2026</span></div>
+    <h1>Bugs &amp; Workarounds</h1>
+    <p class="lede">Star Citizen ist eine Alpha, irgendwas hakt immer. Hier stehen die Fehler, die gerade am häufigsten nerven, und was dagegen hilft. Gesammelt aus der offiziellen Liste von CIG, den Patch Notes und aktuellen Spielerberichten.</p>
+    <div class="bug-status" id="bugstatus" hidden></div>
+  </div>
+
+  <section>
+    <h2>Erste Hilfe bei fast allem</h2>
+    <div class="two">
+      <div class="card-plain">
+        <h3>Von leicht nach schwer</h3>
+        <ol>
+          <li><b>Kurz warten und neu versuchen.</b> Landeservice, Aufzüge und Terminals kommen oft nur verzögert.</li>
+          <li><b>Server wechseln:</b> ins Hauptmenü und neu beitreten, notfalls eine andere Region. Hilft bei Aufzügen, ATC, Läden und Missionen am häufigsten.</li>
+          <li><b>Spiel ganz neu starten:</b> Spiel und Launcher schließen, im Task-Manager prüfen, dann neu. Nach einem Absturz innerhalb von 15 Minuten wieder rein, dann bist du noch am alten Ort.</li>
+          <li><b>Shader-Cache leeren</b> bei Grafikfehlern nach einem Patch: Ordner <code>%LOCALAPPDATA%\Star Citizen</code> löschen.</li>
+          <li><b>Spieldateien prüfen:</b> im RSI Launcher „Verify“.</li>
+          <li><b>Character Repair</b> auf der RSI-Website in den Kontoeinstellungen. Setzt dich in deine Heimatstadt zurück. Danach 30–60 Minuten nicht einloggen, sonst kann es mehr kaputt machen.</li>
+          <li><b>Melden</b> im <a href="https://issue-council.robertsspaceindustries.com/" target="_blank" rel="noopener">Issue Council</a>. Gibt es den Bug schon, dort bestätigen.</li>
+        </ol>
+      </div>
+      <div class="card-plain">
+        <h3>Vor dem nächsten Patch <span class="pill later">4.10.3 kommt bald</span></h3>
+        <ul>
+          <li>Raffinerie-Aufträge abholen. Laufende Aufträge und lose Fracht im Schiff können beim Patch verloren gehen.</li>
+          <li>Fracht verkaufen oder ins Lager bringen. Kisten im Lager überstehen Patches.</li>
+          <li>Nichts in der Hand halten und im Bett deiner Heimatstadt ausloggen.</li>
+          <li>Schiffe ordentlich einlagern.</li>
+          <li>Kurz vor einem Patch nichts Teures kaufen.</li>
+        </ul>
+        <div class="oops"><strong>Character Repair nicht</strong> bei verlorener Maus- und Terminal-Bedienung nutzen. Laut CIG hilft es da nicht.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Bekannte Bugs</h2>
+    <div class="search"><input id="bugq" type="search" placeholder="Suchen, z. B. Aufzug, 30k, Hangar" aria-label="Bugs durchsuchen"><span class="count" id="bugcount"></span></div>
+    <div class="chips" id="bugchips" role="group" aria-label="Bereich wählen" style="margin-top:10px"><button type="button" class="chip" data-cat="" aria-pressed="true">Alle (53)</button><button type="button" class="chip" data-cat="server" aria-pressed="false">Server &amp; Orte (8)</button><button type="button" class="chip" data-cat="schiff" aria-pressed="false">Schiffe &amp; Hangar (10)</button><button type="button" class="chip" data-cat="fracht" aria-pressed="false">Fracht &amp; Läden (4)</button><button type="button" class="chip" data-cat="beruf" aria-pressed="false">Mining, Salvage, Crafting (5)</button><button type="button" class="chip" data-cat="inventar" aria-pressed="false">Inventar (8)</button><button type="button" class="chip" data-cat="mission" aria-pressed="false">Missionen (6)</button><button type="button" class="chip" data-cat="login" aria-pressed="false">Login &amp; Fehlercodes (8)</button><button type="button" class="chip" data-cat="grafik" aria-pressed="false">Grafik &amp; Leistung (4)</button></div>
+    <div class="bugs" id="buglist">
+      <article class="bug" data-cat="server">
+        <h3>Server werden mit der Zeit träge <i class="gb">Server Degradation</i></h3>
+        <p>Nach ein, zwei Stunden reagieren in Städten und Stationen Landeanfragen <i class="gb">ATC</i>, Aufzüge, Trams und Türen kaum noch. Laut Spielern seit Ende Oktober schlimmer.</p>
+        <p class="wa"><b>Workaround:</b> Ins Hauptmenü und neu beitreten, notfalls eine andere Region wählen. Ein frischer Server läuft meist deutlich besser.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 1.–3. Nov.</span></div>
+      </article>
+      <article class="bug" data-cat="server">
+        <h3>Aufzug kommt nicht <i class="gb">Elevators</i></h3>
+        <p>Der Aufzug wird angezeigt, kommt aber nicht. Gemeldet in Lorville, New Babbage, Orison und Seraphim, auch für Quartiere und Krankenhaus. Am 3. November auf mehreren Servern gleichzeitig.</p>
+        <p class="wa"><b>Workaround:</b> Ein paar Sekunden warten und neu rufen. Hilft das nicht: Server wechseln. Notlösung im Quartier: <kbd>Backspace</kbd> halten, dann wachst du im Krankenhaus auf.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 26. Okt.–3. Nov.</span></div>
+      </article>
+      <article class="bug" data-cat="server">
+        <h3>Seraphim antwortet nicht auf Landeanfragen <i class="gb">ATC</i></h3>
+        <p>Die Station Seraphim über Crusader reagiert nicht auf Landeanfragen.</p>
+        <p class="wa"><b>Workaround:</b> Später erneut anfragen, eine andere Station anfliegen oder den Server wechseln.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 26. Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="server">
+        <h3>Tram in Lorville kann dich töten <i class="gb">Lorville Tram</i></h3>
+        <p>Auf der Strecke Metro Center → Teasa Spaceport drehen sich Türen und Teile der Tram kurz. Wer nah dran steht, fliegt hinaus.</p>
+        <p class="wa"><b>Workaround:</b> Nach dem Einsteigen weit weg von den Türen stellen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="server">
+        <h3>Levski: Geländer und fremde Hangars <i class="gb">Levski</i></h3>
+        <p>Wer über Geländer springt, z. B. bei den ASOP-Terminals, steckt fest. Verlässt ein Freund seinen Hangar, während du noch drin bist, landest du unter der Station.</p>
+        <p class="wa"><b>Workaround:</b> Nicht über Geländer springen und den Hangar eines Freundes vor ihm verlassen. Wer feststeckt, kommt nur per Respawn raus.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="server">
+        <h3>Area18: Einlagern hängt <i class="gb">Repositioning Player</i></h3>
+        <p>Beim Einlagern am ASOP-Terminal im Hangar hängst du bei „Repositioning Player“. <kbd>Backspace</kbd> hilft nicht.</p>
+        <p class="wa"><b>Workaround:</b> Ins Hauptmenü und neu beitreten.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="server">
+        <h3>Keine Warnung in unterirdischen Anlagen <i class="gb">Trespass Warning</i></h3>
+        <p>In Underground Facilities kommt keine Warnung, wenn du dort nichts zu suchen hast. Nach der letzten Missionsabgabe hast du 15 Minuten, dann werden die Wachen feindlich.</p>
+        <p class="wa"><b>Workaround:</b> Nach dem Auftrag zügig raus.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="server">
+        <h3>Gefängnisstrafe startet neu <i class="gb">Klescher Timer</i></h3>
+        <p>Stirbst du in Klescher oder loggst dich vor dem Ende neu ein, beginnt die Strafe von vorn.</p>
+        <p class="wa"><b>Workaround:</b> Keine neuen Vergehen im Gefängnis, oder ausloggen und offline bleiben, bis die Zeit um ist. Mehr im Kapitel <a href="#ueberleben">Überleben</a>.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>„Retrieve“ am ASOP-Terminal ist grau <i class="gb">Retrieve greyed out</i></h3>
+        <p>Du kannst kein Schiff anfordern, alle Pfeile sind grau. CIG kennt das Problem, ein Fix steht noch aus.</p>
+        <p class="wa"><b>Workaround:</b> Etwas Kleines kaufen, z. B. einen MedPen, kurz in ein Med-Bett legen oder neu einloggen.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 26. Okt.</span> <span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>„Deliver“ fehlt am ASOP-Terminal <i class="gb">Deliver option</i></h3>
+        <p>An manchen Terminals fehlt die Option, ein Schiff von woanders liefern zu lassen. Gesehen in Levski und Checkmate.</p>
+        <p class="wa"><b>Workaround:</b> Spiel neu starten oder ein Terminal an einem anderen Ort nutzen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>Mietschiff fehlt am Terminal <i class="gb">Rental Ships</i></h3>
+        <p>Gemietete Schiffe erscheinen nicht am ASOP-Terminal.</p>
+        <p class="wa"><b>Workaround:</b> Router neu starten und den DNS-Cache leeren: Eingabeaufforderung als Administrator, <code>ipconfig /flushdns</code>. Hilft laut CIG manchen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>Schiff fehlt im Hangar oder in der Liste <i class="gb">Missing Ship</i></h3>
+        <p>Ein Schiff ist nicht da, wo du es erwartest.</p>
+        <p class="wa"><b>Workaround:</b> Im ASOP-Terminal prüfen, wo es steht. Dann Spiel und Launcher ganz beenden, 2 Minuten warten, neu einloggen. Nicht gleich einen Claim starten, der gibt das Schiff samt Ladung auf.</p>
+        <div class="bug-meta"><span class="pill no">Guide · Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>Hangartor schließt sich ums Schiff <i class="gb">Hangar Doors</i></h3>
+        <p>Beim Rausfliegen schließt sich das Tor plötzlich um das Schiff. Schiff und Ladung sind weg.</p>
+        <p class="wa"><b>Workaround:</b> Warten, bis das Tor ganz offen ist, und langsam rausfliegen. Wertvolle Ladung auf mehrere Flüge verteilen.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 2. Nov.</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>Schiff klebt am Landeplatz <i class="gb">Stuck to Pad</i></h3>
+        <p>Das Schiff lässt sich nach dem Anfordern nicht bewegen.</p>
+        <p class="wa"><b>Workaround:</b> Einlagern und neu anfordern.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 26. Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>Landeservice hängt <i class="gb">Landing Services</i></h3>
+        <p>Die mobiGlas-App für Landeservices bleibt bei „Processing“ oder „Blocked“ hängen. Reparieren, Tanken und Aufmunitionieren fehlen.</p>
+        <p class="wa"><b>Workaround:</b> Einige Minuten warten, bis die Hangartore zu sind, dann die App schließen und neu öffnen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span> <span class="pill go">Fix in 4.10.3 im Test</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>Schiff nimmt Schaden oder explodiert ohne Gegner <i class="gb">Random Damage</i></h3>
+        <p>Ein Schiff wird auf dem Landeplatz, beim Anfordern oder nach dem Quantensprung beschädigt. Häufigste Ursache laut Guide: angedockte Beiboote wie die Skylark.</p>
+        <p class="wa"><b>Workaround:</b> Beiboote vor dem Flug abdocken und wegstellen, lose Gegenstände verstauen, freien Landeplatz nehmen und nach dem Anfordern kurz warten.</p>
+        <div class="bug-meta"><span class="pill no">Guide · 16. Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>Umbenennen löscht Ausrüstung <i class="gb">Ship Naming</i></h3>
+        <p>Gibst du einem Schiff einen Namen, verschwinden alle eingebauten Teile, die nicht zur Standardausstattung gehören.</p>
+        <p class="wa"><b>Workaround:</b> Vor dem Umbenennen alle eigenen Teile und Lackierungen ausbauen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="schiff">
+        <h3>Hull A: Spindeln bleiben ausgefahren <i class="gb">Cargo Spindles</i></h3>
+        <p>Wird die Hull A mit ausgefahrenen Spindeln eingelagert, kommt sie so wieder und die Spindeln lassen sich nicht mehr bedienen.</p>
+        <p class="wa"><b>Workaround:</b> Vor dem Einlagern die Spindeln ganz einfahren.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="fracht">
+        <h3>Ein fehlgeschlagener Kauf blockiert alle weiteren <i class="gb">Shop Purchase</i></h3>
+        <p>Ein Kauf läuft in einen Timeout. Danach klappt kein Kauf mehr, in keinem Laden.</p>
+        <p class="wa"><b>Workaround:</b> Server wechseln.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span> <span class="pill go">Fix in 4.10.3 im Test</span></div>
+      </article>
+      <article class="bug" data-cat="fracht">
+        <h3>Frachtaufzug: Fracht fehlt oder Abgabe zählt nicht <i class="gb">Freight Elevator</i></h3>
+        <p>Kisten erscheinen nicht, die Abgabe wird nicht erkannt oder das Liefermenü fehlt. Ladung kann am Kiosk verschwinden.</p>
+        <p class="wa"><b>Workaround:</b> Erst am Kiosk die Abgabe starten, dann die Kisten abstellen. Sonst einen anderen Aufzug am selben Ort probieren, neu einloggen oder den Server wechseln.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 11.–13. Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="fracht">
+        <h3>Hull C lädt nicht richtig <i class="gb">Automated Loading</i></h3>
+        <p>Das automatische Laden startet nicht, stapelt alles auf eine Spindel oder lädt nur einen Teil.</p>
+        <p class="wa"><b>Workaround:</b> Erst mit einer einzelnen Kiste testen. Mehr im <a href="#hauling">Hauling-Kapitel</a>.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="fracht">
+        <h3>Raffinerie: Error 18 <i class="gb">Refinery Error 18</i></h3>
+        <p>Ein Raffinerie-Auftrag scheitert, wenn du raffiniertes Torit im Lager hast.</p>
+        <p class="wa"><b>Workaround:</b> Alles raffinierte Torit über den Frachtaufzug hochholen, oben lassen und den Auftrag erneut starten.</p>
+        <div class="bug-meta"><span class="pill no">Guide · 4.10.1</span></div>
+      </article>
+      <article class="bug" data-cat="beruf">
+        <h3>Bergungsgeräusch in Dauerschleife <i class="gb">Salvage Audio</i></h3>
+        <p>Das Geräusch beim Salvage läuft immer lauter weiter, auch mit abgeschaltetem Schiff.</p>
+        <p class="wa"><b>Workaround:</b> Spiel neu starten.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="beruf">
+        <h3>Mining-Gadgets im All nicht platzierbar <i class="gb">Mining Gadgets in EVA</i></h3>
+        <p>Gadgets für Asteroiden lassen sich im schwerelosen Raum <i class="gb">EVA</i> nicht anbringen.</p>
+        <p class="wa none"><b>Kein Workaround bekannt.</b> Melden hilft CIG beim Beheben.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="beruf">
+        <h3>Gecraftete Werte unsichtbar <i class="gb">Crafted Stats</i></h3>
+        <p>Im Inventar zeigt ein selbst gebauter Gegenstand keine verbesserten Werte.</p>
+        <p class="wa"><b>Workaround:</b> Gegenstand ausrüsten, dann die Beschreibung erneut ansehen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="beruf">
+        <h3>Fabricator verbraucht den ganzen Stapel <i class="gb">Crafting Materials</i></h3>
+        <p>Beim Herstellen kann ein ganzer Stapel Material verbraucht werden statt der nötigen Menge. Seit 4.7 gemeldet.</p>
+        <p class="wa"><b>Workaround:</b> Nur so viel Material einlegen, wie der Bauplan braucht.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · seit Juli</span></div>
+      </article>
+      <article class="bug" data-cat="beruf">
+        <h3>Hathor: Laser öffnet die Höhle nicht <i class="gb">Hathor</i></h3>
+        <p>Laser-Plattform trifft, aber der Fundort öffnet nicht. Klingen oder Batterien fehlen.</p>
+        <p class="wa"><b>Workaround:</b> Server wechseln und neu versuchen. Ablauf im Einsatz <a href="#hathor">Hathor &amp; Wikelo</a>.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 13. Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="inventar">
+        <h3>Gegenstände sind jetzt Feuerlöscher <i class="gb">Fire Extinguishers</i></h3>
+        <p>Nach einem Patch sind viele Gegenstände durch Feuerlöscher ersetzt.</p>
+        <p class="wa none"><b>Kein Workaround bekannt.</b> Melden hilft CIG beim Beheben.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="inventar">
+        <h3>Gegenstand aus der Hand verschwunden <i class="gb">Hand-Held Items</i></h3>
+        <p>Was du beim Ausloggen in der Hand hattest, ist beim nächsten Login weg. Meist liegt es im Quartier oder steckt in einem freien Slot.</p>
+        <p class="wa"><b>Workaround:</b> Vor dem Ausloggen alles wegstecken. Im Quartier nachsehen. Ohne Optionen: in einen Inventar-Slot ziehen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="inventar">
+        <h3>Atemnot und langsam ohne Grund <i class="gb">Asphyxiation</i></h3>
+        <p>Puls steigt, du kannst nicht sprinten und erstickst. Ursache: ein zweiter Helm hängt an der Hüfte.</p>
+        <p class="wa"><b>Workaround:</b> Den zweiten Helm ablegen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="inventar">
+        <h3>Gegenstände weg beim Rüstungstausch <i class="gb">Looting</i></h3>
+        <p>Tauschst du über das Beute-Fenster die Rüstung und dein Inventar ist voll, verschwindet, was nicht mehr passt.</p>
+        <p class="wa none"><b>Kein Workaround bekannt.</b> Melden hilft CIG beim Beheben.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="inventar">
+        <h3>Waffenaufsätze auf dem Boden <i class="gb">Weapon Attachments</i></h3>
+        <p>Ein fallengelassener Aufsatz lässt sich nicht mehr aufheben.</p>
+        <p class="wa"><b>Workaround:</b> Aufsätze nie fallen lassen, nur im Inventar verschieben.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="inventar">
+        <h3>Assets-App lädt endlos <i class="gb">Assets App</i></h3>
+        <p>Die mobiGlas-App, die zeigt, wo deine Sachen liegen, lädt nicht fertig.</p>
+        <p class="wa none"><b>Kein Workaround bekannt.</b> Melden hilft CIG beim Beheben.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="inventar">
+        <h3>Inventar nach dem Patch weg <i class="gb">Missing Items</i></h3>
+        <p>Nach einem Patch fehlen Gegenstände, manchmal sehr viele. Der Support kann kaum helfen.</p>
+        <p class="wa"><b>Workaround:</b> Im Issue Council bei STARC-194626 melden, mit möglichst vielen Details.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="inventar">
+        <h3>Gekaufte Pledge-Gegenstände fehlen <i class="gb">Pledge Items</i></h3>
+        <p>Lackierungen, Module oder Ausrüstung aus dem Pledge-Store tauchen im Spiel nicht auf.</p>
+        <p class="wa"><b>Workaround:</b> Character Repair, danach 30–60 Minuten nicht einloggen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="mission">
+        <h3>Missionsverlauf leer <i class="gb">Mission History</i></h3>
+        <p>Nach einem Neustart des Spiels ist der Verlauf leer.</p>
+        <p class="wa"><b>Workaround:</b> Nur eine Anzeige. Abgeschlossene Aufträge zählen trotzdem.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="mission">
+        <h3>Kein Zielmarker oder keine Gegner <i class="gb">Mission Service</i></h3>
+        <p>Aufträge ohne Quantum-Markierung, Ziele erscheinen nicht, Belohnung fehlt. Auf vollen Servern häufiger. Betrifft Hauling, Kopfgeld, Boarding und andere.</p>
+        <p class="wa"><b>Workaround:</b> Abbrechen und auf einem anderen Server neu annehmen.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 13. Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="mission">
+        <h3>„Repel Raid on Orison“: keine Gegner <i class="gb">Repel Raid on Orison</i></h3>
+        <p>Die Gegner dieses Auftrags erscheinen nicht, er scheitert.</p>
+        <p class="wa"><b>Workaround:</b> Nicht annehmen. Abbrechen kostet Ruf bei Crusader Security.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="mission">
+        <h3>„Evict Illegal Occupants“: keine Ziele <i class="gb">Derelict Outpost</i></h3>
+        <p>Die Besetzer im verlassenen Außenposten sind nicht da.</p>
+        <p class="wa none"><b>Kein Workaround bekannt.</b> Melden hilft CIG beim Beheben.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="mission">
+        <h3>Boarding: Granaten geben CrimeStat <i class="gb">Boarding Action</i></h3>
+        <p>Laut Spielern können Granaten in Boarding-Aufträgen CrimeStat 3 auslösen.</p>
+        <p class="wa"><b>Workaround:</b> Im Zweifel ohne Granaten oder den Auftrag meiden.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 13. Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="mission">
+        <h3>Collector-Einstiegsauftrag fehlt <i class="gb">The Collector</i></h3>
+        <p>Der erste Auftrag der Collector-Reihe erscheint nicht im Auftragsmenü.</p>
+        <p class="wa none"><b>Kein Workaround bekannt.</b> Melden hilft CIG beim Beheben.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span> <span class="pill go">Fix in 4.10.3 im Test</span></div>
+      </article>
+      <article class="bug" data-cat="login">
+        <h3>30k: Verbindung weg <i class="gb">Error 30000</i></h3>
+        <p>Rauswurf ins Hauptmenü. Oft nach Ausloggen oder Absturz im Schiffsbett.</p>
+        <p class="wa"><b>Workaround:</b> Character Repair. Das Spiel nie während eines Tutorials beenden. Sonst DNS-Cache leeren: <code>ipconfig /flushdns</code>.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="login">
+        <h3>19k: Anmeldung klappt nicht <i class="gb">Error 19000</i></h3>
+        <p>Meist Serverlast.</p>
+        <p class="wa"><b>Workaround:</b> Später erneut versuchen. Windows-Uhr synchronisieren, nur einen Launcher offen haben, Launcher und Spiel in Firewall und Virenscanner freigeben, Spieldateien prüfen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="login">
+        <h3>41013 beim Wiedereinloggen <i class="gb">Error 41013</i></h3>
+        <p>Fehler beim erneuten Verbinden.</p>
+        <p class="wa"><b>Workaround:</b> Character Repair. Dein persönlicher Hangar kann danach eine Weile fehlen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="login">
+        <h3>Server voll: 60012, 60024 <i class="gb">Server at capacity</i></h3>
+        <p>Kein Platz auf dem Server, vor allem bei Events.</p>
+        <p class="wa"><b>Workaround:</b> Andere Region wählen oder später versuchen.</p>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 22. Okt.</span></div>
+      </article>
+      <article class="bug" data-cat="login">
+        <h3>403: API Denied <i class="gb">Error 403</i></h3>
+        <p>Fehler beim Verbinden, oft mit VPN.</p>
+        <p class="wa"><b>Workaround:</b> VPN ausschalten oder einen anderen VPN-Server wählen.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="login">
+        <h3>Endloser Ladebildschirm, Menü reagiert nicht <i class="gb">Infinite Loading</i></h3>
+        <p>Vor allem nach einem Server-Absturz.</p>
+        <p class="wa"><b>Workaround:</b> Spiel ganz beenden und neu starten. Nach einem Absturz innerhalb von 15 Minuten wieder einloggen, dann geht es am alten Ort weiter.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="login">
+        <h3>Maus und Bedienung weg <i class="gb">Loss of Interactivity</i></h3>
+        <p>Nach dem Einloggen geht die Maus nicht mehr, Türen und Terminals reagieren nicht.</p>
+        <p class="wa none"><b>Kein Workaround bekannt.</b> Melden hilft CIG beim Beheben.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="login">
+        <h3>Easy Anti-Cheat: Error 0 <i class="gb">EAC Error 0</i></h3>
+        <p>Das Spiel startet nicht.</p>
+        <p class="wa"><b>Workaround:</b> Den Ordner EasyAntiCheat im Spielordner löschen, Launcher neu starten, Spieldateien prüfen.</p>
+        <div class="bug-meta"><span class="pill no">Guide · 4.10.1</span></div>
+      </article>
+      <article class="bug" data-cat="grafik">
+        <h3>Einbrüche auf 10 FPS mit Vulkan <i class="gb">Framerate Drops</i></h3>
+        <p>Starke Ruckler mit der Grafikschnittstelle Vulkan.</p>
+        <p class="wa"><b>Workaround:</b> Auflösung senken, Grafiktreiber aktualisieren oder in den Grafikeinstellungen auf DirectX 11 wechseln.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="grafik">
+        <h3>Absturz mit Fehler 3221225477 <i class="gb">Crash to Desktop</i></h3>
+        <p>Sofortiger Absturz mit Vulkan, bei Nvidia-Treiber 616.56.</p>
+        <p class="wa"><b>Workaround:</b> Älteren Nvidia-Treiber installieren oder auf DirectX 11 wechseln.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="grafik">
+        <h3>Ruckler beim Öffnen der Sternenkarte <i class="gb">Starmap</i></h3>
+        <p>Öffnen und Schließen der Sternenkarte kostet viele FPS.</p>
+        <p class="wa none"><b>Kein Workaround bekannt.</b> Melden hilft CIG beim Beheben.</p>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
+      </article>
+      <article class="bug" data-cat="grafik">
+        <h3>Grafikfehler nach einem Patch <i class="gb">Shader Cache</i></h3>
+        <p>Flackern, Ruckler oder Abstürze direkt nach einem Update.</p>
+        <p class="wa"><b>Workaround:</b> Shader-Cache leeren: den Ordner <code>%LOCALAPPDATA%\Star Citizen</code> löschen. Der erste Start danach dauert länger.</p>
+        <div class="bug-meta"><span class="pill no">Guide · allgemein</span></div>
+      </article>
+    </div>
+    <p class="small" id="bugnone" hidden>Nichts gefunden. Vielleicht steht es in der offiziellen Liste unten.</p>
+    <p class="small" style="margin-top:12px"><b>CIG bestätigt</b> heißt: steht in der offiziellen Known-Issues-Liste oder den Patch Notes. <b>Spielerberichte</b> kommen aus dem offiziellen Forum Spectrum und von <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a>. Die gelten nicht für jeden und können schon behoben sein.</p>
+  </section>
+
+  <section>
+    <h2>Kommt mit 4.10.3</h2>
+    <p class="small" style="font-size:14px">4.10.3 läuft seit dem 23. Oktober auf dem Testserver <i class="gb">PTU</i>. Einen Termin für LIVE hat CIG noch nicht genannt. Laut Patch Notes sollen diese Fehler behoben sein:</p>
+    <ul class="small" style="font-size:14px">
+      <li>Ein fehlgeschlagener Kauf blockiert alle weiteren Käufe.</li>
+      <li>Landeservice hängt bei „Processing“ oder „Blocked“.</li>
+      <li>Doppelte Fracht im Frachtaufzug nach „Recover Cargo“-Aufträgen.</li>
+      <li>Der Einstiegsauftrag des Collectors fehlt.</li>
+      <li>Autolanden erfüllt das Ziel „Land at LEO“ im Einsteiger-Tutorial nicht.</li>
+      <li>Feindliche KI-Schiffe in Kopfgeld-Aufträgen schießen nicht zurück.</li>
+    </ul>
+    <p class="small">Neu dazu: Vanduul-Missionen in Nyx und das Skarnov-Gewehr. <a href="https://robertsspaceindustries.com/spectrum/community/SC/forum/190048/thread/star-citizen-alpha-4-10-3-ptu-patch-notes-2" target="_blank" rel="noopener">Patch Notes 4.10.3 PTU</a></p>
+  </section>
+
+  <section id="bugofficial" hidden>
+    <h2>Offizielle Liste von CIG</h2>
+    <p class="small" id="bugofficial-info" style="font-size:14px"></p>
+    <div id="bugofficial-list" class="bug-official"></div>
+  </section>
+
+  <p class="small">Quellen: <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360056254754" target="_blank" rel="noopener">RSI: Known Issues 4.10.2</a>, <a href="https://robertsspaceindustries.com/spectrum/community/SC/forum/190048/thread/star-citizen-alpha-4-10-3-ptu-patch-notes-2" target="_blank" rel="noopener">Patch Notes 4.10.3 PTU</a>, Spectrum (Forum „General“, 1.–3. November), <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a> (Stand 2. November), <a href="https://timesaver.gg/blog/star-citizen-ship-taking-damage-exploding-fix-alpha-4-10-2" target="_blank" rel="noopener">Timesaver</a>, <a href="https://bustedloops.com/workarounds" target="_blank" rel="noopener">Busted Loops</a>. Die offizielle Liste lädt die Seite stündlich neu von RSI.</p>
 </section>
 
 <!-- ============ TUTORIAL: MINING ============ -->
@@ -2747,6 +3156,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 
   <section>
     <h2>Gefahren und Bugs (4.10.2)</h2>
+    <p class="small" style="font-size:14px;margin-top:0">Allgemeine Fehler wie Aufzüge, Hangar oder Abstürze stehen unter <a href="#bugs">Bugs &amp; Workarounds</a>.</p>
     <div class="facts">
       <div class="fact"><strong>Absturz oder Server-Crash</strong><p>Gekaufte Ware ist bei einem Absturz verloren. Auftragsfracht auch, dann scheitert der Auftrag. Gekaufte Ersatzkisten zählen nicht sicher als Auftragsfracht.</p></div>
       <div class="fact"><strong>Frachtaufzug</strong><p>Seit 4.10.2 gibt es ein Limit, wie viele Kisten du auf einmal holen kannst, und die Plattform bleibt nicht mehr oben hängen. Fehlt Fracht: anderen Aufzug am selben Ort probieren, neu einloggen oder Server wechseln.</p></div>
@@ -3124,7 +3534,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       var cr = cur.getBoundingClientRect(), br = tabsBox.getBoundingClientRect();
       if (cr.left < br.left) tabsBox.scrollLeft += cr.left - br.left - 8; else if (cr.right > br.right) tabsBox.scrollLeft += cr.right - br.right + 16;
     }
-    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', berufe: 'Berufe · SC Handbuch', 't-hauling': 'Hauling lernen · SC Handbuch', ueberleben: 'Überleben · SC Handbuch', crafting: 'Crafting · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
+    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', berufe: 'Berufe · SC Handbuch', bugs: 'Bugs & Workarounds · SC Handbuch', 't-hauling': 'Hauling lernen · SC Handbuch', ueberleben: 'Überleben · SC Handbuch', crafting: 'Crafting · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
     document.title = titles[h];
     Array.prototype.forEach.call(sub.querySelectorAll('a'), function (a) {
       if (a.getAttribute('href') === '#' + h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
@@ -4972,6 +5382,62 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     count();
   });
   count();
+})();
+</script>
+<script>
+/* ---------- Bugs & Workarounds: Filter, Suche, Server-Status und offizielle Liste aus news.json ---------- */
+(function () {
+  var view = document.querySelector('[data-view="bugs"]');
+  if (!view) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var cards = Array.prototype.slice.call(view.querySelectorAll('.bug'));
+  var chips = Array.prototype.slice.call(view.querySelectorAll('#bugchips .chip'));
+  var cat = '';
+  function norm(t) { return t.toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss'); }
+  cards.forEach(function (c) { c._t = norm(c.textContent); });
+  function filter() {
+    var q = norm($('bugq').value.trim()), n = 0;
+    cards.forEach(function (c) {
+      var ok = (!cat || c.dataset.cat === cat) && (!q || q.split(/\s+/).every(function (w) { return c._t.indexOf(w) >= 0; }));
+      c.hidden = !ok; if (ok) n++;
+    });
+    $('bugcount').textContent = n + ' von ' + cards.length;
+    $('bugnone').hidden = n > 0;
+  }
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () {
+      cat = b.dataset.cat;
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      filter();
+    });
+  });
+  $('bugq').addEventListener('input', filter);
+  filter();
+
+  var CATS = { 'Technical Issues': 'Technik und Login', 'Ship Issues': 'Schiffe', 'Location Issues': 'Orte', 'Inventory and Item Issues': 'Inventar und Gegenstände', 'Mission Issues': 'Missionen', 'Arena Commander': 'Arena Commander', 'Other Issues': 'Sonstiges' };
+  function esc(s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  fetch('news.json?t=' + Math.floor(Date.now() / 6e4)).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
+    var st = d.status;
+    if (st && st.summary) {
+      var ok = st.summary === 'operational';
+      var box = $('bugstatus');
+      box.innerHTML = (ok ? '<b>Server laut RSI:</b> alles in Betrieb. Hakt es trotzdem, liegt es meist am einzelnen Server. Ein Wechsel hilft oft.'
+        : '<b>Server laut RSI:</b> gerade gestört. Dann helfen Workarounds oft nicht, abwarten lohnt sich.') +
+        ' <a href="' + esc(st.url) + '" target="_blank" rel="noopener">Status-Seite</a>';
+      box.classList.toggle('bad', !ok); box.hidden = false;
+    }
+    var ki = d.issues;
+    if (!ki || !ki.cats) return;
+    var upd = new Date(ki.updated).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+    $('bugofficial-info').innerHTML = 'Die vollständige Liste „' + esc(ki.title) + '“, zuletzt von CIG geändert am ' + upd + '. Titel im englischen Original, ein Klick öffnet die Beschreibung bei RSI. Die Seite holt die Liste stündlich neu.';
+    $('bugofficial-list').innerHTML = ki.cats.map(function (c) {
+      return '<details><summary>' + esc(CATS[c.name] || c.name) + ' (' + c.items.length + ')</summary><ul>' + c.items.map(function (i) {
+        return '<li><a href="' + esc(ki.url) + '#' + esc(i.id) + '" target="_blank" rel="noopener">' + esc(i.t) + '</a>' +
+          (i.new ? ' <span class="pill later">neu</span>' : '') + (i.wa ? '' : ' <span class="pill no">kein Workaround</span>') + '</li>';
+      }).join('') + '</ul></details>';
+    }).join('');
+    $('bugofficial').hidden = false;
+  }).catch(function () {});
 })();
 </script>
 </body>
