@@ -1114,6 +1114,10 @@
   "agricium": {
    "ref": [
     [
+     11000,
+     "Rod's Fuel"
+    ],
+    [
      10000,
      "TDD Area 18"
     ],
@@ -1128,18 +1132,18 @@
     [
      10000,
      "ARC-L3"
-    ],
-    [
-     10000,
-     "HUR-L3"
     ]
    ]
   },
   "aluminum": {
    "ref": [
     [
-     4300,
+     4600,
      "Terra Gateway (Stanton)"
+    ],
+    [
+     4600,
+     "Port Tressler"
     ],
     [
      4200,
@@ -1152,10 +1156,6 @@
     [
      3800,
      "TDD New Babbage"
-    ],
-    [
-     3800,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1186,7 +1186,7 @@
   "beryl": {
    "ref": [
     [
-     24000,
+     23000,
      "Rod's Fuel"
     ],
     [
@@ -1264,24 +1264,24 @@
   "copper": {
    "ref": [
     [
-     4200,
+     4700,
      "Rod's Fuel"
+    ],
+    [
+     4400,
+     "Terra Gateway (Stanton)"
     ],
     [
      4200,
      "Rat's Nest"
     ],
     [
+     4100,
+     "Pyro Gateway (Stanton)"
+    ],
+    [
      3900,
      "Baijini Point"
-    ],
-    [
-     3700,
-     "TDD Area 18"
-    ],
-    [
-     3700,
-     "TDD New Babbage"
     ]
    ],
    "raw": [
@@ -1378,7 +1378,7 @@
      "MIC-L5"
     ],
     [
-     5300,
+     5400,
      "TDD New Babbage"
     ],
     [
@@ -1452,8 +1452,8 @@
   "laranite": {
    "ref": [
     [
-     9100,
-     "TDD New Babbage"
+     9400,
+     "Rod's Fuel"
     ],
     [
      8700,
@@ -1528,25 +1528,29 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     4700,
-     "Seraphim"
+     5200,
+     "Nyx Gateway (Stanton)"
     ],
     [
-     4600,
-     "Patch City"
+     5200,
+     "Stanton Gateway (Nyx)"
     ],
     [
-     4500,
+     5000,
      "Pyro Gateway (Stanton)"
     ],
     [
-     4400,
-     "TDD Area 18"
+     4700,
+     "Seraphim"
     ]
    ]
   },
   "riccite": {
    "ref": [
+    [
+     91000,
+     "ArcCorp 157"
+    ],
     [
      79000,
      "Ashland"
@@ -1562,10 +1566,6 @@
     [
      74000,
      "The Golden Riviera"
-    ],
-    [
-     74000,
-     "Sacren's Plot"
     ]
    ]
   },
@@ -1629,11 +1629,11 @@
     ],
     [
      2400,
-     "Seraphim"
+     "Terra Gateway (Stanton)"
     ],
     [
      2400,
-     "CBD Lorville"
+     "Seraphim"
     ]
    ]
   },
@@ -1665,10 +1665,6 @@
    "ref": [
     [
      28000,
-     "TDD New Babbage"
-    ],
-    [
-     28000,
      "TDD Orison"
     ],
     [
@@ -1682,6 +1678,10 @@
     [
      27000,
      "TDD Area 18"
+    ],
+    [
+     27000,
+     "TDD New Babbage"
     ]
    ]
   },
@@ -1712,8 +1712,8 @@
   "titanium": {
    "ref": [
     [
-     8900,
-     "ARC-L3"
+     10000,
+     "Megumi"
     ],
     [
      8300,
@@ -1725,11 +1725,11 @@
     ],
     [
      8300,
-     "Ruin Station"
+     "CBD Lorville"
     ],
     [
      8300,
-     "Checkmate"
+     "Ruin Station"
     ]
    ]
   },
@@ -1776,11 +1776,11 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     10000,
-     "TDD Area 18"
+     11000,
+     "Pyro Gateway (Stanton)"
     ]
    ]
   }
  },
- "updated": "2026-11-04T15:27:16+00:00"
+ "updated": "2026-11-04T21:53:58+00:00"
 }
