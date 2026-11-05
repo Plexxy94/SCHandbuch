@@ -1528,7 +1528,7 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     5200,
+     5400,
      "Nyx Gateway (Stanton)"
     ],
     [
@@ -1712,7 +1712,11 @@
   "titanium": {
    "ref": [
     [
-     10000,
+     9200,
+     "Starlight Service"
+    ],
+    [
+     8800,
      "Megumi"
     ],
     [
@@ -1726,10 +1730,6 @@
     [
      8300,
      "CBD Lorville"
-    ],
-    [
-     8300,
-     "Ruin Station"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-05T10:58:21+00:00"
+ "updated": "2026-11-05T18:46:18+00:00"
 }
