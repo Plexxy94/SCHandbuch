@@ -17,59 +17,14 @@
   ],
   "url": "https://status.robertsspaceindustries.com/"
  },
- "videos": [
-  {
-   "title": "Mining Tips - Laser Heads | Star Citizen",
-   "url": "https://www.youtube.com/shorts/7RulM0blyhY",
-   "date": "2026-11-04T18:01:48+00:00"
-  },
-  {
-   "title": "Every RSI Ship in Star Citizen 🚀",
-   "url": "https://www.youtube.com/shorts/2-7zd_Kzics",
-   "date": "2026-11-02T15:01:46+00:00"
-  },
-  {
-   "title": "Sorry I Can't Make It, I Have Plans - Star Citizen",
-   "url": "https://www.youtube.com/shorts/n-i2HEFYnhI",
-   "date": "2026-10-30T14:01:47+00:00"
-  },
-  {
-   "title": "First Time Running Storm Breaker - Star Citizen",
-   "url": "https://www.youtube.com/shorts/qv5vk7j5_X0",
-   "date": "2026-10-26T15:00:40+00:00"
-  },
-  {
-   "title": "Star Citizen | Your Favourite Spot in the ‘Verse 🚀",
-   "url": "https://www.youtube.com/shorts/VpGf_L_sJgU",
-   "date": "2026-10-24T14:00:41+00:00"
-  },
-  {
-   "title": "Jump Points in Star Citizen 🤩",
-   "url": "https://www.youtube.com/shorts/9Z3PFcpijF4",
-   "date": "2026-10-23T20:01:01+00:00"
-  },
-  {
-   "title": "Star Citizen | 10 From the Community - Technology in Focus",
-   "url": "https://www.youtube.com/watch?v=BA9qmg1Oz5M",
-   "date": "2026-10-23T16:03:47+00:00"
-  },
-  {
-   "title": "Upcoming Astrological Events IRL | Star Citizen",
-   "url": "https://www.youtube.com/shorts/G2QOabzFhrM",
-   "date": "2026-10-22T15:02:19+00:00"
-  },
-  {
-   "title": "Day of the Vara | Star Citizen",
-   "url": "https://www.youtube.com/shorts/dOhiAAbuE48",
-   "date": "2026-10-21T16:06:39+00:00"
-  },
-  {
-   "title": "Star Citizen | Ship Mining Beginners Guide ⛏️",
-   "url": "https://www.youtube.com/shorts/jttS4cm3V5c",
-   "date": "2026-10-20T14:19:06+00:00"
-  }
- ],
  "commlinks": [
+  {
+   "id": 21432,
+   "title": "Star Citizen Monthly Report: October 2026",
+   "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21432-Star-Citizen-Monthly-Report-October-2026",
+   "date": "2026-11-04T22:29:36+00:00",
+   "approx": true
+  },
   {
    "id": 21422,
    "title": "Roadmap Roundup - November 4, 2026",
@@ -567,5 +522,57 @@
    }
   ]
  },
- "updated": "2026-11-04T21:53:56+00:00"
+ "videos": [
+  {
+   "title": "Mining Tips - Laser Heads | Star Citizen",
+   "url": "https://www.youtube.com/shorts/7RulM0blyhY",
+   "date": "2026-11-04T18:01:48+00:00"
+  },
+  {
+   "title": "Every RSI Ship in Star Citizen 🚀",
+   "url": "https://www.youtube.com/shorts/2-7zd_Kzics",
+   "date": "2026-11-02T15:01:46+00:00"
+  },
+  {
+   "title": "Sorry I Can't Make It, I Have Plans - Star Citizen",
+   "url": "https://www.youtube.com/shorts/n-i2HEFYnhI",
+   "date": "2026-10-30T14:01:47+00:00"
+  },
+  {
+   "title": "First Time Running Storm Breaker - Star Citizen",
+   "url": "https://www.youtube.com/shorts/qv5vk7j5_X0",
+   "date": "2026-10-26T15:00:40+00:00"
+  },
+  {
+   "title": "Star Citizen | Your Favourite Spot in the ‘Verse 🚀",
+   "url": "https://www.youtube.com/shorts/VpGf_L_sJgU",
+   "date": "2026-10-24T14:00:41+00:00"
+  },
+  {
+   "title": "Jump Points in Star Citizen 🤩",
+   "url": "https://www.youtube.com/shorts/9Z3PFcpijF4",
+   "date": "2026-10-23T20:01:01+00:00"
+  },
+  {
+   "title": "Star Citizen | 10 From the Community - Technology in Focus",
+   "url": "https://www.youtube.com/watch?v=BA9qmg1Oz5M",
+   "date": "2026-10-23T16:03:47+00:00"
+  },
+  {
+   "title": "Upcoming Astrological Events IRL | Star Citizen",
+   "url": "https://www.youtube.com/shorts/G2QOabzFhrM",
+   "date": "2026-10-22T15:02:19+00:00"
+  },
+  {
+   "title": "Day of the Vara | Star Citizen",
+   "url": "https://www.youtube.com/shorts/dOhiAAbuE48",
+   "date": "2026-10-21T16:06:39+00:00"
+  },
+  {
+   "title": "Star Citizen | Ship Mining Beginners Guide ⛏️",
+   "url": "https://www.youtube.com/shorts/jttS4cm3V5c",
+   "date": "2026-10-20T14:19:06+00:00"
+  }
+ ],
+ "updated": "2026-11-05T02:29:39+00:00"
 }
