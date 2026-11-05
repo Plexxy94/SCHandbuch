@@ -1143,7 +1143,7 @@
     ],
     [
      4200,
-     "Everus Harbor"
+     "Port Tressler"
     ],
     [
      3800,
@@ -1314,7 +1314,7 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     4100,
+     3800,
      "Everus Harbor"
     ],
     [
@@ -1374,10 +1374,6 @@
   "hephaestanite": {
    "ref": [
     [
-     5500,
-     "MIC-L5"
-    ],
-    [
      5400,
      "TDD New Babbage"
     ],
@@ -1392,6 +1388,10 @@
     [
      4800,
      "TDD Orison"
+    ],
+    [
+     4800,
+     "CRU-L1"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-05T02:29:40+00:00"
+ "updated": "2026-11-05T10:58:21+00:00"
 }
