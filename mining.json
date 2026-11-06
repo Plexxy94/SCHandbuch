@@ -1138,10 +1138,6 @@
   "aluminum": {
    "ref": [
     [
-     4600,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      4200,
      "Port Tressler"
     ],
@@ -1156,6 +1152,10 @@
     [
      3800,
      "TDD New Babbage"
+    ],
+    [
+     3800,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1268,10 +1268,6 @@
      "Rod's Fuel"
     ],
     [
-     4400,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      4200,
      "Rat's Nest"
     ],
@@ -1282,6 +1278,10 @@
     [
      3900,
      "Baijini Point"
+    ],
+    [
+     3700,
+     "TDD Area 18"
     ]
    ],
    "raw": [
@@ -1310,16 +1310,16 @@
      "Orbituary"
     ],
     [
-     4100,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      3700,
      "TDD Area 18"
     ],
     [
      3700,
      "TDD New Babbage"
+    ],
+    [
+     3700,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-06T00:18:23+00:00"
+ "updated": "2026-11-06T07:56:28+00:00"
 }
