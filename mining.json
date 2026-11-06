@@ -1118,6 +1118,10 @@
      "Rod's Fuel"
     ],
     [
+     11000,
+     "ARC-L4"
+    ],
+    [
      10000,
      "TDD Area 18"
     ],
@@ -1128,10 +1132,6 @@
     [
      10000,
      "CBD Lorville"
-    ],
-    [
-     10000,
-     "ARC-L3"
     ]
    ]
   },
@@ -1146,16 +1146,16 @@
      "Port Tressler"
     ],
     [
+     4100,
+     "Everus Harbor"
+    ],
+    [
      3800,
      "TDD Area 18"
     ],
     [
      3800,
      "TDD New Babbage"
-    ],
-    [
-     3800,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1219,15 +1219,15 @@
     ],
     [
      30000,
+     "Patch City"
+    ],
+    [
+     30000,
      "Endgame"
     ],
     [
      30000,
      "Jackson's Swap"
-    ],
-    [
-     30000,
-     "Dudley & Daughters"
     ]
    ]
   },
@@ -1314,12 +1314,12 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     3800,
-     "Everus Harbor"
+     3700,
+     "TDD Area 18"
     ],
     [
      3700,
-     "TDD Area 18"
+     "TDD New Babbage"
     ]
    ]
   },
@@ -1461,15 +1461,15 @@
     ],
     [
      8700,
+     "Patch City"
+    ],
+    [
+     8700,
      "Starlight Service"
     ],
     [
      8700,
      "Endgame"
-    ],
-    [
-     8700,
-     "Gaslight"
     ]
    ]
   },
@@ -1716,6 +1716,10 @@
      "Starlight Service"
     ],
     [
+     9100,
+     "ARC-L3"
+    ],
+    [
      8800,
      "Megumi"
     ],
@@ -1726,10 +1730,6 @@
     [
      8300,
      "TDD New Babbage"
-    ],
-    [
-     8300,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-05T18:46:18+00:00"
+ "updated": "2026-11-06T00:18:23+00:00"
 }
