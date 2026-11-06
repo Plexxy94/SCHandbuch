@@ -1139,11 +1139,11 @@
    "ref": [
     [
      4200,
-     "Port Tressler"
+     "Everus Harbor"
     ],
     [
-     4100,
-     "Everus Harbor"
+     4200,
+     "Port Tressler"
     ],
     [
      3800,
@@ -1306,8 +1306,12 @@
      "Rod's Fuel"
     ],
     [
-     4300,
+     4400,
      "Orbituary"
+    ],
+    [
+     4100,
+     "Everus Harbor"
     ],
     [
      3700,
@@ -1316,10 +1320,6 @@
     [
      3700,
      "TDD New Babbage"
-    ],
-    [
-     3700,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1528,7 +1528,7 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     5400,
+     5200,
      "Nyx Gateway (Stanton)"
     ],
     [
@@ -1716,10 +1716,6 @@
      "Starlight Service"
     ],
     [
-     9100,
-     "ARC-L3"
-    ],
-    [
      8800,
      "Megumi"
     ],
@@ -1730,6 +1726,10 @@
     [
      8300,
      "TDD New Babbage"
+    ],
+    [
+     8300,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-06T07:56:28+00:00"
+ "updated": "2026-11-06T15:56:25+00:00"
 }
