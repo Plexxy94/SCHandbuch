@@ -19,6 +19,11 @@
  },
  "videos": [
   {
+   "title": "IAE 2956 - Save The Date | Star Citizen",
+   "url": "https://www.youtube.com/shorts/hoUiT9gU7Sg",
+   "date": "2026-11-06T16:03:53+00:00"
+  },
+  {
    "title": "Cargo Hauling - Day 1 vs. Day 432 | Star Citizen 📦",
    "url": "https://www.youtube.com/shorts/2Lhm7Dg46w0",
    "date": "2026-11-05T18:00:57+00:00"
@@ -62,14 +67,16 @@
    "title": "Upcoming Astrological Events IRL | Star Citizen",
    "url": "https://www.youtube.com/shorts/G2QOabzFhrM",
    "date": "2026-10-22T15:02:19+00:00"
-  },
-  {
-   "title": "Day of the Vara | Star Citizen",
-   "url": "https://www.youtube.com/shorts/dOhiAAbuE48",
-   "date": "2026-10-21T16:06:39+00:00"
   }
  ],
  "commlinks": [
+  {
+   "id": 21389,
+   "title": "Countdown to IAE 2956 - The Ultimate Ship Show Returns",
+   "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21389-Countdown-To-IAE-2956",
+   "date": "2026-11-06T15:30:31+00:00",
+   "approx": true
+  },
   {
    "id": 21432,
    "title": "Star Citizen Monthly Report: October 2026",
@@ -574,5 +581,5 @@
    }
   ]
  },
- "updated": "2026-11-05T18:46:17+00:00"
+ "updated": "2026-11-06T21:30:32+00:00"
 }
