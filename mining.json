@@ -1139,11 +1139,15 @@
    "ref": [
     [
      4200,
-     "Everus Harbor"
+     "Terra Gateway (Stanton)"
     ],
     [
      4200,
      "Port Tressler"
+    ],
+    [
+     3900,
+     "Everus Harbor"
     ],
     [
      3800,
@@ -1152,10 +1156,6 @@
     [
      3800,
      "TDD New Babbage"
-    ],
-    [
-     3800,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1210,6 +1210,10 @@
   "bexalite": {
    "ref": [
     [
+     34000,
+     "Sacren's Plot"
+    ],
+    [
      32000,
      "The Golden Riviera"
     ],
@@ -1224,10 +1228,6 @@
     [
      30000,
      "Jackson's Swap"
-    ],
-    [
-     30000,
-     "Dudley & Daughters"
     ]
    ]
   },
@@ -1265,6 +1265,10 @@
    "ref": [
     [
      4700,
+     "Terra Gateway (Stanton)"
+    ],
+    [
+     4700,
      "Rod's Fuel"
     ],
     [
@@ -1272,16 +1276,12 @@
      "Rat's Nest"
     ],
     [
+     4200,
+     "Stanton Gateway (Pyro)"
+    ],
+    [
      4100,
      "Pyro Gateway (Stanton)"
-    ],
-    [
-     3900,
-     "Baijini Point"
-    ],
-    [
-     3700,
-     "TDD Area 18"
     ]
    ],
    "raw": [
@@ -1314,17 +1314,21 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     3700,
-     "TDD Area 18"
+     4100,
+     "Everus Harbor"
     ],
     [
      3700,
-     "TDD New Babbage"
+     "TDD Area 18"
     ]
    ]
   },
   "diamond": {
    "ref": [
+    [
+     9700,
+     "HUR-L1"
+    ],
     [
      7700,
      "TDD New Babbage"
@@ -1340,10 +1344,6 @@
     [
      7700,
      "Rappel"
-    ],
-    [
-     7700,
-     "Dunboro"
     ]
    ]
   },
@@ -1374,24 +1374,24 @@
   "hephaestanite": {
    "ref": [
     [
+     6000,
+     "MIC-L5"
+    ],
+    [
+     6000,
+     "MIC-L4"
+    ],
+    [
+     5900,
+     "CRU-L4"
+    ],
+    [
      5400,
      "TDD New Babbage"
     ],
     [
-     5000,
-     "MIC-L5"
-    ],
-    [
      4800,
      "TDD Area 18"
-    ],
-    [
-     4800,
-     "CBD Lorville"
-    ],
-    [
-     4800,
-     "TDD Orison"
     ]
    ]
   },
@@ -1456,6 +1456,10 @@
      "Rod's Fuel"
     ],
     [
+     9200,
+     "Stanton Gateway (Nyx)"
+    ],
+    [
      9100,
      "TDD Orison"
     ],
@@ -1466,10 +1470,6 @@
     [
      8700,
      "Patch City"
-    ],
-    [
-     8700,
-     "Starlight Service"
     ]
    ]
   },
@@ -1524,12 +1524,12 @@
   "quartz": {
    "ref": [
     [
-     5500,
-     "Stanton Gateway (Pyro)"
+     5300,
+     "Nyx Gateway (Stanton)"
     ],
     [
      5200,
-     "Nyx Gateway (Stanton)"
+     "Stanton Gateway (Pyro)"
     ],
     [
      5200,
@@ -1616,6 +1616,10 @@
   "silicon": {
    "ref": [
     [
+     3100,
+     "Terra Gateway (Stanton)"
+    ],
+    [
      2900,
      "Patch City"
     ],
@@ -1630,10 +1634,6 @@
     [
      2400,
      "Seraphim"
-    ],
-    [
-     2400,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-07T08:48:54+00:00"
+ "updated": "2026-11-07T20:14:39+00:00"
 }
