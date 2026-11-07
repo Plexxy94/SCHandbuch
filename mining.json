@@ -1314,12 +1314,12 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     4100,
-     "Everus Harbor"
+     3700,
+     "TDD Area 18"
     ],
     [
      3700,
-     "TDD Area 18"
+     "TDD New Babbage"
     ]
    ]
   },
@@ -1378,6 +1378,10 @@
      "TDD New Babbage"
     ],
     [
+     5000,
+     "MIC-L5"
+    ],
+    [
      4800,
      "TDD Area 18"
     ],
@@ -1388,10 +1392,6 @@
     [
      4800,
      "TDD Orison"
-    ],
-    [
-     4800,
-     "CRU-L1"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-07T01:56:40+00:00"
+ "updated": "2026-11-07T08:48:54+00:00"
 }
