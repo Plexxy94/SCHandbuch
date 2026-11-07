@@ -1223,11 +1223,11 @@
     ],
     [
      30000,
-     "Endgame"
+     "Jackson's Swap"
     ],
     [
      30000,
-     "Jackson's Swap"
+     "Dudley & Daughters"
     ]
    ]
   },
@@ -1311,15 +1311,15 @@
     ],
     [
      4100,
+     "Terra Gateway (Stanton)"
+    ],
+    [
+     4100,
      "Everus Harbor"
     ],
     [
      3700,
      "TDD Area 18"
-    ],
-    [
-     3700,
-     "TDD New Babbage"
     ]
    ]
   },
@@ -1456,6 +1456,10 @@
      "Rod's Fuel"
     ],
     [
+     9100,
+     "TDD Orison"
+    ],
+    [
      8700,
      "Ruin Station"
     ],
@@ -1466,10 +1470,6 @@
     [
      8700,
      "Starlight Service"
-    ],
-    [
-     8700,
-     "Endgame"
     ]
    ]
   },
@@ -1501,10 +1501,6 @@
    "ref": [
     [
      170000,
-     "TDD Orison"
-    ],
-    [
-     170000,
      "ArcCorp 141"
     ],
     [
@@ -1518,6 +1514,10 @@
     [
      160000,
      "Ashland"
+    ],
+    [
+     160000,
+     "TDD Orison"
     ]
    ]
   },
@@ -1629,11 +1629,11 @@
     ],
     [
      2400,
-     "Terra Gateway (Stanton)"
+     "Seraphim"
     ],
     [
      2400,
-     "Seraphim"
+     "CBD Lorville"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-06T21:30:35+00:00"
+ "updated": "2026-11-07T01:56:40+00:00"
 }
