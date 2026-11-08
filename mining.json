@@ -1524,6 +1524,10 @@
   "quartz": {
    "ref": [
     [
+     5400,
+     "Nyx Gateway (Stanton)"
+    ],
+    [
      5200,
      "Stanton Gateway (Pyro)"
     ],
@@ -1534,10 +1538,6 @@
     [
      4900,
      "Pyro Gateway (Stanton)"
-    ],
-    [
-     4700,
-     "Nyx Gateway (Stanton)"
     ],
     [
      4700,
@@ -1620,7 +1620,7 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     2900,
+     2700,
      "Patch City"
     ],
     [
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-08T13:27:33+00:00"
+ "updated": "2026-11-08T18:50:54+00:00"
 }
