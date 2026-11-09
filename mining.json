@@ -1138,11 +1138,15 @@
   "aluminum": {
    "ref": [
     [
-     4000,
+     4600,
      "Terra Gateway (Stanton)"
     ],
     [
-     4000,
+     4600,
+     "Port Tressler"
+    ],
+    [
+     4200,
      "Everus Harbor"
     ],
     [
@@ -1152,10 +1156,6 @@
     [
      3800,
      "TDD New Babbage"
-    ],
-    [
-     3800,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1264,6 +1264,14 @@
   "copper": {
    "ref": [
     [
+     4400,
+     "Terra Gateway (Stanton)"
+    ],
+    [
+     4300,
+     "Pyro Gateway (Stanton)"
+    ],
+    [
      4200,
      "Rat's Nest"
     ],
@@ -1272,16 +1280,8 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     4100,
-     "Pyro Gateway (Stanton)"
-    ],
-    [
      4000,
      "Rod's Fuel"
-    ],
-    [
-     3900,
-     "Baijini Point"
     ]
    ],
    "raw": [
@@ -1311,15 +1311,15 @@
     ],
     [
      4000,
+     "Everus Harbor"
+    ],
+    [
+     3800,
      "Terra Gateway (Stanton)"
     ],
     [
      3700,
      "TDD Area 18"
-    ],
-    [
-     3700,
-     "TDD New Babbage"
     ]
    ]
   },
@@ -1524,10 +1524,6 @@
   "quartz": {
    "ref": [
     [
-     5400,
-     "Nyx Gateway (Stanton)"
-    ],
-    [
      5200,
      "Stanton Gateway (Pyro)"
     ],
@@ -1542,6 +1538,10 @@
     [
      4600,
      "Patch City"
+    ],
+    [
+     4400,
+     "TDD Area 18"
     ]
    ]
   },
@@ -1616,10 +1616,6 @@
   "silicon": {
    "ref": [
     [
-     3100,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      2700,
      "Patch City"
     ],
@@ -1634,6 +1630,10 @@
     [
      2400,
      "Seraphim"
+    ],
+    [
+     2400,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1712,7 +1712,11 @@
   "titanium": {
    "ref": [
     [
-     9000,
+     10000,
+     "Megumi"
+    ],
+    [
+     9200,
      "Starlight Service"
     ],
     [
@@ -1726,10 +1730,6 @@
     [
      8300,
      "Ruin Station"
-    ],
-    [
-     8300,
-     "Checkmate"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-09T11:36:01+00:00"
+ "updated": "2026-11-09T22:24:08+00:00"
 }
