@@ -1138,10 +1138,6 @@
   "aluminum": {
    "ref": [
     [
-     4200,
-     "Port Tressler"
-    ],
-    [
      4000,
      "Terra Gateway (Stanton)"
     ],
@@ -1156,6 +1152,10 @@
     [
      3800,
      "TDD New Babbage"
+    ],
+    [
+     3800,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1452,10 +1452,6 @@
   "laranite": {
    "ref": [
     [
-     9200,
-     "Stanton Gateway (Nyx)"
-    ],
-    [
      8700,
      "Ruin Station"
     ],
@@ -1470,6 +1466,10 @@
     [
      8700,
      "Endgame"
+    ],
+    [
+     8700,
+     "Gaslight"
     ]
    ]
   },
@@ -1532,16 +1532,16 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     5200,
-     "Stanton Gateway (Nyx)"
-    ],
-    [
      4900,
      "Pyro Gateway (Stanton)"
     ],
     [
      4700,
      "Seraphim"
+    ],
+    [
+     4600,
+     "Patch City"
     ]
    ]
   },
@@ -1712,6 +1712,10 @@
   "titanium": {
    "ref": [
     [
+     9000,
+     "Starlight Service"
+    ],
+    [
      8300,
      "TDD New Babbage"
     ],
@@ -1726,10 +1730,6 @@
     [
      8300,
      "Checkmate"
-    ],
-    [
-     8300,
-     "Rod's Fuel"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-09T02:40:54+00:00"
+ "updated": "2026-11-09T11:36:01+00:00"
 }
