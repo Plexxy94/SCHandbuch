@@ -408,6 +408,14 @@ tr.rec th { color: var(--accent); }
 .sh-opts { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: 14px; }
 .sh-opts .check { font-family: var(--f-body); font-weight: 500; }
 .sh-sel { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); }
+.sh-dir { font: inherit; font-size: 13px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; white-space: nowrap; }
+.sh-dir:hover { border-color: var(--accent); }
+.sh-more { margin-top: 10px; font-size: 14px; }
+.sh-more summary { cursor: pointer; font-family: var(--f-display); font-weight: 600; color: var(--muted); width: fit-content; }
+.sh-more[open] summary { color: var(--ink); }
+.sh-budget { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 8px; }
+.sh-budget label { font-family: var(--f-display); font-weight: 600; }
+.sh-budget input { flex: 0 1 240px; min-width: 0; font: inherit; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); }
 .sh-sel select { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; }
 .sh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 12px; }
 .sh { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
@@ -3312,7 +3320,16 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <label class="sh-sel">Sortieren
         <select id="shsort"><option value="n">Name</option><option value="scu">Fracht (SCU)</option><option value="buy">Kaufpreis</option><option value="rent">Mietpreis</option><option value="s">Größe</option></select>
       </label>
+      <button type="button" class="sh-dir" id="shdir" data-dir="asc" title="Reihenfolge umdrehen">↑ aufsteigend</button>
     </div>
+    <details class="sh-more" id="shmore">
+      <summary>Erweitert <span class="pill later" id="shmore-on" hidden>Budget aktiv</span></summary>
+      <div class="sh-budget">
+        <label for="shbudget">Mein Budget</label>
+        <input id="shbudget" class="tool-input" type="text" inputmode="decimal" placeholder="z. B. 2.500.000 oder 2,5 Mio" autocomplete="off">
+        <span class="small" id="shbudget-info">Zeigt nur Schiffe, die du im Spiel für diesen Betrag kaufen kannst.</span>
+      </div>
+    </details>
   </div>
   <div class="sh-grid" id="shgrid"></div>
   <p class="empty" id="shnone" hidden>Kein Schiff passt zu diesen Filtern.</p>
@@ -4504,8 +4521,10 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   function apply() {
     var v = q.value.trim().toLowerCase();
     var tip = $('shtip').checked, buy = $('shbuy').checked, rent = $('shrent').checked, veh = $('shveh').checked;
-    var crew = $('shcrew').value, sort = $('shsort').value;
+    var crew = $('shcrew').value, sort = $('shsort').value, dir = $('shdir').dataset.dir;
+    var budget = readBudget();
     var shown = SH.filter(function (s) {
+      if (budget && (!s.b || s.b[0] > budget)) return false;
       if (v && s._t.indexOf(v) === -1) return false;
       if (cat === 'Einsteiger') { if (!s.tip) return false; }
       else if (cat !== 'Alle' && s.c !== cat) return false;
@@ -4518,19 +4537,48 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       if (crew === '4' && s.cr[1] < 4) return false;
       return true;
     });
+    /* Ohne Wert (kein Preis, keine Größe) immer ans Ende, egal in welche Richtung */
     var key = {
       n: function (s) { return s.n.toLowerCase(); },
-      scu: function (s) { return -(s.ore || s.scu); },
-      buy: function (s) { return s.b ? s.b[0] : 1e15; },
-      rent: function (s) { return s.r ? s.r[0] : 1e15; },
-      s: function (s) { return s.s || 0; }
+      scu: function (s) { return s.ore || s.scu; },
+      buy: function (s) { return s.b ? s.b[0] : null; },
+      rent: function (s) { return s.r ? s.r[0] : null; },
+      s: function (s) { return s.s || null; }
     }[sort];
-    shown.sort(function (a, b) { var x = key(a), y = key(b); return x < y ? -1 : x > y ? 1 : a.n.localeCompare(b.n); });
+    shown.sort(function (a, b) {
+      var x = key(a), y = key(b);
+      if (x === null || y === null) return (x === null) - (y === null) || a.n.localeCompare(b.n);
+      var c = x < y ? -1 : x > y ? 1 : 0;
+      return (dir === 'desc' ? -c : c) || a.n.localeCompare(b.n);
+    });
     SH.forEach(function (s) { s._el.hidden = true; });
     shown.forEach(function (s) { s._el.hidden = false; grid.appendChild(s._el); });
-    cnt.textContent = shown.length + ' von ' + SH.length;
+    cnt.textContent = shown.length + ' von ' + SH.length + (budget ? ' · bis ' + fmt(budget) + ' aUEC' : '');
     none.hidden = shown.length > 0;
   }
+  /* Budget: „2.500.000“, „2500000“, „2,5 Mio“, „2.5m“ oder „800k“ */
+  function readBudget() {
+    var t = $('shbudget').value.trim().toLowerCase().replace(/\s+/g, '').replace(/a?uec$/, ''), n = 0;
+    var m = t.match(/^([\d.,]+)(mio|m|k|tsd)?\.?$/);
+    if (m && m[2]) n = parseFloat(m[1].replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.')) * (m[2] === 'k' || m[2] === 'tsd' ? 1e3 : 1e6);
+    else if (m) n = parseInt(m[1].replace(/[^\d]/g, ''), 10);
+    n = Math.round(n) || 0;
+    $('shbudget-info').textContent = !t ? 'Zeigt nur Schiffe, die du im Spiel für diesen Betrag kaufen kannst.'
+      : n ? '= ' + fmt(n) + ' aUEC. Nur Schiffe, die du im Spiel dafür kaufen kannst.' : 'Bitte eine Zahl eingeben, z. B. 2.500.000 oder 2,5 Mio.';
+    $('shmore-on').hidden = !n;
+    return n;
+  }
+  /* Richtung: beim Wechsel der Sortierung die übliche Richtung vorwählen (Fracht: viel zuerst), danach frei umschaltbar */
+  var DIR = { n: 'asc', scu: 'desc', buy: 'asc', rent: 'asc', s: 'asc' };
+  function setDir(d) {
+    var b = $('shdir'); b.dataset.dir = d;
+    b.textContent = d === 'asc' ? '↑ aufsteigend' : '↓ absteigend';
+    b.setAttribute('aria-label', 'Reihenfolge: ' + (d === 'asc' ? 'aufsteigend' : 'absteigend') + '. Klicken zum Umdrehen.');
+  }
+  $('shsort').addEventListener('change', function () { setDir(DIR[$('shsort').value]); });
+  $('shdir').addEventListener('click', function () { setDir($('shdir').dataset.dir === 'asc' ? 'desc' : 'asc'); apply(); });
+  $('shbudget').addEventListener('input', apply);
+  setDir(DIR[$('shsort').value]);
   [q, $('shtip'), $('shbuy'), $('shrent'), $('shveh'), $('shcrew'), $('shsort')].forEach(function (e) { e.addEventListener(e === q ? 'input' : 'change', apply); });
   apply();
 
