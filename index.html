@@ -731,6 +731,40 @@ a.chip { text-decoration: none; }
 .sh-morebtn { align-self: center; font: 600 15px var(--f-display); letter-spacing: .02em; color: var(--accent); background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; padding: 12px 22px; cursor: pointer; }
 .sh-morebtn:hover { background: var(--accent-soft); }
 .sh-morebtn[hidden] { display: none; }
+/* Meine Schiffe */
+.mine-btn { position: absolute; right: 8px; top: 8px; font: 600 12px var(--f-display); letter-spacing: .02em; padding: 4px 10px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .28); background: rgba(8, 12, 16, .72); color: #e6edf3; cursor: pointer; }
+.mine-btn:hover { border-color: #fff; }
+.mine-btn[aria-pressed="true"] { background: var(--ok); border-color: var(--ok); color: var(--panel); }
+.mine-btn.inline { position: static; background: var(--key-bg); color: var(--ink); border-color: var(--key-edge); font-size: 13px; padding: 5px 12px; }
+.mine-btn.inline[aria-pressed="true"] { background: var(--ok); border-color: var(--ok); color: var(--panel); }
+.sh.mine { border-color: var(--ok); box-shadow: 0 0 0 1px var(--ok); }
+.sh-mine { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.sh-mine b { font-family: var(--f-display); }
+.sh-mine button { font: 600 13px var(--f-display); color: var(--ink); background: var(--panel); border: 1px solid var(--key-edge); border-radius: 6px; padding: 5px 11px; cursor: pointer; }
+.sh-mine button:hover { border-color: var(--accent); }
+.sh-mine input { flex: 1 1 100%; min-width: 0; font: 500 12px var(--f-mono); padding: 7px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--key-bg); color: var(--ink); }
+.sh-mine input[hidden] { display: none; }
+.sh-mine-note { background: var(--ok-soft); color: var(--ok); border-radius: 8px; padding: 8px 12px; font-size: 14px; margin-top: 10px; }
+.sh-mine-note[hidden] { display: none; }
+/* Planer */
+.plan-q { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 8px 10px; align-items: start; }
+.plan-q > span { font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 7px; }
+.plan-hangar { font-size: 14px; padding-top: 5px; }
+.plan-hangar b { font-family: var(--f-display); }
+.plan-live { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.plan-live:empty { display: none; }
+.plan-live .w { color: var(--warn); }
+.plan-live .g { color: var(--ok); }
+.plan-out { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 10px; }
+.plan-card { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; background: var(--key-bg); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.plan-card.best { border-color: var(--accent); }
+.plan-card .lab { font: 500 10.5px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.plan-card h4 { margin: 0; font: 600 18px var(--f-display); line-height: 1.2; }
+.plan-card p { margin: 0; font-size: 14px; }
+.plan-card .earn { font-size: 13px; color: var(--ok); }
+.plan-card .warn { font-size: 13px; color: var(--warn); }
+@media (max-width: 560px) { .plan-card:not(.best) p, .plan-card:not(.best) .warn { display: none; } .plan-q { grid-template-columns: 1fr; gap: 3px; } .plan-q > span { padding-top: 6px; } }
+.plan-links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: auto; padding-top: 6px; font: 600 14px var(--f-display); }
 /* Nach oben */
 .totop { position: fixed; right: max(14px, env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 4; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--key-edge); background: var(--panel); color: var(--accent); font: 700 20px var(--f-display); cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s, transform .2s; }
 .totop.on { opacity: 1; pointer-events: auto; transform: none; }
@@ -834,6 +868,18 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     <strong>Neu hier?</strong>
     <span>Such dir zuerst eine Heimatstadt aus, dann geht es mit „Erste Schritte“ weiter. Dort hakst du ab, was du schon geschafft hast.</span>
     <a class="btn" href="#heimat">Los geht's</a>
+  </div>
+
+  <div class="tool" id="plan">
+    <div class="tool-head"><span class="tool-tag">Planer</span><h3>Was mache ich heute?</h3></div>
+    <div class="plan-q"><span>Zeit</span><div class="chips" id="plan-t" role="group" aria-label="Wie viel Zeit hast du?"></div>
+      <span>Wie</span><div class="chips" id="plan-h" role="group" aria-label="Allein oder mit anderen?"></div>
+      <span>Lust auf</span><div class="chips" id="plan-m" role="group" aria-label="Worauf hast du Lust?"></div>
+      <span>Hangar</span><div><div class="chips" id="plan-s" role="group" aria-label="Welche Schiffe hast du?"></div><div class="plan-hangar" id="plan-hangar"></div></div>
+    </div>
+    <div class="plan-live" id="plan-live"></div>
+    <div class="plan-out" id="plan-out"></div>
+    <p class="small" style="margin:0">Vorschläge nach festen Regeln aus den Kapiteln dieser Seite, keine berechneten Bestwerte. Erträge sind Richtwerte.</p>
   </div>
 
   <div class="chapters">
@@ -3637,6 +3683,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     </div>
     <div class="chips" id="shcat" role="group" aria-label="Einsatzzweck"></div>
     <div class="sh-opts">
+      <label class="check"><input type="checkbox" id="shmine"> Nur meine <span class="count" id="shmine-n"></span></label>
       <label class="check"><input type="checkbox" id="shtip"> Nur Einsteiger-Tipps</label>
       <label class="check"><input type="checkbox" id="shbuy"> Im Spiel kaufbar</label>
       <label class="check"><input type="checkbox" id="shrent"> Mietbar</label>
@@ -3655,7 +3702,16 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
         <input id="shbudget" class="tool-input" type="text" inputmode="decimal" placeholder="z. B. 2.500.000 oder 2,5 Mio" autocomplete="off">
         <span class="small" id="shbudget-info">Zeigt nur Schiffe, die du im Spiel für diesen Betrag kaufen kannst.</span>
       </div>
+      <div class="sh-mine">
+        <b>Meine Schiffe</b>
+        <span class="small" id="shmine-info"></span>
+        <button type="button" id="shmine-link">Link zum Übertragen</button>
+        <button type="button" id="shmine-clear">Liste leeren</button>
+        <input id="shmine-url" type="text" readonly hidden aria-label="Link mit deiner Schiffsliste">
+        <span class="small" style="flex-basis:100%">Bei jedem Schiff auf „☆ Hab ich“ tippen. Die Liste liegt nur in diesem Browser. Mit dem Link nimmst du sie auf ein anderes Gerät mit oder sicherst sie als Lesezeichen.</span>
+      </div>
     </details>
+    <p class="sh-mine-note" id="shmine-note" hidden></p>
   </div>
   <div class="sh-grid" id="shgrid"></div>
   <button type="button" class="sh-morebtn" id="shmorebtn" hidden></button>
@@ -3807,7 +3863,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   <div class="kekse">
     <strong>Kekse? Gibt's hier keine.</strong>
     <p>Keine Cookies, kein Tracking, keine Statistik und darum auch kein Banner, das du wegklicken musst. Die einzigen Kekse in diesem Universum stecken im Snack-Automaten der nächsten Raumstation.</p>
-    <p>Deine Häkchen bei „Erste Schritte“ und beim Executive Hangar und wann du zuletzt die News gelesen hast, merkt sich nur dein Browser. Wir sehen davon nichts. Loswerden kannst du das, indem du die Website-Daten im Browser löschst. Die Signatur-Erkennung im Mining läuft komplett bei dir, kein Screenshot verlässt deinen Rechner.</p>
+    <p>Deine Häkchen bei „Erste Schritte“ und beim Executive Hangar, deine markierten Schiffe, die Auswahl im Planer und wann du zuletzt die News gelesen hast, merkt sich nur dein Browser. Der Link zum Übertragen deiner Schiffe enthält nur die Kürzel der Schiffe. Wir sehen davon nichts. Loswerden kannst du das, indem du die Website-Daten im Browser löschst. Die Signatur-Erkennung im Mining läuft komplett bei dir, kein Screenshot verlässt deinen Rechner.</p>
     <p>Wie bei jeder Website sehen die Server, von denen etwas geladen wird, deine IP-Adresse: GitHub Pages (dort liegt die Seite), FleetYards.net (Schiffsbilder und 3D-Modelle), das Star Citizen Wiki (Stadtbilder und Karten) und jsDelivr (3D-Ansicht und Texterkennung, erst wenn du sie benutzt). Die Schriften liegen hier selbst, Google bekommt also nichts mit.</p>
   </div>
   <div class="legal">
@@ -3824,6 +3880,46 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   </div>
 </div>
 
+<script>
+/* ---------- Meine Schiffe: Liste nur im Browser (localStorage), übertragbar per Link #meine=slug,slug ---------- */
+window.SC_MINE = (function () {
+  var KEY = 'sc-handbuch-ships', set = {}, api = { imported: 0 };
+  try { (JSON.parse(localStorage.getItem(KEY) || '[]') || []).forEach(function (s) { if (/^[a-z0-9-]+$/.test(s)) set[s] = 1; }); } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(Object.keys(set))); } catch (e) {} }
+  function fire() { api.sync(); document.dispatchEvent(new CustomEvent('minechange')); }
+  api.has = function (slug) { return !!set[slug]; };
+  api.list = function () { return Object.keys(set); };
+  api.toggle = function (slug) { if (set[slug]) delete set[slug]; else set[slug] = 1; save(); fire(); };
+  api.clear = function () { set = {}; save(); fire(); };
+  api.btn = function (slug, inline) {
+    var on = !!set[slug];
+    return '<button type="button" class="mine-btn' + (inline ? ' inline' : '') + '" data-mine="' + slug + '" aria-pressed="' + on + '" title="In „Meine Schiffe“ merken (nur in deinem Browser)">' + (on ? '★ Meins' : '☆ Hab ich') + '</button>';
+  };
+  api.sync = function () {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-mine]'), function (b) {
+      var on = !!set[b.dataset.mine];
+      b.setAttribute('aria-pressed', on); b.textContent = on ? '★ Meins' : '☆ Hab ich';
+      var card = b.closest('.sh'); if (card) card.classList.toggle('mine', on);
+    });
+  };
+  api.link = function () { return location.origin + location.pathname + '#meine=' + Object.keys(set).join(','); };
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-mine]'); if (!b) return;
+    e.preventDefault(); e.stopPropagation(); api.toggle(b.dataset.mine);
+  }, true);
+  /* Link mit Liste: Schiffe ergänzen (nichts wird entfernt), dann zur Schiffsübersicht */
+  function fromLink() {
+    var m = /^#meine=([a-z0-9,-]*)$/.exec(location.hash); if (!m) return;
+    var n = 0;
+    m[1].split(',').slice(0, 300).forEach(function (s) { if (s && !set[s]) { set[s] = 1; n++; } });
+    save(); api.imported = n + 1;   /* +1: auch „nichts Neues“ wird gemeldet */
+    history.replaceState(null, '', '#schiffe');
+  }
+  fromLink();
+  window.addEventListener('hashchange', function () { if (location.hash.indexOf('#meine=') === 0) { fromLink(); fire(); } });
+  return api;
+})();
+</script>
 <script>
 (function () {
   /* Ansichten per #hash */
@@ -4836,7 +4932,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     if (!price) price = '<span class="where">Im Spiel nicht kaufbar (Pledge oder Belohnung)</span>';
     el.innerHTML =
       '<div class="sh-img">' + (s.img ? '<img src="' + esc(s.img) + '" alt="' + esc(s.full) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') +
-      '<span class="sh-mcode">' + esc(s.m || '') + '</span></div>' +
+      '<span class="sh-mcode">' + esc(s.m || '') + '</span>' + window.SC_MINE.btn(s.slug) + '</div>' +
       '<div class="sh-body">' +
       '<div><h3><a class="sh-link" href="#s-' + esc(s.slug) + '">' + esc(s.n) + '</a></h3><span class="mn">' + esc(s.mn) + '</span></div>' +
       '<div class="sh-tags">' + tags + '</div>' +
@@ -4857,14 +4953,16 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   function apply() {
     var v = q.value.trim().toLowerCase();
     var tip = $('shtip').checked, buy = $('shbuy').checked, rent = $('shrent').checked, veh = $('shveh').checked;
+    var M = window.SC_MINE, mine = $('shmine').checked;
     var crew = $('shcrew').value, sort = $('shsort').value, dir = $('shdir').dataset.dir;
     var budget = readBudget();
     var shown = SH.filter(function (s) {
+      if (mine && !M.has(s.slug)) return false;
       if (budget && (!s.b || s.b[0] > budget)) return false;
       if (v && s._t.indexOf(v) === -1) return false;
       if (cat === 'Einsteiger') { if (!s.tip) return false; }
       else if (cat !== 'Alle' && s.c !== cat) return false;
-      if (s.veh && !veh) return false;
+      if (s.veh && !veh && !mine) return false;
       if (tip && !s.tip) return false;
       if (buy && !s.b) return false;
       if (rent && !s.r) return false;
@@ -4897,6 +4995,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     if (rest > 0) moreBtn.textContent = (rest > PAGE ? 'Weitere ' + PAGE + ' zeigen' : 'Restliche ' + rest + ' zeigen') + ' · ' + Math.min(limit, shown.length) + ' von ' + shown.length + ' sichtbar';
     cnt.textContent = shown.length + ' von ' + SH.length + (budget ? ' · bis ' + fmt(budget) + ' aUEC' : '');
     none.hidden = shown.length > 0;
+    none.textContent = mine && !M.list().length ? 'Du hast noch kein Schiff markiert. Tippe bei einem Schiff auf „☆ Hab ich“.' : 'Kein Schiff passt zu diesen Filtern.';
   }
   var PAGE = 36, limit = PAGE, keepLimit = false;
   $('shmorebtn').addEventListener('click', function () { limit += PAGE; keepLimit = true; apply(); });
@@ -4924,7 +5023,28 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   $('shdir').addEventListener('click', function () { setDir($('shdir').dataset.dir === 'asc' ? 'desc' : 'asc'); apply(); });
   $('shbudget').addEventListener('input', apply);
   setDir(DIR[$('shsort').value]);
-  [q, $('shtip'), $('shbuy'), $('shrent'), $('shveh'), $('shcrew'), $('shsort')].forEach(function (e) { e.addEventListener(e === q ? 'input' : 'change', apply); });
+  [q, $('shmine'), $('shtip'), $('shbuy'), $('shrent'), $('shveh'), $('shcrew'), $('shsort')].forEach(function (e) { e.addEventListener(e === q ? 'input' : 'change', apply); });
+  /* Meine Schiffe: Zähler, Link, Leeren, Übernahme aus einem Link */
+  function mineState() {
+    var M = window.SC_MINE, n = SH.filter(function (s) { return M.has(s.slug); }).length;
+    $('shmine-n').textContent = n ? '(' + n + ')' : '';
+    $('shmine-info').textContent = n ? n + (n === 1 ? ' Schiff markiert.' : ' Schiffe markiert.') : 'Noch nichts markiert.';
+    $('shmine-link').hidden = $('shmine-clear').hidden = !n;
+    if (!n) $('shmine-url').hidden = true; else if (!$('shmine-url').hidden) $('shmine-url').value = M.link();
+    if (M.imported) {
+      var k = M.imported - 1; M.imported = 0;
+      $('shmine').checked = true;
+      $('shmine-note').textContent = k ? (k === 1 ? '1 Schiff' : k + ' Schiffe') + ' aus dem Link übernommen. Unten siehst du deine Liste.' : 'Die Schiffe aus dem Link waren schon in deiner Liste.';
+      $('shmine-note').hidden = false;
+    }
+  }
+  document.addEventListener('minechange', function () { mineState(); if ($('shmine').checked) { keepLimit = true; apply(); } });
+  $('shmine-link').addEventListener('click', function () {
+    var u = $('shmine-url'), b = this; u.value = window.SC_MINE.link(); u.hidden = false; u.focus(); u.select();
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(u.value).then(function () { b.textContent = 'Link kopiert ✓'; setTimeout(function () { b.textContent = 'Link zum Übertragen'; }, 2500); }, function () {});
+  });
+  $('shmine-clear').addEventListener('click', function () { if (confirm('Alle markierten Schiffe aus „Meine Schiffe“ entfernen?')) window.SC_MINE.clear(); });
+  mineState(); window.SC_MINE.sync();
   apply();
 
   /* 3D-Viewer: three.js r147 mit glTF- und Draco-Loader, erst beim ersten Öffnen geladen */
@@ -5070,7 +5190,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       '<div class="dt-hero">' + (img ? '<img src="' + esc(img) + '" alt="' + esc(s.full) + '" referrerpolicy="no-referrer">' : '') +
       '<button type="button" class="btn2 dt-close" id="shdt-close">Schließen</button></div>' +
       '<div class="dt-main">' +
-      '<div class="dt-head"><div><h2 id="shdt-title">' + esc(s.full) + '</h2><span class="mn">' + esc(s.mn) + '</span></div><div class="sh-tags">' + tags + '</div></div>' +
+      '<div class="dt-head"><div><h2 id="shdt-title">' + esc(s.full) + '</h2><span class="mn">' + esc(s.mn) + '</span></div><div class="sh-tags">' + tags + window.SC_MINE.btn(s.slug, true) + '</div></div>' +
       (s.tip || s.later ? '<p class="sh-note' + (s.tip ? '' : ' later') + '">' + esc(s.tip || s.later) + '</p>' : '') +
       '<p class="dt-profile">' + esc(profile(s, d)) + '</p>' +
       (s.base ? '<p class="small">Bild und 3D zeigen das Grundmodell ' + esc(s.base) + '.</p>' : '') +
@@ -5988,6 +6108,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       names[v.dataset.view] = name;
       if (v.dataset.view !== 'start') add('Kapitel', 60, name, txt(v.querySelector('.lede')), '', function () { go(v.dataset.view); window.scrollTo(0, 0); });
     });
+    add('Werkzeug', 55, 'Was mache ich heute?', 'Planer auf der Startseite: Vorschläge nach Zeit, Gruppe und Hangar', 'planer vorschlag idee langeweile', function () { jump(document.getElementById('plan')); });
     /* Abschnitte: Überschriften in den Kapiteln, ohne Kacheln, Schiffskarten, Bug- und Wikelo-Karten */
     Array.prototype.forEach.call(document.querySelectorAll('section.view h2, section.view h3'), function (h) {
       var v = viewOf(h);
@@ -6133,6 +6254,179 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     n.hidden = false;
     document.getElementById('patchok').addEventListener('click', function () { n.hidden = true; try { localStorage.setItem('sc-handbuch-patch', m[1]); } catch (e) {} });
   }).catch(function () {});
+})();
+</script>
+<script>
+/* ---------- Planer „Was mache ich heute?“: feste Regeln aus den Kapiteln, Hangar aus „Meine Schiffe“ ---------- */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  if (!$('plan')) return;
+  var KEY = 'sc-handbuch-plan', st = { t: 120, h: 'solo', m: 'egal', s: [] };
+  try { var sv = JSON.parse(localStorage.getItem(KEY) || '{}'); ['t', 'h', 'm', 's'].forEach(function (k) { if (sv[k] !== undefined) st[k] = sv[k]; }); } catch (e) {}
+  if (!Array.isArray(st.s)) st.s = [];
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var OPT = {
+    t: [[30, '30 Min'], [120, '1–2 Std'], [300, 'ganzer Abend']],
+    h: [['solo', 'Solo'], ['duo', 'Zu zweit'], ['gruppe', 'Gruppe']],
+    m: [['egal', 'Egal'], ['geld', 'Geld verdienen'], ['action', 'Action'], ['ruf', 'Ruf sammeln'], ['chill', 'Entspannt']],
+    s: [['start', 'Startschiff'], ['mine', 'Mining-Schiff'], ['salv', 'Salvage-Schiff'], ['cargo', 'Frachter ab 64 SCU'], ['fight', 'Kampfschiff']]
+  };
+  function chips(k, multi) {
+    var box = $('plan-' + k);
+    box.innerHTML = OPT[k].map(function (o) {
+      var on = multi ? st[k].indexOf(o[0]) !== -1 : st[k] === o[0];
+      return '<button type="button" class="chip" data-v="' + o[0] + '" aria-pressed="' + on + '">' + o[1] + '</button>';
+    }).join('');
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('.chip'); if (!b) return;
+      var v = k === 't' ? +b.dataset.v : b.dataset.v;
+      if (multi) { var i = st[k].indexOf(v); if (i === -1) st[k].push(v); else st[k].splice(i, 1); } else st[k] = v;
+      Array.prototype.forEach.call(box.children, function (c) {
+        var cv = k === 't' ? +c.dataset.v : c.dataset.v;
+        c.setAttribute('aria-pressed', multi ? st[k].indexOf(cv) !== -1 : st[k] === cv);
+      });
+      save(); draw();
+    });
+  }
+  chips('t'); chips('h'); chips('m'); chips('s', true);
+
+  /* Was der Hangar kann */
+  function caps() {
+    var M = window.SC_MINE, own = (window.SHIPS || []).filter(function (s) { return M && M.has(s.slug); });
+    var c = { own: own, ore: '', salv: '', scu: 0, cargo: '', fight: '', crew: false, roc: false };
+    if (own.length) {
+      own.forEach(function (s) {
+        var f = (s.f || []).join(' ');
+        if (s.veh) { if (s.ore) c.roc = true; return; }
+        if (s.ore && !c.ore) c.ore = s.n;
+        if (s.ore && s.cr[1] > 1) c.crew = true;
+        if (/salvage|bergung/i.test(f) && !c.salv) c.salv = s.n;
+        if (!s.ore && s.scu > c.scu) { c.scu = s.scu; c.cargo = s.n; }
+        if (s.c === 'Kampf' && !c.fight) c.fight = s.n;
+      });
+    } else {
+      var has = function (x) { return st.s.indexOf(x) !== -1; };
+      if (has('mine')) c.ore = 'deinem Mining-Schiff';
+      if (has('salv')) c.salv = 'deinem Salvage-Schiff';
+      if (has('fight')) c.fight = 'deinem Kampfschiff';
+      if (has('cargo')) { c.scu = 64; c.cargo = 'deinem Frachter'; } else if (has('start') || !st.s.length) { c.scu = 4; c.cargo = 'deinem Startschiff'; }
+    }
+    return c;
+  }
+  function stepsLeft() {
+    var boxes = document.querySelectorAll('#steps input[type=checkbox]'), done = 0;
+    Array.prototype.forEach.call(boxes, function (b) { if (b.checked) done++; });
+    return { n: boxes.length, done: done };
+  }
+  /* who: 0 = passt nicht, 3 = ideal. ty: erste Stimmung ist die Hauptsache. */
+  var ACTS = [
+    { id: 'erste', ty: ['chill'], min: 30, who: { solo: 3, duo: 1, gruppe: 0 },
+      ok: function () { var s = stepsLeft(); return s.n && s.done < s.n; }, bonus: function () { return stepsLeft().done < 4 ? 6 : 0; },
+      t: 'Erste Schritte abhaken', p: function () { var s = stepsLeft(); return 'Du hast ' + s.done + ' von ' + s.n + ' Schritten geschafft. Aufwachen, zum Schiff, erster Flug, Quantensprung, Landen, erster Auftrag: Danach sitzt das Wichtigste.'; },
+      l: [['Weiter abhaken', '#erste-schritte']] },
+    { id: 'hand', ty: ['chill', 'geld'], min: 30, who: { solo: 3, duo: 2, gruppe: 1 }, best: [30],
+      t: 'Handabbau zu Fuß', p: function () { return 'Mit Multitool und Mining-Aufsatz Edelsteine aus dem Fels holen. Kein Mining-Schiff nötig, und nichts wartet in der Raffinerie: Du verkaufst direkt.'; },
+      e: 'Kleines Geld für den Einstieg', l: [['So geht’s', '#t-mining']] },
+    { id: 'mine', ty: ['geld'], min: 30, who: { solo: 3, duo: 1, gruppe: 1 }, best: [120, 300], ship: true,
+      ok: function (c) { return !!c.ore; },
+      who2: function (c, h) { return c.crew && h !== 'solo' ? 3 : 0; },
+      t: function (c) { return 'Mining-Runde mit ' + c.ore; },
+      p: function (c, t) { return t === 30 ? 'Für eine halbe Stunde: eine Ladung abbauen und in die Raffinerie geben. Abholen und verkaufen dann beim nächsten Mal.' : 'Steine scannen, Laser im grünen Bereich halten, Ladung in die Raffinerie. Der Raffinerie-Auftrag läuft weiter, auch wenn du ausloggst.'; },
+      e: 'Ertrag hängt stark vom Erz ab', w: 'Das Erz wartet Stunden in der Raffinerie. Vor einem Patch abholen.',
+      l: [['Runde Schritt für Schritt', '#t-mining'], ['RS-Rechner und Fundorte', '#mining']] },
+    { id: 'recco', ty: ['ruf', 'geld'], min: 120, who: { solo: 3, duo: 2, gruppe: 1 }, best: [300], ship: true,
+      ok: function (c) { return !!c.ore; },
+      t: 'Ruf bei Recco Battaglia', p: function (c) { return 'Mining-Aufträge in Levski (Nyx) mit ' + c.ore + '. Nach rund 15 Aufträgen gibt es die Golem Alliance, später Prospector und MOLE.'; },
+      e: 'aUEC, Baupläne und am Ende Schiffe', l: [['Recco-Aufträge', '#recco'], ['Ruf-Rechner', '#ruf']] },
+    { id: 'salv', ty: ['geld', 'chill'], min: 30, who: { solo: 3, duo: 2, gruppe: 1 }, ship: true,
+      ok: function (c) { return !!c.salv; },
+      t: function (c) { return 'Bergungsrunde mit ' + c.salv; },
+      p: function () { return 'Auftrag holen, Hülle abkratzen, RMC ohne Raffinerie verkaufen. Nichts explodiert, und Bergungsaufträge kosten keine Gebühr.'; },
+      e: 'Geld gleich nach der Runde, ohne Wartezeit', l: [['Runde Schritt für Schritt', '#t-salvage'], ['Wo RMC am meisten bringt', '#salvage']] },
+    { id: 'haul', ty: ['geld', 'chill', 'ruf'], min: 30, who: { solo: 3, duo: 2, gruppe: 1 }, ship: true,
+      ok: function (c) { return c.scu > 0; },
+      t: 'Frachtaufträge fahren',
+      p: function (c) { return (c.scu >= 64 ? 'Mit ' + c.cargo + (c.own.length ? ' (' + c.scu + ' SCU)' : '') + ' passen auch größere Aufträge. Vorher im Frachter-Finder die Kistengröße prüfen.' : 'Mit ' + c.cargo + ' gehen die kleinen Aufträge für Trainee und Rookie. Kein eigenes Geld nötig.') + ' Bei einer Firma bleiben, dann steigt der Rang schneller.'; },
+      e: '75.000–150.000 aUEC pro Stunde mit einem Auftrag (Richtwert)', l: [['Erster Auftrag', '#t-hauling'], ['Ränge und Frachter-Finder', '#hauling']] },
+    { id: 'trade', ty: ['geld'], min: 120, who: { solo: 2, duo: 3, gruppe: 2 }, ship: true,
+      ok: function (c) { return c.scu >= 64; },
+      t: 'Handel auf eigene Rechnung', p: function (c) { return 'Ware kaufen und woanders teurer verkaufen, mit ' + c.cargo + '. Mehr Gewinn als Aufträge, aber dein eigenes Geld steckt in der Fracht.'; },
+      w: 'Bei Absturz oder Überfall ist der Einsatz weg. Nur so viel einsetzen, wie du verlieren kannst.', l: [['Handel nebenbei', '#hauling']] },
+    { id: 'bunker', ty: ['action', 'ruf', 'geld'], min: 30, who: { solo: 2, duo: 3, gruppe: 2 },
+      t: 'Bunker-Mission', p: function (c, t, h) { return 'Söldner-Auftrag auf einem Mond in Stanton: Bunker verteidigen oder räumen. Kurz' + (h === 'solo' ? ' und gut allein machbar' : ', zu zweit entspannter') + ', mit Beute von den Gegnern.'; },
+      e: 'aUEC, Ruf und Beute', w: 'Nicht auf die eigenen Wachen schießen, das gibt CrimeStat.', l: [['Ablauf und Fehler', '#bunker']] },
+    { id: 'siege', ty: ['action'], min: 120, who: { solo: 1, duo: 2, gruppe: 3 },
+      t: 'Siege of Orison', p: function () { return 'Drei Plattformen zu Fuß zurückerobern, in einer eigenen Instanz für 1 bis 4 Spieler. Nur KI-Gegner, keine Fremden. Die Gruppe vorher bilden.'; },
+      e: 'aUEC, Chance auf einen Bauplan, Beute', l: [['Ablauf und Tipps', '#siege-orison']] },
+    { id: 'exec', ty: ['action'], min: 300, who: { solo: 1, duo: 2, gruppe: 3 },
+      t: 'Executive Hangar', p: function () { return 'Sieben Platinen aus den Contested Zones in Pyro holen und damit einen Hangar öffnen. Dafür gibt es ein Schiff, das dir bleibt.'; },
+      e: 'Ein Schiff, dazu Bauteile der Klasse A', w: 'Pyro ist gesetzlos, fast immer sind andere Spieler dort.', l: [['Timer, Karten und Ablauf', '#exec-hangar']] },
+    { id: 'hathor', ty: ['action', 'ruf'], min: 120, who: { solo: 1, duo: 2, gruppe: 3 }, best: [300],
+      t: 'Hathor: Carinit für Wikelo', p: function () { return 'Laser-Plattform auf Daymar oder Aberdeen starten, Höhle freischießen, Carinit holen. 50 Carinit sind 1 Favor, damit tauscht Wikelo Schiffe und Rüstung.'; },
+      e: 'Seltene Erze und Favors', w: 'Valakkar und andere Spieler. Bekannter Bug: Der Laser öffnet die Höhle manchmal nicht.', l: [['Ablauf und alle Tausche', '#hathor']] },
+    { id: 'craft', ty: ['chill'], min: 30, who: { solo: 3, duo: 1, gruppe: 0 },
+      t: 'Crafting: Munition herstellen', p: function () { return 'Bauplan, Material, Werkbank. Verdient kein Geld, macht aber deine Ausrüstung besser. Mit Munition anfangen, die ist billig.'; },
+      l: [['Ablauf in drei Schritten', '#t-crafting'], ['Was dein Material bewirkt', '#crafting']] }
+  ];
+  var live = { bad: '', exec: null };
+  function execState() {
+    if (!live.exec) return null;
+    var RED = 7200, GREEN = 3600, CYCLE = RED + GREEN + 300, t = ((Date.now() / 1000 - live.exec) % CYCLE + CYCLE) % CYCLE;
+    var at = function (sec) { return new Date(Date.now() + sec * 1000).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }); };
+    if (t >= RED && t < RED + GREEN) return { open: true, txt: 'Executive Hangar ist gerade offen, noch bis ' + at(RED + GREEN - t) + ' Uhr.' };
+    var wait = t < RED ? RED - t : CYCLE - t + RED;
+    return { open: false, soon: wait < 2700, txt: 'Executive Hangar öffnet um ' + at(wait) + ' Uhr.' };
+  }
+  function draw() {
+    var c = caps(), M = window.SC_MINE;
+    /* Hangar-Zeile */
+    $('plan-s').hidden = c.own.length > 0;
+    $('plan-hangar').innerHTML = c.own.length
+      ? '<b>' + c.own.slice(0, 5).map(function (s) { return esc(s.n); }).join(', ') + (c.own.length > 5 ? ' und ' + (c.own.length - 5) + ' weitere' : '') + '</b> · <a href="#schiffe">ändern</a>'
+      : '<span class="small">Einmal unter <a href="#schiffe">Schiffe</a> auf „☆ Hab ich“ tippen, dann merkt sich der Planer deinen Hangar.</span>';
+    var list = [];
+    ACTS.forEach(function (a, i) {
+      if (st.t < a.min) return;
+      if (a.ok && !a.ok(c)) return;
+      var w = Math.max(a.who[st.h], a.who2 ? a.who2(c, st.h) : 0); if (!w) return;
+      var sc = w * 2;
+      var mi = a.ty.indexOf(st.m);
+      if (st.m === 'egal') sc += 2; else if (mi === 0) sc += 6; else if (mi > 0) sc += 4; else return;
+      if (a.best && a.best.indexOf(st.t) !== -1) sc += 2;
+      if (a.ship && c.own.length) sc += 2;
+      if (a.bonus) sc += a.bonus();
+      if (a.id === 'exec') { var x = execState(); if (x && (x.open || x.soon)) sc += 2; }
+      list.push([sc, i, a]);
+    });
+    list.sort(function (x, y) { return y[0] - x[0] || x[1] - y[1]; });
+    var top = list.slice(0, 3);
+    var x = execState(), lv = '';
+    if (live.bad) lv += '<span class="w">Server-Störung bei RSI' + (live.bad === true ? '' : ' (' + esc(live.bad) + ')') + '. Heute lieber kurze Runden, <a href="#news">Details</a>.</span>';
+    if (x && (x.open || x.soon) && (st.m === 'action' || st.m === 'egal')) lv += '<span class="g">' + x.txt + ' <a href="#exec-hangar">Zum Timer</a></span>';
+    $('plan-live').innerHTML = lv;
+    if (!top.length) {
+      $('plan-out').innerHTML = '<div class="plan-card"><p>Dafür habe ich keinen passenden Vorschlag. Nimm mehr Zeit, „Egal“ bei der Lust oder ergänze deinen Hangar.</p></div>';
+      return;
+    }
+    $('plan-out').innerHTML = top.map(function (r, i) {
+      var a = r[2], title = typeof a.t === 'function' ? a.t(c) : a.t;
+      return '<div class="plan-card' + (i === 0 ? ' best' : '') + '"><span class="lab">' + (i === 0 ? 'Passt am besten' : 'Auch gut') + '</span><h4>' + esc(title) + '</h4>' +
+        '<p>' + esc(a.p(c, st.t, st.h)) + '</p>' + (a.e ? '<span class="earn">' + esc(a.e) + '</span>' : '') + (a.w ? '<span class="warn">' + esc(a.w) + '</span>' : '') +
+        '<div class="plan-links">' + a.l.map(function (l) { return '<a href="' + l[1] + '">' + esc(l[0]) + ' →</a>'; }).join('') + '</div></div>';
+    }).join('');
+  }
+  document.addEventListener('minechange', draw);
+  document.addEventListener('viewchange', function (e) { if (e.detail === 'start') draw(); });
+  fetch('news.json?t=' + Math.floor(Date.now() / 6e4)).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
+    if (d.exec && d.exec.start) live.exec = d.exec.start;
+    if (d.status && d.status.summary && d.status.summary !== 'operational') {
+      var bad = (d.status.systems || []).filter(function (s) { return s.status !== 'operational'; }).map(function (s) { return s.name; }).join(', ');
+      live.bad = bad || true;
+    }
+    draw();
+  }).catch(function () {});
+  draw();
 })();
 </script>
 </body>
