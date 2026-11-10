@@ -679,6 +679,10 @@ a.chip { text-decoration: none; }
 .wk-fav b { font-size: 16px; color: var(--accent); }
 .wk-b ul { margin: 0; padding-left: 18px; font-size: 13.5px; }
 .wk-b .wk-note { font-size: 12.5px; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 8px; }
+.ruf-ladder { display: flex; flex-wrap: wrap; gap: 4px; }
+.ruf-ladder span { font-family: var(--f-mono); font-size: 11.5px; padding: 2px 8px; border-radius: 10px; border: 1px solid var(--line); color: var(--muted); }
+.ruf-ladder span.on { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+.ruf-ladder span.next { border-color: var(--accent); color: var(--accent); }
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 48px; }
 .empty { color: var(--muted); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -729,6 +733,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <a href="#salvage" role="listitem">Salvage</a>
       <a href="#hauling" role="listitem">Hauling</a>
       <a href="#crafting" role="listitem">Crafting</a>
+      <a href="#ruf" role="listitem">Ruf</a>
     </div>
     <div class="subnav-in" role="list" aria-label="Einsätze" data-group="einsaetze">
       <a href="#einsaetze" role="listitem">Übersicht</a>
@@ -2709,6 +2714,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <p>Baupläne, Material und Qualität: was du bauen kannst und was dein Material bewirkt.</p>
       <span class="go">Bauen →</span>
     </a>
+    <a class="chapter" href="#ruf">
+      <span class="no">FÜR ALLE BERUFE</span>
+      <h3>Ruf</h3>
+      <p>Bei wem sich Ruf lohnt, was er bringt und wie du ihn am schnellsten sammelst. Mit Ruf-Rechner.</p>
+      <span class="go">Ruf sammeln →</span>
+    </a>
   </div>
 
   <section>
@@ -3125,6 +3136,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 
   <section>
     <h2>Ränge: was du wann fahren darfst</h2>
+    <p class="small" style="font-size:14px;margin-top:0">Wie Ruf allgemein funktioniert und bei wem er sich sonst lohnt, steht im Kapitel <a href="#ruf">Ruf</a>.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Rang</th><th>Auftragsgrößen</th><th>Strecken</th><th>Was neu dazukommt</th></tr></thead>
@@ -3335,6 +3347,83 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     <h2>Quellen</h2>
     <div class="hint" style="margin-bottom:12px">Passt Hauling zu dir? Der Vergleich mit Mining, Salvage und Crafting steht in der <a href="#berufe">Berufe-Übersicht</a>.</div>
     <p class="small">Quellen: <a href="https://starcitizen.tools/Hauling" target="_blank" rel="noopener">Star Citizen Wiki: Hauling</a> und <a href="https://starcitizen.tools/Covalex_Shipping" target="_blank" rel="noopener">Covalex Shipping</a> (Ränge, Größen), <a href="https://expcarry.com/star-citizen-best-trade-routes" target="_blank" rel="noopener">expcarry</a> (Löhne und Handel 4.10.2), <a href="https://timesaver.gg/blog/star-citizen-hauling-guide-alpha-4-10" target="_blank" rel="noopener">Timesaver</a> (4.10, Hull C), <a href="https://bustedloops.com/workarounds/hull-c-automated-loading" target="_blank" rel="noopener">Busted Loops</a> (Hull-C-Laden), <a href="https://starcitizen.tools/Update:Star_Citizen_Alpha_4.10.2" target="_blank" rel="noopener">Patch 4.10.2</a>. Schiffsdaten: Star Citizen Wiki API.</p>
+  </section>
+</section>
+
+<!-- ============ RUF ============ -->
+<section class="view" id="view-ruf" data-view="ruf" hidden>
+  <div class="head">
+    <div class="stamp"><span>Nachschlagen</span><span>Stand Alpha 4.10.2</span><span>Richtwerte</span></div>
+    <h1>Ruf</h1>
+    <p class="lede">Jeder Auftraggeber merkt sich, wie gut du für ihn arbeitest. Mehr Ruf <i class="gb">Reputation</i> heißt bessere Aufträge, Baupläne und bei manchen sogar Schiffe. Wer früh weiß, bei wem er sammelt, spart sich viele Stunden.</p>
+    <p class="small">Deinen Ruf siehst du im mobiGlas unter Ruf <i class="gb">Reputation</i>. Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
+  </div>
+
+  <section>
+    <h2>Warum Ruf sammeln?</h2>
+    <div class="facts">
+      <div class="fact"><strong>Bessere Aufträge</strong><p>Jeder Rang schaltet größere und besser bezahlte Aufträge frei. Beim Hauling gibt es die großen Frachtaufträge erst ab „Experienced“.</p></div>
+      <div class="fact"><strong>Baupläne</strong><p>Fürs <a href="#crafting">Crafting</a> brauchst du Baupläne. Die meisten gibt es nur als Auftragsbelohnung, die guten erst ab einem bestimmten Rang.</p></div>
+      <div class="fact"><strong>Schiffe</strong><p>Recco Battaglia gibt Golem, Prospector und MOLE. Bei Wikelo sind manche Tausche erst mit Ruf zu haben.</p></div>
+      <div class="fact"><strong>Lizenzen</strong><p>Die Kopfgeldjäger-Gilde vergibt Lizenzen, ohne die du keine höheren Kopfgelder bekommst.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Welcher Ruf für mich?</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Spielstil</th><th>Bei wem sammeln</th><th>Was es bringt</th></tr></thead>
+        <tbody>
+          <tr class="rec"><th>Mining</th><td><b>Recco Battaglia</b>, Levski (Nyx)</td><td>Gratis <a class="ship-a" href="#s-drak-golem">Golem</a>, <a class="ship-a" href="#s-misc-prospector">Prospector</a> und <a class="ship-a" href="#s-argo-mole">MOLE</a>, Baupläne für Mining-Module und Erzbehälter. <a href="#recco">Zur Anleitung</a></td></tr>
+          <tr><th>Salvage</th><td><b>Adagio Holdings</b></td><td>Bessere Bergungsaufträge, Baupläne für Bergungswerkzeug aus bestimmten Material-Aufträgen</td></tr>
+          <tr><th>Hauling</th><td><b>Covalex</b>, Red Wind oder Ling Family</td><td>Größere Aufträge und mehr Lohn. <a href="#hauling">Ränge im Hauling-Kapitel</a></td></tr>
+          <tr><th>Söldner</th><td><b>InterSec</b> (Nyx), Foxwell oder Crusader Security</td><td>InterSec ab Sr. Contractor (5.800): „Tactical Strike Group“, je Auftrag 300 Ruf und zwei Baupläne</td></tr>
+          <tr><th>Kopfgeld</th><td><b>Kopfgeldjäger-Gilde</b> <i class="gb">Bounty Hunters Guild</i></td><td>Lizenzen von „Tracker Training Permit“ bis „Master Tracker License“, jede schaltet schwerere Ziele frei</td></tr>
+          <tr><th>Sammeln &amp; Tauschen</th><td><b>Wikelo</b></td><td>Ab 340 „Very Good Customer“, ab 999 „Very Best Customer“ mit Sondertauschen wie Wolf und Idris. <a href="#hathor">Zu Wikelo</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hint" style="margin-top:12px"><b>Für den Einstieg mit Golem und Salvation:</b> Recco Battaglia. Du minst sowieso, und am Ende steht eine Prospector, die im Laden rund 2,8 Mio. aUEC kostet. Wer lieber birgt, sammelt bei Adagio.</div>
+  </section>
+
+  <section>
+    <h2>Wie weit bin ich?</h2>
+    <div class="tool">
+      <div class="tool-head"><span class="tool-tag">Werkzeug</span><h3>Ruf-Rechner</h3></div>
+      <p class="tool-lede">Auftraggeber wählen, Ruf aus dem mobiGlas eintragen. Du siehst deinen Rang, die nächste Stufe und wie viele Aufträge ungefähr noch fehlen.</p>
+      <div class="chips" id="rufwho" role="group" aria-label="Auftraggeber"></div>
+      <div class="search"><input id="rufxp" class="tool-input" type="text" inputmode="numeric" placeholder="Mein Ruf, z. B. 3.000" aria-label="Mein Ruf" autocomplete="off"></div>
+      <div class="recco-bar" aria-hidden="true"><i id="ruffill"></i></div>
+      <div id="rufout" class="small">Noch kein Ruf eingegeben.</div>
+      <div id="rufladder" class="ruf-ladder"></div>
+    </div>
+    <p class="small" style="margin-top:8px">Schwellen laut Community-Guides für 4.10.2, nicht von CIG. Für Covalex und die Kopfgeldjäger-Gilde sind keine Zahlen bekannt, nur die Ränge.</p>
+  </section>
+
+  <section>
+    <h2>So sammelst du am schnellsten</h2>
+    <ol class="xh-steps">
+      <li><b>Eine Firma pro Spielstil.</b> Ruf zählt nur bei der Firma, die den Auftrag vergibt. Covalex, Red Wind und Ling zählen getrennt, auch wenn die Aufträge gleich aussehen.</li>
+      <li><b>Einstieg und Story sofort erledigen.</b> Viele Ränge brauchen außer dem Ruf einen bestimmten Auftrag oder eine Prüfung. Ohne den geht es nicht weiter, egal wie viel Ruf du hast.</li>
+      <li><b>Verlässlich vor viel.</b> Nimm die höchste Stufe, die du sicher schaffst. Ein gescheiterter Auftrag kostet mehr Zeit und Ruf, als ein größerer bringt.</li>
+      <li><b>Kurze Wege.</b> Bleib in der Gegend deines Auftraggebers. Anflug ist verlorene Zeit.</li>
+      <li><b>Beute liegen lassen,</b> wenn es dir um Ruf pro Stunde geht.</li>
+      <li><b>Aufhören, wenn das Ziel erreicht ist.</b> Du musst nicht bis zum letzten Rang.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Fallen</h2>
+    <div class="facts">
+      <div class="fact"><strong>Scheitern kostet Ruf</strong><p>Abbrechen, Scheitern oder Ablaufenlassen kann Ruf kosten. Zu viele Fehlschläge, und der Auftraggeber gibt dir 24 Stunden lang nichts mehr.</p></div>
+      <div class="fact"><strong>Falscher Auftraggeber</strong><p>Ähnliche Aufträge kommen von verschiedenen Firmen. Vor dem Annehmen prüfen, wer ihn vergibt.</p></div>
+      <div class="fact"><strong>Verbuggte Aufträge</strong><p>„Repel Raid on Orison“ meiden, Scheitern kostet Ruf bei Crusader Security. Mehr unter <a href="#bugs">Bugs</a>.</p></div>
+      <div class="fact"><strong>Character Repair</strong><p>Setzt Ruf weder zurück noch stellt es ihn wieder her.</p></div>
+      <div class="fact"><strong>Events zählen extra</strong><p>Event-Punkte wie im Discovery Month sind kein dauerhafter Ruf.</p></div>
+      <div class="fact"><strong>Feinde</strong><p>Ruf bei einer Seite kann dich bei der Gegenseite unbeliebt machen. Wer für Gesetzlose arbeitet, wird von Sicherheitskräften schief angesehen.</p></div>
+    </div>
+    <p class="small" style="margin-top:12px">Quellen: <a href="https://expcarry.com/star-citizen-reputation-guide" target="_blank" rel="noopener">expcarry: Reputation Guide 4.10.2</a> (Stand 11. Oktober 2026), <a href="https://starcitizen.tools/Reputation" target="_blank" rel="noopener">Star Citizen Wiki: Reputation</a>, <a href="https://starcitizen.tools/Recco_Battaglia" target="_blank" rel="noopener">Wiki: Recco Battaglia</a>, <a href="https://starcitizen.tools/Wikelo" target="_blank" rel="noopener">Wiki: Wikelo</a>. Baupläne nach Ruf findet der <a href="https://citizen-starter-guide.com/" target="_blank" rel="noopener">Blueprint Finder</a>.</p>
   </section>
 </section>
 
@@ -3711,7 +3800,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       var cr = cur.getBoundingClientRect(), br = tabsBox.getBoundingClientRect();
       if (cr.left < br.left) tabsBox.scrollLeft += cr.left - br.left - 8; else if (cr.right > br.right) tabsBox.scrollLeft += cr.right - br.right + 16;
     }
-    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', recco: 'Recco Battaglia · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', berufe: 'Berufe · SC Handbuch', bugs: 'Bugs & Workarounds · SC Handbuch', 't-hauling': 'Hauling lernen · SC Handbuch', ueberleben: 'Überleben · SC Handbuch', crafting: 'Crafting · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
+    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', recco: 'Recco Battaglia · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', berufe: 'Berufe · SC Handbuch', bugs: 'Bugs & Workarounds · SC Handbuch', 't-hauling': 'Hauling lernen · SC Handbuch', ueberleben: 'Überleben · SC Handbuch', crafting: 'Crafting · SC Handbuch', ruf: 'Ruf · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
     document.title = titles[h];
     Array.prototype.forEach.call(sub.querySelectorAll('a'), function (a) {
       if (a.getAttribute('href') === '#' + h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
@@ -5716,6 +5805,46 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     });
   });
   apply('');
+})();
+</script>
+<script>
+/* ---------- Ruf-Rechner: bekannte Ruf-Leitern (Community-Guides 4.10.2) ---------- */
+(function () {
+  var who = document.getElementById('rufwho');
+  if (!who) return;
+  var C = [[0, 'Neutral'], [800, 'Jr. Contractor'], [2200, 'Contractor'], [5800, 'Sr. Contractor', 'bei InterSec: Tactical Strike Group'], [15000, 'Veteran Contractor'], [38000, 'Head Contractor'], [95250, 'Elite Contractor']];
+  var L = {
+    recco: ['Recco Battaglia', [[0, 'Prospective Associate'], [2400, 'Associate', 'Story 2'], [6000, 'Trusted Associate', 'Story 3, Erzbehälter-Baupläne'], [10800, 'Prestige 1', 'Golem Alliance'], [30000, 'Prestige 2', 'Prospector Alliance'], [69600, 'Prestige 3', 'MOLE Alliance']]],
+    intersec: ['InterSec', C], foxwell: ['Foxwell', C], adagio: ['Adagio', C],
+    wikelo: ['Wikelo', [[0, 'New Customer'], [340, 'Very Good Customer', 'z. B. Wolf für 5 Favors'], [999, 'Very Best Customer', 'z. B. Idris-P']]]
+  };
+  var cur = 'recco', inp = document.getElementById('rufxp'), out = document.getElementById('rufout'), fill = document.getElementById('ruffill'), lad = document.getElementById('rufladder');
+  var fmt = function (n) { return n.toLocaleString('de-DE'); };
+  var n = function (left, per) { var k = Math.ceil(left / per); return k + (k === 1 ? ' Auftrag' : ' Aufträge'); };
+  Object.keys(L).forEach(function (k) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = L[k][0];
+    b.setAttribute('aria-pressed', k === cur ? 'true' : 'false');
+    b.addEventListener('click', function () {
+      cur = k;
+      Array.prototype.forEach.call(who.children, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      draw();
+    });
+    who.appendChild(b);
+  });
+  function draw() {
+    var R = L[cur][1], t = inp.value.replace(/[^0-9]/g, ''), r = t ? +t : -1, rank = null, next = null;
+    R.forEach(function (k) { if (r >= k[0]) rank = k; else if (!next) next = k; });
+    lad.innerHTML = R.map(function (k) { return '<span class="' + (r >= k[0] ? 'on' : k === next ? 'next' : '') + '">' + fmt(k[0]) + ' · ' + k[1] + '</span>'; }).join('');
+    fill.style.width = t ? Math.min(100, r / R[R.length - 1][0] * 100) + '%' : '0';
+    if (!t) { out.textContent = 'Noch kein Ruf eingegeben.'; return; }
+    if (!next) { out.innerHTML = '<b>' + rank[1] + '</b>: höchster Rang erreicht.'; return; }
+    var left = next[0] - r;
+    out.innerHTML = 'Du bist <b>' + rank[1] + '</b> bei ' + L[cur][0] + '. Bis <b>' + next[1] + '</b>' + (next[2] ? ' (' + next[2] + ')' : '') +
+      ' fehlen noch <b>' + fmt(left) + ' Ruf</b>' + (cur === 'wikelo' ? '. Ruf gibt es bei Wikelo für erledigte Tausch-Aufträge.'
+        : ': etwa ' + n(left, 800) + ' à 800, ' + n(left, 300) + ' à 300 oder ' + n(left, 200) + ' à 200.');
+  }
+  inp.addEventListener('input', draw);
+  draw();
 })();
 </script>
 </body>
