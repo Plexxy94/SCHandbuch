@@ -750,6 +750,8 @@ a.chip { text-decoration: none; }
 .plan-q { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 8px 10px; align-items: start; }
 .plan-q > span { font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 7px; }
 .plan-hangar { font-size: 14px; padding-top: 5px; }
+.plan-rent { margin-top: 8px; font-size: 14px; font-family: var(--f-body); font-weight: 500; flex-wrap: wrap; }
+.plan-card .rent { font-size: 13px; color: var(--accent); }
 .plan-hangar b { font-family: var(--f-display); }
 .plan-live { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
 .plan-live:empty { display: none; }
@@ -875,7 +877,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     <div class="plan-q"><span>Zeit</span><div class="chips" id="plan-t" role="group" aria-label="Wie viel Zeit hast du?"></div>
       <span>Wie</span><div class="chips" id="plan-h" role="group" aria-label="Allein oder mit anderen?"></div>
       <span>Lust auf</span><div class="chips" id="plan-m" role="group" aria-label="Worauf hast du Lust?"></div>
-      <span>Hangar</span><div><div class="chips" id="plan-s" role="group" aria-label="Welche Schiffe hast du?"></div><div class="plan-hangar" id="plan-hangar"></div></div>
+      <span>Hangar</span><div><div class="chips" id="plan-s" role="group" aria-label="Welche Schiffe hast du?"></div><div class="plan-hangar" id="plan-hangar"></div><label class="check plan-rent"><input type="checkbox" id="plan-r"> Mieten ist okay <span class="small">(schlägt auch Mietschiffe vor)</span></label></div>
     </div>
     <div class="plan-live" id="plan-live"></div>
     <div class="plan-out" id="plan-out"></div>
@@ -6261,8 +6263,8 @@ window.SC_MINE = (function () {
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   if (!$('plan')) return;
-  var KEY = 'sc-handbuch-plan', st = { t: 120, h: 'solo', m: 'egal', s: [] };
-  try { var sv = JSON.parse(localStorage.getItem(KEY) || '{}'); ['t', 'h', 'm', 's'].forEach(function (k) { if (sv[k] !== undefined) st[k] = sv[k]; }); } catch (e) {}
+  var KEY = 'sc-handbuch-plan', st = { t: 120, h: 'solo', m: 'egal', s: [], r: false };
+  try { var sv = JSON.parse(localStorage.getItem(KEY) || '{}'); ['t', 'h', 'm', 's', 'r'].forEach(function (k) { if (sv[k] !== undefined) st[k] = sv[k]; }); } catch (e) {}
   if (!Array.isArray(st.s)) st.s = [];
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -6290,6 +6292,8 @@ window.SC_MINE = (function () {
     });
   }
   chips('t'); chips('h'); chips('m'); chips('s', true);
+  $('plan-r').checked = !!st.r;
+  $('plan-r').addEventListener('change', function () { st.r = this.checked; save(); draw(); });
 
   /* Was der Hangar kann */
   function caps() {
@@ -6312,6 +6316,19 @@ window.SC_MINE = (function () {
       if (has('fight')) c.fight = 'deinem Kampfschiff';
       if (has('cargo')) { c.scu = 64; c.cargo = 'deinem Frachter'; } else if (has('start') || !st.s.length) { c.scu = 4; c.cargo = 'deinem Startschiff'; }
     }
+    /* Mieten: füllt nur Lücken. Bevorzugt die Schiffe aus den Tutorials, sonst das günstigste mietbare. */
+    c.rent = {};
+    if (st.r) {
+      var pick = function (slug, test) {
+        var all = (window.SHIPS || []).filter(function (s) { return s.r && !s.veh && test(s); });
+        var pref = all.filter(function (s) { return s.slug === slug; })[0];
+        return pref || all.sort(function (a, b) { return a.r[0] - b.r[0]; })[0];
+      };
+      var x;
+      if (!c.ore && (x = pick('drak-golem', function (s) { return s.ore > 0; }))) { c.ore = x.n; c.rent.ore = x; }
+      if (!c.salv && (x = pick('rsi-salvation', function (s) { return /salvage|bergung/i.test((s.f || []).join(' ')); }))) { c.salv = x.n; c.rent.salv = x; }
+      if (c.scu < 64 && (x = pick('misc-hull-a', function (s) { return !s.ore && s.scu >= 64; }))) { c.rent.cargo = x; c.rentScu = x.scu; }
+    }
     return c;
   }
   function stepsLeft() {
@@ -6328,18 +6345,18 @@ window.SC_MINE = (function () {
     { id: 'hand', ty: ['chill', 'geld'], min: 30, who: { solo: 3, duo: 2, gruppe: 1 }, best: [30],
       t: 'Handabbau zu Fuß', p: function () { return 'Mit Multitool und Mining-Aufsatz Edelsteine aus dem Fels holen. Kein Mining-Schiff nötig, und nichts wartet in der Raffinerie: Du verkaufst direkt.'; },
       e: 'Kleines Geld für den Einstieg', l: [['So geht’s', '#t-mining']] },
-    { id: 'mine', ty: ['geld'], min: 30, who: { solo: 3, duo: 1, gruppe: 1 }, best: [120, 300], ship: true,
+    { id: 'mine', cap: 'ore', ty: ['geld'], min: 30, who: { solo: 3, duo: 1, gruppe: 1 }, best: [120, 300], ship: true,
       ok: function (c) { return !!c.ore; },
       who2: function (c, h) { return c.crew && h !== 'solo' ? 3 : 0; },
       t: function (c) { return 'Mining-Runde mit ' + c.ore; },
       p: function (c, t) { return t === 30 ? 'Für eine halbe Stunde: eine Ladung abbauen und in die Raffinerie geben. Abholen und verkaufen dann beim nächsten Mal.' : 'Steine scannen, Laser im grünen Bereich halten, Ladung in die Raffinerie. Der Raffinerie-Auftrag läuft weiter, auch wenn du ausloggst.'; },
       e: 'Ertrag hängt stark vom Erz ab', w: 'Das Erz wartet Stunden in der Raffinerie. Vor einem Patch abholen.',
       l: [['Runde Schritt für Schritt', '#t-mining'], ['RS-Rechner und Fundorte', '#mining']] },
-    { id: 'recco', ty: ['ruf', 'geld'], min: 120, who: { solo: 3, duo: 2, gruppe: 1 }, best: [300], ship: true,
+    { id: 'recco', cap: 'ore', ty: ['ruf', 'geld'], min: 120, who: { solo: 3, duo: 2, gruppe: 1 }, best: [300], ship: true,
       ok: function (c) { return !!c.ore; },
       t: 'Ruf bei Recco Battaglia', p: function (c) { return 'Mining-Aufträge in Levski (Nyx) mit ' + c.ore + '. Nach rund 15 Aufträgen gibt es die Golem Alliance, später Prospector und MOLE.'; },
       e: 'aUEC, Baupläne und am Ende Schiffe', l: [['Recco-Aufträge', '#recco'], ['Ruf-Rechner', '#ruf']] },
-    { id: 'salv', ty: ['geld', 'chill'], min: 30, who: { solo: 3, duo: 2, gruppe: 1 }, ship: true,
+    { id: 'salv', cap: 'salv', ty: ['geld', 'chill'], min: 30, who: { solo: 3, duo: 2, gruppe: 1 }, ship: true,
       ok: function (c) { return !!c.salv; },
       t: function (c) { return 'Bergungsrunde mit ' + c.salv; },
       p: function () { return 'Auftrag holen, Hülle abkratzen, RMC ohne Raffinerie verkaufen. Nichts explodiert, und Bergungsaufträge kosten keine Gebühr.'; },
@@ -6349,9 +6366,9 @@ window.SC_MINE = (function () {
       t: 'Frachtaufträge fahren',
       p: function (c) { return (c.scu >= 64 ? 'Mit ' + c.cargo + (c.own.length ? ' (' + c.scu + ' SCU)' : '') + ' passen auch größere Aufträge. Vorher im Frachter-Finder die Kistengröße prüfen.' : 'Mit ' + c.cargo + ' gehen die kleinen Aufträge für Trainee und Rookie. Kein eigenes Geld nötig.') + ' Bei einer Firma bleiben, dann steigt der Rang schneller.'; },
       e: '75.000–150.000 aUEC pro Stunde mit einem Auftrag (Richtwert)', l: [['Erster Auftrag', '#t-hauling'], ['Ränge und Frachter-Finder', '#hauling']] },
-    { id: 'trade', ty: ['geld'], min: 120, who: { solo: 2, duo: 3, gruppe: 2 }, ship: true,
-      ok: function (c) { return c.scu >= 64; },
-      t: 'Handel auf eigene Rechnung', p: function (c) { return 'Ware kaufen und woanders teurer verkaufen, mit ' + c.cargo + '. Mehr Gewinn als Aufträge, aber dein eigenes Geld steckt in der Fracht.'; },
+    { id: 'trade', cap: 'cargo', ty: ['geld'], min: 120, who: { solo: 2, duo: 3, gruppe: 2 }, ship: true,
+      ok: function (c) { return c.scu >= 64 || !!c.rent.cargo; },
+      t: 'Handel auf eigene Rechnung', p: function (c) { return 'Ware kaufen und woanders teurer verkaufen, mit ' + (c.scu >= 64 ? c.cargo : c.rent.cargo.n) + '. Mehr Gewinn als Aufträge, aber dein eigenes Geld steckt in der Fracht.'; },
       w: 'Bei Absturz oder Überfall ist der Einsatz weg. Nur so viel einsetzen, wie du verlieren kannst.', l: [['Handel nebenbei', '#hauling']] },
     { id: 'bunker', ty: ['action', 'ruf', 'geld'], min: 30, who: { solo: 2, duo: 3, gruppe: 2 },
       t: 'Bunker-Mission', p: function (c, t, h) { return 'Söldner-Auftrag auf einem Mond in Stanton: Bunker verteidigen oder räumen. Kurz' + (h === 'solo' ? ' und gut allein machbar' : ', zu zweit entspannter') + ', mit Beute von den Gegnern.'; },
@@ -6394,10 +6411,11 @@ window.SC_MINE = (function () {
       var mi = a.ty.indexOf(st.m);
       if (st.m === 'egal') sc += 2; else if (mi === 0) sc += 6; else if (mi > 0) sc += 4; else return;
       if (a.best && a.best.indexOf(st.t) !== -1) sc += 2;
-      if (a.ship && c.own.length) sc += 2;
+      var rented = a.cap && c.rent[a.cap];
+      if (rented) sc -= st.t === 30 ? 5 : 1; else if (a.ship && c.own.length) sc += 2;
       if (a.bonus) sc += a.bonus();
       if (a.id === 'exec') { var x = execState(); if (x && (x.open || x.soon)) sc += 2; }
-      list.push([sc, i, a]);
+      list.push([sc, i, a, rented]);
     });
     list.sort(function (x, y) { return y[0] - x[0] || x[1] - y[1]; });
     var top = list.slice(0, 3);
@@ -6412,7 +6430,7 @@ window.SC_MINE = (function () {
     $('plan-out').innerHTML = top.map(function (r, i) {
       var a = r[2], title = typeof a.t === 'function' ? a.t(c) : a.t;
       return '<div class="plan-card' + (i === 0 ? ' best' : '') + '"><span class="lab">' + (i === 0 ? 'Passt am besten' : 'Auch gut') + '</span><h4>' + esc(title) + '</h4>' +
-        '<p>' + esc(a.p(c, st.t, st.h)) + '</p>' + (a.e ? '<span class="earn">' + esc(a.e) + '</span>' : '') + (a.w ? '<span class="warn">' + esc(a.w) + '</span>' : '') +
+        '<p>' + esc(a.p(c, st.t, st.h)) + '</p>' + (r[3] ? '<span class="rent">Mieten: <a href="#s-' + r[3].slug + '">' + esc(r[3].n) + '</a> ab ' + r[3].r[0].toLocaleString('de-DE') + ' aUEC pro Tag, ' + esc(r[3].r[1].split(' - ').pop()) + '. Die Miete muss die Runde erst wieder einspielen.</span>' : '') + (a.e ? '<span class="earn">' + esc(a.e) + '</span>' : '') + (a.w ? '<span class="warn">' + esc(a.w) + '</span>' : '') +
         '<div class="plan-links">' + a.l.map(function (l) { return '<a href="' + l[1] + '">' + esc(l[0]) + ' →</a>'; }).join('') + '</div></div>';
     }).join('');
   }
