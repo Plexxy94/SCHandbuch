@@ -663,6 +663,9 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 .kekse { margin-top: 14px; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 8px; }
 .kekse strong { font-family: var(--f-display); font-size: 15px; color: var(--ink); }
 .kekse p { margin: 4px 0 0; }
+.recco-bar { height: 8px; border-radius: 4px; background: var(--key-bg); overflow: hidden; }
+a.chip { text-decoration: none; }
+.recco-bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 48px; }
 .empty { color: var(--muted); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -719,6 +722,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <a href="#exec-hangar" role="listitem">Executive Hangar</a>
       <a href="#siege-orison" role="listitem">Siege of Orison</a>
       <a href="#hathor" role="listitem">Hathor &amp; Wikelo</a>
+      <a href="#recco" role="listitem">Recco<span class="sub-long"> Battaglia</span></a>
       <a href="#bunker" role="listitem">Bunker</a>
     </div>
   </div>
@@ -1934,6 +1938,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <p>Laser-Plattformen wieder in Gang bringen, eine Höhle mit Carinit freischießen und bei Wikelo gegen Schiffe tauschen.</p>
       <span class="go">Zur Anleitung →</span>
     </a>
+    <a class="chapter" href="#recco">
+      <span class="no">NYX · LEVSKI · ALLEIN MACHBAR</span>
+      <h3>Recco Battaglia</h3>
+      <p>Mining-Aufträge in Levski: Ruf sammeln und Golem, Prospector und MOLE als Alliance-Version gratis bekommen. Mit Ruf-Rechner.</p>
+      <span class="go">Zur Anleitung →</span>
+    </a>
     <a class="chapter" href="#bunker">
       <span class="no">EINSTIEG · ALLEIN MACHBAR</span>
       <h3>Bunker-Missionen</h3>
@@ -1941,6 +1951,116 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <span class="go">Zur Anleitung →</span>
     </a>
   </div>
+</section>
+
+<!-- ============ EINSATZ: RECCO BATTAGLIA ============ -->
+<section class="view" id="view-recco" data-view="recco" hidden>
+  <div class="head">
+    <div class="stamp"><span>Einsatz</span><span>Nyx · Levski</span><span>allein machbar</span></div>
+    <h1>Recco Battaglia</h1>
+    <p class="lede">Recco Battaglia vergibt in Levski Mining-Aufträge für die People's Alliance. Wer bei ihr genug Ruf sammelt, bekommt Sonderaufträge, die eine Golem, eine Prospector und am Ende eine MOLE einbringen, jeweils als „Alliance“-Version mit eigener Lackierung.</p>
+    <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
+  </div>
+
+  <section>
+    <h2>Kurz erklärt</h2>
+    <div class="facts">
+      <div class="fact"><strong>Wo</strong><p>Levski auf dem Asteroiden Delamar im Nyx-System. Recco steht seit 4.10 persönlich dort und gibt die Aufträge von Angesicht zu Angesicht.</p></div>
+      <div class="fact"><strong>Was du tust</strong><p>Erze scannen und abbauen, Bergbauschiffe beschützen, Blackboxen bergen. Alles allein machbar.</p></div>
+      <div class="fact"><strong>Belohnung</strong><p>aUEC, Baupläne für Mining-Module und Erzbehälter und ab Prestige 1 die Alliance-Schiffe.</p></div>
+      <div class="fact"><strong>Aufwand</strong><p>Golem nach rund 15 Aufträgen, Prospector nach 40 bis 100, MOLE deutlich später. Ein langer Weg, der sich nebenbei gut fahren lässt.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ränge und Belohnungen</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Rang</th><th class="num">Ruf</th><th>Neu dazu</th></tr></thead>
+        <tbody>
+          <tr><th>Prospective Associate</th><td class="num">0</td><td>Story 1 „Welcome to the System“, erste Aufträge. Belohnung: Bauplan Clearcut-Modul.</td></tr>
+          <tr><th>Associate</th><td class="num">2.400</td><td>Story 2 „Emergency: Blinding Hope in Trouble“. Belohnung: Baupläne Deluge- und Overrun-Modul.</td></tr>
+          <tr><th>Trusted Associate</th><td class="num">6.000</td><td>Story 3 „Idea for Isaac“. Belohnung: Baupläne für die Erzbehälter GOLEM MC-4 und MISC Enhanced Ore Pod.</td></tr>
+          <tr><th>Prestige 1</th><td class="num">10.800</td><td>Auftrag „Extra Special Job“: <a class="ship-a" href="#s-drak-golem">Golem</a> Alliance <span class="pill later">siehe Hinweis</span></td></tr>
+          <tr class="rec"><th>Prestige 2</th><td class="num">30.000</td><td>Auftrag „Scan with a Prospector Payout“: <a class="ship-a" href="#s-misc-prospector">Prospector</a> Alliance</td></tr>
+          <tr><th>Prestige 3</th><td class="num">69.600</td><td>Auftrag „Mining and MOLE“: <a class="ship-a" href="#s-argo-mole">MOLE</a> Alliance, für 2–4 Spieler</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:8px"><b>Hinweis Golem:</b> Das Star Citizen Wiki und expcarry nennen bei Prestige 1 die Golem Alliance, scminer.rocks dort nur einen Auftrag über 25.000 aUEC. Bei Prospector und MOLE sind sich alle drei Quellen einig. Die Schwellen stammen aus Community-Guides, nicht von CIG.</p>
+
+    <div class="tool" style="margin-top:14px">
+      <div class="tool-head"><span class="tool-tag">Werkzeug</span><h3>Wie weit bin ich?</h3></div>
+      <p class="tool-lede">Deinen Ruf bei Recco siehst du im mobiGlas unter Ruf <i class="gb">Reputation</i>. Trag ihn hier ein.</p>
+      <div class="search"><input id="recco-rep" class="tool-input" type="text" inputmode="numeric" placeholder="Mein Ruf, z. B. 4.200" aria-label="Mein Ruf bei Recco" autocomplete="off"></div>
+      <div class="recco-bar" aria-hidden="true"><i id="recco-fill"></i></div>
+      <div id="recco-out" class="small">Noch kein Ruf eingegeben.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ablauf Schritt für Schritt</h2>
+    <ol class="xh-steps">
+      <li><b>Nach Levski:</b> Laut Wiki gibt es seit 4.9 einen Sprungpunkt direkt von Stanton nach Nyx, sonst geht es über Pyro. Vor dem Sprung voll tanken. Levski liegt im Glaciem Ring auf dem Asteroiden Delamar.</li>
+      <li><b>Recco finden:</b> Sie steht in ihrer Werkstatt in Levski. Ansprechen und „Welcome to the System“ annehmen. Das gibt den ersten Bauplan, rund 56.000 aUEC und 800 Ruf.</li>
+      <li><b>Bis Associate (2.400):</b> drei, vier Einstiegsaufträge, etwa „Minor Mining Job“. Die bringen je um 40.000 aUEC.</li>
+      <li><b>Story 2:</b> „Emergency: Blinding Hope in Trouble“. Ein Bergbauschiff gegen Piraten der Moraine verteidigen. Ein bewaffnetes Schiff oder ein Mitspieler hilft.</li>
+      <li><b>Bis Trusted Associate (6.000)</b> weitere Aufträge, dann Story 3 „Idea for Isaac“. Sie erscheint erst, wenn Story 2 abgeschlossen ist <b>und</b> der Ruf reicht.</li>
+      <li><b>Ruf sammeln:</b> wiederholbare Aufträge fahren, bis die nächste Prestige-Stufe erreicht ist.</li>
+      <li><b>Prestige-Auftrag:</b> Er läuft nur einmal und verlangt seltene Nyx-Rohstoffe. Vorher lesen, welcher gebraucht wird, und erst dann annehmen. Das Schiff wird danach in deinen Heimat-Hangar geschickt.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Welche Aufträge bringen wie viel Ruf?</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Auftrag</th><th class="num">Ruf</th><th>Gut zu wissen</th></tr></thead>
+        <tbody>
+          <tr><th>Story- und Prestige-Aufträge</th><td class="num">800</td><td>Jeder nur einmal.</td></tr>
+          <tr><th>Mining-Aufträge zum Einstieg</th><td class="num">bis 800</td><td>Laut scminer.rocks z. B. „Minor Mining Job“, um 40.000 aUEC.</td></tr>
+          <tr><th>Schiff in Not <i class="gb">Ship in Distress</i></th><td class="num">~300</td><td>Mit Entern und Kampf zu Fuß.</td></tr>
+          <tr><th>Erze scannen</th><td class="num">~200</td><td>Wenig Risiko, zählt aber manchmal nicht (siehe Bugs).</td></tr>
+          <tr><th>Blackbox bergen</th><td class="num">–</td><td>Die gefährlichen Varianten sind nichts für ein Mining-Schiff. Die sehr gefährliche Variante gibt den Bauplan für das CQ7-Gewehr.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:8px">Werte aus Community-Guides für 4.10. Der Ruf je Auftrag kann sich mit Patches ändern, im Spiel steht er im Auftrag.</p>
+  </section>
+
+  <section>
+    <h2>Seltene Rohstoffe für die Prestige-Aufträge</h2>
+    <p class="small" style="font-size:14px">Die Prestige-Aufträge verlangen Rohstoffe aus Nyx. Die gute Nachricht: Sie liegen direkt vor der Tür, im Glaciem Ring rund um Levski und im Keeger Belt. Abbau mit dem Schiff, die Golem reicht.</p>
+    <div class="chips">
+      <a class="chip" href="#mining" data-loc="Savrilium">Savrilium</a>
+      <a class="chip" href="#mining" data-loc="Lindinium">Lindinium</a>
+      <a class="chip" href="#mining" data-loc="Bexalit">Bexalit</a>
+    </div>
+    <p class="small" style="margin-top:8px">Ein Klick öffnet die Fundort-Suche im Mining-Kapitel mit diesem Erz.</p>
+  </section>
+
+  <section>
+    <h2>Tipps</h2>
+    <div class="facts">
+      <div class="fact"><strong>Verlässlich vor viel</strong><p>Nimm die Aufträge, die zuverlässig klappen, nicht die mit dem meisten Ruf. Anflug und Fehlschläge kosten mehr Zeit, als der Bonus bringt.</p></div>
+      <div class="fact"><strong>Abwechseln</strong><p>Zwei, drei Auftragsarten bereithalten. Hakt eine auf dem Server, nimm die nächste.</p></div>
+      <div class="fact"><strong>Wohnort Levski</strong><p>Wer viel für Recco fährt, setzt seinen Respawn in Levski. Das spart nach einem Tod den langen Rückweg. Mehr in <a href="#ueberleben">Überleben</a>.</p></div>
+      <div class="fact"><strong>Rechtzeitig aufhören</strong><p>Hast du den Bauplan oder das Schiff, das du willst, musst du nicht weitermachen.</p></div>
+      <div class="fact"><strong>Kann gewipet werden</strong><p>Die Alliance-Schiffe sind im Spiel verdient, nicht gekauft. Bei einem Wipe können sie verschwinden, anders als Pledge-Schiffe.</p></div>
+      <div class="fact"><strong>Golem schon da?</strong><p>Dann ist die Prospector das eigentliche Ziel: der Klassiker fürs Solo-Mining, im Laden rund 2,8 Mio. aUEC wert.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Aktuelle Bugs</h2>
+    <div class="facts">
+      <div class="fact"><strong>Scan zählt nicht</strong><p>Laut Spielern hat manchmal schon jemand anderes den Asteroiden gescannt, dann zählt der Auftrag nicht. Anderen Auftrag nehmen oder Server wechseln.</p></div>
+      <div class="fact"><strong>Story 2 hängt</strong><p>„Blinding Hope“ ließ sich bei manchen nicht abschließen. Abbrechen und auf einem anderen Server neu annehmen.</p></div>
+      <div class="fact"><strong>Story 3 fehlt</strong><p>Fehlt „Idea for Isaac“, obwohl Story 2 und der Ruf passen, liegt es meist am Server. Wechseln und neu nachsehen.</p></div>
+      <div class="fact"><strong>Levski allgemein</strong><p>Geländer nicht überspringen, fremde Hangars vor dem Besitzer verlassen. Mehr unter <a href="#bugs">Bugs</a>.</p></div>
+    </div>
+    <p class="small" style="margin-top:12px">Quellen: <a href="https://starcitizen.tools/Recco_Battaglia" target="_blank" rel="noopener">Star Citizen Wiki: Recco Battaglia</a> (Stand 2. September 2026, als veraltet markiert), <a href="https://expcarry.com/star-citizen-recco-battaglia-guide" target="_blank" rel="noopener">expcarry</a> (Stand 20. September 2026), <a href="https://scminer.rocks/guides" target="_blank" rel="noopener">scminer.rocks</a> (4.10.2), <a href="https://starcitizen.tools/Stanton_-_Nyx_jump_point" target="_blank" rel="noopener">Wiki: Sprungpunkt Stanton–Nyx</a>, Bugs laut <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a>.</p>
+  </section>
 </section>
 
 <!-- ============ EINSATZ: EXECUTIVE HANGAR ============ -->
@@ -2743,6 +2863,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 
   <section>
     <h2>Schiffe und Wege ins Mining</h2>
+    <div class="hint" style="margin-bottom:12px">Prospector oder MOLE gratis? Über Ruf bei Recco Battaglia in Levski. Siehe Einsatz <a href="#recco">Recco Battaglia</a>.</div>
     <div class="table-wrap">
       <table>
         <thead>
@@ -3560,7 +3681,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       var cr = cur.getBoundingClientRect(), br = tabsBox.getBoundingClientRect();
       if (cr.left < br.left) tabsBox.scrollLeft += cr.left - br.left - 8; else if (cr.right > br.right) tabsBox.scrollLeft += cr.right - br.right + 16;
     }
-    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', berufe: 'Berufe · SC Handbuch', bugs: 'Bugs & Workarounds · SC Handbuch', 't-hauling': 'Hauling lernen · SC Handbuch', ueberleben: 'Überleben · SC Handbuch', crafting: 'Crafting · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
+    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', recco: 'Recco Battaglia · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', berufe: 'Berufe · SC Handbuch', bugs: 'Bugs & Workarounds · SC Handbuch', 't-hauling': 'Hauling lernen · SC Handbuch', ueberleben: 'Überleben · SC Handbuch', crafting: 'Crafting · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
     document.title = titles[h];
     Array.prototype.forEach.call(sub.querySelectorAll('a'), function (a) {
       if (a.getAttribute('href') === '#' + h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
@@ -5496,6 +5617,29 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     }).join('');
     $('bugofficial').hidden = false;
   }).catch(function () {});
+})();
+</script>
+<script>
+/* ---------- Recco Battaglia: Ruf-Rechner ---------- */
+(function () {
+  var inp = document.getElementById('recco-rep');
+  if (!inp) return;
+  var out = document.getElementById('recco-out'), fill = document.getElementById('recco-fill');
+  var RANKS = [[0, 'Prospective Associate', ''], [2400, 'Associate', 'Story 2'], [6000, 'Trusted Associate', 'Story 3 mit den Erzbehälter-Bauplänen'],
+    [10800, 'Prestige 1', 'Golem Alliance'], [30000, 'Prestige 2', 'Prospector Alliance'], [69600, 'Prestige 3', 'MOLE Alliance']];
+  var fmt = function (n) { return n.toLocaleString('de-DE'); };
+  function draw() {
+    var t = inp.value.replace(/[^0-9]/g, '');
+    if (!t) { out.textContent = 'Noch kein Ruf eingegeben.'; fill.style.width = '0'; return; }
+    var r = +t, cur = RANKS[0], next = null;
+    RANKS.forEach(function (k) { if (r >= k[0]) cur = k; else if (!next) next = k; });
+    fill.style.width = Math.min(100, r / RANKS[RANKS.length - 1][0] * 100) + '%';
+    if (!next) { out.innerHTML = '<b>' + cur[1] + '</b>: alles freigeschaltet. Die MOLE wartet im Auftrag „Mining and MOLE“.'; return; }
+    var left = next[0] - r;
+    out.innerHTML = 'Du bist <b>' + cur[1] + '</b>. Bis <b>' + next[1] + '</b> (' + next[2] + ') fehlen noch <b>' + fmt(left) + ' Ruf</b>: ' +
+      'etwa ' + Math.ceil(left / 800) + ' Aufträge à 800, ' + Math.ceil(left / 300) + ' à 300 oder ' + Math.ceil(left / 200) + ' Scans à 200.';
+  }
+  inp.addEventListener('input', draw);
 })();
 </script>
 </body>
