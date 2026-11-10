@@ -666,6 +666,19 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 .recco-bar { height: 8px; border-radius: 4px; background: var(--key-bg); overflow: hidden; }
 a.chip { text-decoration: none; }
 .recco-bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.wk-h { font-family: var(--f-display); font-size: 19px; margin: 18px 0 8px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.wk-h .count { font-family: var(--f-mono); font-size: 12px; color: var(--muted); font-weight: 400; }
+.wk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr)); gap: 12px; margin-top: 12px; }
+.wk { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.wk-img { aspect-ratio: 16 / 7; background: var(--key-bg); overflow: hidden; }
+.wk-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wk-b { padding: 10px 14px 14px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.wk-b h4 { margin: 0; font-family: var(--f-display); font-size: 17px; }
+.wk-b .var { color: var(--muted); font-size: 12.5px; }
+.wk-fav { font-family: var(--f-mono); font-size: 13px; }
+.wk-fav b { font-size: 16px; color: var(--accent); }
+.wk-b ul { margin: 0; padding-left: 18px; font-size: 13.5px; }
+.wk-b .wk-note { font-size: 12.5px; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 8px; }
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 48px; }
 .empty { color: var(--muted); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -2335,7 +2348,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <div class="fact"><strong>Wo</strong><p>Daymar (Laser-Plattformen Lamina und Attritus) und Aberdeen (Ruptura und Vivere). Zu jeder Plattform im Orbit gehören drei Bodenstationen.</p></div>
       <div class="fact"><strong>Was du bekommst</strong><p>Carinit, Saldynium, Jaclium und Edelsteine. Mit Glück auch Carinit (Pure), das Wikelo für die besten Tausche will. Dazu Beute in den Bodenstationen: Waffen, Rüstung, Schiffsteile.</p></div>
       <div class="fact"><strong>Gefahr</strong><p>Bei jeder Bewegung einer Schüssel kriechen junge Valakkar aus dem Boden, große Wurm-Kreaturen. Dazu andere Spieler.</p></div>
-      <div class="fact"><strong>Wofür</strong><p>Wikelo tauscht Erze und andere seltene Dinge gegen Schiffe, Waffen und Rüstung. 50 Carinit sind 1 Favor, seine Währung.</p></div>
+      <div class="fact"><strong>Wofür</strong><p>Wikelo tauscht Erze und andere seltene Dinge gegen Schiffe, Waffen und Rüstung. 50 Carinit sind 1 Favor, seine Währung. Unten stehen alle 39 Schiffe mit Bild.</p></div>
     </div>
   </section>
 
@@ -2388,21 +2401,38 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
         <div class="oops"><strong>Falle:</strong> Das Hologramm im Laden zeigt 40 Carinit pro Favor, der Auftrag verlangt aber 50.</div>
       </div>
     </div>
-    <div class="table-wrap" style="margin-top:12px">
+    <h3 class="wk-h">Alle Schiffe bei Wikelo <span class="count" id="wkcount"></span></h3>
+    <div class="chips" id="wkchips" role="group" aria-label="Schiffe filtern">
+      <button type="button" class="chip" data-f="" aria-pressed="true">Alle</button>
+      <button type="button" class="chip" data-f="cheap" aria-pressed="false">Bis 10 Favors</button>
+      <button type="button" class="chip" data-f="Work" aria-pressed="false">Arbeit &amp; Fracht</button>
+      <button type="button" class="chip" data-f="War" aria-pressed="false">Kampf</button>
+      <button type="button" class="chip" data-f="Sneak" aria-pressed="false">Tarnung</button>
+    </div>
+    <div class="wk-grid" id="wkgrid"></div>
+    <p class="small" style="margin-top:8px">Sortiert nach Favors, günstigste zuerst. 1 Favor sind 50 Carinit. Schiffe und Mengen laut <a href="https://starcitizen.tools/Wikelo" target="_blank" rel="noopener">Star Citizen Wiki</a> (Stand 4. November 2026), gegengeprüft mit <a href="https://wikelo-projects.com/Ships" target="_blank" rel="noopener">wikelo-projects.com</a>: Bei 33 von 35 Schiffen, die beide nennen, sind die Mengen gleich. Abweichungen und Einträge aus nur einer Quelle sind markiert. Wikelo tauscht die Angebote öfter aus, und manche brauchen mehr Ruf bei ihm. Vor dem Farmen am Hologramm im Laden prüfen. Die ATLS-Lackierungen fehlen hier.</p>
+
+    <h3 class="wk-h">Rüstungen bei Wikelo</h3>
+    <p class="small" style="font-size:14px;margin:0 0 8px">Bei Rüstungen bringst du meist eine normale Rüstung mit und bekommst eine seltene Variante zurück.</p>
+    <div class="table-wrap">
       <table>
-        <thead><tr><th>Schiff und Auftrag</th><th>Wikelo will</th></tr></thead>
+        <thead><tr><th>Auftrag</th><th>Du bekommst</th><th>Wikelo will</th></tr></thead>
         <tbody>
-          <tr><th><a class="ship-a" href="#s-misc-fortune">MISC Fortune Wikelo Special</a><small>Auftrag „Fortune ship for you“</small></th><td>3 Favors + 1 Carinit (Pure)</td></tr>
-          <tr><th><a class="ship-a" href="#s-crus-intrepid">Crusader Intrepid Wikelo Work Special</a><small>Auftrag „Upgrade Intrepid“</small></th><td>3 Favors + 1 GCA-Medaille (Pristine)</td></tr>
-          <tr><th><a class="ship-a" href="#s-mrai-pulse">Mirai Pulse Wikelo Special</a><small>Auftrag „Pulse Plus“</small></th><td>4 Favors</td></tr>
-          <tr><th><a class="ship-a" href="#s-drak-golem">Drake Golem Wikelo Work Special</a><small>Auftrag „Golem Rocks“</small></th><td>2 Favors + 15 ASD Secure Drives</td></tr>
-          <tr><th><a class="ship-a" href="#s-misc-prospector">MISC Prospector Wikelo Work Special</a><small>Auftrag „Prospects Look Good“</small></th><td>6 Favors + 20 Carinit + 30 Saldynium + 40 Jaclium + 1 Carinit (Pure)</td></tr>
-          <tr><th><a class="ship-a" href="#s-rsi-zeus-es">RSI Zeus Mk II ES Wikelo Work Special</a><small>Auftrag „Zeus Special“</small></th><td>10 Favors + 1 Medaille des 6. UEE-Zugs (Pristine)</td></tr>
-          <tr><th><a class="ship-a" href="#s-rsi-constellation-taurus">RSI Constellation Mk IV Taurus Wikelo War Special</a><small>Auftrag „Want Taurus ship“</small></th><td>30 Favors + 3 Carinit (Pure) + 3 AAA-Perlen + 3 GCA-Medaillen (Pristine)</td></tr>
+          <tr><th>„Heavy and Bright“ <span class="pill no">nur Wiki</span></th><td>BUL-H4 „Snow Camo“ mit Munitionsträger, plus Baupläne</td><td>1 Favor, BUL-H4 Helm, BUL-H4 Rüstung, H4-PBF-Munitionsträger</td></tr>
+          <tr><th>„Suit Up Take Off“ <span class="pill no">nur Wiki</span></th><td>Tailwind-Fluganzug und -Helm „Dominion Camo“, plus Baupläne</td><td>1 Favor, Tailwind-Fluganzug und -Helm, 1 leerer Quantanium-Kanister <i class="gb">Expired Quantanium Fuel Canister</i></td></tr>
+          <tr><th>„Make glowy armor“</th><td>Bokto-Rüstung (Helm, Torso, Arme, Beine)</td><td>Antium-Rüstung komplett + 1 Valakkar-Perle AAA</td></tr>
+          <tr><th>„Armor with Horn and String“ <span class="pill no">nur Tracker</span></th><td>Ana Endro-Rüstung</td><td>Antium-Rüstung komplett + 1 Carinit (Pure)</td></tr>
+          <tr><th>„Red Fight Armor“</th><td>Monde „Crimson Camo“ mit Rucksack</td><td>3 Favors, 10 Sadaryx, Monde-Rüstung komplett, Warden-Rucksack (Wiki: Monde, Tracker: Epoque)</td></tr>
+          <tr><th>„Hide Snow Suit“</th><td>Geist „Snow Camo“ (komplett mit Rucksack)</td><td>4 ASD Secure Drives + Geist ASD Edition komplett</td></tr>
+          <tr><th>„Test Armor“</th><td>Palatino Mark I (komplett mit Rucksack)</td><td>14 Yormandi-Augen, 7 Yormandi-Zungen + Palatino komplett</td></tr>
+          <tr><th>„Armor with Vanduul“</th><td>Testudo „Clanguard“ (komplett mit Rucksack)</td><td>15 Vanduul-Panzerung, 15 Vanduul-Metall + Testudo „Turfwar“ komplett</td></tr>
+          <tr><th>„Monolith Armor Very Smooth“ <span class="pill no">nur Wiki</span></th><td>Monolith „Shadowflux“ (komplett mit Rucksack)</td><td>10 Vanduul-Metall, 25 Saldynium (Erz) + Monolith komplett</td></tr>
+          <tr><th>„Shiny Builder Suit“</th><td>Corbel „Crush“ mit Novikov-Rucksack</td><td>10 ASD Secure Drives, je 3 RCMBNT-RGL 1–3 + Corbel „Mire“ komplett mit Novikov-Rucksack</td></tr>
+          <tr><th>„Do Lava Suit“</th><td>Strata „Heatwave“ (komplett mit Rucksack)</td><td>30 Carinit, je 4 RCMBNT-PWL 1–3 + Strata komplett</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="small" style="margin-top:8px">Abgeglichen mit dem Star Citizen Wiki (Stand 25. Oktober 2026), Bobby’s Wikelo Tracker und timesaver.gg für 4.10.2: Alle drei nennen dieselben Mengen. Wikelo tauscht die Angebote öfter aus, und manche Schiffe brauchen einen höheren Ruf bei ihm. Vor dem Farmen am Hologramm im Laden prüfen. Ein guter erster Schritt sind 3 Favors, das reicht für Fortune oder Intrepid.</p>
+    <p class="small" style="margin-top:8px">Laut Star Citizen Wiki (Stand 4. November 2026) und wikelo-projects.com. „Komplett“ heißt Helm, Torso, Arme und Beine.</p>
   </section>
 
   <section>
@@ -5640,6 +5670,52 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       'etwa ' + Math.ceil(left / 800) + ' Aufträge à 800, ' + Math.ceil(left / 300) + ' à 300 oder ' + Math.ceil(left / 200) + ' Scans à 200.';
   }
   inp.addEventListener('input', draw);
+})();
+</script>
+<script>
+/* ---------- Hathor & Wikelo: alle Wikelo-Schiffe (Star Citizen Wiki 4. Nov. 2026, gegengeprüft mit wikelo-projects.com) ---------- */
+(function () {
+  var grid = document.getElementById('wkgrid');
+  if (!grid) return;
+  var WK = [{"c": "Clipper Fight Now", "s": "drak-clipper", "r": "Drake Clipper Wikelo War Special", "f": 0, "i": [[1, "Metamaterial Test #152"]], "rep": "", "src": "wiki", "n": "Nur im Wiki. Metamaterial Test #152 ist ein Gegenstand aus dem Crafting, den Bauplan bekommst du dazu."}, {"c": "Extra Special Wolf", "s": "krig-l22-alphawolf", "r": "Kruger L-22 Alpha Wolf Wikelo War Special", "f": 0, "i": [[1, "Metamaterial Test #146"]], "rep": "", "src": "wiki", "n": "Nur im Wiki. Metamaterial Test #146 ist ein Gegenstand aus dem Crafting, den Bauplan bekommst du dazu."}, {"c": "Make jumpy ATLS shoot", "s": "argo-atls-geo", "r": "Argo ATLS GEO IKTI", "f": 1, "i": [[1, "ATLS"], [2, "NN-13 Cannon"], [5, "Valakkar-Zahn (Apex)"], [36, "SCU Quantanium"]], "rep": "", "src": "beide", "n": "wikelo-projects.com nennt statt ATLS, Zähnen und Quantanium: 1 ATLS GEO + 1 ATLS IKTI. Am Hologramm prüfen."}, {"c": "Golem Rocks", "s": "drak-golem", "r": "Drake Golem Wikelo Work Special", "f": 2, "i": [[15, "ASD Secure Drive"]], "rep": "", "src": "beide", "n": ""}, {"c": "Make ATLS shoot", "s": "argo-atls-ikti", "r": "Argo ATLS IKTI", "f": 2, "i": [[5, "Valakkar-Zahn (Apex)"], [1, "ATLS"], [2, "NN-13 Cannon"]], "rep": "", "src": "beide", "n": ""}, {"c": "Fortune ship for you", "s": "misc-fortune", "r": "MISC Fortune Wikelo Special", "f": 3, "i": [[1, "Carinit (Pure)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Upgrade Intrepid", "s": "crus-intrepid", "r": "Crusader Intrepid Wikelo Work Special", "f": 3, "i": [[1, "GCA-Medaille (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Make a Ursa Mod", "s": "rsi-ursa-medivac", "r": "RSI Ursa Medivac Wikelo Special", "f": 4, "i": [[20, "Saldynium (Erz)"], [20, "Jaclium (Erz)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Noxy Mod", "s": "xian-nox", "r": "Aopoa Nox Wikelo Special", "f": 4, "i": [], "rep": "", "src": "tracker", "n": "Mengen nur laut wikelo-projects.com, das Wiki führt den Auftrag ohne Liste."}, {"c": "Peregrine Wikelo Mod", "s": "aegs-sabre-peregrine", "r": "Aegis Sabre Peregrine Wikelo Speedy Special", "f": 4, "i": [[1, "DCHS-05 Comp-Board"]], "rep": "", "src": "beide", "n": ""}, {"c": "Pulse Plus", "s": "mrai-pulse", "r": "Mirai Pulse Wikelo Special", "f": 4, "i": [], "rep": "", "src": "beide", "n": ""}, {"c": "Most Special Wolf", "s": "krig-l21-wolf", "r": "Kruger L-21 Wolf Wikelo War Special", "f": 5, "i": [], "rep": "Ruf: Very Good Customer", "src": "beide", "n": "Dazu gibt es eine Antium-Rüstung „Midnight Sun“ und ein Fresnel-LMG „Deepwater“."}, {"c": "Prospects Look Good", "s": "misc-prospector", "r": "MISC Prospector Wikelo Work Special", "f": 6, "i": [[20, "Carinit"], [30, "Saldynium (Erz)"], [40, "Jaclium (Erz)"], [1, "Carinit (Pure)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Ready for Raft?", "s": "argo-raft", "r": "Argo RAFT Wikelo Work Special", "f": 8, "i": [[10, "Valakkar-Zahn (Adult)"], [20, "Valakkar-Zahn (Juvenile)"], [5, "Kopion-Horn"], [1, "Valakkar-Perle AAA"]], "rep": "", "src": "beide", "n": ""}, {"c": "Spirit Cargo mod", "s": "crus-spirit-c1", "r": "Crusader C1 Spirit Wikelo Special", "f": 8, "i": [[1, "Tevarin-Dienstabzeichen (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "RSI Meteor Mod", "s": "rsi-meteor", "r": "RSI Meteor Wikelo Sneak Special", "f": 10, "i": [[10, "Vanduul-Panzerung"], [10, "Vanduul-Metall"], [5, "Ace-Interceptor-Helm"], [1, "großes Artefakt-Fragment (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Sneaky Starfighter Ion", "s": "crus-starfighter-ion", "r": "Crusader Ares Star Fighter Ion Wikelo Sneak Special", "f": 10, "i": [[10, "Yormandi-Auge"], [5, "Ace-Interceptor-Helm"], [1, "Tevarin-Dienstabzeichen (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Starfighter Inferno Special", "s": "crus-starfighter-inferno", "r": "Crusader Ares Star Fighter Inferno Wikelo War Special", "f": 10, "i": [[5, "Yormandi-Zunge"], [5, "Ace-Interceptor-Helm"], [1, "Medaille des 6. UEE-Zugs (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Where Wolf? Here Wolf", "s": "krig-l21-wolf", "r": "Kruger L-21 Wolf Wikelo Sneak Special", "f": 10, "i": [[10, "Vanduul-Panzerung"], [10, "Vanduul-Metall"], [1, "großes Artefakt-Fragment (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Zeus Special", "s": "rsi-zeus-es", "r": "RSI Zeus Mk II ES Wikelo Work Special", "f": 10, "i": [[1, "Medaille des 6. UEE-Zugs (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Build a Mod Scorpius", "s": "rsi-scorpius", "r": "RSI Scorpius Wikelo Sneak Special", "f": 15, "i": [[4, "DCHS-05 Comp-Board"], [1, "Tevarin-Dienstabzeichen (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Firebird Mod", "s": "aegs-sabre-firebird", "r": "Aegis Sabre Firebird Wikelo War Special", "f": 15, "i": [[4, "DCHS-05 Comp-Board"], [3, "Ace-Interceptor-Helm"], [1, "GCA-Medaille (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "What is Terrapin?", "s": "anvl-terrapin-medic", "r": "Anvil Terrapin Medic Wikelo Savior Special", "f": 15, "i": [[10, "ASD Secure Drive"], [1, "Tevarin-Dienstabzeichen (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Wikelo Navy F7", "s": "anvl-hornet-f7cm-mk2", "r": "Anvil F7C-M Super Hornet Mk II Wikelo War Special", "f": 16, "i": [[3, "DCHS-05 Comp-Board"], [5, "Ace-Interceptor-Helm"], [1, "GCA-Medaille (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Guardian Fight Mod", "s": "mrai-guardian", "r": "Mirai Guardian Wikelo War Special", "f": 20, "i": [[15, "Valakkar-Perle AA"], [10, "Ace-Interceptor-Helm"], [1, "Tevarin-Dienstabzeichen (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Zeus Cargo Special", "s": "rsi-zeus-cl", "r": "RSI Zeus Mk II CL Wikelo Special", "f": 20, "i": [[15, "Carinit"], [10, "Ace-Interceptor-Helm"], [2, "Carinit (Pure)"]], "rep": "", "src": "beide", "n": "Das Wiki nennt 15 Carinit + 2 Carinit (Pure), wikelo-projects.com 17 Carinit (Pure). Am Hologramm prüfen."}, {"c": "Guardian Wik-X", "s": "mrai-guardian-mx", "r": "Mirai Guardian MX Wikelo War Special", "f": 25, "i": [[30, "Vanduul-Panzerung"], [30, "Vanduul-Metall"], [15, "Ace-Interceptor-Helm"], [2, "großes Artefakt-Fragment (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Guardian take down ship", "s": "mrai-guardian-qi", "r": "Mirai Guardian QI Wikelo Special", "f": 25, "i": [[15, "Valakkar-Perle AA"], [15, "DCHS-05 Comp-Board"], [2, "Medaille des 6. UEE-Zugs (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "More than a Max", "s": "misc-starlancer-max", "r": "MISC Starlancer MAX Wikelo Work Special", "f": 30, "i": [[10, "Ace-Interceptor-Helm"], [3, "Carinit (Pure)"], [3, "Valakkar-Perle AAA"]], "rep": "", "src": "beide", "n": ""}, {"c": "Red Fight Apollo", "s": "rsi-apollo-triage", "r": "RSI Apollo Triage Wikelo Sneak Special", "f": 30, "i": [[48, "SCU Savrilium"]], "rep": "", "src": "beide", "n": ""}, {"c": "Want Taurus ship", "s": "rsi-constellation-taurus", "r": "RSI Constellation Mk IV Taurus Wikelo War Special", "f": 30, "i": [[3, "Carinit (Pure)"], [3, "Valakkar-Perle AAA"], [3, "GCA-Medaille (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "F8 War Mod", "s": "anvl-lightning-f8c", "r": "Anvil F8C Lightning Wikelo War Special", "f": 40, "i": [[4, "Carinit (Pure)"], [4, "Valakkar-Perle AAA"], [4, "Tevarin-Dienstabzeichen (Pristine)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Prowler More Utility", "s": "espr-prowler-utility", "r": "Esperia Prowler Utility Wikelo Work Special", "f": 40, "i": [[10, "Yormandi-Zunge"], [20, "Yormandi-Auge"], [3, "Valakkar-Perle AAA"], [3, "Carinit (Pure)"]], "rep": "", "src": "beide", "n": ""}, {"c": "Sneaky Stabber", "s": "anvl-lightning-f8c", "r": "Anvil F8C Lightning Wikelo Sneak Special", "f": 40, "i": [[15, "DCHS-05 Comp-Board"], [3, "Carinit (Pure)"], [3, "Valakkar-Perle AAA"]], "rep": "", "src": "beide", "n": ""}, {"c": "Asgard Fight Mod", "s": "anvl-asgard", "r": "Anvil Asgard Wikelo War Special", "f": 50, "i": [[3, "ASD Secure Drive"], [5, "je RCMBNT PWL, RGL, XTL (Teil 1–3)"]], "rep": "", "src": "beide", "n": ""}, {"c": "New Move Big Starlancer Ship", "s": "misc-starlancer-tac", "r": "MISC Starlancer TAC Wikelo War Special", "f": 50, "i": [[30, "ASD Secure Drive"], [15, "Ace-Interceptor-Helm"], [3, "Valakkar-Perle AAA"], [3, "Tevarin-Dienstabzeichen (Pristine)"], [3, "Carinit (Pure)"], [3, "DCHS-05 Comp-Board"]], "rep": "", "src": "tracker", "n": "Mengen nur laut wikelo-projects.com, das Wiki führt den Auftrag ohne Liste."}, {"c": "Now make Polaris. Short Time Deal", "s": "rsi-polaris", "r": "RSI Polaris Wikelo Special", "f": 50, "i": [[15, "Polaris Bit"], [10, "DCHS-05 Comp-Board"], [20, "Carinit"], [20, "Valakkar-Zahn (Apex)"], [20, "MG Scrip"], [15, "Ace-Interceptor-Helm"], [15, "Valakkar-Perle AAA"], [15, "Medaille des 6. UEE-Zugs (Pristine)"], [15, "Carinit (Pure)"], [15, "ASD Secure Drive"], [1, "je RCMBNT PWL, RGL, XTL (Teil 1–3)"]], "rep": "", "src": "beide", "n": "Nur zeitweise im Angebot."}, {"c": "Special Idris For Killing", "s": "aegs-idris-p", "r": "Aegis Idris-P Wikelo War Special", "f": 50, "i": [[50, "Polaris Bit"], [50, "DCHS-05 Comp-Board"], [50, "Carinit"], [50, "Valakkar-Zahn (Apex)"], [50, "MG Scrip"], [50, "Ace-Interceptor-Helm"], [30, "Valakkar-Perle AAA"], [30, "Medaille des 6. UEE-Zugs (Pristine)"], [30, "Carinit (Pure)"], [30, "ASD Secure Drive"], [5, "je RCMBNT PWL, RGL, XTL (Teil 1–3)"]], "rep": "Ruf: Very Best Customer", "src": "beide", "n": ""}, {"c": "Starlifter A2 War Mod", "s": "crus-starlifter-a2", "r": "Crusader A2 Hercules Starlifter Wikelo War Special", "f": 50, "i": [[20, "Polaris Bit"], [20, "MG Scrip"], [6, "ASD Secure Drive"], [6, "Valakkar-Perle AAA"], [6, "Tevarin-Dienstabzeichen (Pristine)"], [6, "DCHS-05 Comp-Board"], [6, "Carinit (Pure)"]], "rep": "", "src": "beide", "n": ""}];
+  /* Ohne Favors heißt hier: braucht einen Crafting-Gegenstand, darum ans Ende */
+  WK.sort(function (a, b) { return (a.f || 99) - (b.f || 99); });
+  var by = {};
+  (window.SHIPS || []).forEach(function (x) { by[x.slug] = x; });
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  WK.forEach(function (w) {
+    var sh = by[w.s] || {}, el = document.createElement('article');
+    el.className = 'wk';
+    w.kind = (w.r.match(/Wikelo (War|Work|Sneak|Speedy|Savior)/) || [])[1] || '';
+    w.cat = sh.c || '';
+    el.innerHTML = '<div class="wk-img">' + (sh.img ? '<img src="' + esc(sh.img) + '" alt="' + esc(sh.n || '') + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') + '</div>' +
+      '<div class="wk-b"><h4>' + (sh.n ? '<a class="ship-a" href="#s-' + esc(w.s) + '">' + esc(sh.n) + '</a>' : esc(w.r)) + '</h4>' +
+      '<span class="var">' + esc(w.r) + '<br>Auftrag „' + esc(w.c) + '“</span>' +
+      '<span class="wk-fav">' + (w.f ? '<b>' + w.f + '</b> ' + (w.f === 1 ? 'Favor' : 'Favors') + ' · ' + (w.f * 50).toLocaleString('de-DE') + ' Carinit' : '<b>keine</b> Favors') + '</span>' +
+      (w.i.length ? '<ul>' + w.i.map(function (x) { return '<li>' + x[0] + ' × ' + esc(x[1]) + '</li>'; }).join('') + '</ul>' : '<span class="small">Sonst nichts.</span>') +
+      (w.rep ? '<span><span class="pill later">' + esc(w.rep) + '</span></span>' : '') +
+      (w.n ? '<span class="wk-note">' + esc(w.n) + '</span>' : '') + '</div>';
+    var im = el.querySelector('img');
+    if (im) im.addEventListener('error', function () { im.remove(); });
+    w.el = el;
+    grid.appendChild(el);
+  });
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#wkchips .chip'));
+  function apply(f) {
+    var n = 0;
+    WK.forEach(function (w) {
+      var ok = !f || (f === 'cheap' ? w.f && w.f <= 10 : f === 'Work' ? w.kind === 'Work' || /Industrie|Fracht/.test(w.cat) : w.kind === f);
+      w.el.hidden = !ok; if (ok) n++;
+    });
+    document.getElementById('wkcount').textContent = n + ' von ' + WK.length;
+  }
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      apply(c.dataset.f);
+    });
+  });
+  apply('');
 })();
 </script>
 </body>
