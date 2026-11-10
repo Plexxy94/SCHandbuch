@@ -3,7 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Star-Citizen-Einstieg auf Deutsch (Alpha 4.10, QWERTZ): erste Schritte, alle wichtigen Tasten und Mining für Anfänger.">
+<meta name="description" content="Inoffizielles Star-Citizen-Handbuch auf Deutsch (Alpha 4.10.2, QWERTZ): Tutorials, Tasten, Mining, Salvage, Hauling, Crafting, Ruf, Einsätze, alle Schiffe und aktuelle Bugs mit Workarounds.">
+<meta name="theme-color" content="#131b23" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Star Citizen Handbuch">
+<meta property="og:description" content="Inoffizielles deutsches Handbuch: Tutorials, Tasten, Berufe, Einsätze, Schiffe und Bugs mit Workarounds. Ohne Cookies, ohne Tracking.">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23131b23'/%3E%3Ctext x='8' y='43' font-family='Segoe UI,Arial,sans-serif' font-weight='700' font-size='27' fill='%23e2e8ee'%3ESC%3C/text%3E%3Cpath d='M47 46 56 18' stroke='%23f08a3c' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <title>Star Citizen Handbuch</title>
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
@@ -227,7 +234,8 @@ tr.rec th { color: var(--accent); }
 .gloss { display: flex; flex-direction: column; gap: 24px; }
 .gloss-group { display: grid; grid-template-columns: 44px 1fr; gap: 12px; }
 .gloss-letter { font-family: var(--f-display); font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1; padding-top: 10px; }
-.gloss-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; min-width: 0; }
+.gloss-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 10px; min-width: 0; }
+@media (max-width: 560px) { .gloss-group { grid-template-columns: 26px minmax(0, 1fr); gap: 8px; } .gloss-letter { font-size: 22px; } }
 .term { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .term b { font-family: var(--f-display); font-size: 17px; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .term b small { font-family: var(--f-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
@@ -683,6 +691,67 @@ a.chip { text-decoration: none; }
 .ruf-ladder span { font-family: var(--f-mono); font-size: 11.5px; padding: 2px 8px; border-radius: 10px; border: 1px solid var(--line); color: var(--muted); }
 .ruf-ladder span.on { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
 .ruf-ladder span.next { border-color: var(--accent); color: var(--accent); }
+
+/* Globale Suche */
+.nav-search { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: 8px; font: 600 14px var(--f-display); letter-spacing: .03em; color: var(--muted); background: var(--key-bg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+.nav-search:hover { color: var(--ink); border-color: var(--key-edge); }
+.nav-search svg { width: 15px; height: 15px; flex: none; }
+.nav-search kbd { font: 500 11px var(--f-mono); border: 1px solid var(--key-edge); border-radius: 4px; padding: 0 5px; color: var(--muted); background: var(--panel); }
+.nav-search + .nav-news { margin-left: 0; }
+@media (max-width: 900px) { .nav-search kbd { display: none; } }
+@media (max-width: 640px) { .nav-search { padding: 4px 9px; font-size: 13px; } .nav-in { column-gap: 8px; } }
+.gs { position: fixed; inset: 0; z-index: 30; display: flex; justify-content: center; align-items: flex-start; padding: max(12px, env(safe-area-inset-top, 0px)) 12px 12px; background: rgba(8, 12, 16, .62); }
+.gs[hidden] { display: none; }
+.gs-box { width: min(680px, 100%); max-height: min(78vh, 720px); margin-top: min(9vh, 80px); display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--key-edge); border-radius: 12px; box-shadow: 0 18px 60px rgba(0, 0, 0, .45); overflow: hidden; }
+.gs-top { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.gs-top svg { width: 18px; height: 18px; color: var(--muted); flex: none; }
+.gs-top input { flex: 1; min-width: 0; font: 500 17px var(--f-body); color: var(--ink); background: none; border: 0; outline: 0; }
+.gs-top input::-webkit-search-cancel-button { display: none; }
+.gs-x { flex: none; font: 600 12px var(--f-mono); color: var(--muted); background: var(--key-bg); border: 1px solid var(--line); border-radius: 5px; padding: 4px 8px; cursor: pointer; }
+.gs-list { overflow-y: auto; overscroll-behavior: contain; padding: 6px; display: flex; flex-direction: column; gap: 2px; }
+.gs-item { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 2px 10px; align-items: baseline; text-align: left; width: 100%; font: inherit; color: inherit; background: none; border: 0; border-radius: 7px; padding: 8px 10px; cursor: pointer; }
+.gs-item.on, .gs-item:hover { background: var(--accent-soft); }
+.gs-item .ty { grid-row: span 2; font: 500 10.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.gs-item b { font-family: var(--f-display); font-weight: 600; font-size: 15.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gs-item b kbd { font: 500 12px var(--f-mono); border: 1px solid var(--key-edge); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; margin-left: 6px; background: var(--key-bg); }
+.gs-item span.su { font-size: 13px; color: var(--muted); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.gs-note { padding: 14px 16px; color: var(--muted); font-size: 14px; }
+.gs-note .chips { margin-top: 10px; }
+.gs-foot { border-top: 1px solid var(--line); padding: 7px 14px; font: 500 11px var(--f-mono); color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
+@media (hover: none) { .gs-foot { display: none; } }
+.start-search { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font: 500 16px var(--f-body); color: var(--muted); background: var(--panel); border: 1px solid var(--key-edge); border-radius: 10px; padding: 14px 16px; cursor: pointer; }
+.start-search:hover { border-color: var(--accent); color: var(--ink); }
+.start-search svg { width: 20px; height: 20px; flex: none; color: var(--accent); }
+.start-search span { flex: 1; min-width: 0; }
+.start-search kbd { font: 500 12px var(--f-mono); border: 1px solid var(--key-edge); border-radius: 4px; padding: 1px 7px; background: var(--key-bg); }
+@media (hover: none) { .start-search kbd { display: none; } }
+.view h2, .view h3, .view .term, .view .row, .view .bug, .view .wk { scroll-margin-top: 56px; }
+@keyframes gsflash { 0%, 60% { background-color: var(--accent-soft); box-shadow: 0 0 0 6px var(--accent-soft); } 100% { background-color: transparent; box-shadow: 0 0 0 6px transparent; } }
+.gs-flash { animation: gsflash 2.2s ease-out; border-radius: 4px; }
+.sh-morebtn { align-self: center; font: 600 15px var(--f-display); letter-spacing: .02em; color: var(--accent); background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; padding: 12px 22px; cursor: pointer; }
+.sh-morebtn:hover { background: var(--accent-soft); }
+.sh-morebtn[hidden] { display: none; }
+/* Nach oben */
+.totop { position: fixed; right: max(14px, env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 4; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--key-edge); background: var(--panel); color: var(--accent); font: 700 20px var(--f-display); cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s, transform .2s; }
+.totop.on { opacity: 1; pointer-events: auto; transform: none; }
+.totop:hover { border-color: var(--accent); }
+@media print { .totop, .nav-search { display: none; } }
+/* Patch-Hinweis */
+.patchnote { display: flex; gap: 10px 14px; align-items: baseline; flex-wrap: wrap; background: var(--warn-soft); color: var(--ink); border: 1px solid var(--warn); border-radius: 8px; padding: 10px 14px; font-size: 14px; margin-bottom: 20px; }
+.patchnote[hidden] { display: none; }
+.patchnote strong { font-family: var(--f-display); color: var(--warn); }
+.patchnote span { flex: 1 1 260px; }
+.patchnote button { font: 600 13px var(--f-display); color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+/* Startseite am Handy: Kacheln zweispaltig und kurz */
+@media (max-width: 560px) {
+  #view-start .chapters { grid-template-columns: 1fr 1fr; gap: 10px; }
+  #view-start .chapters .chapter { padding: 12px 12px 10px; gap: 4px; min-width: 0; }
+  #view-start .chapters .chapter.first, #view-start .chapters .chapter:last-child:nth-child(even) { grid-column: 1 / -1; }
+  #view-start .chapters .chapter h3 { font-size: 18px; overflow-wrap: anywhere; }
+  #view-start .chapters .chapter .no { font-size: 10.5px; }
+  #view-start .chapters .chapter:not(.first) p { font-size: 12.5px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  #view-start .chapters .chapter:not(.first) .go { display: none; }
+}
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 48px; }
 .empty { color: var(--muted); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -707,6 +776,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <a href="#bugs" role="listitem">Bugs</a>
       <a href="#glossar" role="listitem" class="nav-opt">Glossar</a>
     </div>
+    <button type="button" class="nav-search" id="navsearch" aria-label="Seite durchsuchen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Suche</span><kbd>/</kbd></button>
     <a class="nav-news" href="#news">News<span class="news-dot" id="newsdot" title="Neue Beiträge" hidden></span></a>
   </div>
   <!-- Zweite Reihe je Gruppe. Neue Gruppe (z. B. „Einsätze“ für Executive Hangar, Contested Zones):
@@ -749,13 +819,16 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 <main class="wrap">
 
 <!-- ============ START ============ -->
+<div class="patchnote" id="patchnote" hidden><strong></strong><span></span><a href="#bugs">Bekannte Bugs</a><button type="button" id="patchok">Verstanden</button></div>
 <section class="view" id="view-start" data-view="start">
   <a class="status-banner" id="statusbanner" href="#news" hidden></a>
   <div class="hero">
-    <div class="stamp"><span>Inoffizielles Einsteiger-Handbuch</span><span>Stand Alpha 4.10</span><span>QWERTZ-Tastatur</span></div>
+    <div class="stamp"><span>Inoffizielles Einsteiger-Handbuch</span><span>Stand Alpha 4.10.2</span><span>QWERTZ-Tastatur</span></div>
     <h1>Willkommen im Verse.</h1>
-    <p class="lede">Tutorials für den Einstieg und ein Nachschlagewerk für später: Tasten, Mining, Salvage, Crafting und Schiffe. Lass die Seite auf dem zweiten Bildschirm oder dem Handy offen und spiel einfach mit.</p>
+    <p class="lede">Tutorials für den Einstieg und ein Nachschlagewerk für später: Tasten, Berufe, Einsätze, Schiffe und aktuelle Bugs. Lass die Seite auf dem zweiten Bildschirm oder dem Handy offen und spiel einfach mit.</p>
   </div>
+
+  <button type="button" class="start-search" data-gs aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Wonach suchst du? Schiff, Taste, Erz, Begriff, Bug …</span><kbd>/</kbd></button>
 
   <div class="start-tip">
     <strong>Neu hier?</strong>
@@ -775,6 +848,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <h3>Tasten</h3>
       <p>Die zehn wichtigsten Tasten auf einen Blick und alle weiteren nach Situation sortiert. Mit Suche.</p>
       <span class="go">Nachschlagen →</span>
+    </a>
+    <a class="chapter" href="#berufe">
+      <span class="no">GELD VERDIENEN</span>
+      <h3>Berufe</h3>
+      <p>Mining, Salvage, Hauling und Crafting im Vergleich: was es kostet, was es bringt und welcher Beruf zu dir passt. Dazu Ruf.</p>
+      <span class="go">Vergleichen →</span>
     </a>
     <a class="chapter" href="#mining">
       <span class="no">NACHSCHLAGEN</span>
@@ -823,6 +902,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <h3>Glossar</h3>
       <p>aUEC, SCU, NAV, ASOP, Pledge, Wipe: Was die ganzen Abkürzungen bedeuten, kurz erklärt.</p>
       <span class="go">Begriffe →</span>
+    </a>
+    <a class="chapter" href="#news">
+      <span class="no">AKTUELL</span>
+      <h3>News</h3>
+      <p>Server-Status, Neues von RSI und frische Videos. Wird stündlich aktualisiert.</p>
+      <span class="go">Lesen →</span>
     </a>
   </div>
 
@@ -3573,6 +3658,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     </details>
   </div>
   <div class="sh-grid" id="shgrid"></div>
+  <button type="button" class="sh-morebtn" id="shmorebtn" hidden></button>
   <p class="empty" id="shnone" hidden>Kein Schiff passt zu diesen Filtern.</p>
   <p class="small">Preise schwanken je nach Ort und Patch. „ab“ zeigt den günstigsten bekannten Händler. Schiffe ohne Preis gibt es nur im Pledge-Store oder als Belohnung.</p>
 </section>
@@ -3729,6 +3815,14 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   </div>
 </footer>
 </main>
+<button type="button" class="totop" id="totop" aria-label="Nach oben" title="Nach oben">↑</button>
+<div class="gs" id="gs" hidden role="dialog" aria-modal="true" aria-label="Seite durchsuchen">
+  <div class="gs-box">
+    <div class="gs-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><input id="gsq" type="search" placeholder="Schiff, Taste, Erz, Begriff, Bug …" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Suchbegriff" aria-controls="gslist"><button type="button" class="gs-x" id="gsx">Esc</button></div>
+    <div class="gs-list" id="gslist" role="listbox"></div>
+    <div class="gs-foot"><span>↑ ↓ wählen</span><span>Enter öffnen</span><span>Esc schließen</span></div>
+  </div>
+</div>
 
 <script>
 (function () {
@@ -3945,6 +4039,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     ['Box-Mission', 'szene', 'Spitzname für einfache Lieferaufträge. Guter Einstieg ins Geldverdienen.']
   ];
   G.sort(function (a, b) { return a[0].localeCompare(b[0], 'de'); });
+  window.SC_GLOSS = G;
   var box = document.getElementById('gloss');
   var gq = document.getElementById('gq');
   var chips = document.getElementById('gchips');
@@ -4793,10 +4888,18 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       return (dir === 'desc' ? -c : c) || a.n.localeCompare(b.n);
     });
     SH.forEach(function (s) { s._el.hidden = true; });
-    shown.forEach(function (s) { s._el.hidden = false; grid.appendChild(s._el); });
+    /* Lange Liste in Portionen: erst PAGE Karten, der Rest auf Knopfdruck. Jede Filteränderung fängt wieder vorn an. */
+    if (!keepLimit) limit = PAGE;
+    keepLimit = false;
+    shown.forEach(function (s, i) { if (i < limit) s._el.hidden = false; grid.appendChild(s._el); });
+    var rest = shown.length - limit, moreBtn = $('shmorebtn');
+    moreBtn.hidden = rest <= 0;
+    if (rest > 0) moreBtn.textContent = (rest > PAGE ? 'Weitere ' + PAGE + ' zeigen' : 'Restliche ' + rest + ' zeigen') + ' · ' + Math.min(limit, shown.length) + ' von ' + shown.length + ' sichtbar';
     cnt.textContent = shown.length + ' von ' + SH.length + (budget ? ' · bis ' + fmt(budget) + ' aUEC' : '');
     none.hidden = shown.length > 0;
   }
+  var PAGE = 36, limit = PAGE, keepLimit = false;
+  $('shmorebtn').addEventListener('click', function () { limit += PAGE; keepLimit = true; apply(); });
   /* Budget: „2.500.000“, „2500000“, „2,5 Mio“, „2.5m“ oder „800k“ */
   function readBudget() {
     var t = $('shbudget').value.trim().toLowerCase().replace(/\s+/g, '').replace(/a?uec$/, ''), n = 0;
@@ -5845,6 +5948,191 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   }
   inp.addEventListener('input', draw);
   draw();
+})();
+</script>
+<script>
+/* ---------- Globale Suche, Nach-oben-Knopf, Patch-Hinweis ---------- */
+(function () {
+  var PAGE_PATCH = '4.10.2';   /* Stand der handgepflegten Inhalte; bei einem neuen Patch nach der Durchsicht hochsetzen */
+  var gs = document.getElementById('gs'), q = document.getElementById('gsq'), list = document.getElementById('gslist');
+  var idx = null, shown = [], cur = 0, lastFocus = null;
+  function norm(s) { return String(s).toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss').replace(/[’'`´]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function txt(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim() : ''; }
+  function viewOf(el) { var v = el.closest('section.view'); return v ? v.dataset.view : 'start'; }
+  function go(view) { if ((location.hash || '#start') !== '#' + view) location.hash = '#' + view; }
+  function jump(el) {
+    go(viewOf(el));
+    setTimeout(function () {
+      for (var p = el.parentElement; p; p = p.parentElement) { if (p.tagName === 'DETAILS') p.open = true; }
+      if (el.hidden || !el.getClientRects().length) return;
+      el.scrollIntoView({ block: 'start' });
+      el.classList.remove('gs-flash'); void el.offsetWidth; el.classList.add('gs-flash');
+      setTimeout(function () { el.classList.remove('gs-flash'); }, 2400);
+    }, 90);
+  }
+  function fill(view, input, value) {
+    go(view);
+    setTimeout(function () {
+      if (!input) return;
+      input.value = value; input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.scrollIntoView({ block: 'center' });
+    }, 90);
+  }
+  function build() {
+    idx = [];
+    function add(type, w, title, sub, keys, fn, html) { idx.push({ ty: type, w: w, t: title, s: sub || '', nt: norm(title), nx: norm(title + ' ' + (keys || '') + ' ' + (sub || '')), go: fn, html: html }); }
+    var names = {};
+    Array.prototype.forEach.call(document.querySelectorAll('section.view'), function (v) {
+      var name = v.dataset.view === 'start' ? 'Startseite' : txt(v.querySelector('h1'));
+      names[v.dataset.view] = name;
+      if (v.dataset.view !== 'start') add('Kapitel', 60, name, txt(v.querySelector('.lede')), '', function () { go(v.dataset.view); window.scrollTo(0, 0); });
+    });
+    /* Abschnitte: Überschriften in den Kapiteln, ohne Kacheln, Schiffskarten, Bug- und Wikelo-Karten */
+    Array.prototype.forEach.call(document.querySelectorAll('section.view h2, section.view h3'), function (h) {
+      var v = viewOf(h);
+      if (v === 'schiffe' || v === 'start' || h.closest('a, .bug, .wk, #gloss')) return;
+      var c = h.cloneNode(true);
+      Array.prototype.forEach.call(c.querySelectorAll('.pill, small, .count'), function (x) { x.remove(); });
+      var en = c.querySelector('.gb'), ent = en ? txt(en) : ''; if (en) en.remove();
+      var t = txt(c); if (!t || t.length < 3) return;
+      add('Abschnitt', 30, t, names[v], ent, function () { jump(h); });
+    });
+    /* Tasten */
+    Array.prototype.forEach.call(document.querySelectorAll('#view-tasten .row'), function (r) {
+      var a = r.querySelector('.a'), k = r.querySelector('.k'); if (!a || !k) return;
+      var ac = a.cloneNode(true), note = ac.querySelector('.note'); if (note) note.remove();
+      var panel = r.closest('.panel'), ph = panel && panel.querySelector('h3');
+      var keys = Array.prototype.map.call(k.querySelectorAll('kbd'), function (x) { return '<kbd>' + esc(txt(x)) + '</kbd>'; }).join('');
+      add('Taste', 50, txt(ac), ph ? txt(ph) : 'Tasten', 'taste key ' + txt(k), function () { jump(r); }, esc(txt(ac)) + keys);
+    });
+    /* Glossar */
+    (window.SC_GLOSS || []).forEach(function (e) {
+      add('Begriff', 45, e[0], String(e[2]).replace(/<[^>]+>/g, ''), '', function () { fill('glossar', document.getElementById('gq'), e[0]); });
+    });
+    /* Schiffe */
+    (window.SHIPS || []).forEach(function (s) {
+      var sub = [s.mn, s.c, s.scu ? s.scu + ' SCU' : '', s.b && s.b[0] ? s.b[0].toLocaleString('de-DE') + ' aUEC' : ''].filter(Boolean).join(' · ');
+      add(s.veh ? 'Fahrzeug' : 'Schiff', 40, s.full || s.n, sub, s.n + ' ' + (s.m || '') + ' ' + (s.tip || '') + ' ' + (s.f || []).join(' '), function () { location.hash = '#s-' + s.slug; });
+    });
+    /* Erze: füllen die Fundort-Suche im Mining-Kapitel */
+    var oreq = document.getElementById('locq');
+    (window.SC_ORES || []).forEach(function (o) {
+      add('Erz', 42, o[1], (o[2] !== o[1] ? o[2] + ' · ' : '') + 'Fundorte, Raffinerie und Verkauf', o[2] + ' erz ore fundort', function () { fill('mining', oreq, o[1]); });
+    });
+    /* Bugs */
+    Array.prototype.forEach.call(document.querySelectorAll('#view-bugs .bug'), function (b) {
+      var h = b.querySelector('h3'); if (!h) return;
+      var c = h.cloneNode(true), en = c.querySelector('.gb'), ent = en ? txt(en) : ''; if (en) en.remove();
+      Array.prototype.forEach.call(c.querySelectorAll('.pill, small'), function (x) { x.remove(); });
+      add('Bug', 35, txt(c), 'Bugs & Workarounds' + (ent ? ' · ' + ent : ''), ent + ' bug fehler workaround ' + txt(b).slice(0, 400), function () { showBug(b); });
+    });
+    /* Wikelo-Tausche */
+    Array.prototype.forEach.call(document.querySelectorAll('#wkgrid .wk'), function (w) {
+      var h = w.querySelector('h3, h4, b'); if (!h) return;
+      add('Wikelo', 20, txt(h), 'Hathor & Wikelo · Tausch', 'wikelo ' + txt(w).slice(0, 200), function () { showWk(w); });
+    });
+  }
+  function showBug(b) {
+    go('bugs');
+    setTimeout(function () {
+      /* Filter der Bug-Seite zurücksetzen, sonst kann die Karte ausgeblendet sein */
+      var bq = document.querySelector('#view-bugs input[type=search]');
+      if (bq && bq.value) { bq.value = ''; bq.dispatchEvent(new Event('input', { bubbles: true })); }
+      if (b.hidden || !b.getClientRects().length) { var all = document.querySelector('#view-bugs .chips .chip'); if (all) all.click(); }
+      jump(b);
+    }, 90);
+  }
+  function showWk(w) {
+    go('hathor');
+    setTimeout(function () {
+      if (w.hidden || !w.getClientRects().length) { var all = document.querySelector('#wkchips .chip'); if (all) all.click(); }
+      jump(w);
+    }, 90);
+  }
+  var QUICK = ['Golem', 'Landen', 'Quantanium', 'Aufzug', 'CrimeStat', 'Wikelo', 'Versicherung'];
+  function render() {
+    var v = norm(q.value), toks = v ? v.split(' ') : [];
+    if (!toks.length) {
+      shown = [];
+      list.innerHTML = '<div class="gs-note">Durchsucht alle Kapitel, Tasten, Schiffe, Erze, Glossar-Begriffe und Bugs.<div class="chips">' +
+        QUICK.map(function (w) { return '<button type="button" class="chip" data-q="' + w + '">' + w + '</button>'; }).join('') + '</div></div>';
+      return;
+    }
+    var hits = [];
+    idx.forEach(function (e) {
+      for (var i = 0; i < toks.length; i++) if (e.nx.indexOf(toks[i]) === -1) return;
+      var sc = e.w;
+      if (e.nt === v) sc += 300; else if (e.nt.indexOf(v) === 0) sc += 200;
+      else if ((' ' + e.nt).indexOf(' ' + toks[0]) !== -1) sc += 120;
+      else if (e.nt.indexOf(toks[0]) !== -1) sc += 70;
+      sc -= Math.min(e.nt.length, 60) / 10;
+      hits.push([sc, e]);
+    });
+    hits.sort(function (a, b) { return b[0] - a[0]; });
+    var more = Math.max(0, hits.length - 40);
+    shown = hits.slice(0, 40).map(function (x) { return x[1]; });
+    cur = 0;
+    if (!shown.length) { list.innerHTML = '<div class="gs-note">Nichts gefunden für „' + esc(q.value.trim()) + '“. Versuch es mit einem kürzeren Wort oder dem englischen Begriff aus dem Spiel.</div>'; return; }
+    list.innerHTML = shown.map(function (e, i) {
+      return '<button type="button" class="gs-item' + (i === 0 ? ' on' : '') + '" role="option" data-i="' + i + '"><span class="ty">' + e.ty + '</span><b>' + (e.html || esc(e.t)) + '</b><span class="su">' + esc(e.s) + '</span></button>';
+    }).join('') + (more ? '<div class="gs-note">und ' + more + ' weitere Treffer. Tipp genauer, um einzugrenzen.</div>' : '');
+    list.scrollTop = 0;
+  }
+  function mark() {
+    Array.prototype.forEach.call(list.querySelectorAll('.gs-item'), function (b, i) {
+      b.classList.toggle('on', i === cur);
+      if (i === cur) b.scrollIntoView({ block: 'nearest' });
+    });
+  }
+  function open() {
+    if (!idx) build();
+    lastFocus = document.activeElement;
+    gs.hidden = false; document.documentElement.style.overflow = 'hidden';
+    q.value = ''; render(); q.focus();
+  }
+  function close(back) {
+    gs.hidden = true; document.documentElement.style.overflow = '';
+    if (back && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function pick(i) { var e = shown[i]; if (!e) return; close(false); e.go(); }
+  q.addEventListener('input', render);
+  q.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); if (shown.length) { cur = (cur + 1) % shown.length; mark(); } }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); if (shown.length) { cur = (cur - 1 + shown.length) % shown.length; mark(); } }
+    else if (e.key === 'Enter') { e.preventDefault(); pick(cur); }
+  });
+  list.addEventListener('click', function (e) {
+    var c = e.target.closest('[data-q]'); if (c) { q.value = c.dataset.q; render(); q.focus(); return; }
+    var b = e.target.closest('.gs-item'); if (b) pick(+b.dataset.i);
+  });
+  gs.addEventListener('mousedown', function (e) { if (e.target === gs) close(true); });
+  document.getElementById('gsx').addEventListener('click', function () { close(true); });
+  document.addEventListener('click', function (e) { if (e.target.closest('#navsearch, [data-gs]')) open(); });
+  document.addEventListener('keydown', function (e) {
+    if (!gs.hidden) { if (e.key === 'Escape') { e.preventDefault(); close(true); } return; }
+    if (document.querySelector('dialog[open]')) return;
+    var t = e.target, typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable);
+    if ((e.key === 'k' && (e.ctrlKey || e.metaKey)) || (!typing && !e.ctrlKey && !e.metaKey && !e.altKey && e.key === '/')) { e.preventDefault(); open(); }
+  });
+
+  /* Nach oben */
+  var top = document.getElementById('totop');
+  window.addEventListener('scroll', function () { top.classList.toggle('on', window.scrollY > 1400); }, { passive: true });
+  top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
+
+  /* Patch-Hinweis: meldet CIG eine neuere Version als den Stand dieser Seite, steht das oben auf jeder Ansicht */
+  function cmp(a, b) { a = a.split('.'); b = b.split('.'); for (var i = 0; i < 3; i++) { var d = (+a[i] || 0) - (+b[i] || 0); if (d) return d; } return 0; }
+  fetch('news.json?t=' + Math.floor(Date.now() / 6e4)).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
+    var m = d && d.issues && /(\d+\.\d+(?:\.\d+)?)/.exec(d.issues.title || ''); if (!m || cmp(m[1], PAGE_PATCH) <= 0) return;
+    var seen = ''; try { seen = localStorage.getItem('sc-handbuch-patch') || ''; } catch (e) {}
+    if (seen === m[1]) return;
+    var n = document.getElementById('patchnote');
+    n.querySelector('strong').textContent = 'Patch ' + m[1] + ' ist live';
+    n.querySelector('span').textContent = 'Diese Seite ist noch auf Stand ' + PAGE_PATCH + '. Tasten, Preise, Ruf-Werte und Bugs können abweichen, bis sie durchgesehen ist.';
+    n.hidden = false;
+    document.getElementById('patchok').addEventListener('click', function () { n.hidden = true; try { localStorage.setItem('sc-handbuch-patch', m[1]); } catch (e) {} });
+  }).catch(function () {});
 })();
 </script>
 </body>
