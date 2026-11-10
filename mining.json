@@ -1138,10 +1138,6 @@
   "aluminum": {
    "ref": [
     [
-     4600,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      4200,
      "Everus Harbor"
     ],
@@ -1156,6 +1152,10 @@
     [
      3800,
      "CBD Lorville"
+    ],
+    [
+     3800,
+     "TDD Orison"
     ]
    ]
   },
@@ -1265,10 +1265,6 @@
    "ref": [
     [
      4400,
-     "Terra Gateway (Stanton)"
-    ],
-    [
-     4400,
      "Stanton Gateway (Pyro)"
     ],
     [
@@ -1282,6 +1278,10 @@
     [
      4000,
      "Rod's Fuel"
+    ],
+    [
+     3900,
+     "Baijini Point"
     ]
    ],
    "raw": [
@@ -1310,16 +1310,16 @@
      "Orbituary"
     ],
     [
-     4000,
-     "Everus Harbor"
-    ],
-    [
-     3800,
-     "Terra Gateway (Stanton)"
+     3700,
+     "TDD Area 18"
     ],
     [
      3700,
-     "TDD Area 18"
+     "TDD New Babbage"
+    ],
+    [
+     3700,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1378,8 +1378,8 @@
      "CRU-L4"
     ],
     [
-     6000,
-     "MIC-L4"
+     5400,
+     "TDD New Babbage"
     ],
     [
      4800,
@@ -1453,6 +1453,10 @@
    "ref": [
     [
      8700,
+     "TDD New Babbage"
+    ],
+    [
+     8700,
      "Ruin Station"
     ],
     [
@@ -1466,10 +1470,6 @@
     [
      8700,
      "Endgame"
-    ],
-    [
-     8700,
-     "Gaslight"
     ]
    ]
   },
@@ -1640,12 +1640,12 @@
   "stileron": {
    "ref": [
     [
-     160000,
-     "Levski"
+     150000,
+     "Deakins Research"
     ],
     [
      150000,
-     "Deakins Research"
+     "Levski"
     ],
     [
      140000,
@@ -1712,10 +1712,6 @@
   "titanium": {
    "ref": [
     [
-     10000,
-     "Megumi"
-    ],
-    [
      9200,
      "Starlight Service"
     ],
@@ -1730,6 +1726,10 @@
     [
      8300,
      "Ruin Station"
+    ],
+    [
+     8300,
+     "Checkmate"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-10T13:29:27+00:00"
+ "updated": "2026-11-10T20:50:11+00:00"
 }
