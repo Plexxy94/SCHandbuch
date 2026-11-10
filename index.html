@@ -408,8 +408,10 @@ tr.rec th { color: var(--accent); }
 .sh-opts { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: 14px; }
 .sh-opts .check { font-family: var(--f-body); font-weight: 500; }
 .sh-sel { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); }
-.sh-dir { font: inherit; font-size: 13px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; white-space: nowrap; }
-.sh-dir:hover { border-color: var(--accent); }
+.sh-join { display: inline-flex; }
+.sh-sel .sh-join select { border-radius: 6px 0 0 6px; }
+.sh-dir { font: inherit; font-weight: 600; color: var(--accent); background: var(--panel); border: 1px solid var(--line); border-left: 0; border-radius: 0 6px 6px 0; padding: 0 10px; min-width: 34px; cursor: pointer; }
+.sh-dir:hover, .sh-dir:focus-visible { background: var(--accent-soft); }
 .sh-more { margin-top: 10px; font-size: 14px; }
 .sh-more summary { cursor: pointer; font-family: var(--f-display); font-weight: 600; color: var(--muted); width: fit-content; }
 .sh-more[open] summary { color: var(--ink); }
@@ -3317,10 +3319,9 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <label class="sh-sel">Crew
         <select id="shcrew"><option value="">egal</option><option value="1">solo</option><option value="3">bis 3</option><option value="4">4 und mehr</option></select>
       </label>
-      <label class="sh-sel">Sortieren
-        <select id="shsort"><option value="n">Name</option><option value="scu">Fracht (SCU)</option><option value="buy">Kaufpreis</option><option value="rent">Mietpreis</option><option value="s">Größe</option></select>
-      </label>
-      <button type="button" class="sh-dir" id="shdir" data-dir="asc" title="Reihenfolge umdrehen">↑ aufsteigend</button>
+      <span class="sh-sel"><label for="shsort">Sortieren</label>
+        <span class="sh-join"><select id="shsort"><option value="n">Name</option><option value="scu">Fracht (SCU)</option><option value="buy">Kaufpreis</option><option value="rent">Mietpreis</option><option value="s">Größe</option></select><button type="button" class="sh-dir" id="shdir" data-dir="asc">↑</button></span>
+      </span>
     </div>
     <details class="sh-more" id="shmore">
       <summary>Erweitert <span class="pill later" id="shmore-on" hidden>Budget aktiv</span></summary>
@@ -4572,7 +4573,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   var DIR = { n: 'asc', scu: 'desc', buy: 'asc', rent: 'asc', s: 'asc' };
   function setDir(d) {
     var b = $('shdir'); b.dataset.dir = d;
-    b.textContent = d === 'asc' ? '↑ aufsteigend' : '↓ absteigend';
+    b.textContent = d === 'asc' ? '↑' : '↓';
+    b.title = (d === 'asc' ? 'Aufsteigend' : 'Absteigend') + ' · klicken zum Umdrehen';
     b.setAttribute('aria-label', 'Reihenfolge: ' + (d === 'asc' ? 'aufsteigend' : 'absteigend') + '. Klicken zum Umdrehen.');
   }
   $('shsort').addEventListener('change', function () { setDir(DIR[$('shsort').value]); });
