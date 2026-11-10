@@ -1142,10 +1142,6 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     4600,
-     "Port Tressler"
-    ],
-    [
      4200,
      "Everus Harbor"
     ],
@@ -1156,6 +1152,10 @@
     [
      3800,
      "TDD New Babbage"
+    ],
+    [
+     3800,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1268,16 +1268,16 @@
      "Terra Gateway (Stanton)"
     ],
     [
+     4400,
+     "Stanton Gateway (Pyro)"
+    ],
+    [
      4300,
      "Pyro Gateway (Stanton)"
     ],
     [
      4200,
      "Rat's Nest"
-    ],
-    [
-     4200,
-     "Stanton Gateway (Pyro)"
     ],
     [
      4000,
@@ -1524,7 +1524,7 @@
   "quartz": {
    "ref": [
     [
-     5200,
+     5300,
      "Stanton Gateway (Pyro)"
     ],
     [
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-09T22:24:08+00:00"
+ "updated": "2026-11-10T04:38:13+00:00"
 }
