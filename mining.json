@@ -1138,8 +1138,8 @@
   "aluminum": {
    "ref": [
     [
-     4100,
-     "Everus Harbor"
+     3900,
+     "Port Tressler"
     ],
     [
      3800,
@@ -1214,10 +1214,6 @@
      "Rat's Nest"
     ],
     [
-     34000,
-     "Sacren's Plot"
-    ],
-    [
      32000,
      "The Golden Riviera"
     ],
@@ -1228,6 +1224,10 @@
     [
      30000,
      "Endgame"
+    ],
+    [
+     30000,
+     "Jackson's Swap"
     ]
    ]
   },
@@ -1264,10 +1264,6 @@
   "copper": {
    "ref": [
     [
-     4400,
-     "Stanton Gateway (Pyro)"
-    ],
-    [
      4300,
      "Pyro Gateway (Stanton)"
     ],
@@ -1282,6 +1278,10 @@
     [
      3900,
      "Baijini Point"
+    ],
+    [
+     3700,
+     "TDD Area 18"
     ]
    ],
    "raw": [
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-11T01:15:33+00:00"
+ "updated": "2026-11-11T07:47:49+00:00"
 }
