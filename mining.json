@@ -1138,6 +1138,10 @@
   "aluminum": {
    "ref": [
     [
+     4000,
+     "Everus Harbor"
+    ],
+    [
      3900,
      "Port Tressler"
     ],
@@ -1152,10 +1156,6 @@
     [
      3800,
      "CBD Lorville"
-    ],
-    [
-     3800,
-     "TDD Orison"
     ]
    ]
   },
@@ -1264,10 +1264,6 @@
   "copper": {
    "ref": [
     [
-     4300,
-     "Pyro Gateway (Stanton)"
-    ],
-    [
      4200,
      "Rat's Nest"
     ],
@@ -1282,6 +1278,10 @@
     [
      3700,
      "TDD Area 18"
+    ],
+    [
+     3700,
+     "TDD New Babbage"
     ]
    ],
    "raw": [
@@ -1310,16 +1310,16 @@
      "Orbituary"
     ],
     [
+     4100,
+     "Everus Harbor"
+    ],
+    [
      3700,
      "TDD Area 18"
     ],
     [
      3700,
      "TDD New Babbage"
-    ],
-    [
-     3700,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1374,10 +1374,6 @@
   "hephaestanite": {
    "ref": [
     [
-     6000,
-     "CRU-L4"
-    ],
-    [
      5400,
      "TDD New Babbage"
     ],
@@ -1392,6 +1388,10 @@
     [
      4800,
      "TDD Orison"
+    ],
+    [
+     4800,
+     "CRU-L1"
     ]
    ]
   },
@@ -1528,16 +1528,16 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     4900,
+     5200,
      "Pyro Gateway (Stanton)"
-    ],
-    [
-     4700,
-     "Seraphim"
     ],
     [
      4600,
      "Patch City"
+    ],
+    [
+     4600,
+     "Seraphim"
     ],
     [
      4400,
@@ -1712,6 +1712,10 @@
   "titanium": {
    "ref": [
     [
+     9000,
+     "Starlight Service"
+    ],
+    [
      8300,
      "TDD Area 18"
     ],
@@ -1726,10 +1730,6 @@
     [
      8300,
      "Ruin Station"
-    ],
-    [
-     8300,
-     "Checkmate"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-11T16:12:30+00:00"
+ "updated": "2026-11-11T22:42:29+00:00"
 }
