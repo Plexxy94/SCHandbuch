@@ -15,21 +15,49 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* Layout: Flughandbuch – feste Navigationsleiste, Startseite mit drei Kapitel-Kacheln, jedes Kapitel als eigene Ansicht (#erste-schritte, #tasten, #mining) */
+/* ==========================================================================
+   Designsystem „Tactical Glass“ (SC/Handbuch 2.0)
+   1. Grundfarben je Schema   2. abgeleitete Tokens   3. alte Namen als Alias
+   Neue Stile nutzen die Grundfarben und die Tokens aus Block 2. Die alten Namen
+   (--bg, --panel, --ink …) bleiben, damit bestehende Regeln weiter greifen.
+   ========================================================================== */
 :root {
-  --bg: #eceff2;
-  --panel: #ffffff;
-  --ink: #13212d;
-  --muted: #586775;
-  --line: #d2d9e0;
-  --accent: #c85a14;
-  --accent-soft: #f7e3d4;
-  --key-bg: #f6f8fa;
-  --key-edge: #b8c2cc;
-  --warn: #b3261e;
-  --warn-soft: #f9dedc;
-  --ok: #2c7a4b;
-  --ok-soft: #dcefe3;
-  --mod: #8a3a8c;
+  /* 1. Grundfarben, helles Schema */
+  --bg-primary: #EDF1F5;
+  --bg-card: #FFFFFF;
+  --bg-elevated: #F2F5F8;
+  --border: #C6D1DB;
+  --text-primary: #13202C;
+  --text-secondary: #4A5B6B;
+  --accent-cyan: #0E6F84;
+  --accent-amber: #A4560F;
+  --cyan-soft: #D8ECF1;
+  --amber-soft: #F6E5D3;
+  --warn: #B3261E; --warn-soft: #F9DEDC;
+  --ok: #2C7A4B; --ok-soft: #DCEFE3;
+  --mod: #8A3A8C;
+  --key-edge: #A9B7C4;
+  --glass: rgba(255, 255, 255, .84);
+  --glow: rgba(14, 111, 132, .16);
+  --grid: rgba(19, 32, 44, .06);
+  --shade: rgba(19, 32, 44, .10);
+  --sheen: rgba(255, 255, 255, .6);
+  /* 2. Maße */
+  --radius: 12px;
+  --radius-s: 8px;
+  --radius-xs: 6px;
+  --gap: 16px;
+  --read: 70ch;
+  /* 3. alte Namen */
+  --bg: var(--bg-primary);
+  --panel: var(--bg-card);
+  --ink: var(--text-primary);
+  --muted: var(--text-secondary);
+  --line: var(--border);
+  --accent: var(--accent-cyan);
+  --accent-soft: var(--cyan-soft);
+  --amber: var(--accent-amber);
+  --key-bg: var(--bg-elevated);
   --f-display: "Chakra Petch", "Segoe UI", system-ui, sans-serif;
   --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
@@ -39,15 +67,21 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0c1218; --panel: #131b23; --ink: #e2e8ee; --muted: #8d9aa7; --line: #25313c;
-    --accent: #f08a3c; --accent-soft: #3a2414; --key-bg: #1b252f; --key-edge: #3a4856;
-    --warn: #f2948c; --warn-soft: #3b1816; --ok: #7fd1a0; --ok-soft: #15301f; --mod: #d99ce0; color-scheme: dark;
+    --bg-primary: #0B111B; --bg-card: #172432; --bg-elevated: #1D2D3D; --border: #334759;
+    --text-primary: #E7EDF3; --text-secondary: #AABBC9; --accent-cyan: #77D5E8; --accent-amber: #F0A15A;
+    --cyan-soft: rgba(119, 213, 232, .13); --amber-soft: rgba(240, 161, 90, .15);
+    --warn: #F2948C; --warn-soft: rgba(242, 148, 140, .14); --ok: #7FD1A0; --ok-soft: rgba(127, 209, 160, .14); --mod: #D99CE0;
+    --key-edge: #48627B; --glass: rgba(13, 21, 32, .78); --glow: rgba(119, 213, 232, .20); --grid: rgba(119, 213, 232, .07);
+    --shade: rgba(0, 0, 0, .35); --sheen: rgba(255, 255, 255, .045); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0c1218; --panel: #131b23; --ink: #e2e8ee; --muted: #8d9aa7; --line: #25313c;
-  --accent: #f08a3c; --accent-soft: #3a2414; --key-bg: #1b252f; --key-edge: #3a4856;
-  --warn: #f2948c; --warn-soft: #3b1816; --ok: #7fd1a0; --ok-soft: #15301f; --mod: #d99ce0; color-scheme: dark;
+  --bg-primary: #0B111B; --bg-card: #172432; --bg-elevated: #1D2D3D; --border: #334759;
+  --text-primary: #E7EDF3; --text-secondary: #AABBC9; --accent-cyan: #77D5E8; --accent-amber: #F0A15A;
+  --cyan-soft: rgba(119, 213, 232, .13); --amber-soft: rgba(240, 161, 90, .15);
+  --warn: #F2948C; --warn-soft: rgba(242, 148, 140, .14); --ok: #7FD1A0; --ok-soft: rgba(127, 209, 160, .14); --mod: #D99CE0;
+  --key-edge: #48627B; --glass: rgba(13, 21, 32, .78); --glow: rgba(119, 213, 232, .20); --grid: rgba(119, 213, 232, .07);
+  --shade: rgba(0, 0, 0, .35); --sheen: rgba(255, 255, 255, .045); color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { scroll-padding-top: 72px; }
@@ -810,17 +844,236 @@ a.chip { text-decoration: none; }
 .patchnote strong { font-family: var(--f-display); color: var(--warn); }
 .patchnote span { flex: 1 1 260px; }
 .patchnote button { font: 600 13px var(--f-display); color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
-/* Startseite am Handy: Kacheln zweispaltig und kurz */
-@media (max-width: 560px) {
-  #view-start .chapters { grid-template-columns: 1fr 1fr; gap: 10px; }
-  #view-start .chapters .chapter { padding: 12px 12px 10px; gap: 4px; min-width: 0; }
-  #view-start .chapters .chapter.first, #view-start .chapters .chapter:last-child:nth-child(even) { grid-column: 1 / -1; }
-  #view-start .chapters .chapter h3 { font-size: 18px; overflow-wrap: anywhere; }
-  #view-start .chapters .chapter .no { font-size: 10.5px; }
-  #view-start .chapters .chapter:not(.first) p { font-size: 12.5px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  #view-start .chapters .chapter:not(.first) .go { display: none; }
-}
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 48px; }
+
+/* ==========================================================================
+   Tactical Glass: Oberfläche. Überschreibt die älteren Regeln weiter oben.
+   Aufbau: Grundlage · Kopfzeile · Überschriften · Flächen · Bedienelemente ·
+   Hinweise · Tabellen · Überlagerungen · Startseite
+   ========================================================================== */
+
+/* ---- Grundlage ---- */
+body {
+  font-size: 16px; line-height: 1.6;
+  background:
+    radial-gradient(1100px 520px at 85% -120px, var(--glow), transparent 62%),
+    radial-gradient(800px 420px at -10% 40px, var(--amber-soft), transparent 60%),
+    var(--bg-primary);
+  background-repeat: no-repeat;
+}
+a { color: var(--accent-cyan); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; border-radius: 4px; }
+::selection { background: var(--accent-cyan); color: var(--bg-primary); }
+.lede { max-width: var(--read); font-size: 17px; color: var(--text-secondary); }
+.view section > p:not(.small), .view > p:not(.small), .tool-lede { max-width: var(--read); }
+.small { font-size: 13.5px; }
+
+/* ---- Kopfzeile ---- */
+.nav { background: var(--glass); border-bottom: 1px solid var(--border); -webkit-backdrop-filter: blur(14px) saturate(1.25); backdrop-filter: blur(14px) saturate(1.25); }
+.nav::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-cyan) 18%, var(--accent-cyan) 30%, transparent 62%); opacity: .55; pointer-events: none; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .nav, .gs-box, .subnav.float { background: var(--bg-card); } }
+@media (prefers-reduced-transparency: reduce) { .nav, .gs-box, .subnav, .subnav.float { background: var(--bg-card); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+.brand { font-size: 18px; letter-spacing: .04em; }
+.brand span { color: var(--accent-cyan); }
+.tabs a { border-radius: var(--radius-xs); position: relative; }
+.tabs a:hover { color: var(--text-primary); background: var(--cyan-soft); }
+.tabs a[aria-current="page"] { color: var(--accent-cyan); background: transparent; }
+.tabs a[aria-current="page"]::before { content: ""; position: absolute; left: 10px; right: 10px; bottom: 1px; height: 2px; border-radius: 2px; background: var(--accent-cyan); }
+.subnav { background: transparent; border-top: 1px solid var(--border); }
+.subnav.float { background: var(--glass); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 14px 24px var(--shade); }
+.subnav a:hover { background: var(--cyan-soft); color: var(--text-primary); }
+.subnav a[aria-current="page"] { background: var(--cyan-soft); color: var(--accent-cyan); }
+.nav-search, .nav-news, .nav-ccu { background: transparent; border-color: var(--border); border-radius: var(--radius-xs); transition: border-color .15s, color .15s, background .15s; }
+.nav-search:hover, .nav-news:hover, .nav-ccu:hover { border-color: var(--accent-cyan); color: var(--text-primary); background: var(--cyan-soft); }
+.nav-news[aria-current="page"], .nav-ccu[aria-current="page"] { background: var(--cyan-soft); color: var(--accent-cyan); border-color: transparent; }
+.news-dot { background: var(--accent-amber); box-shadow: 0 0 0 2px var(--bg-primary); }
+
+/* ---- Überschriften ---- */
+.stamp { color: var(--text-secondary); gap: 6px 0; font-size: 11.5px; letter-spacing: .12em; }
+.stamp span { display: inline-flex; align-items: center; }
+.stamp span:first-child { color: var(--accent-cyan); }
+.stamp span:not(:last-child)::after { content: ""; width: 14px; height: 1px; background: var(--border); margin: 0 10px; }
+h1 { font-size: clamp(32px, 5vw, 48px); letter-spacing: 0; }
+h2 { font-size: 14px; letter-spacing: .16em; color: var(--text-secondary); gap: 12px; margin-bottom: 14px; }
+h2::before { content: ""; flex: none; width: 3px; height: 14px; background: var(--accent-cyan); border-radius: 1px; box-shadow: 8px 0 0 -1px var(--border); margin-right: 6px; }
+h2::after { background: linear-gradient(90deg, var(--border), transparent); }
+.view { gap: 44px; }
+
+/* ---- Flächen: Karten und Panels ---- */
+.chapter, .card-plain, .tool, .sh, .bug, .wk, .ccu, .nw-item, .term, .plan-card, .table-wrap, .ore-card, .ho-detail, .ccu-empty, .kekse {
+  border-radius: var(--radius); border-color: var(--border);
+}
+.chapter, .card-plain, .sh, .bug, .wk, .ccu, .nw-item, .term {
+  background: linear-gradient(180deg, var(--sheen), transparent 46px), var(--bg-card);
+  box-shadow: 0 1px 0 var(--sheen) inset;
+}
+.chapter, .sh.clickable, .nw-item { transition: border-color .15s, transform .15s, box-shadow .15s; }
+.chapter:hover, .sh.clickable:hover, .nw-item:hover { border-color: var(--accent-cyan); box-shadow: 0 0 0 1px var(--accent-cyan), 0 10px 26px -14px var(--glow); }
+.chapter.first { border-color: var(--border); }
+.chapter .no { color: var(--accent-cyan); }
+.chapter .go { color: var(--accent-cyan); }
+/* Werkzeug-Panel: ein Rahmen, HUD-Ecken statt Leuchtrand */
+.tool { position: relative; border: 1px solid var(--border); background: linear-gradient(180deg, var(--cyan-soft), transparent 64px), var(--bg-card); box-shadow: none; padding: 20px 22px; }
+.tool::before, .tool::after { content: ""; position: absolute; width: 16px; height: 16px; border: 2px solid var(--accent-cyan); pointer-events: none; }
+.tool::before { left: -1px; top: -1px; border-right: 0; border-bottom: 0; border-top-left-radius: var(--radius); }
+.tool::after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; border-bottom-right-radius: var(--radius); }
+.tool-tag { background: transparent; color: var(--accent-cyan); border: 1px solid var(--accent-cyan); border-radius: 4px; padding: 2px 8px; }
+.plan-card { background: var(--bg-elevated); }
+.plan-card.best { border-color: var(--accent-cyan); }
+.plan-card .lab { color: var(--accent-cyan); }
+.plan-card .rent { color: var(--accent-amber); }
+.fact { border-left-color: var(--accent-cyan); }
+.fact p { font-size: 14.5px; }
+
+/* ---- Bedienelemente ---- */
+.btn { background: var(--accent-cyan); color: var(--bg-primary); border-radius: var(--radius-s); padding: 10px 18px; letter-spacing: .02em; transition: box-shadow .15s, transform .15s, filter .15s; }
+.btn:hover { filter: brightness(1.08); box-shadow: 0 0 0 3px var(--cyan-soft), 0 8px 22px -10px var(--glow); }
+.btn:active { transform: translateY(1px); }
+.btn2, .sh-mine button, .patchnote button, .gs-x { border-radius: var(--radius-s); border-color: var(--border); background: var(--bg-elevated); transition: border-color .15s, background .15s; }
+.btn2:hover, .sh-mine button:hover, .patchnote button:hover { border-color: var(--accent-cyan); background: var(--cyan-soft); }
+.btn2.primary { background: var(--accent-cyan); border-color: var(--accent-cyan); color: var(--bg-primary); }
+.sh-morebtn { border-color: var(--accent-cyan); color: var(--accent-cyan); background: var(--bg-card); border-radius: var(--radius-s); }
+.chip { border-radius: var(--radius-s); border-color: var(--border); background: var(--bg-elevated); color: var(--text-secondary); font-size: 13.5px; padding: 6px 12px; min-height: 34px; transition: border-color .15s, color .15s, background .15s; }
+.chip:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
+.chip[aria-pressed="true"] { background: var(--cyan-soft); border-color: var(--accent-cyan); color: var(--accent-cyan); font-weight: 600; }
+.search input, .sh-budget input, .sh-sel select, .sh-mine input, select, input[type="text"], input[type="search"], input[type="number"] {
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-s); color: var(--text-primary);
+  transition: border-color .15s, box-shadow .15s;
+}
+.search input:focus, .sh-budget input:focus, .sh-sel select:focus, select:focus, input[type="text"]:focus, input[type="search"]:focus, input[type="number"]:focus, .search input.tool-input:focus {
+  border-color: var(--accent-cyan); box-shadow: 0 0 0 3px var(--cyan-soft); outline: none;
+}
+.search input.tool-input { border-width: 1px; background: var(--bg-elevated); }
+.gs-top input, .gs-top input:focus { background: none; border: 0; box-shadow: none; }
+.check input { accent-color: var(--accent-cyan); }
+kbd { border-radius: var(--radius-xs); }
+.mod { color: var(--accent-amber); background: var(--amber-soft); }
+
+/* ---- Status, Hinweise, Warnungen ---- */
+.pill { border-radius: 4px; padding: 2px 8px; letter-spacing: .04em; }
+.pill.later, .ccu-days { background: var(--amber-soft); color: var(--accent-amber); }
+.ccu-days.hot { background: var(--warn-soft); color: var(--warn); }
+.hint, .oops, .learn, .start-tip, .status-banner, .patchnote, .sh-mine-note { border-radius: var(--radius-s); border: 1px solid var(--border); border-left-width: 3px; }
+.hint { background: var(--bg-elevated); border-left-color: var(--accent-cyan); color: var(--text-secondary); font-size: 14.5px; }
+.learn { background: var(--bg-elevated); border-left-color: var(--accent-cyan); font-size: 14.5px; }
+.oops, .status-banner, .patchnote { background: var(--warn-soft); border-color: transparent; border-left-color: var(--warn); font-size: 14.5px; }
+.start-tip { background: var(--amber-soft); border-color: transparent; border-left-color: var(--accent-amber); }
+.sh-mine-note { border-color: transparent; border-left-color: var(--ok); }
+.ccu { border-left: 3px solid var(--accent-amber); }
+.ccu.done { border-left-color: var(--border); }
+
+/* ---- Tabellen ---- */
+.table-wrap { background: var(--bg-card); }
+thead th { background: var(--bg-elevated); color: var(--text-secondary); }
+th, td { border-top-color: var(--border); }
+tbody tr:hover td, tbody tr:hover th { background: var(--sheen); }
+tr.rec th { color: var(--accent-cyan); }
+
+/* ---- Überlagerungen ---- */
+.gs { background: rgba(4, 8, 14, .66); }
+.gs-box { background: var(--glass); border-color: var(--border); border-radius: var(--radius); -webkit-backdrop-filter: blur(18px) saturate(1.2); backdrop-filter: blur(18px) saturate(1.2); }
+.gs-item.on, .gs-item:hover { background: var(--cyan-soft); }
+.gs-item .ty { color: var(--accent-cyan); }
+.sh-dt, .sh-3d { border-color: var(--border); border-radius: var(--radius); }
+.totop { border-color: var(--border); color: var(--accent-cyan); background: var(--bg-card); }
+.totop:hover { border-color: var(--accent-cyan); }
+.gs-flash { animation-name: gsflash; }
+footer { border-top-color: var(--border); }
+.kekse { border-style: solid; background: var(--bg-card); }
+
+/* ---- Startseite ---- */
+.ic { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#view-start { gap: 48px; }
+.st-hero { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 14px; padding: clamp(26px, 5vw, 56px) clamp(18px, 4vw, 48px); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+  background: linear-gradient(135deg, var(--cyan-soft), transparent 46%), var(--bg-card); }
+/* Raster und Ziellinien nur im Kopfbereich, nach links ausgeblendet: hinter dem Text bleibt es ruhig */
+.st-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(90deg, var(--bg-card) 34%, transparent 96%), linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px; }
+.st-hud { position: absolute; right: -70px; top: 50%; width: min(460px, 52%); aspect-ratio: 1; transform: translateY(-50%); z-index: -1; color: var(--accent-cyan); opacity: .42; pointer-events: none; }
+.st-hero::after { content: ""; position: absolute; left: 0; top: 0; width: 46px; height: 46px; border-left: 2px solid var(--accent-cyan); border-top: 2px solid var(--accent-cyan); border-top-left-radius: 16px; pointer-events: none; }
+.st-hero h1 { font-size: clamp(32px, 5.6vw, 58px); line-height: 1.04; max-width: 15ch; text-wrap: balance; }
+.st-sub { margin: 0; font: 600 clamp(17px, 2.2vw, 22px) var(--f-display); color: var(--accent-cyan); letter-spacing: .02em; }
+.st-hero .lede { max-width: 46ch; }
+.st-hero .start-search { max-width: 620px; margin-top: 8px; background: var(--glass); border-color: var(--border); border-radius: var(--radius); min-height: 56px; transition: border-color .15s, box-shadow .15s; }
+.st-hero .start-search:hover, .st-hero .start-search:focus-visible { border-color: var(--accent-cyan); box-shadow: 0 0 0 3px var(--cyan-soft), 0 12px 30px -16px var(--glow); }
+.st-hero .start-search svg { color: var(--accent-cyan); }
+.st-read { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 4px; font: 500 11.5px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--text-secondary); }
+.st-read b { color: var(--text-primary); font-weight: 600; }
+.st-read .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); margin-right: 7px; vertical-align: 1px; }
+.st-read .dot.warn { background: var(--accent-amber); } .st-read .dot.bad { background: var(--warn); }
+.st-read a { color: inherit; text-decoration: none; } .st-read a:hover { color: var(--accent-cyan); }
+
+.st-quick { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); }
+.st-card { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 22px; border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; color: var(--text-primary);
+  background: linear-gradient(180deg, var(--sheen), transparent 60px), var(--bg-card); transition: border-color .15s, transform .15s, box-shadow .15s; }
+.st-card:hover { border-color: var(--accent-cyan); transform: translateY(-2px); box-shadow: 0 0 0 1px var(--accent-cyan), 0 14px 30px -18px var(--glow); }
+.st-card .ic-box { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 10px; background: var(--cyan-soft); color: var(--accent-cyan); }
+.st-card h3 { margin: 4px 0 0; font: 600 21px var(--f-display); line-height: 1.2; }
+.st-card p { margin: 0; color: var(--text-secondary); font-size: 15px; }
+.st-card .go { margin-top: auto; padding-top: 6px; font: 600 15px var(--f-display); color: var(--accent-cyan); }
+.st-card .prog { font: 500 11.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-amber); }
+.st-card .prog:empty { display: none; }
+
+.st-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.st-tool { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 2px 14px; align-items: center; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); text-decoration: none; color: var(--text-primary); text-align: left; font: inherit; cursor: pointer; transition: border-color .15s, background .15s; }
+.st-tool:hover { border-color: var(--accent-cyan); background: linear-gradient(90deg, var(--cyan-soft), transparent 70%), var(--bg-card); }
+.st-tool .ic { grid-row: span 2; width: 40px; height: 40px; padding: 8px; border: 1px solid var(--border); border-radius: 9px; color: var(--accent-cyan); background: var(--bg-elevated); }
+.st-tool b { font: 600 16.5px var(--f-display); }
+.st-tool span { grid-column: 2; font-size: 14px; color: var(--text-secondary); line-height: 1.4; }
+.st-plan { margin-top: 14px; }
+.st-plan > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); font: 600 16.5px var(--f-display); }
+.st-plan > summary::-webkit-details-marker { display: none; }
+.st-plan > summary::after { content: "öffnen"; margin-left: auto; font: 500 11.5px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-cyan); }
+.st-plan[open] > summary::after { content: "schließen"; }
+.st-plan > summary:hover { border-color: var(--accent-cyan); }
+.st-plan > summary .ic { color: var(--accent-cyan); }
+.st-plan > summary small { font: 400 14px var(--f-body); color: var(--text-secondary); }
+.st-plan[open] > summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+.st-plan[open] > .tool { border-top-left-radius: 0; border-top-right-radius: 0; }
+.st-plan[open] > .tool::before { display: none; }
+
+.st-kb { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: var(--gap); }
+.st-group { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: linear-gradient(180deg, var(--sheen), transparent 60px), var(--bg-card); min-width: 0; }
+.st-group header { display: flex; align-items: center; gap: 12px; }
+.st-group header .ic { color: var(--accent-cyan); }
+.st-group h3 { margin: 0; font: 600 20px var(--f-display); }
+.st-group h3 a { color: inherit; text-decoration: none; } .st-group h3 a:hover { color: var(--accent-cyan); }
+.st-group p { margin: 0; color: var(--text-secondary); font-size: 15px; }
+.st-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.st-links a { font: 500 14px var(--f-body); padding: 6px 11px; min-height: 34px; display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: var(--radius-s); background: var(--bg-elevated); color: var(--text-primary); text-decoration: none; transition: border-color .15s, color .15s; }
+.st-links a:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+
+.st-now { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: var(--gap); align-items: start; }
+.st-panel { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); min-width: 0; }
+.st-panel h3 { margin: 0; font: 600 12px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); display: flex; justify-content: space-between; gap: 10px; }
+.st-panel h3 a { text-transform: none; letter-spacing: 0; font: 600 14px var(--f-display); text-decoration: none; }
+.st-stat { display: flex; align-items: center; gap: 10px; font-size: 15px; }
+.st-stat i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px var(--ok-soft); }
+.st-stat.warn i { background: var(--accent-amber); box-shadow: 0 0 0 4px var(--amber-soft); }
+.st-stat.bad i { background: var(--warn); box-shadow: 0 0 0 4px var(--warn-soft); }
+.st-stat span { color: var(--text-secondary); margin-left: auto; font: 500 12px var(--f-mono); text-align: right; }
+.st-newsrow { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; padding: 9px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-primary); font-size: 15px; line-height: 1.4; }
+.st-newsrow:first-of-type { border-top: 0; padding-top: 2px; }
+.st-newsrow time { font: 500 12px var(--f-mono); color: var(--text-secondary); padding-top: 2px; }
+.st-newsrow:hover { color: var(--accent-cyan); }
+
+@media (max-width: 980px) { .st-quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } .st-now { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  #view-start { gap: 36px; }
+  .st-quick, .st-tools, .st-kb { grid-template-columns: 1fr; }
+  .st-card { padding: 18px; display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 4px 14px; align-items: start; }
+  .st-card .ic-box { grid-row: span 3; }
+  .st-card h3 { margin: 0; font-size: 19px; }
+  .st-card .go, .st-card .prog { grid-column: 2; padding-top: 2px; }
+  .st-hud { right: -120px; width: 320px; opacity: .22; }
+  .st-hero .start-search span { font-size: 15px; }
+  .st-plan > summary small { display: none; }
+  .tool { padding: 16px; }
+  h2::before { margin-right: 2px; }
+}
+
 .empty { color: var(--muted); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media (max-width: 560px) {
@@ -885,26 +1138,78 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   </div>
 </nav>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-launch" viewBox="0 0 24 24"><path d="M12 3l5 9h-3v5h-4v-5H7z"/><path d="M9.5 21h5"/></symbol>
+  <symbol id="i-keys" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><path d="M6.5 10h.01M10 10h.01M13.5 10h.01M17 10h.01M7.5 14h9"/></symbol>
+  <symbol id="i-credits" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.6 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.4 0-2.4.8-2.4 1.9 0 2.5 5 1.3 5 3.9 0 1.2-1.1 2-2.6 2-1.1 0-2.1-.5-2.7-1.4M12 6.2v11.6"/></symbol>
+  <symbol id="i-fix" viewBox="0 0 24 24"><path d="M14.6 5.4a4.2 4.2 0 0 0-5.2 5.2L4 16v4h4l5.4-5.4a4.2 4.2 0 0 0 5.2-5.2L16 12l-2.6-.7-.7-2.6z"/></symbol>
+  <symbol id="i-plan" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.8 8.2l-2.2 5.4-5.4 2.2 2.2-5.4z"/></symbol>
+  <symbol id="i-ore" viewBox="0 0 24 24"><path d="M6.5 4h11L21 9.5 12 20 3 9.5z"/><path d="M3 9.5h18M9 4l3 5.5L15 4"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></symbol>
+  <symbol id="i-ship" viewBox="0 0 24 24"><path d="M12 2.5l2.6 7.5 6.4 3.2v2l-6-.9-.9 4.5 2 1.4V22l-4.1-1-4.1 1v-1.8l2-1.4-.9-4.5-6 .9v-2L9.4 10z"/></symbol>
+  <symbol id="i-rep" viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.8-5.4 2.8 1-6-4.4-4.3 6.1-.9z"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4l2.6 1.8M9.5 3h5"/></symbol>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6.4-6.4"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 21V5.5M8.5 7.5h7M8.5 11h5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></symbol>
+  <symbol id="i-news" viewBox="0 0 24 24"><path d="M4 5h13v14H6.5A2.5 2.5 0 0 1 4 16.5z"/><path d="M17 9h3v7.5a2.5 2.5 0 0 1-2.5 2.5M7.5 9h6M7.5 12.5h6M7.5 16h3.5"/></symbol>
+  <symbol id="i-stick" viewBox="0 0 24 24"><path d="M12 4.5V14M9.2 4.5h5.6M6.5 20h11L16 14.5H8z"/></symbol>
+  <symbol id="i-learn" viewBox="0 0 24 24"><path d="M2.5 9L12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11.2v4.6c1.6 1.4 3.4 2.1 5.5 2.1s3.9-.7 5.5-2.1v-4.6"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/><path d="M5.7 5.7l3.7 3.7M14.6 14.6l3.7 3.7M18.3 5.7l-3.7 3.7M9.4 14.6l-3.7 3.7"/></symbol>
+</svg>
 <main class="wrap">
 
 <!-- ============ START ============ -->
 <div class="patchnote" id="patchnote" hidden><strong></strong><span></span><a href="#bugs">Bekannte Bugs</a><button type="button" id="patchok">Verstanden</button></div>
 <section class="view" id="view-start" data-view="start">
   <a class="status-banner" id="statusbanner" href="#news" hidden></a>
-  <div class="hero">
-    <div class="stamp"><span>Inoffizielles Einsteiger-Handbuch</span><span>Stand Alpha 4.10.2</span><span>QWERTZ-Tastatur</span></div>
-    <h1>Willkommen im Verse.</h1>
-    <p class="lede">Tutorials für den Einstieg und ein Nachschlagewerk für später: Tasten, Berufe, Einsätze, Schiffe und aktuelle Bugs. Lass die Seite auf dem zweiten Bildschirm oder dem Handy offen und spiel einfach mit.</p>
+
+  <div class="st-hero">
+    <svg class="st-hud" viewBox="0 0 400 400" fill="none" stroke="currentColor" aria-hidden="true">
+      <circle cx="200" cy="200" r="190" stroke-width="1" stroke-dasharray="2 10"/>
+      <circle cx="200" cy="200" r="150" stroke-width="1"/>
+      <path d="M200 50a150 150 0 0 1 150 150" stroke-width="4"/>
+      <circle cx="200" cy="200" r="104" stroke-width="1" stroke-dasharray="46 14"/>
+      <circle cx="200" cy="200" r="58" stroke-width="1"/>
+      <path d="M200 20v46M200 334v46M20 200h46M334 200h46M200 180v40M180 200h40" stroke-width="1"/>
+      <path d="M94 94l22 22M306 94l-22 22M94 306l22-22M306 306l-22-22" stroke-width="1"/>
+    </svg>
+    <div class="stamp"><span>SC/Handbuch 2.0</span><span>Stand Alpha 4.10.2</span><span>QWERTZ</span><span>Inoffiziell</span></div>
+    <h1>Bereit für deinen nächsten Flug?</h1>
+    <p class="st-sub">Dein Begleiter durch das Verse.</p>
+    <p class="lede">Tutorials, Schiffe, Berufe und praktische Werkzeuge für Star Citizen.</p>
+    <button type="button" class="start-search" data-gs aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Handbuch durchsuchen: Schiff, Taste, Erz, Begriff, Bug …</span><kbd>/</kbd></button>
+    <div class="st-read" id="st-read" aria-live="polite"></div>
   </div>
 
-  <button type="button" class="start-search" data-gs aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Wonach suchst du? Schiff, Taste, Erz, Begriff, Bug …</span><kbd>/</kbd></button>
+  <section aria-labelledby="st-h-quick">
+    <h2 id="st-h-quick">Schnellzugriff</h2>
+    <div class="st-quick">
+      <a class="st-card" href="#heimat" id="st-new"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-launch"/></svg></span><h3>Neu im Verse</h3><p>Heimatstadt wählen, dann Schritt für Schritt vom Quartier bis zum ersten Auftrag. Du hakst ab, was sitzt.</p><span class="prog" id="st-prog"></span><span class="go" id="st-newgo">Los geht’s →</span></a>
+      <a class="st-card" href="#tasten"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg></span><h3>Steuerung finden</h3><p>Die zehn wichtigsten Tasten und alle weiteren nach Situation, für QWERTZ. Dazu die HOSAS-Belegung.</p><span class="go">Tasten nachschlagen →</span></a>
+      <a class="st-card" href="#berufe"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg></span><h3>Geld verdienen</h3><p>Mining, Salvage, Hauling und Crafting im Vergleich: was es kostet, was es bringt und was zu dir passt.</p><span class="go">Berufe vergleichen →</span></a>
+      <a class="st-card" href="#bugs"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg></span><h3>Probleme lösen</h3><p>Aufzug kommt nicht, Schiff fehlt, Fehlercode? Bekannte Bugs mit Workarounds und die offizielle Liste von CIG.</p><span class="go">Hilfe finden →</span></a>
+    </div>
+  </section>
 
-  <div class="start-tip">
-    <strong>Neu hier?</strong>
-    <span>Such dir zuerst eine Heimatstadt aus, dann geht es mit „Erste Schritte“ weiter. Dort hakst du ab, was du schon geschafft hast.</span>
-    <a class="btn" href="#heimat">Los geht's</a>
-  </div>
-
+  <section aria-labelledby="st-h-tools">
+    <h2 id="st-h-tools">Werkzeuge</h2>
+    <div class="st-tools">
+      <button type="button" class="st-tool" id="st-planbtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg><b>Tagesplaner</b><span>Was mache ich heute? Vorschläge nach Zeit, Gruppe und Hangar.</span></button>
+      <a class="st-tool" href="#mining" data-jump="rs-tool"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg><b>Mining-Rechner</b><span>Signatur eingeben, Gestein und Menge ablesen.</span></a>
+      <a class="st-tool" href="#mining" data-jump="loc-tool"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><b>Erz- und Fundort-Suche</b><span>Wo es ein Erz gibt, beste Raffinerie und Verkaufsort.</span></a>
+      <a class="st-tool" href="#hauling" data-jump="hq-tool"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg><b>Frachter-Finder</b><span>Welches Schiff schafft den Auftrag in wie vielen Fahrten?</span></a>
+      <a class="st-tool" href="#schiffe"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg><b>Schiffsdatenbank</b><span>Alle Schiffe mit Preis, Fracht, Crew, Budget-Filter und 3D-Modell.</span></a>
+      <a class="st-tool" href="#ruf" data-jump="rufwho"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-rep"/></svg><b>Ruf-Rechner</b><span>Rang, nächste Stufe und wie viele Aufträge noch fehlen.</span></a>
+      <a class="st-tool" href="#exec-hangar" data-jump="xh-timer"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-timer"/></svg><b>Executive-Hangar-Timer</b><span>Ist der Hangar offen? Live mit Uhrzeit des nächsten Wechsels.</span></a>
+      <a class="st-tool" href="#ccu-radar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-radar"/></svg><b>CCU-Radar</b><span>Meldet Schiffe, die im Pledge-Store teurer werden.</span></a>
+      <a class="st-tool" href="#hosas"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-stick"/></svg><b>HOSAS-Belegung</b><span>Zwei Sticks, jede Taste mit Funktion, mit Suche.</span></a>
+      <a class="st-tool" href="#training"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg><b>Training</b><span>Tasten und Abläufe am PC üben, bevor es ernst wird.</span></a>
+      <a class="st-tool" href="#hathor" data-jump="wkchips"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg><b>Wikelo-Tauschliste</b><span>Alle 39 Schiffe mit Favors und Material, mit Filter.</span></a>
+      <a class="st-tool" href="#glossar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg><b>Glossar</b><span>aUEC, SCU, NAV, ASOP: Abkürzungen kurz erklärt, mit Suche.</span></a>
+    </div>
+    <details class="st-plan" id="st-plan">
+      <summary><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg>Was mache ich heute? <small>Drei Vorschläge für deine Zeit und deinen Hangar</small></summary>
   <div class="tool" id="plan">
     <div class="tool-head"><span class="tool-tag">Planer</span><h3>Was mache ich heute?</h3></div>
     <div class="plan-q"><span>Zeit</span><div class="chips" id="plan-t" role="group" aria-label="Wie viel Zeit hast du?"></div>
@@ -916,81 +1221,60 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     <div class="plan-out" id="plan-out"></div>
     <p class="small" style="margin:0">Vorschläge nach festen Regeln aus den Kapiteln dieser Seite, keine berechneten Bestwerte. Erträge sind Richtwerte.</p>
   </div>
+    </details>
+  </section>
 
-  <div class="chapters">
-    <a class="chapter first" href="#tutorial">
-      <span class="no">LERNEN</span>
-      <h3>Tutorials</h3>
-      <p>Schritt für Schritt: Heimatstadt wählen, Erste Schritte, Überleben, Mining, Salvage, Hauling und Crafting lernen, dazu Übungen im Training.</p>
-      <span class="go">Loslegen →</span>
-    </a>
-    <a class="chapter" href="#tasten">
-      <span class="no">NACHSCHLAGEN</span>
-      <h3>Tasten</h3>
-      <p>Die zehn wichtigsten Tasten auf einen Blick und alle weiteren nach Situation sortiert. Mit Suche.</p>
-      <span class="go">Nachschlagen →</span>
-    </a>
-    <a class="chapter" href="#berufe">
-      <span class="no">GELD VERDIENEN</span>
-      <h3>Berufe</h3>
-      <p>Mining, Salvage, Hauling und Crafting im Vergleich: was es kostet, was es bringt und welcher Beruf zu dir passt. Dazu Ruf.</p>
-      <span class="go">Vergleichen →</span>
-    </a>
-    <a class="chapter" href="#mining">
-      <span class="no">NACHSCHLAGEN</span>
-      <h3>Mining</h3>
-      <p>RS-Rechner, Erz- und Fundort-Suche mit den besten Raffinerien und Verkaufsorten, Schiffe und Methoden im Vergleich.</p>
-      <span class="go">Abbauen →</span>
-    </a>
-    <a class="chapter" href="#salvage">
-      <span class="no">NACHSCHLAGEN</span>
-      <h3>Salvage</h3>
-      <p>Schiffe und Puffer, wo RMC am meisten bringt, Baumaterial, Bricking und Regeln.</p>
-      <span class="go">Bergen →</span>
-    </a>
-    <a class="chapter" href="#hauling">
-      <span class="no">NACHSCHLAGEN</span>
-      <h3>Hauling</h3>
-      <p>Frachtaufträge und Handel: welches Schiff wann, Ränge, Kistengrößen und ein Frachter-Finder.</p>
-      <span class="go">Laden →</span>
-    </a>
-    <a class="chapter" href="#crafting">
-      <span class="no">NACHSCHLAGEN</span>
-      <h3>Crafting</h3>
-      <p>Baupläne, Material und Qualität: was du bauen kannst und was dein Material bewirkt.</p>
-      <span class="go">Bauen →</span>
-    </a>
-    <a class="chapter" href="#einsaetze">
-      <span class="no">EINSÄTZE</span>
-      <h3>Einsätze</h3>
-      <p>Executive Hangar mit Live-Timer, Siege of Orison, Hathor &amp; Wikelo und Bunker-Missionen: Ablauf, Tipps und aktuelle Bugs.</p>
-      <span class="go">Zum Einsatz →</span>
-    </a>
-    <a class="chapter" href="#schiffe">
-      <span class="no">NACHSCHLAGEN</span>
-      <h3>Schiffe</h3>
-      <p>Alle flugfähigen Schiffe mit Einsatzzweck, Fracht, Crew und Preisen im Spiel. Mit Bild und 3D-Modell zum Drehen.</p>
-      <span class="go">Hangar öffnen →</span>
-    </a>
-    <a class="chapter" href="#bugs">
-      <span class="no">HILFE</span>
-      <h3>Bugs &amp; Workarounds</h3>
-      <p>Was gerade hakt und was dagegen hilft: Aufzüge, Hangar, Fracht, Fehlercodes. Mit Suche und der offiziellen Liste von CIG.</p>
-      <span class="go">Hilfe finden →</span>
-    </a>
-    <a class="chapter" href="#glossar">
-      <span class="no">NACHSCHLAGEN</span>
-      <h3>Glossar</h3>
-      <p>aUEC, SCU, NAV, ASOP, Pledge, Wipe: Was die ganzen Abkürzungen bedeuten, kurz erklärt.</p>
-      <span class="go">Begriffe →</span>
-    </a>
-    <a class="chapter" href="#news">
-      <span class="no">AKTUELL</span>
-      <h3>News</h3>
-      <p>Server-Status, Neues von RSI und frische Videos. Wird mehrmals täglich aktualisiert.</p>
-      <span class="go">Lesen →</span>
-    </a>
-  </div>
+  <section aria-labelledby="st-h-kb">
+    <h2 id="st-h-kb">Wissensdatenbank</h2>
+    <div class="st-kb">
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg><h3><a href="#tutorial">Tutorials</a></h3></header>
+      <p>Schritt für Schritt vom ersten Login bis zur ersten Runde in jedem Beruf.</p>
+      <div class="st-links"><a href="#heimat">Heimatstadt</a><a href="#erste-schritte">Erste Schritte</a><a href="#ueberleben">Überleben</a><a href="#t-mining">Mining lernen</a><a href="#t-salvage">Salvage lernen</a><a href="#t-hauling">Hauling lernen</a><a href="#t-crafting">Crafting lernen</a><a href="#training">Training</a></div>
+    </div>
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg><h3><a href="#tasten">Steuerung</a></h3></header>
+      <p>Die wichtigsten Tasten auf einen Blick, alle weiteren nach Situation sortiert.</p>
+      <div class="st-links"><a href="#tasten">Tastatur</a><a href="#hosas">HOSAS</a></div>
+    </div>
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg><h3><a href="#berufe">Berufe</a></h3></header>
+      <p>Werkzeuge und Zahlen zum Nachschlagen: Fundorte, Raffinerien, Ränge, Baupläne.</p>
+      <div class="st-links"><a href="#berufe">Übersicht</a><a href="#mining">Mining</a><a href="#salvage">Salvage</a><a href="#hauling">Hauling</a><a href="#crafting">Crafting</a><a href="#ruf">Ruf</a></div>
+    </div>
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><h3><a href="#einsaetze">Einsätze</a></h3></header>
+      <p>Ablauf, Ausrüstung, Tipps und aktuelle Bugs für die großen Missionen.</p>
+      <div class="st-links"><a href="#exec-hangar">Executive Hangar</a><a href="#siege-orison">Siege of Orison</a><a href="#hathor">Hathor & Wikelo</a><a href="#recco">Recco Battaglia</a><a href="#bunker">Bunker</a></div>
+    </div>
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg><h3><a href="#schiffe">Schiffe</a></h3></header>
+      <p>Alle flugfähigen Schiffe mit Einsatzzweck, Fracht, Crew und Preisen im Spiel.</p>
+      <div class="st-links"><a href="#schiffe">Alle Schiffe</a><a href="#ccu-radar">CCU-Radar</a></div>
+    </div>
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-help"/></svg><h3><a href="#bugs">Hilfe und Nachschlagen</a></h3></header>
+      <p>Was gerade hakt und was dagegen hilft, dazu alle Abkürzungen kurz erklärt.</p>
+      <div class="st-links"><a href="#bugs">Bugs & Workarounds</a><a href="#glossar">Glossar</a><a href="#news">News</a></div>
+    </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="st-h-now">
+    <h2 id="st-h-now">Aktuelles</h2>
+    <div class="st-now">
+      <div class="st-panel">
+        <h3>Server-Status <a href="#news">Details →</a></h3>
+        <div id="st-status"><div class="st-stat"><i></i>Wird geladen …</div></div>
+        <h3 style="margin-top:8px">CCU-Radar <a href="#ccu-radar">Öffnen →</a></h3>
+        <div id="st-ccu" class="small">Wird geladen …</div>
+      </div>
+      <div class="st-panel">
+        <h3>Neues von RSI <a href="#news">Alle News →</a></h3>
+        <div id="st-news"><span class="small">Wird geladen …</span></div>
+      </div>
+    </div>
+  </section>
 
   <section>
     <h2>Gut zu wissen</h2>
@@ -6613,6 +6897,60 @@ window.SC_MINE = (function () {
   }).catch(function () {});
   document.addEventListener('viewchange', function (e) { if (e.detail === 'ccu-radar') load(); dot(); });
   if (location.hash === '#ccu-radar') load();
+})();
+</script>
+<script>
+/* ---------- Startseite 2.0: Fortschritt, Sprünge zu Werkzeugen, Aktuelles (nur Anzeige, keine neue Logik) ---------- */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  if (!$('st-news')) return;
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  /* Karte „Neu im Verse“: zeigt den Stand der Häkchen aus „Erste Schritte“ und führt dorthin weiter */
+  function progress() {
+    var boxes = document.querySelectorAll('#steps input[type=checkbox]'), done = 0;
+    Array.prototype.forEach.call(boxes, function (b) { if (b.checked) done++; });
+    if (!boxes.length || !done) { $('st-prog').textContent = ''; $('st-new').setAttribute('href', '#heimat'); $('st-newgo').textContent = 'Los geht’s →'; return; }
+    $('st-prog').textContent = done === boxes.length ? 'Alle ' + done + ' Schritte geschafft' : done + ' von ' + boxes.length + ' Schritten geschafft';
+    $('st-new').setAttribute('href', done === boxes.length ? '#tutorial' : '#erste-schritte');
+    $('st-newgo').textContent = done === boxes.length ? 'Weitere Tutorials →' : 'Weitermachen →';
+  }
+  document.addEventListener('viewchange', function (e) { if (e.detail === 'start') progress(); });
+  progress();
+  /* Werkzeug-Karten: nach dem Wechsel der Ansicht direkt zum Werkzeug rollen */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-jump]'); if (!a) return;
+    var id = a.dataset.jump;
+    setTimeout(function () { var el = document.getElementById(id); if (el && el.getClientRects().length) el.scrollIntoView({ block: 'start' }); }, 120);
+  });
+  $('st-planbtn').addEventListener('click', function () {
+    var d = $('st-plan'); d.open = true;
+    d.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+  /* Aktuelles aus den Dateien, die die Seite ohnehin lädt */
+  var t = '?t=' + Math.floor(Date.now() / 6e5);
+  var STAT = { operational: ['', 'läuft normal'], ok: ['', 'läuft normal'], degraded: ['warn', 'eingeschränkt'], disrupted: ['warn', 'gestört'], notice: ['warn', 'Hinweis'],
+    maintenance: ['warn', 'Wartung'], partial: ['warn', 'teilweise gestört'], down: ['bad', 'ausgefallen'], major: ['bad', 'großer Ausfall'] };
+  function stat(s) { return STAT[String(s || '').toLowerCase()] || ['warn', s || 'unbekannt']; }
+  fetch('news.json' + t).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
+    var st = d.status || {}, sys = st.systems || [];
+    $('st-status').innerHTML = sys.length ? sys.map(function (s) { var x = stat(s.status); return '<div class="st-stat ' + x[0] + '"><i></i>' + esc(s.name) + '<span>' + x[1] + '</span></div>'; }).join('')
+      : '<div class="st-stat warn"><i></i>Status gerade nicht abrufbar</div>';
+    var sum = stat(st.summary), fmt = function (x) { return new Date(x).toLocaleString('de-DE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); };
+    $('st-read').innerHTML = (sys.length ? '<a href="#news"><span class="dot ' + sum[0] + '"></span>Server: <b>' + sum[1] + '</b></a>' : '') +
+      (d.issues && d.issues.title ? '<a href="#bugs">Patch: <b>' + esc((/[\d.]+/.exec(d.issues.title) || [''])[0]) + '</b></a>' : '') +
+      (d.checked || d.updated ? '<span>Daten: <b>' + fmt(d.checked || d.updated) + '</b></span>' : '');
+    var rows = (d.commlinks || []).slice(0, 5);
+    $('st-news').innerHTML = rows.length ? rows.map(function (c) {
+      var ok = /^https:\/\/robertsspaceindustries\.com\//.test(c.url || '');
+      return '<a class="st-newsrow" href="' + (ok ? esc(c.url) : '#news') + '"' + (ok ? ' target="_blank" rel="noopener"' : '') + '><time>' + new Date(c.date).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' }) + '</time><span>' + esc(c.title) + '</span></a>';
+    }).join('') : '<span class="small">Gerade keine Meldungen.</span>';
+  }).catch(function () { $('st-status').innerHTML = '<div class="st-stat warn"><i></i>Status gerade nicht abrufbar</div>'; $('st-news').innerHTML = '<span class="small">News ließen sich nicht laden.</span>'; });
+  fetch('ccu.json' + t).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
+    var open = (d.hits || []).filter(function (h) { return !h.done; });
+    $('st-ccu').innerHTML = open.length ? open.slice(0, 2).map(function (h) {
+      return '<b>' + esc(h.ship) + '</b>' + (h.old != null && h.new != null ? ' wird teurer: ' + h.old + ' $ → ' + h.new + ' $' : '') + (h.saving != null ? ', Upgrade spart ' + h.saving + ' $' : '') + '.';
+    }).join('<br>') : 'Nichts Neues. Keine angekündigte Preiserhöhung.';
+  }).catch(function () { $('st-ccu').textContent = 'Gerade nicht abrufbar.'; });
 })();
 </script>
 </body>

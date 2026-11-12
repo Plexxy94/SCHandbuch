@@ -49,3 +49,12 @@ Veröffentlicht wird erst nach Freigabe durch Zusammenführen nach `main`. GitHu
 - Alle 29 Ansichten bei 360 px und Desktop: kein Querscrollen, keine Konsolenfehler.
 - Funktionen: Suche, Planer, Meine Schiffe (Markieren, Filter, Link), Budget-Filter, Rechner (RS, Ruf, Recco, Frachter-Finder), Executive-Hangar-Timer, Häkchen bei „Erste Schritte“, 3D-Ansicht, CCU-Radar, News.
 - Speicherstände: `sc-handbuch-steps`, `-ships`, `-plan`, `-patch`, `-ccu` und die übrigen Schlüssel bleiben lesbar.
+
+## Stand Phase 2 (12.11.2026)
+
+Umgesetzt: Designsystem „Tactical Glass“ (Tokens, Flächen, Bedienelemente, Hinweise, Tabellen, Kopfzeile) und die neue Startseite (Hero, Schnellzugriff, Werkzeuge, Wissensdatenbank, Aktuelles).
+
+- Tokens stehen am Anfang des `<style>`-Blocks, die neuen Stile im Abschnitt „Tactical Glass: Oberfläche“ am Ende. Alte Regeln dazwischen sind unverändert und werden überschrieben.
+- Alte Token-Namen (`--bg`, `--panel`, `--accent` …) sind Aliasse auf die neuen. Aufräumen der alten Regeln ist ein späterer Schritt.
+- Unschärfe (`backdrop-filter`) nur an Kopfzeile, zweiter Reihe und Suche. `mask-image` im Hero wurde wieder entfernt, weil die Seite damit im Vorschau-Browser beim Scrollen leer blieb.
+- Offen: Unterseiten einzeln durchgestalten, 123 Inline-Styles prüfen, helles Schema per Auge prüfen, alte CSS-Regeln zusammenführen.
