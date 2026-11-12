@@ -143,7 +143,7 @@ kbd {
   border: 1px solid var(--key-edge); border-bottom-width: 3px; white-space: nowrap; line-height: 1.5;
 }
 .plus { color: var(--muted); font-size: 12px; margin: 0 2px; }
-.mod { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 1px 6px; border-radius: 3px; margin-left: 4px; white-space: nowrap; }
+.mod { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 1px 6px; border-radius: 3px; margin-left: 4px; white-space: nowrap; }
 
 /* Startseite */
 .hero { display: flex; flex-direction: column; gap: 14px; padding-block: 8px 4px; }
@@ -212,16 +212,16 @@ details p { margin: 8px 0 0; color: var(--muted); }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 16px; align-items: start; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 18px 10px; min-width: 0; }
 .panel h3 { font-family: var(--f-display); font-size: 18px; font-weight: 600; margin: 10px 0 4px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.panel h3 small { font-family: var(--f-mono); font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: .05em; }
+.panel h3 small { font-family: var(--f-mono); font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: .05em; }
 .row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line); }
 .row:first-of-type { border-top: 0; }
 .row .k { text-align: right; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 2px; }
 .row .a { min-width: 0; }
 .row .note { display: block; font-size: 12.5px; color: var(--muted); }
-.row.verify .a::after { content: "prüfen"; font-family: var(--f-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; margin-left: 6px; padding: 1px 5px; border-radius: 3px; border: 1px dashed var(--muted); color: var(--muted); }
+.row.verify .a::after { content: "prüfen"; font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-left: 6px; padding: 1px 5px; border-radius: 3px; border: 1px dashed var(--muted); color: var(--muted); }
 .panel.danger { border-color: var(--warn); }
 .panel.danger h3 { color: var(--warn); }
-.tag-verify { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; border: 1px dashed var(--muted); color: var(--muted); padding: 1px 6px; border-radius: 3px; }
+.tag-verify { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; border: 1px dashed var(--muted); color: var(--muted); padding: 1px 6px; border-radius: 3px; }
 
 /* Mining */
 .table-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
@@ -231,14 +231,14 @@ thead th { border-top: 0; font-family: var(--f-display); font-size: 12px; letter
 tbody th { font-family: var(--f-display); font-size: 16px; font-weight: 600; white-space: nowrap; }
 tbody th small { display: block; font-family: var(--f-body); font-size: 12px; font-weight: 400; color: var(--muted); }
 td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
-.pill { display: inline-block; font-family: var(--f-mono); font-size: 11px; padding: 1px 7px; border-radius: 10px; white-space: nowrap; }
+.pill { display: inline-block; font-family: var(--f-mono); font-size: 12px; padding: 1px 7px; border-radius: 10px; white-space: nowrap; }
 .pill.go { background: var(--ok-soft); color: var(--ok); }
 .pill.later { background: var(--accent-soft); color: var(--accent); }
 .pill.no { background: var(--key-bg); color: var(--muted); border: 1px solid var(--line); }
 tr.rec th { color: var(--accent); }
 .gauge { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; }
 .gauge h3 { font-family: var(--f-display); font-size: 20px; margin: 0; font-weight: 600; }
-.meter { display: grid; grid-template-columns: 1.2fr 1fr .8fr; height: 28px; border-radius: 6px; overflow: hidden; font-family: var(--f-mono); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.meter { display: grid; grid-template-columns: 1.2fr 1fr .8fr; height: 28px; border-radius: 6px; overflow: hidden; font-family: var(--f-mono); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .meter span { display: grid; place-items: center; }
 .meter .lo { background: var(--key-bg); color: var(--muted); }
 .meter .mid { background: var(--ok); color: var(--panel); }
@@ -274,7 +274,7 @@ tr.rec th { color: var(--accent); }
 @media (max-width: 560px) { .gloss-group { grid-template-columns: 26px minmax(0, 1fr); gap: 8px; } .gloss-letter { font-size: 22px; } }
 .term { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .term b { font-family: var(--f-display); font-size: 17px; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
-.term b small { font-family: var(--f-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.term b small { font-family: var(--f-mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .term span { font-size: 14px; color: var(--muted); }
 .term em { font-style: normal; color: var(--ink); }
 
@@ -359,12 +359,12 @@ tr.rec th { color: var(--accent); }
 .ho-btns button.match { border-color: var(--accent); background: var(--accent-soft); }
 .ho-sec { display: flex; flex-direction: column; gap: 6px; }
 .ho-sec + .ho-sec { border-top: 1px dashed var(--line); padding-top: 8px; }
-.ho-sec > i { font-style: normal; font: 600 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.ho-sec > i { font-style: normal; font: 600 12px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .ho-sec > i.m { color: var(--mod); }
 .ho-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 15px; line-height: 1.35; }
 .ho-row .fn { min-width: 0; }
 .ho-row .en { display: block; font-size: 12px; color: var(--muted); }
-.ho-row .how { flex: none; font: 600 11px var(--f-mono); color: var(--mod); border: 1px solid var(--mod); border-radius: 3px; padding: 0 5px; }
+.ho-row .how { flex: none; font: 600 12px var(--f-mono); color: var(--mod); border: 1px solid var(--mod); border-radius: 3px; padding: 0 5px; }
 .ho-row.danger { color: var(--warn); font-weight: 700; }
 .ho-row.hit { background: var(--accent-soft); border-radius: 4px; padding: 3px 6px; margin: -3px -6px; }
 .ho-hide-en .en { display: none !important; }
@@ -387,7 +387,7 @@ tr.rec th { color: var(--accent); }
 .ho-fn.danger { color: var(--warn); font-weight: 600; }
 .ho-fn.hit { background: var(--accent-soft); border-radius: 4px; padding: 2px 4px; margin: -2px -4px; }
 .ho-none { font-size: 13px; color: var(--muted); font-style: italic; }
-.tg { display: inline-block; font: 600 10px var(--f-mono); letter-spacing: .04em; padding: 0 5px; border-radius: 3px; margin-right: 3px; vertical-align: 1px; border: 1px solid transparent; white-space: nowrap; }
+.tg { display: inline-block; font: 600 12px var(--f-mono); letter-spacing: .04em; padding: 0 5px; border-radius: 3px; margin-right: 3px; vertical-align: 1px; border: 1px solid transparent; white-space: nowrap; }
 .tg.mod { background: var(--mod); color: var(--panel); }
 .tg.how { border-color: var(--mod); color: var(--mod); }
 .tg.mode { background: var(--key-bg); color: var(--ink); border-color: var(--key-edge); }
@@ -416,7 +416,7 @@ tr.rec th { color: var(--accent); }
 .hr .it { white-space: normal; }
 .hr .it.danger { color: var(--warn); font-weight: 700; }
 .hr .it.hit { background: var(--accent-soft); border-radius: 3px; box-shadow: 0 0 0 2px var(--accent-soft); }
-.hr .xi { font: 600 10px var(--f-mono); color: var(--mod); margin-left: 3px; white-space: nowrap; }
+.hr .xi { font: 600 12px var(--f-mono); color: var(--mod); margin-left: 3px; white-space: nowrap; }
 .hb-fig { position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); min-width: 0; }
 .hb-fig svg { width: 100%; height: auto; display: block; }
 .st-a { fill: var(--st1); } .st-b { fill: var(--st2); } .st-c { fill: var(--st3); } .st-d { fill: var(--st4); } .st-e { fill: var(--st5); }
@@ -431,14 +431,14 @@ tr.rec th { color: var(--accent); }
 .hc.dim { opacity: .3; }
 .hc h4 { margin: 0 0 2px; display: flex; align-items: center; gap: 8px; font: 600 15px var(--f-display); }
 .hc h4 .no { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 12px; }
-.hc h4 small { margin-left: auto; font: 500 11px var(--f-mono); color: var(--muted); }
+.hc h4 small { margin-left: auto; font: 500 12px var(--f-mono); color: var(--muted); }
 .hr { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 2px 6px; align-items: baseline; font-size: 13.5px; line-height: 1.35; padding: 2px 0; }
 .hr .k { font: 600 12px var(--f-mono); color: var(--muted); text-align: center; }
 .hr .f { min-width: 0; }
-.hr .f .en { display: block; font-size: 11px; color: var(--muted); }
-.hr .x { font: 600 10px var(--f-mono); color: var(--mod); white-space: nowrap; }
-.hr .bm { display: inline-block; font: 700 10px var(--f-mono); background: var(--mod); color: var(--panel); border-radius: 3px; padding: 0 4px; margin-right: 4px; vertical-align: 1px; }
-.hr .bo { display: inline-block; font: 600 10px var(--f-mono); border: 1px solid var(--key-edge); color: var(--ink); background: var(--key-bg); border-radius: 3px; padding: 0 4px; margin-right: 4px; vertical-align: 1px; }
+.hr .f .en { display: block; font-size: 12px; color: var(--muted); }
+.hr .x { font: 600 12px var(--f-mono); color: var(--mod); white-space: nowrap; }
+.hr .bm { display: inline-block; font: 700 12px var(--f-mono); background: var(--mod); color: var(--panel); border-radius: 3px; padding: 0 4px; margin-right: 4px; vertical-align: 1px; }
+.hr .bo { display: inline-block; font: 600 12px var(--f-mono); border: 1px solid var(--key-edge); color: var(--ink); background: var(--key-bg); border-radius: 3px; padding: 0 4px; margin-right: 4px; vertical-align: 1px; }
 .hr.sep { border-top: 1px solid var(--line); margin-top: 2px; padding-top: 3px; }
 .hr.danger .f { color: var(--warn); font-weight: 700; }
 .hr.hit { background: var(--accent-soft); border-radius: 4px; }
@@ -467,7 +467,7 @@ tr.rec th { color: var(--accent); }
 .sh { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
 .sh-img { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: var(--key-bg); }
 .sh-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.sh-mcode { position: absolute; left: 8px; top: 8px; font: 700 11px var(--f-mono); letter-spacing: .08em; padding: 2px 7px; border-radius: 4px; background: rgba(8, 12, 16, .7); color: #e6edf3; }
+.sh-mcode { position: absolute; left: 8px; top: 8px; font: 700 12px var(--f-mono); letter-spacing: .08em; padding: 2px 7px; border-radius: 4px; background: rgba(8, 12, 16, .7); color: #e6edf3; }
 .sh-body { padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .sh-base { font-size: 12px; }
 .sh.tip { border-color: var(--ok); }
@@ -477,13 +477,13 @@ tr.rec th { color: var(--accent); }
 .sh h3 { font-family: var(--f-display); font-size: 20px; font-weight: 600; margin: 0; line-height: 1.15; }
 .sh .mn { font-size: 12.5px; color: var(--muted); }
 .sh-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-.sh-tag { font: 600 11px var(--f-mono); padding: 1px 7px; border-radius: 10px; background: var(--key-bg); border: 1px solid var(--line); color: var(--ink); }
+.sh-tag { font: 600 12px var(--f-mono); padding: 1px 7px; border-radius: 10px; background: var(--key-bg); border: 1px solid var(--line); color: var(--ink); }
 .sh-tag.cat { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
 .sh-tag.tip { background: var(--ok-soft); border-color: transparent; color: var(--ok); }
 .sh-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 8px 0; }
 .sh-stats div { display: flex; flex-direction: column; min-width: 0; }
 .sh-stats b { font: 600 17px var(--f-display); font-variant-numeric: tabular-nums; }
-.sh-stats span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.sh-stats span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 .sh-price { font-size: 13.5px; display: flex; flex-direction: column; gap: 2px; }
 .sh-price b { font-variant-numeric: tabular-nums; }
 .sh-price .where { font-size: 12px; color: var(--muted); }
@@ -538,7 +538,7 @@ tr.rec th { color: var(--accent); }
 .dt-profile { margin: 0; font-size: 15.5px; max-width: 70ch; }
 .dt-stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 .dt-stat { background: var(--key-bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.dt-stat span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.dt-stat span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 .dt-stat b { font: 600 17px var(--f-display); font-variant-numeric: tabular-nums; }
 .dt-stat b small { font-size: 12px; color: var(--muted); font-weight: 500; }
 .dt-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
@@ -560,7 +560,7 @@ tr.rec th { color: var(--accent); }
 .tool { border: 2px solid var(--accent); background: var(--panel); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 0 5px var(--accent-soft); min-width: 0; }
 .tool-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .tool-head h3 { font-family: var(--f-display); font-size: clamp(20px, 3vw, 26px); font-weight: 700; margin: 0; }
-.tool-tag { font: 700 11px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; background: var(--accent); color: var(--panel); padding: 3px 8px; border-radius: 4px; }
+.tool-tag { font: 700 12px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; background: var(--accent); color: var(--panel); padding: 3px 8px; border-radius: 4px; }
 .tool-lede { margin: 0; font-size: 15px; max-width: 70ch; }
 .search input.tool-input { font: 600 20px var(--f-mono); padding: 12px 16px; border: 2px solid var(--line); border-radius: 8px; }
 .search input.tool-input:focus { border-color: var(--accent); outline: none; }
@@ -587,7 +587,7 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 .cr-bars { display: flex; flex-direction: column; gap: 8px; }
 .cr-bar { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 44px; gap: 10px; align-items: center; font-size: 14px; }
 .cr-bar div { height: 10px; background: var(--line); border-radius: 5px; overflow: hidden; }
-.cr-bar i { display: block; height: 100%; background: var(--accent); }
+.cr-bar div > i { display: block; height: 100%; background: var(--accent); }
 .cr-bar b { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--f-display); }
 .cr-mats { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 .q-meter { grid-template-columns: 1fr .5fr 1fr; }
@@ -607,7 +607,7 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 .nw-date small { display: block; font-weight: 500; }
 .nw-title { font-size: 15.5px; font-weight: 600; line-height: 1.35; }
 .nw-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
-.nw-new { font: 700 10px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; background: var(--accent); color: var(--panel); border-radius: 3px; padding: 1px 6px; }
+.nw-new { font: 700 12px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; background: var(--accent); color: var(--panel); border-radius: 3px; padding: 1px 6px; }
 .nw-item.patch { border-color: var(--ok); background: linear-gradient(0deg, var(--ok-soft), var(--ok-soft)) padding-box; }
 .nw-more { display: flex; gap: 12px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
 
@@ -634,7 +634,7 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 .subnav a { font-family: var(--f-display); font-weight: 600; font-size: 13px; letter-spacing: .03em; text-decoration: none; color: var(--muted); padding: 5px 10px; border-radius: 6px; white-space: nowrap; }
 .subnav a:hover { color: var(--ink); background: var(--key-bg); }
 .subnav a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); }
-.tabs a.has-sub::after { content: "▾"; margin-left: 5px; font-size: 10px; }
+.tabs a.has-sub::after { content: "▾"; margin-left: 5px; font-size: 12px; }
 .nav-news {
   margin-left: auto; position: relative; flex: none; font-family: var(--f-display); font-weight: 600; font-size: 14px; letter-spacing: .03em;
   text-decoration: none; color: var(--muted); padding: 6px 12px; border: 1px solid var(--line); border-radius: 6px; white-space: nowrap;
@@ -649,7 +649,7 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 .oc-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
 .oc-head b { font-family: var(--f-display); font-size: 22px; }
 .oc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
-.oc-grid h4 { margin: 0 0 6px; font: 600 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.oc-grid h4 { margin: 0 0 6px; font: 600 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .oc-grid ol { margin: 0; padding-left: 18px; font-size: 14px; display: flex; flex-direction: column; gap: 3px; }
 .oc-grid p { margin: 6px 0 0; }
 .oc-grid .up { color: var(--ok); }
@@ -721,7 +721,7 @@ a.chip { text-decoration: none; }
 .nav-search { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: 8px; font: 600 14px var(--f-display); letter-spacing: .03em; color: var(--muted); background: var(--key-bg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; cursor: pointer; }
 .nav-search:hover { color: var(--ink); border-color: var(--key-edge); }
 .nav-search svg { width: 15px; height: 15px; flex: none; }
-.nav-search kbd { font: 500 11px var(--f-mono); border: 1px solid var(--key-edge); border-radius: 4px; padding: 0 5px; color: var(--muted); background: var(--panel); }
+.nav-search kbd { font: 500 12px var(--f-mono); border: 1px solid var(--key-edge); border-radius: 4px; padding: 0 5px; color: var(--muted); background: var(--panel); }
 .nav-search + .nav-news, .nav-ccu + .nav-news { margin-left: 0; }
 .nav-ccu { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; text-decoration: none; }
 .nav-ccu svg { width: 19px; height: 19px; }
@@ -741,13 +741,13 @@ a.chip { text-decoration: none; }
 .gs-list { overflow-y: auto; overscroll-behavior: contain; padding: 6px; display: flex; flex-direction: column; gap: 2px; }
 .gs-item { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 2px 10px; align-items: baseline; text-align: left; width: 100%; font: inherit; color: inherit; background: none; border: 0; border-radius: 7px; padding: 8px 10px; cursor: pointer; }
 .gs-item.on, .gs-item:hover { background: var(--accent-soft); }
-.gs-item .ty { grid-row: span 2; font: 500 10.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.gs-item .ty { grid-row: span 2; font: 500 12px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
 .gs-item b { font-family: var(--f-display); font-weight: 600; font-size: 15.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .gs-item b kbd { font: 500 12px var(--f-mono); border: 1px solid var(--key-edge); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; margin-left: 6px; background: var(--key-bg); }
 .gs-item span.su { font-size: 13px; color: var(--muted); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .gs-note { padding: 14px 16px; color: var(--muted); font-size: 14px; }
 .gs-note .chips { margin-top: 10px; }
-.gs-foot { border-top: 1px solid var(--line); padding: 7px 14px; font: 500 11px var(--f-mono); color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
+.gs-foot { border-top: 1px solid var(--line); padding: 7px 14px; font: 500 12px var(--f-mono); color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
 @media (hover: none) { .gs-foot { display: none; } }
 .start-search { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font: 500 16px var(--f-body); color: var(--muted); background: var(--panel); border: 1px solid var(--key-edge); border-radius: 10px; padding: 14px 16px; cursor: pointer; }
 .start-search:hover { border-color: var(--accent); color: var(--ink); }
@@ -778,7 +778,7 @@ a.chip { text-decoration: none; }
 .sh-mine-note[hidden] { display: none; }
 /* Planer */
 .plan-q { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 8px 10px; align-items: start; }
-.plan-q > span { font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 7px; }
+.plan-q > span { font: 500 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 7px; }
 .plan-hangar { font-size: 14px; padding-top: 5px; }
 .plan-rent { margin-top: 8px; font-size: 14px; font-family: var(--f-body); font-weight: 500; flex-wrap: wrap; }
 .plan-card .rent { font-size: 13px; color: var(--accent); }
@@ -790,7 +790,7 @@ a.chip { text-decoration: none; }
 .plan-out { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 10px; }
 .plan-card { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; background: var(--key-bg); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .plan-card.best { border-color: var(--accent); }
-.plan-card .lab { font: 500 10.5px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.plan-card .lab { font: 500 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 .plan-card h4 { margin: 0; font: 600 18px var(--f-display); line-height: 1.2; }
 .plan-card p { margin: 0; font-size: 14px; }
 .plan-card .earn { font-size: 13px; color: var(--ok); }
@@ -810,7 +810,7 @@ a.chip { text-decoration: none; }
 .ccu-price s { color: var(--muted); font-weight: 500; }
 .ccu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 12px 20px; }
 .ccu-grid > div { min-width: 0; }
-.ccu-grid h4 { margin: 0 0 3px; font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.ccu-grid h4 { margin: 0 0 3px; font: 500 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .ccu-grid p { margin: 0; font-size: 14.5px; overflow-wrap: anywhere; }
 .ccu-grid p + p { margin-top: 3px; color: var(--muted); font-size: 13px; }
 .ccu-calc { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -869,7 +869,7 @@ a:hover { text-decoration-thickness: 2px; }
 .brand span { color: inherit; }
 .brand .brand-name { font-size: 18px; letter-spacing: .08em; color: var(--text-primary); }
 .brand .brand-name b { font-weight: 700; color: var(--accent-cyan); }
-.brand .brand-sub { font: 500 9px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--text-secondary); margin-top: 3px; }
+.brand .brand-sub { font: 500 12px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--text-secondary); margin-top: 3px; }
 @media (max-width: 1180px) { .brand .brand-sub { display: none; } }
 @media (max-width: 640px) { .brand .brand-name { font-size: 16px; letter-spacing: .06em; } }
 .tabs a { border-radius: var(--radius-xs); position: relative; }
@@ -1232,15 +1232,15 @@ html.menu-open { overflow: hidden; }
 @media (max-width: 860px) { .nav::before { display: none; } .tabs a { clip-path: none; } }
 
 /* ---- Überschriften in den neu gestalteten Seiten ---- */
-#view-start h2, #view-erste-schritte h2, #view-mining h2, #view-tasten h2 {
+.view h2 {
   font-size: clamp(22px, 3vw, 28px); letter-spacing: .01em; text-transform: none; color: var(--text-primary); line-height: 1.2; margin-bottom: 16px; gap: 14px;
 }
-#view-start h2::before, #view-erste-schritte h2::before, #view-mining h2::before, #view-tasten h2::before {
+.view h2::before {
   width: 6px; height: 26px; margin-right: 0; box-shadow: none; border-radius: 0;
   background: linear-gradient(var(--accent-cyan) 0 68%, transparent 68% 76%, var(--accent-amber) 76% 100%);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
-#view-start h2::after, #view-erste-schritte h2::after, #view-mining h2::after, #view-tasten h2::after {
+.view h2::after {
   background: linear-gradient(90deg, var(--edge), transparent 70%); opacity: .6;
 }
 
@@ -1383,7 +1383,7 @@ kbd { font-size: 13.5px; padding: 2px 9px; border-radius: 6px; border: 1px solid
 .chead-act a { border-radius: 2px; border-color: var(--edge); }
 .toc { border-radius: 2px; background: var(--bg-deep); border-left: 3px solid var(--accent-cyan); }
 .view h1 { text-wrap: balance; }
-#view-erste-schritte h1, #view-mining h1, #view-tasten h1 { font-size: clamp(36px, 5.4vw, 54px); }
+.view:not(#view-start) h1 { font-size: clamp(34px, 5.2vw, 54px); }
 
 /* ---- Eingabe-Hilfen und kleine Korrekturen ---- */
 .hint, .learn { border-radius: 4px; }
@@ -1497,7 +1497,7 @@ a.t-num:focus-visible { outline-offset: 4px; }
 .sf-hud .x { left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border: 0; opacity: .35;
   background: linear-gradient(#77D5E8, #77D5E8) center / 1px 100% no-repeat, linear-gradient(#77D5E8, #77D5E8) center / 100% 1px no-repeat; }
 .sf.is-3d .sf-hud .x { opacity: .18; }
-.sf-tag { position: absolute; left: 22px; top: 7px; font: 500 10.5px var(--f-mono); letter-spacing: .14em; color: rgba(119,213,232,.75); }
+.sf-tag { position: absolute; left: 22px; top: 7px; font: 500 12px var(--f-mono); letter-spacing: .14em; color: rgba(119,213,232,.75); }
 .sf-msg { position: absolute; left: 8px; right: 8px; bottom: 10px; text-align: center; font: 500 12px var(--f-mono); color: #BCE9F2; text-shadow: 0 1px 2px #000; }
 .sf-open { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; white-space: nowrap;
   font: 600 13px var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: #06121a; background: #77D5E8; border: 0; border-radius: 4px; cursor: pointer; }
@@ -1569,7 +1569,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 @media (max-width: 980px) {
   .t-stage::before { top: -40px; bottom: -40px; left: 0; right: 0; }
   .t-stage { perspective: none; padding-top: 0; }
-  .t-term { grid-template-columns: 1fr; gap: 16px; }
+  .t-term { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .t-side, .t-center { min-width: 0; }
   .t-center { order: -1; box-shadow: inset 0 1px 0 rgba(255,255,255,.28), 0 10px 0 -5px var(--plate), 0 30px 60px -36px var(--sh1); }
   .t-side.l, .t-side.r { transform: none; margin: 0; border: 1px solid var(--gb); border-radius: 18px; box-shadow: none; padding: 20px 20px 18px; }
   .t-side::before, .t-side.r::before { display: none; }
@@ -1590,8 +1591,80 @@ a.t-num:focus-visible { outline-offset: 4px; }
   .t-nums { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 420px) { .tabstrip a span { font-size: 11.5px; letter-spacing: 0; } }
-@media (max-width: 380px) { .t-center { padding: 14px 10px 16px; } .tabstrip a { padding: 6px 0; } .tabstrip svg { width: 23px; height: 23px; } .tabstrip a span { font-size: 11px; letter-spacing: -.01em; } .t-tile .t-tl { font-size: 13px; letter-spacing: .04em; } }
+@media (max-width: 380px) { .t-center { padding: 14px 10px 16px; } .tabstrip a { padding: 6px 0; } .tabstrip svg { width: 23px; height: 23px; } .tabstrip a span { font-size: 12px; letter-spacing: -.01em; } .t-tile .t-tl { font-size: 13px; letter-spacing: .04em; } }
 @media (prefers-reduced-motion: reduce) { .t-tile, .t-tile .ic, .tabstrip a::after { transition: none; } .t-holo:hover .scanl, .t-holo:focus-visible .scanl { animation: none; } .t-tile:hover, .t-tile:focus-visible { transform: none; } }
+
+
+/* =========================================================================
+   Gesamtüberarbeitung: einheitliches Komponentensystem für alle Seiten
+   ========================================================================= */
+/* Einsatzakten: Kopf in Amber */
+.chead-cat.am { color: var(--accent-amber); background: var(--amber-soft); box-shadow: inset 3px 0 0 var(--accent-amber); }
+.chead.am::after { background: var(--accent-amber); }
+.chead.am::before { background: var(--accent-cyan); }
+
+/* „Als Nächstes“-Leiste am Ende von Tutorials, Berufen und Einsätzen */
+.nextup { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 8px; padding-top: 22px; border-top: 1px solid var(--border); position: relative; }
+.nextup::before { content: ""; position: absolute; left: 0; top: -1px; width: 96px; height: 2px; background: var(--accent-cyan); }
+.nextup a { position: relative; display: flex; flex-direction: column; gap: 4px; min-height: 76px; padding: 14px 18px 14px 22px; text-decoration: none; color: var(--text-primary);
+  background: linear-gradient(135deg, var(--cyan-soft), transparent 55%), var(--bg-card); border: 1px solid var(--border); border-radius: 2px; transition: border-color .15s, background .15s; }
+.nextup a::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent-cyan); opacity: .6; }
+.nextup a:hover { border-color: var(--accent-cyan); }
+.nextup a.nx::before { background: var(--accent-amber); opacity: .9; }
+.nextup small { font: 500 12.5px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
+.nextup b { font: 600 19px/1.25 var(--f-display); }
+.nextup .nx { text-align: right; align-items: flex-end; padding: 14px 22px 14px 18px; }
+.nextup .nx::before { left: auto; right: 0; }
+.nextup .nx b::after { content: " →"; color: var(--accent-cyan); }
+.nextup a:not(.nx) b::before { content: "← "; color: var(--accent-cyan); }
+.nextup .only { grid-column: 1 / -1; }
+@media (max-width: 560px) { .nextup { grid-template-columns: 1fr; } .nextup .nx { text-align: left; align-items: flex-start; } .nextup .nx::before { left: 0; right: auto; } }
+
+/* Tabellen: Scrollhinweis an den Rändern, Zebrastreifen, ruhige Kopfzeile */
+.table-wrap { background:
+    linear-gradient(to right, var(--bg-deep) 30%, transparent) left center / 34px 100% no-repeat local,
+    linear-gradient(to left, var(--bg-deep) 30%, transparent) right center / 34px 100% no-repeat local,
+    linear-gradient(to right, var(--shade), transparent) left center / 14px 100% no-repeat scroll,
+    linear-gradient(to left, var(--shade), transparent) right center / 14px 100% no-repeat scroll,
+    var(--bg-deep); }
+tbody tr:nth-child(even) td, tbody tr:nth-child(even) th { background: color-mix(in srgb, var(--cyan-soft) 45%, transparent); }
+thead th { font-size: 13px; letter-spacing: .06em; }
+td, th { padding-block: 10px; }
+
+/* Filter und Chips: eckiger, mit Leitkante für die Auswahl */
+.chip { border-radius: 2px; min-height: 40px; padding: 8px 14px; }
+.chip[aria-pressed="true"] { box-shadow: inset 3px 0 0 var(--accent-cyan); }
+.chips { gap: 8px; }
+.search input, .tool input.tool-input { min-height: 48px; font-size: 16px; }
+select { min-height: 44px; border-radius: 2px; }
+.check { min-height: 44px; align-items: center; }
+.check input { width: 20px; height: 20px; }
+
+/* Hinweise, Warnungen, Status: eine Familie */
+.hint, .oops, .learn, .start-tip, .status-banner, .patchnote, .sh-mine-note { border-radius: 2px; border-left-width: 4px; padding: 12px 16px; line-height: 1.55; }
+.hint, .learn { font-size: 15.5px; }
+.oops { border-left-color: var(--warn); }
+.oops strong:first-child, .hint strong:first-child { letter-spacing: .02em; }
+.pill { border-radius: 2px; font-size: 12.5px; }
+
+/* Schiffsdatenbank und weitere Datenkarten */
+.sh { border-radius: 4px; background: var(--bg-deep); transition: border-color .15s, box-shadow .15s; }
+.sh.clickable:hover { border-color: var(--accent-cyan); box-shadow: 0 12px 26px -18px var(--glow); }
+.sh-dt, .sh-3d { border: 1px solid var(--edge); border-top: 2px solid var(--accent-cyan); border-radius: 4px; }
+.bug, .nw-item, .term { border-radius: 4px; }
+.bug { border-left: 3px solid color-mix(in srgb, var(--accent-cyan) 60%, var(--border)); }
+.wk, .ccu { border-radius: 4px; background: var(--bg-deep); }
+.nw-item:hover { border-color: var(--accent-cyan); }
+
+/* Mindestschriftgröße 12 px für Marken, Zusatzangaben und Etiketten */
+.view small, .view .mod, .view .tag-verify, .view .sh-tag, .view .sh-mcode, .view .sf-tag, .view .lo, .view .mid, .view .hi, .view .next { font-size: max(12px, .85em); }
+.view .gb { font-size: max(12px, .82em); }
+.view .xi, .view .bo, .view .tg, .view .lab { font-size: 11.5px; }
+
+/* Lange Texte bleiben ruhig */
+.view section > p:not(.small), .view > p:not(.small), .tool-lede, .step .body p { line-height: 1.65; }
+.view section > p, .view li { font-size: 16px; }
+.small { font-size: 14px; }
 
 </style>
 </head>
@@ -2051,8 +2124,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ TUTORIALS: ÜBERSICHT ============ -->
 <section class="view" id="view-tutorial" data-view="tutorial" hidden>
-  <div class="head">
-    <div class="stamp"><span>Tutorials</span><span>Stand Alpha 4.10.2</span><span>QWERTZ</span></div>
+  <div class="head chead">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorials</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">QWERTZ</span></div>
     <h1>Tutorials</h1>
     <p class="lede">Schritt-für-Schritt-Anleitungen für den Einstieg. Wenn du weißt, wie es geht, findest du Werkzeuge und Nachschlage-Infos unter <a href="#berufe">Berufe</a>.</p>
   </div>
@@ -2110,8 +2183,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ TUTORIAL: HEIMATSTADT ============ -->
 <section class="view" id="view-heimat" data-view="heimat" hidden>
-  <div class="head">
-    <div class="stamp"><span>Tutorial</span><span>Stand 30. Okt. 2026</span><span>Patch 4.10.2</span></div>
+  <div class="head chead" data-toc="h3">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand 30. Okt. 2026</span><span class="chead-tag">Patch 4.10.2</span></div>
     <h1>Heimatstadt wählen</h1>
     <p class="lede">Beim ersten Login wählst du deine Heimatstadt <i class="gb">Primary Residence</i>. Dort wachst du nach dem Einloggen auf, dort liegt dein Inventar, und dorthin schickt das Spiel Belohnungen. Wechseln kannst du laut Wiki nur beim ersten Login nach einem neuen Patch. Der nächste ist 4.10.3, der gerade getestet wird.</p>
   </div>
@@ -2225,8 +2298,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ TUTORIAL: ÜBERLEBEN ============ -->
 <section class="view" id="view-ueberleben" data-view="ueberleben" hidden>
-  <div class="head">
-    <div class="stamp"><span>Tutorial</span><span>Stand Alpha 4.10.2</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
     <h1>Überleben</h1>
     <p class="lede">Irgendwann bist du verletzt, stirbst, verlierst ein Schiff oder hast plötzlich einen CrimeStat. Kein Drama. Hier steht, was dann passiert, was es kostet und wie du es vermeidest.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -2334,8 +2407,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ BUGS & WORKAROUNDS ============ -->
 <section class="view" id="view-bugs" data-view="bugs" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>LIVE 4.10.2 · 4.10.3 im Test</span><span>Stand 3. Nov. 2026</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Aktuelles · Bugs</span><span class="chead-tag">LIVE 4.10.2 · 4.10.3 im Test</span><span class="chead-tag">Stand 3. Nov. 2026</span></div>
     <h1>Bugs &amp; Workarounds</h1>
     <p class="lede">Star Citizen ist eine Alpha, irgendwas hakt immer. Hier stehen die Fehler, die gerade am häufigsten nerven, und was dagegen hilft. Gesammelt aus der offiziellen Liste von CIG, den Patch Notes und aktuellen Spielerberichten.</p>
     <div class="bug-status" id="bugstatus" hidden></div>
@@ -2723,8 +2796,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ TUTORIAL: MINING ============ -->
 <section class="view" id="view-t-mining" data-view="t-mining" hidden>
-  <div class="head">
-    <div class="stamp"><span>Tutorial</span><span>Stand Alpha 4.10.2</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
     <h1>Mining lernen</h1>
     <p class="lede">Eine ganze Runde vom ersten Ping bis zum Geld auf dem Konto. Am einfachsten mit dem Golem, zu Fuß mit dem Multitool geht es auch.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Werkzeuge wie den RS-Rechner und die Erz-Suche findest du im <a href="#mining">Mining-Kapitel</a>.</p>
@@ -2835,8 +2908,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ TUTORIAL: SALVAGE ============ -->
 <section class="view" id="view-t-salvage" data-view="t-salvage" hidden>
-  <div class="head">
-    <div class="stamp"><span>Tutorial</span><span>Stand Alpha 4.10.2</span></div>
+  <div class="head chead" data-toc="h3">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
     <h1>Salvage lernen</h1>
     <p class="lede">Eine ganze Runde mit der Salvation: Auftrag holen, Wrack prüfen, Hülle abkratzen, zerlegen und verkaufen. Nichts kann explodieren, und Bergungsaufträge kosten keine Gebühr.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Preise, Schiffe und Regeln findest du im <a href="#salvage">Salvage-Kapitel</a>.</p>
@@ -2905,8 +2978,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ TUTORIAL: HAULING ============ -->
 <section class="view" id="view-t-hauling" data-view="t-hauling" hidden>
-  <div class="head">
-    <div class="stamp"><span>Tutorial</span><span>Stand Alpha 4.10.2</span></div>
+  <div class="head chead">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
     <h1>Hauling lernen</h1>
     <p class="lede">Dein erster Frachtauftrag: annehmen, Kisten holen, einladen, fliegen, abliefern. Eigenes Geld brauchst du dafür nicht, nur ein Schiff mit Frachtgitter und einen Traktorstrahl.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Ränge, Schiffe und den Frachter-Finder findest du im <a href="#hauling">Hauling-Kapitel</a>.</p>
@@ -2963,8 +3036,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ TUTORIAL: CRAFTING ============ -->
 <section class="view" id="view-t-crafting" data-view="t-crafting" hidden>
-  <div class="head">
-    <div class="stamp"><span>Tutorial</span><span>Stand Alpha 4.10.2</span></div>
+  <div class="head chead" data-toc="h3">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
     <h1>Crafting lernen</h1>
     <p class="lede">Vom Bauplan bis zum fertigen Gegenstand in drei Schritten.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Was Qualität bewirkt und was du alles bauen kannst, steht im <a href="#crafting">Crafting-Kapitel</a>.</p>
@@ -3017,8 +3090,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ EINSÄTZE: ÜBERSICHT ============ -->
 <section class="view" id="view-einsaetze" data-view="einsaetze" hidden>
-  <div class="head">
-    <div class="stamp"><span>Einsätze</span><span>Stand Alpha 4.10.2</span></div>
+  <div class="head chead am">
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
     <h1>Einsätze</h1>
     <p class="lede">Anleitungen für größere Aktivitäten im Spiel, mit Ablauf, Tipps und aktuellen Bugs. Für den Einstieg in den Kampf zu Fuß eignen sich die Bunker-Missionen, für Gruppen Siege of Orison.</p>
   </div>
@@ -3058,8 +3131,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ EINSATZ: RECCO BATTAGLIA ============ -->
 <section class="view" id="view-recco" data-view="recco" hidden>
-  <div class="head">
-    <div class="stamp"><span>Einsatz</span><span>Nyx · Levski</span><span>allein machbar</span></div>
+  <div class="head chead am" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Nyx · Levski</span><span class="chead-tag">allein machbar</span></div>
     <h1>Recco Battaglia</h1>
     <p class="lede">Recco Battaglia vergibt in Levski Mining-Aufträge für die People's Alliance. Wer bei ihr genug Ruf sammelt, bekommt Sonderaufträge, die eine Golem, eine Prospector und am Ende eine MOLE einbringen, jeweils als „Alliance“-Version mit eigener Lackierung.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3168,8 +3241,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ EINSATZ: EXECUTIVE HANGAR ============ -->
 <section class="view" id="view-exec-hangar" data-view="exec-hangar" hidden>
-  <div class="head">
-    <div class="stamp"><span>Einsatz</span><span>Stand Alpha 4.10.2</span><span>PvP-Gebiet</span></div>
+  <div class="head chead am" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">PvP-Gebiet</span></div>
     <h1>Executive Hangar</h1>
     <p class="lede">In Pyro liegen drei gesicherte Hangars voller Beute. Wer sieben Platinen <i class="gb">Compboards</i> aus den umkämpften Zonen <i class="gb">Contested Zones</i> sammelt, öffnet einen davon und darf eines von acht Schiffen dauerhaft behalten.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3353,8 +3426,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ EINSATZ: SIEGE OF ORISON ============ -->
 <section class="view" id="view-siege-orison" data-view="siege-orison" hidden>
-  <div class="head">
-    <div class="stamp"><span>Einsatz</span><span>Stand Alpha 4.10.2</span><span>1 bis 4 Spieler</span></div>
+  <div class="head chead am" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">1 bis 4 Spieler</span></div>
     <h1>Siege of Orison</h1>
     <p class="lede">Die Bande Nine Tails hat drei Plattformen von Orison besetzt. Ihr holt sie euch zu Fuß zurück, Plattform für Plattform, bis zum Kampf gegen ihren Anführer Mendo Ren. Läuft in einer eigenen Instanz nur für eure Gruppe, ohne fremde Spieler.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3425,8 +3498,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ EINSATZ: HATHOR & WIKELO ============ -->
 <section class="view" id="view-hathor" data-view="hathor" hidden>
-  <div class="head">
-    <div class="stamp"><span>Einsatz</span><span>Stand Alpha 4.10.2</span><span>Stanton</span></div>
+  <div class="head chead am" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Stanton</span></div>
     <h1>Hathor &amp; Wikelo</h1>
     <p class="lede">Auf Daymar und Aberdeen stehen stillgelegte Laser-Plattformen der Firma Hathor. Wer sie wieder in Gang bringt, schießt eine Höhle voller seltener Erze frei, darunter Carinit. Das tauscht der Händler Wikelo gegen Schiffe, Waffen und Rüstung.</p>
     <p class="small">Im Spiel heißt die Aktivität „Align &amp; Mine“. Grau dahinter steht jeweils der englische Begriff.</p>
@@ -3540,8 +3613,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ EINSATZ: BUNKER-MISSIONEN ============ -->
 <section class="view" id="view-bunker" data-view="bunker" hidden>
-  <div class="head">
-    <div class="stamp"><span>Einsatz</span><span>Einstieg</span><span>allein machbar</span></div>
+  <div class="head chead am" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Einstieg</span><span class="chead-tag">allein machbar</span></div>
     <h1>Bunker-Missionen</h1>
     <p class="lede">Der Klassiker für den Einstieg in den Kampf zu Fuß: Ein Söldner-Auftrag schickt dich zu einem Bunker auf einem Mond in Stanton. Dort verteidigst du ihn oder räumst ihn von Gegnern. Kurz, gut allein machbar und mit Beute.</p>
   </div>
@@ -3770,8 +3843,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ BERUFE: ÜBERSICHT ============ -->
 <section class="view" id="view-berufe" data-view="berufe" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>Stand Alpha 4.10.2</span></div>
+  <div class="head chead">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
     <h1>Berufe</h1>
     <p class="lede">Womit du im Verse Geld verdienst oder deine Ausrüstung verbesserst. Hier siehst du die Berufe im Vergleich. In den Kapiteln stehen Werkzeuge, Preise und Tabellen zum Nachschlagen.</p>
   </div>
@@ -4044,8 +4117,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ SALVAGE ============ -->
 <section class="view" id="view-salvage" data-view="salvage" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>Stand Alpha 4.10.2</span><span>Preise schwanken</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Salvage</h1>
     <p class="lede">Bergung heißt: Wracks finden, die Hülle zu Recycling-Material abkratzen, den Rest zerlegen und alles verkaufen. Hier findest du Schiffe, Preise, Baumaterial und die Regeln rund um Bauteile.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -4197,8 +4270,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ HAULING ============ -->
 <section class="view" id="view-hauling" data-view="hauling" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>Stand Alpha 4.10.2</span><span>Preise schwanken</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Hauling</h1>
     <p class="lede">Hauling heißt Fracht fahren: Kisten an einem Ort abholen und an einem anderen abliefern. Mit Frachtaufträgen bekommst du dafür einen festen Lohn und riskierst kein eigenes Geld. Hier steht, welches Schiff du wann brauchst, wie du im Rang aufsteigst und was es bringt.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -4439,8 +4512,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ RUF ============ -->
 <section class="view" id="view-ruf" data-view="ruf" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>Stand Alpha 4.10.2</span><span>Richtwerte</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-rep"/></svg>Wissen · Ruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Richtwerte</span></div>
     <h1>Ruf</h1>
     <p class="lede">Jeder Auftraggeber merkt sich, wie gut du für ihn arbeitest. Mehr Ruf <i class="gb">Reputation</i> heißt bessere Aufträge, Baupläne und bei manchen sogar Schiffe. Wer früh weiß, bei wem er sammelt, spart sich viele Stunden.</p>
     <p class="small">Deinen Ruf siehst du im mobiGlas unter Ruf <i class="gb">Reputation</i>. Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -4516,8 +4589,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ CRAFTING ============ -->
 <section class="view" id="view-crafting" data-view="crafting" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>Stand Alpha 4.10.2</span><span>Crafting seit 4.7</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Crafting seit 4.7</span></div>
     <h1>Crafting</h1>
     <p class="lede">Seit Alpha 4.7 kannst du Waffen, Rüstung, Munition und Schiffsteile selbst herstellen. Du brauchst drei Dinge: einen Bauplan, das passende Material und eine Werkbank. Je besser das Material, desto besser das Ergebnis.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -4601,8 +4674,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ NEWS ============ -->
 <section class="view" id="view-news" data-view="news" hidden>
-  <div class="head">
-    <div class="stamp"><span>Aktualisiert sich selbst</span><span>Quellen: RSI, Spectrum, YouTube</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg>Aktuelles · News</span><span class="chead-tag">Aktualisiert sich selbst</span><span class="chead-tag">Quellen: RSI, Spectrum, YouTube</span></div>
     <h1>News</h1>
     <p class="lede">Offizielle Ankündigungen von RSI, der aktuelle Server-Status und die neuesten Videos. Die Titel sind im englischen Original, ein Klick öffnet den Beitrag bei RSI oder YouTube.</p>
   </div>
@@ -4691,8 +4764,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ CCU-RADAR ============ -->
 <section class="view" id="view-ccu-radar" data-view="ccu-radar" hidden>
-  <div class="head">
-    <div class="stamp"><span>Pledge-Store</span><span>Echtes Geld · USD</span><span>automatisch geprüft</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-radar"/></svg>Tools · CCU-Radar</span><span class="chead-tag">Pledge-Store</span><span class="chead-tag">Echtes Geld · USD</span><span class="chead-tag">automatisch geprüft</span></div>
     <h1>CCU-Radar</h1>
     <p class="lede">Ein Upgrade <i class="gb">CCU, Cross-Chassis Upgrade</i> kostet die Preisdifferenz zwischen zwei Schiffen. Wird das Zielschiff später teurer, ist ein vorher gekauftes Upgrade mehr wert, als du bezahlt hast. Das Radar meldet, wenn CIG so eine Erhöhung ankündigt, und rechnet aus, welches Upgrade sich auf Vorrat lohnt.</p>
     <div class="oops"><strong>Hier geht es um echtes Geld.</strong> Zum Spielen brauchst du nichts davon: Fast alle Schiffe gibt es im Spiel für aUEC. Angaben ohne Gewähr, vor dem Kauf immer den Preis im Pledge-Store prüfen.</div>
@@ -4735,8 +4808,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ GLOSSAR ============ -->
 <section class="view" id="view-glossar" data-view="glossar" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>Stand Alpha 4.10</span></div>
+  <div class="head chead">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Wissen · Nachschlagen</span><span class="chead-tag">Stand Alpha 4.10</span></div>
     <h1>Glossar</h1>
     <p class="lede">Die Begriffe und Abkürzungen, über die du in den ersten Wochen stolperst, kurz erklärt.</p>
     <div class="search">
@@ -4751,8 +4824,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ TRAINING ============ -->
 <section class="view" id="view-training" data-view="training" hidden>
-  <div class="head">
-    <div class="stamp"><span>Tutorial</span><span>Beta</span><span>am PC mit Tastatur</span></div>
+  <div class="head chead" data-toc="h3">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Beta</span><span class="chead-tag">am PC mit Tastatur</span></div>
     <h1>Training</h1>
     <p class="lede">Tasten lernen, bevor du im Cockpit sitzt. Drei Übungen zum Ausprobieren.</p>
   </div>
@@ -4812,8 +4885,8 @@ a.t-num:focus-visible { outline-offset: 4px; }
 
 <!-- ============ HOSAS ============ -->
 <section class="view" id="view-hosas" data-view="hosas" hidden>
-  <div class="head">
-    <div class="stamp"><span>Dual Virpil Alpha Prime</span><span>Buzzzkiller-Profil</span><span>Stand 5. Aug 2026 · Alpha 4.10</span></div>
+  <div class="head chead">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-stick"/></svg>Wissen · Steuerung</span><span class="chead-tag">Dual Virpil Alpha Prime</span><span class="chead-tag">Buzzzkiller-Profil</span><span class="chead-tag">Stand 5. Aug 2026 · Alpha 4.10</span></div>
     <h1>HOSAS</h1>
     <p class="lede">Tipp auf einen Knopf am Stick und sieh, was er in jeder Richtung macht. Oder such nach einer Funktion und finde heraus, wo sie liegt.</p>
     <div class="ho-bar">
@@ -7945,6 +8018,28 @@ window.SC_MINE = (function () {
     /* erst nach dem ersten Bild der Seite anfangen */
     (window.requestIdleCallback || function (f) { setTimeout(f, 300); })(start);
   }).catch(function () { fallback(''); });
+})();
+</script>
+<script>
+/* ---------- „Als Nächstes“: Reihenfolgen für Tutorials, Berufe und Einsätze (Wo bin ich, was kommt danach) ---------- */
+(function () {
+  var SEQ = [
+    { name: 'Tutorials', home: 'tutorial', list: ['heimat', 'erste-schritte', 'ueberleben', 't-mining', 't-salvage', 't-hauling', 't-crafting', 'training'] },
+    { name: 'Berufe', home: 'berufe', list: ['mining', 'salvage', 'hauling', 'crafting', 'ruf'] },
+    { name: 'Einsätze', home: 'einsaetze', list: ['exec-hangar', 'siege-orison', 'hathor', 'recco', 'bunker'] }
+  ];
+  function title(v) { var e = document.querySelector('#view-' + v + ' h1'); return e ? e.textContent.trim() : v; }
+  SEQ.forEach(function (s) {
+    s.list.forEach(function (v, i) {
+      var view = document.getElementById('view-' + v); if (!view) return;
+      var prev = i > 0 ? s.list[i - 1] : s.home, next = s.list[i + 1];
+      var html = '<a href="#' + prev + '"><small>' + (i > 0 ? 'Zurück' : s.name + ' Übersicht') + '</small><b>' + title(prev) + '</b></a>';
+      if (next) html += '<a class="nx" href="#' + next + '"><small>Als Nächstes</small><b>' + title(next) + '</b></a>';
+      else html += '<a class="nx" href="#' + s.home + '"><small>Fertig</small><b>' + s.name + ' Übersicht</b></a>';
+      var nav = document.createElement('nav'); nav.className = 'nextup'; nav.setAttribute('aria-label', 'Weiter in ' + s.name); nav.innerHTML = html;
+      view.appendChild(nav);
+    });
+  });
 })();
 </script>
 </body>
