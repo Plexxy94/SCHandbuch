@@ -1264,16 +1264,16 @@
   "copper": {
    "ref": [
     [
+     4700,
+     "Rod's Fuel"
+    ],
+    [
      4200,
      "Pyro Gateway (Stanton)"
     ],
     [
      4200,
      "Rat's Nest"
-    ],
-    [
-     4000,
-     "Rod's Fuel"
     ],
     [
      3900,
@@ -1303,11 +1303,11 @@
    "ref": [
     [
      4400,
-     "Rod's Fuel"
+     "Orbituary"
     ],
     [
-     4400,
-     "Orbituary"
+     4300,
+     "Rod's Fuel"
     ],
     [
      4100,
@@ -1452,6 +1452,10 @@
   "laranite": {
    "ref": [
     [
+     8900,
+     "Rod's Fuel"
+    ],
+    [
      8700,
      "TDD New Babbage"
     ],
@@ -1466,10 +1470,6 @@
     [
      8700,
      "Starlight Service"
-    ],
-    [
-     8700,
-     "Endgame"
     ]
    ]
   },
@@ -1644,10 +1644,6 @@
      "Deakins Research"
     ],
     [
-     150000,
-     "Levski"
-    ],
-    [
      140000,
      "CBD Lorville"
     ],
@@ -1658,6 +1654,10 @@
     [
      140000,
      "TDD New Babbage"
+    ],
+    [
+     140000,
+     "Rayari Kaltag"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-12T03:49:56+00:00"
+ "updated": "2026-11-12T12:44:48+00:00"
 }
