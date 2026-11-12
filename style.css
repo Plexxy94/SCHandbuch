@@ -1692,3 +1692,10 @@ select { min-height: 44px; border-radius: 2px; }
 .subnav a[data-sep]::before { content: ""; position: absolute; left: -7px; top: 22%; bottom: 22%; width: 1px; background: var(--line); }
 .menu-links a[data-sep] { margin-top: 8px; border-top: 1px solid var(--line); }
 @media (min-width: 861px) { .subnav-in { gap: 2px; } .subnav a { font-size: 13.5px; padding: 5px 11px; } }
+
+/* Hangar-Galerie auf der Heimatstadt-Seite */
+.hg-label { margin: 14px 0 6px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.hg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.hg-grid figure { margin: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--panel); }
+.hg-grid img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--key-bg); }
+.hg-grid figcaption { padding: 6px 10px; font-size: 13px; color: var(--muted); }
