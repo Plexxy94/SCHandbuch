@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Inoffizielles Star-Citizen-Handbuch auf Deutsch (Alpha 4.10.2, QWERTZ): Tutorials, Tasten, Mining, Salvage, Hauling, Crafting, Ruf, Einsätze, alle Schiffe und aktuelle Bugs mit Workarounds.">
+<meta name="description" content="Inoffizielles Star-Citizen-Handbuch auf Deutsch (Alpha 4.10.3, QWERTZ): Tutorials, Tasten, Mining, Salvage, Hauling, Crafting, Ruf, Einsätze, alle Schiffe und aktuelle Bugs mit Workarounds.">
 <meta name="theme-color" content="#131b23" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23131b23'/%3E%3Ctext x='8' y='43' font-family='Segoe UI,Arial,sans-serif' font-weight='700' font-size='27' fill='%23e2e8ee'%3ESC%3C/text%3E%3Cpath d='M47 46 56 18' stroke='%23f08a3c' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261115">
+<link rel="stylesheet" href="style.css?v=20261116">
 </head>
 <body>
 
@@ -75,6 +75,7 @@
       <a href="#einsaetze">Übersicht</a>
       <a href="#exec-hangar" data-sep>Executive Hangar</a>
       <a href="#siege-orison">Siege of Orison</a>
+      <a href="#vanduul">Vanduul-Aufträge</a>
       <a href="#hathor">Hathor &amp; Wikelo</a>
       <a href="#recco">Recco<span class="sub-long"> Battaglia</span></a>
       <a href="#bunker">Bunker</a>
@@ -125,7 +126,7 @@
   <div class="t-term">
     <aside class="t-side l" aria-label="Das Handbuch in Zahlen">
       <div class="t-blk">
-        <div class="t-lab">Handbuch<b>Alpha 4.10.2</b></div>
+        <div class="t-lab">Handbuch<b>Alpha 4.10.3</b></div>
         <div class="t-nums">
           <a class="t-num cy" href="#schiffe"><span id="tm-ships">–</span><small>Schiffe</small></a>
           <div class="t-num"><span id="tm-pages">–</span><small>Seiten</small></div>
@@ -141,7 +142,7 @@
 
     <section class="t-center" aria-labelledby="st-title">
       <nav class="tabstrip" aria-label="Bereiche"><a href="#tutorial"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg><span>Lernen</span></a><a href="#wissen"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg><span>Wissen</span></a><a href="#tools"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg><span>Tools</span></a><a href="#einsaetze"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><span>Einsätze</span></a><a href="#news"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg><span>Aktuelles</span></a></nav>
-      <div class="t-kicker">SC HANDBUCH · Inoffiziell · Alpha 4.10.2</div>
+      <div class="t-kicker">SC HANDBUCH · Inoffiziell · Alpha 4.10.3</div>
       <h1 id="st-title">Bereit für deinen nächsten <em>Flug?</em></h1>
       <p class="t-sub">Dein Begleiter durch das Verse.</p>
       <button type="button" class="t-search" data-gs aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Handbuch durchsuchen: Schiff, Taste, Erz, Begriff, Bug …</span><kbd>/</kbd></button>
@@ -298,7 +299,7 @@
 <!-- ============ WISSEN (Übersicht) ============ -->
 <section class="view" id="view-wissen" data-view="wissen" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Wissen</span><span class="chead-tag">Nachschlagen</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Wissen</span><span class="chead-tag">Nachschlagen</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Wissen</h1>
     <p class="lede">Alles zum Nachschlagen an einem Ort: Berufe und Zahlen, Steuerung, Schiffe, Einsätze und Begriffe. Anleitungen Schritt für Schritt findest du unter Lernen.</p>
     <div class="chead-act"><a href="#tutorial">Zu den Tutorials</a><a href="#tools">Zu den Werkzeugen</a></div>
@@ -346,7 +347,7 @@
 <!-- ============ ERSTE SCHRITTE ============ -->
 <section class="view" id="view-erste-schritte" data-view="erste-schritte" hidden>
   <div class="head chead" data-toc=".step h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">7 Etappen</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">7 Etappen</span></div>
     <h1>Erste Schritte</h1>
     <p class="lede">Sieben Etappen von deinem ersten Login bis zum ersten verdienten Geld. Hak ab, was du geschafft hast. Der Fortschritt bleibt in diesem Browser gespeichert.</p>
     <div class="chead-act"><a href="#heimat">Heimatstadt wählen</a><a href="#tasten">Tasten nachschlagen</a><a href="#ueberleben">Überleben</a></div>
@@ -473,7 +474,7 @@
 <!-- ============ TUTORIALS: ÜBERSICHT ============ -->
 <section class="view" id="view-tutorial" data-view="tutorial" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorials</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">QWERTZ</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorials</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">QWERTZ</span></div>
     <h1>Tutorials</h1>
     <p class="lede">Schritt-für-Schritt-Anleitungen für den Einstieg. Wenn du weißt, wie es geht, findest du Werkzeuge und Nachschlage-Infos unter <a href="#berufe">Berufe</a>.</p>
   </div>
@@ -629,13 +630,13 @@
     </div>
 
     <div class="card-plain" style="margin-top:18px">
-      <h3>Was gerade überall hakt <span class="pill no">Stand 30. Okt. 2026 · 4.10.2</span></h3>
+      <h3>Was gerade überall hakt <span class="pill no">Stand 12. Nov. 2026 · 4.10.3</span></h3>
       <ul>
-        <li><b>Schiff lässt sich nicht anfordern:</b> Der Knopf „Retrieve“ am ASOP-Terminal ist grau. Spieler-Tipp: etwas Kleines kaufen (z. B. einen Medpen), dich kurz in ein Med-Bett legen oder neu einloggen.</li>
+        <li><b>Schiff lässt sich nicht anfordern:</b> Der Knopf „Retrieve“ am ASOP-Terminal ist grau. Seit 4.10.3 behoben, tritt es doch auf, hilft laut Spielern: etwas Kleines kaufen (z. B. einen Medpen), dich kurz in ein Med-Bett legen oder neu einloggen.</li>
         <li><b>Schiff klebt am Landeplatz:</b> einlagern und neu anfordern.</li>
         <li><b>Im Hangar eines Freundes:</b> Geh vor dem Besitzer raus. Verlässt er zuerst den Hangar, landest du unter der Station. Laut RSI gibt es dafür keine Lösung.</li>
         <li><b>Aufzug kommt nicht:</b> Erst ein paar Sekunden warten und neu rufen. Hilft das nicht, ausloggen und auf einen anderen Server gehen.</li>
-        <li><b>Frachtaufzug bei Aufträgen:</b> Erst den Kiosk benutzen, dann die Ladung abstellen. Sonst kann sie verschwinden.</li>
+        <li><b>Frachtaufzug bei Aufträgen:</b> Erst den Kiosk benutzen, dann die Ladung abstellen. Sonst kann sie verschwinden. In 4.10.3 teilweise behoben.</li>
       </ul>
       <p class="small" style="margin:0">Quellen: <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360056254754" target="_blank" rel="noopener">Known Issues von RSI</a> und Spielermeldungen auf <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a> (Fan-Seite, aktuellster Stand). Bugs ändern sich mit jedem Hotfix. Alle bekannten Bugs mit Workarounds stehen unter <a href="#bugs">Bugs</a>. Laut Wiki kannst du auch Levski in Nyx oder Stationen in Pyro als Wohnort wählen. Für den Anfang raten aber alle Guides zu Stanton, Pyro ist gesetzlos.</p>
     </div>
@@ -647,7 +648,7 @@
 <!-- ============ TUTORIAL: ÜBERLEBEN ============ -->
 <section class="view" id="view-ueberleben" data-view="ueberleben" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Überleben</h1>
     <p class="lede">Irgendwann bist du verletzt, stirbst, verlierst ein Schiff oder hast plötzlich einen CrimeStat. Kein Drama. Hier steht, was dann passiert, was es kostet und wie du es vermeidest.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -846,9 +847,9 @@
       </article>
       <article class="bug" data-cat="schiff">
         <h3>„Retrieve“ am ASOP-Terminal ist grau <i class="gb">Retrieve greyed out</i></h3>
-        <p>Du kannst kein Schiff anfordern, alle Pfeile sind grau. CIG kennt das Problem, ein Fix steht noch aus.</p>
+        <p>Du kannst kein Schiff anfordern, alle Pfeile sind grau. In 4.10.3 behoben: Die Plattform prüft sich jetzt selbst gegen die Tore und gibt hängende Anfragen frei. Tritt es trotzdem auf, helfen die Tipps unten.</p>
         <p class="wa"><b>Workaround:</b> Etwas Kleines kaufen, z. B. einen MedPen, kurz in ein Med-Bett legen oder neu einloggen.</p>
-        <div class="bug-meta"><span class="pill later">Spielerberichte · 26. Okt.</span> <span class="pill no">CIG bestätigt</span></div>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 26. Okt.</span> <span class="pill no">CIG bestätigt</span> <span class="pill go">Behoben in 4.10.3</span></div>
       </article>
       <article class="bug" data-cat="schiff">
         <h3>„Deliver“ fehlt am ASOP-Terminal <i class="gb">Deliver option</i></h3>
@@ -884,7 +885,7 @@
         <h3>Landeservice hängt <i class="gb">Landing Services</i></h3>
         <p>Die mobiGlas-App für Landeservices bleibt bei „Processing“ oder „Blocked“ hängen. Reparieren, Tanken und Aufmunitionieren fehlen.</p>
         <p class="wa"><b>Workaround:</b> Einige Minuten warten, bis die Hangartore zu sind, dann die App schließen und neu öffnen.</p>
-        <div class="bug-meta"><span class="pill no">CIG bestätigt</span> <span class="pill go">Fix in 4.10.3 im Test</span></div>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span> <span class="pill go">Behoben in 4.10.3</span></div>
       </article>
       <article class="bug" data-cat="schiff">
         <h3>Schiff nimmt Schaden oder explodiert ohne Gegner <i class="gb">Random Damage</i></h3>
@@ -908,13 +909,13 @@
         <h3>Ein fehlgeschlagener Kauf blockiert alle weiteren <i class="gb">Shop Purchase</i></h3>
         <p>Ein Kauf läuft in einen Timeout. Danach klappt kein Kauf mehr, in keinem Laden.</p>
         <p class="wa"><b>Workaround:</b> Server wechseln.</p>
-        <div class="bug-meta"><span class="pill no">CIG bestätigt</span> <span class="pill go">Fix in 4.10.3 im Test</span></div>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span> <span class="pill go">Behoben in 4.10.3</span></div>
       </article>
       <article class="bug" data-cat="fracht">
         <h3>Frachtaufzug: Fracht fehlt oder Abgabe zählt nicht <i class="gb">Freight Elevator</i></h3>
-        <p>Kisten erscheinen nicht, die Abgabe wird nicht erkannt oder das Liefermenü fehlt. Ladung kann am Kiosk verschwinden.</p>
+        <p>Kisten erscheinen nicht, die Abgabe wird nicht erkannt oder das Liefermenü fehlt. Ladung kann am Kiosk verschwinden. In 4.10.3 behoben: Ladung ging verloren, wenn das Zurücknehmen aus dem Aufzug scheiterte, Fahrzeugmodule ließen sich durch den Aufzug ziehen, und nach „Recover Cargo“ kam zu viel Fracht zurück.</p>
         <p class="wa"><b>Workaround:</b> Erst am Kiosk die Abgabe starten, dann die Kisten abstellen. Sonst einen anderen Aufzug am selben Ort probieren, neu einloggen oder den Server wechseln.</p>
-        <div class="bug-meta"><span class="pill later">Spielerberichte · 11.–13. Okt.</span></div>
+        <div class="bug-meta"><span class="pill later">Spielerberichte · 11.–13. Okt.</span> <span class="pill go">Teils behoben in 4.10.3</span></div>
       </article>
       <article class="bug" data-cat="fracht">
         <h3>Hull C lädt nicht richtig <i class="gb">Automated Loading</i></h3>
@@ -1040,7 +1041,7 @@
         <h3>Collector-Einstiegsauftrag fehlt <i class="gb">The Collector</i></h3>
         <p>Der erste Auftrag der Collector-Reihe erscheint nicht im Auftragsmenü.</p>
         <p class="wa none"><b>Kein Workaround bekannt.</b> Melden hilft CIG beim Beheben.</p>
-        <div class="bug-meta"><span class="pill no">CIG bestätigt</span> <span class="pill go">Fix in 4.10.3 im Test</span></div>
+        <div class="bug-meta"><span class="pill no">CIG bestätigt</span> <span class="pill go">Behoben in 4.10.3</span></div>
       </article>
       <article class="bug" data-cat="login">
         <h3>30k: Verbindung weg <i class="gb">Error 30000</i></h3>
@@ -1120,17 +1121,24 @@
   </section>
 
   <section>
-    <h2>Kommt mit 4.10.3</h2>
-    <p class="small" style="font-size:14px">4.10.3 läuft seit dem 23. Oktober auf dem Testserver <i class="gb">PTU</i>. Einen Termin für LIVE hat CIG noch nicht genannt. Laut Patch Notes sollen diese Fehler behoben sein:</p>
+    <h2>Behoben in 4.10.3</h2>
+    <p class="small" style="font-size:14px">4.10.3 ist seit dem 12. November LIVE. CIG meldet 129 behobene Fehler und 13 Abstürze, darunter mehrere Exploits. Eine Auswahl der Fehler, die dieses Handbuch bisher geführt hat:</p>
     <ul class="small" style="font-size:14px">
       <li>Ein fehlgeschlagener Kauf blockiert alle weiteren Käufe.</li>
       <li>Landeservice hängt bei „Processing“ oder „Blocked“.</li>
       <li>Doppelte Fracht im Frachtaufzug nach „Recover Cargo“-Aufträgen.</li>
       <li>Der Einstiegsauftrag des Collectors fehlt.</li>
       <li>Autolanden erfüllt das Ziel „Land at LEO“ im Einsteiger-Tutorial nicht.</li>
-      <li>Feindliche KI-Schiffe in Kopfgeld-Aufträgen schießen nicht zurück.</li>
+      <li>Feindliche KI-Schiffe in Kopfgeld- und Söldner-Aufträgen schießen nicht zurück.</li>
+      <li>„Retrieve“ am ASOP-Terminal bleibt grau, Fahrzeuge zeigen Platzhaltertext im Fleet Manager, Abschleppgebühren fehlen, das Öffnen des Terminals friert das Spiel ein.</li>
+      <li>Ladung geht verloren, wenn das Zurücknehmen aus dem Frachtaufzug scheitert. Warenkäufe am Kiosk schlagen irgendwann fehl.</li>
+      <li>Die Vertragsliste im mobiGlas bleibt hängen und lässt sich nicht scrollen.</li>
+      <li>Eine Wikelo-Auftragskarte nimmt zufällig weitere Aufträge mit an.</li>
+      <li>Battaglia Story: Fortschrittszähler an Bord der Blinding Hope bleibt bei null, Spieler hängen am Kraftwerk der Caterpillar, das Wrack für den mittleren Bergungsauftrag erscheint nicht.</li>
+      <li>Schiffe starten mit abgeschalteten Werkzeugen (Traktorstrahl, Mining-Laser, Bergungskopf): Die Standard-Energieverteilung wurde zurückgesetzt.</li>
+      <li>Ein Schiff mit zerstörtem Kraftwerk lässt sich nicht bergen. Der Drake Golem warnt nicht bei instabilem Quantanium.</li>
     </ul>
-    <p class="small">Neu dazu: Vanduul-Missionen in Nyx und das Skarnov-Gewehr. <a href="https://robertsspaceindustries.com/spectrum/community/SC/forum/190048/thread/star-citizen-alpha-4-10-3-ptu-patch-notes-2" target="_blank" rel="noopener">Patch Notes 4.10.3 PTU</a></p>
+    <p class="small">Neu dazu: <a href="#vanduul">Vanduul-Aufträge von InterSec</a>, das Skarnov-Gewehr, die Intergalactic Aerospace Expo und größere Puffer bei den Bergungsschiffen. <a href="https://robertsspaceindustries.com/en/comm-link/Patch-Notes/21429-Star-Citizen-Alpha-4103" target="_blank" rel="noopener">Patch Notes 4.10.3 LIVE</a></p>
   </section>
 
   <section id="bugofficial" hidden>
@@ -1139,13 +1147,13 @@
     <div id="bugofficial-list" class="bug-official"></div>
   </section>
 
-  <p class="small">Quellen: <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360056254754" target="_blank" rel="noopener">RSI: Known Issues 4.10.2</a>, <a href="https://robertsspaceindustries.com/spectrum/community/SC/forum/190048/thread/star-citizen-alpha-4-10-3-ptu-patch-notes-2" target="_blank" rel="noopener">Patch Notes 4.10.3 PTU</a>, Spectrum (Forum „General“, 1.–3. November), <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a> (Stand 2. November), <a href="https://timesaver.gg/blog/star-citizen-ship-taking-damage-exploding-fix-alpha-4-10-2" target="_blank" rel="noopener">Timesaver</a>, <a href="https://bustedloops.com/workarounds" target="_blank" rel="noopener">Busted Loops</a>. Die offizielle Liste lädt die Seite stündlich neu von RSI.</p>
+  <p class="small">Quellen: <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360056254754" target="_blank" rel="noopener">RSI: Known Issues 4.10.2</a>, <a href="https://robertsspaceindustries.com/en/comm-link/Patch-Notes/21429-Star-Citizen-Alpha-4103" target="_blank" rel="noopener">Patch Notes 4.10.3 LIVE</a>, Spectrum (Forum „General“, 1.–3. November), <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a> (Stand 2. November), <a href="https://timesaver.gg/blog/star-citizen-ship-taking-damage-exploding-fix-alpha-4-10-2" target="_blank" rel="noopener">Timesaver</a>, <a href="https://bustedloops.com/workarounds" target="_blank" rel="noopener">Busted Loops</a>. Die offizielle Liste lädt die Seite stündlich neu von RSI.</p>
 </section>
 
 <!-- ============ TUTORIAL: MINING ============ -->
 <section class="view" id="view-t-mining" data-view="t-mining" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Mining lernen</h1>
     <p class="lede">Eine ganze Runde vom ersten Ping bis zum Geld auf dem Konto. Am einfachsten mit dem Golem, zu Fuß mit dem Multitool geht es auch.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Werkzeuge wie den RS-Rechner und die Erz-Suche findest du im <a href="#mining">Mining-Kapitel</a>.</p>
@@ -1257,7 +1265,7 @@
 <!-- ============ TUTORIAL: SALVAGE ============ -->
 <section class="view" id="view-t-salvage" data-view="t-salvage" hidden>
   <div class="head chead" data-toc="h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Salvage lernen</h1>
     <p class="lede">Eine ganze Runde mit der Salvation: Auftrag holen, Wrack prüfen, Hülle abkratzen, zerlegen und verkaufen. Nichts kann explodieren, und Bergungsaufträge kosten keine Gebühr.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Preise, Schiffe und Regeln findest du im <a href="#salvage">Salvage-Kapitel</a>.</p>
@@ -1327,7 +1335,7 @@
 <!-- ============ TUTORIAL: HAULING ============ -->
 <section class="view" id="view-t-hauling" data-view="t-hauling" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Hauling lernen</h1>
     <p class="lede">Dein erster Frachtauftrag: annehmen, Kisten holen, einladen, fliegen, abliefern. Eigenes Geld brauchst du dafür nicht, nur ein Schiff mit Frachtgitter und einen Traktorstrahl.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Ränge, Schiffe und den Frachter-Finder findest du im <a href="#hauling">Hauling-Kapitel</a>.</p>
@@ -1385,7 +1393,7 @@
 <!-- ============ TUTORIAL: CRAFTING ============ -->
 <section class="view" id="view-t-crafting" data-view="t-crafting" hidden>
   <div class="head chead" data-toc="h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Crafting lernen</h1>
     <p class="lede">Vom Bauplan bis zum fertigen Gegenstand in drei Schritten.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Was Qualität bewirkt und was du alles bauen kannst, steht im <a href="#crafting">Crafting-Kapitel</a>.</p>
@@ -1439,10 +1447,20 @@
 <!-- ============ EINSÄTZE: ÜBERSICHT ============ -->
 <section class="view" id="view-einsaetze" data-view="einsaetze" hidden>
   <div class="head chead am">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Einsätze</h1>
     <p class="lede">Anleitungen für größere Aktivitäten im Spiel, mit Ablauf, Tipps und aktuellen Bugs. Für den Einstieg in den Kampf zu Fuß eignen sich die Bunker-Missionen, für Gruppen Siege of Orison.</p>
   </div>
+  <section>
+    <h2>Neu in 4.10.3</h2>
+    <div class="facts">
+      <div class="fact"><strong>Intergalactic Aerospace Expo</strong><p>Ab 13. November im Tobin Expo Center in New Babbage, per Metroloop vom Raumhafen. Vier Gildenhallen mit Schiffen und Info-Ständen, Mietkioske mit über 200 Schiffen und Bodenfahrzeugen zum kostenlosen Ausprobieren. Jeden Tag kommen neue Hersteller dazu, frühere bleiben verfügbar.</p></div>
+      <div class="fact"><strong>InterSec gegen die Vanduul</strong><p>Neue Aufträge in Nyx ab Rang 1, mit Blaupausen als Belohnung. <a href="#vanduul">Zur Einsatzakte</a></p></div>
+      <div class="fact"><strong>Größere Puffer beim Salvage</strong><p>Reclaimer, MOTH, Vulture, Fortune und Salvation fassen mehr geborgenes Material. <a href="#salvage">Zum Salvage-Kapitel</a></p></div>
+      <div class="fact"><strong>Schiffe für aUEC</strong><p>Jetzt im Spiel kaufbar: Tiburon und Starlite (New Deal, Lorville), Ironclad, Pitbull und Starlite (Teach’s Ship Shop, Levski), Ironclad Assault, Pitbull und Basher (Rundown, Pyro), M80 und Tyilui (Astro Armada, Area18). Preise folgen in der Schiffsdatenbank, sobald UEX sie kennt.</p></div>
+    </div>
+    <p class="small" style="margin-top:8px"><a href="https://robertsspaceindustries.com/en/comm-link/Patch-Notes/21429-Star-Citizen-Alpha-4103" target="_blank" rel="noopener">Patch Notes 4.10.3 LIVE</a></p>
+  </section>
   <div class="chapters">
     <a class="chapter first" href="#exec-hangar">
       <span class="no">PYRO · GRUPPE · PVP</span>
@@ -1454,6 +1472,12 @@
       <span class="no">ORISON · 1–4 SPIELER · NUR KI</span>
       <h3>Siege of Orison</h3>
       <p>Drei Plattformen von Orison von den Nine Tails zurückholen, bis zum Bosskampf. Eigene Instanz für eure Gruppe, neu seit 4.10.</p>
+      <span class="go">Zur Anleitung →</span>
+    </a>
+    <a class="chapter" href="#vanduul">
+      <span class="no">NYX · INTERSEC · NEU IN 4.10.3</span>
+      <h3>Vanduul-Aufträge</h3>
+      <p>InterSec Defense Solutions schickt dich gegen die Vanduul: Banden ausräuchern, Schiffe zurückholen, Mauler jagen. Dazu das Skarnov-Gewehr.</p>
       <span class="go">Zur Anleitung →</span>
     </a>
     <a class="chapter" href="#hathor">
@@ -1475,6 +1499,97 @@
       <span class="go">Zur Anleitung →</span>
     </a>
   </div>
+</section>
+
+<!-- ============ EINSATZ: VANDUUL-AUFTRÄGE ============ -->
+<section class="view" id="view-vanduul" data-view="vanduul" hidden>
+  <div class="head chead am" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">neu in 4.10.3</span><span class="chead-tag">Nyx</span></div>
+    <h1>Vanduul-Aufträge</h1>
+    <p class="lede">Die Vanduul dringen in Nyx ein, und InterSec Defense Solutions heuert Piloten an, um sie zurückzudrängen. Neue Aufträge führen dich zu Orten im All, in Kämpfe gegen Vanduul-Clans, gegen den Mauler und zu Raids auf Stellungen der Shattered Blade.</p>
+  </div>
+
+  <section>
+    <h2>Kurz erklärt</h2>
+    <div class="facts">
+      <div class="fact"><strong>Wo</strong><p>Im mobiGlas unter Verträge bei <b>InterSec Defense Solutions</b> im Nyx-System, ab Rang 1 neben den Technologie-Schmuggel-Aufträgen.</p></div>
+      <div class="fact"><strong>Gegner</strong><p>Vanduul in Blade, Glaive, Scythe und Stinger. In den „Seek and Destroy“-Aufträgen der höchsten Stufen auch der <b>Mauler</b>, das neueste Zerstörer-Schiff der Vanduul.</p></div>
+      <div class="fact"><strong>Belohnung</strong><p>Baupläne: <a href="#vanduul-skarnov">Skarnov-Gewehr</a>, BEHR-Laserkanonen in drei Größen, Tailwind-Fluganzug, schwere Rüstungen Palatino und Corbel, jeweils mit militärischer Tarnfarbe.</p></div>
+      <div class="fact"><strong>Stimmung</strong><p>Die Kampfmusik aus „Welcome to Nyx“ spielt, und die Vanduul rufen sich im Gefecht zu.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Die Aufträge</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Auftrag</th><th>Rang</th><th>Worum es geht</th></tr></thead>
+        <tbody>
+          <tr><th>Shattered Blade Raid</th><td>1</td><td>Zu Fuß: Shattered-Blade-Kräfte aus Hilfsstationen im Nyx-System vertreiben.</td></tr>
+          <tr><th>Retake Ship</th><td>2</td><td>Ein Schiff wurde von der Shattered Blade geentert. Einsteigen und zurückholen.</td></tr>
+          <tr><th>Vanduul Clan Extermination</th><td>4</td><td>Immer stärkere Wellen von Vanduul-Schiffen aushalten, in drei Schwierigkeitsstufen.</td></tr>
+          <tr><th>3-Way Standoff</th><td>4</td><td>Du, die Vanduul und die Shattered Blade treffen gleichzeitig aufeinander. Alle sind Ziel, auch du.</td></tr>
+          <tr><th>Takedown (Name von CIG noch geschwärzt)</th><td>4 bis 6</td><td>Kämpfe dich durch Vanduul-Wellen, bis ein besonderes Ziel zum Einsatzort gelockt wird, in fünf Schwierigkeitsstufen.</td></tr>
+          <tr><th>Gather Vanduul Cryopod</th><td>–</td><td>Kryokapseln im Gelände bergen. Es gibt eine neue Variante mit einem Vanduul darin, die mehr wert ist als die normale.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:8px">Dazu kommen laut CIG Aufträge zum Verteidigen von Schiffen und eine Vermisstensuche, die in einen Hinterhalt führt. Die Ränge sind die von InterSec; Rang 1 entspricht Jr. Contractor (800 Ruf), Rang 2 Contractor (2.200), Rang 4 Veteran (15.000), laut der <a href="#ruf">Ruf-Leiter</a> dieses Handbuchs (Community-Guides, nicht von CIG).</p>
+  </section>
+
+  <section>
+    <h2>Kampf gegen die Vanduul</h2>
+    <div class="two">
+      <div class="card-plain">
+        <h3>Was sich geändert hat</h3>
+        <ul>
+          <li>Vanduul-Schiffe haben mehr Munition und laden sie schneller nach. In langen Kämpfen werden sie deutlich aggressiver.</li>
+          <li>Die Waffen des Maulers sind erheblich tödlicher geworden.</li>
+          <li>Dafür wurde die Lebensenergie des Maulers gesenkt.</li>
+        </ul>
+      </div>
+      <div class="card-plain">
+        <h3>Gut vorbereitet</h3>
+        <ul>
+          <li>Ein Schiff mit guter Rüstung und Munition für lange Gefechte.</li>
+          <li>Die Seek-and-Destroy-Aufträge mit dem Mauler laufen auf den härtesten Stufen von InterSec. Besser mit Crew.</li>
+          <li>Loadout vorher prägen <i class="gb">Imprint</i>, damit er nach dem Tod erhalten bleibt.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="vanduul-skarnov">
+    <h2>LBCO Skarnov</h2>
+    <p class="small" style="font-size:14px">Ein vollautomatisches DMR von Lightning Bolt Co. Wie die anderen LBCO-Waffen hinterlässt es einen elektrischen Impuls, der detoniert und auf Ziele in der Nähe überspringt. Sehr effektiv gegen dicht stehende Gegner.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Wert</th><th>Skarnov</th></tr></thead>
+        <tbody>
+          <tr><th>Feuermodi</th><td>Vollautomatisch, Einzelfeuer</td></tr>
+          <tr><th>Schaden</th><td class="num">27</td></tr>
+          <tr><th>Geschossgeschwindigkeit</th><td class="num">500</td></tr>
+          <tr><th>Schuss pro Minute</th><td class="num">375</td></tr>
+          <tr><th>Magazin</th><td class="num">30</td></tr>
+          <tr><th>Zielzeit <i class="gb">Aim down sight</i></th><td class="num">0,25 s</td></tr>
+          <tr><th>Elektrischer Sprung</th><td>5 m, maximale Sprungweite 3 m (so nennt es CIG)</td></tr>
+          <tr><th>Gewicht</th><td>durchschnittlich</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hint" style="margin-top:10px">Der Rückstoß ist gleichmäßig, aber vertikal stark. Als Energiewaffe überhitzt sie: in heißer Umgebung schneller, in kalter langsamer. Den Bauplan bekommst du als Belohnung der Vanduul-Aufträge.</div>
+  </section>
+
+  <section>
+    <h2>Gut zu wissen</h2>
+    <div class="facts">
+      <div class="fact"><strong>Dauerhaft</strong><p>4.10.3 erhält den Fortschritt (Long Term Persistence), das Startgeld beträgt 20.000 aUEC.</p></div>
+      <div class="fact"><strong>Baupläne</strong><p>Wie beim <a href="#crafting">Crafting</a>: Die Belohnung ist ein Bauplan, kein fertiger Gegenstand. Für einen bestimmten Bauplan musst du den Auftrag eventuell mehrfach machen.</p></div>
+      <div class="fact"><strong>Noch offen</strong><p>Werte und Belohnungen einzelner Aufträge nennt CIG in den Notes nicht. Hier stehen nur die offiziellen Angaben.</p></div>
+    </div>
+  </section>
+
+  <p class="small" style="margin-top:18px">Quellen: <a href="https://robertsspaceindustries.com/en/comm-link/Patch-Notes/21429-Star-Citizen-Alpha-4103" target="_blank" rel="noopener">Star Citizen Alpha 4.10.3 LIVE Release Notes</a> (12. Nov. 2026), Rangleiter aus den Community-Guides dieses Handbuchs.</p>
 </section>
 
 <!-- ============ EINSATZ: RECCO BATTAGLIA ============ -->
@@ -1579,7 +1694,7 @@
     <h2>Aktuelle Bugs</h2>
     <div class="facts">
       <div class="fact"><strong>Scan zählt nicht</strong><p>Laut Spielern hat manchmal schon jemand anderes den Asteroiden gescannt, dann zählt der Auftrag nicht. Anderen Auftrag nehmen oder Server wechseln.</p></div>
-      <div class="fact"><strong>Story 2 hängt</strong><p>„Blinding Hope“ ließ sich bei manchen nicht abschließen. Abbrechen und auf einem anderen Server neu annehmen.</p></div>
+      <div class="fact"><strong>Story 2 hängt</strong><p>„Blinding Hope“ ließ sich bei manchen nicht abschließen, weil der Zähler für die Gegner an Bord bei null blieb. In 4.10.3 behoben. Hängt es trotzdem: abbrechen und auf einem anderen Server neu annehmen.</p></div>
       <div class="fact"><strong>Story 3 fehlt</strong><p>Fehlt „Idea for Isaac“, obwohl Story 2 und der Ruf passen, liegt es meist am Server. Wechseln und neu nachsehen.</p></div>
       <div class="fact"><strong>Levski allgemein</strong><p>Geländer nicht überspringen, fremde Hangars vor dem Besitzer verlassen. Mehr unter <a href="#bugs">Bugs</a>.</p></div>
     </div>
@@ -1590,7 +1705,7 @@
 <!-- ============ EINSATZ: EXECUTIVE HANGAR ============ -->
 <section class="view" id="view-exec-hangar" data-view="exec-hangar" hidden>
   <div class="head chead am" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">PvP-Gebiet</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">PvP-Gebiet</span></div>
     <h1>Executive Hangar</h1>
     <p class="lede">In Pyro liegen drei gesicherte Hangars voller Beute. Wer sieben Platinen <i class="gb">Compboards</i> aus den umkämpften Zonen <i class="gb">Contested Zones</i> sammelt, öffnet einen davon und darf eines von acht Schiffen dauerhaft behalten.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -1775,7 +1890,7 @@
 <!-- ============ EINSATZ: SIEGE OF ORISON ============ -->
 <section class="view" id="view-siege-orison" data-view="siege-orison" hidden>
   <div class="head chead am" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">1 bis 4 Spieler</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">1 bis 4 Spieler</span></div>
     <h1>Siege of Orison</h1>
     <p class="lede">Die Bande Nine Tails hat drei Plattformen von Orison besetzt. Ihr holt sie euch zu Fuß zurück, Plattform für Plattform, bis zum Kampf gegen ihren Anführer Mendo Ren. Läuft in einer eigenen Instanz nur für eure Gruppe, ohne fremde Spieler.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -1847,7 +1962,7 @@
 <!-- ============ EINSATZ: HATHOR & WIKELO ============ -->
 <section class="view" id="view-hathor" data-view="hathor" hidden>
   <div class="head chead am" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Stanton</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Stanton</span></div>
     <h1>Hathor &amp; Wikelo</h1>
     <p class="lede">Auf Daymar und Aberdeen stehen stillgelegte Laser-Plattformen der Firma Hathor. Wer sie wieder in Gang bringt, schießt eine Höhle voller seltener Erze frei, darunter Carinit. Das tauscht der Händler Wikelo gegen Schiffe, Waffen und Rüstung.</p>
     <p class="small">Im Spiel heißt die Aktivität „Align &amp; Mine“. Grau dahinter steht jeweils der englische Begriff.</p>
@@ -1952,7 +2067,7 @@
       <div class="fact"><strong>Laden in der Nähe wählen</strong><p>Abgeben musst du im selben Laden, in dem du angenommen hast. Für Daymar liegt Selo bei Yela nah.</p></div>
       <div class="fact"><strong>Genau die verlangte Menge</strong><p>Bring genau, was im Auftrag steht, nicht mehr.</p></div>
       <div class="fact"><strong>Edelsteine nicht vergessen</strong><p>In der Höhle liegen auch Aphorit, Dolivin, Hadanit und Janalit. Die kannst du direkt verkaufen.</p></div>
-      <div class="fact"><strong>Wipe-Risiko</strong><p>Mit Patch 4.8 wurde alles zurückgesetzt, auch Wikelo-Belohnungen. 4.9 bis 4.10.2 hatten keinen Wipe, garantiert ist das nicht.</p></div>
+      <div class="fact"><strong>Wipe-Risiko</strong><p>Mit Patch 4.8 wurde alles zurückgesetzt, auch Wikelo-Belohnungen. 4.9 bis 4.10.3 hatten keinen Wipe (4.10.3: Long Term Persistence erhalten, Startgeld 20.000 aUEC), garantiert ist das nicht.</p></div>
     </div>
   </section>
 
@@ -2192,7 +2307,7 @@
 <!-- ============ BERUFE: ÜBERSICHT ============ -->
 <section class="view" id="view-berufe" data-view="berufe" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Berufe</h1>
     <p class="lede">Womit du im Verse Geld verdienst oder deine Ausrüstung verbesserst. Hier siehst du die Berufe im Vergleich. In den Kapiteln stehen Werkzeuge, Preise und Tabellen zum Nachschlagen.</p>
   </div>
@@ -2262,7 +2377,7 @@
 <!-- ============ MINING ============ -->
 <section class="view" id="view-mining" data-view="mining" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Preise schwanken</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Mining</h1>
     <p class="lede">Werkzeuge und Infos fürs Mining: Signaturen auswerten, Erze und Fundorte suchen, die besten Raffinerien und Verkaufsorte finden, Schiffe und Methoden vergleichen.</p>
     <div class="chead-act"><a href="#mining" data-jump="rs-tool">RS-Rechner</a><a href="#mining" data-jump="loc-tool">Fundort-Suche</a><a href="#t-mining">Mining lernen</a><a href="#ruf">Ruf-Rechner</a></div>
@@ -2466,7 +2581,7 @@
 <!-- ============ SALVAGE ============ -->
 <section class="view" id="view-salvage" data-view="salvage" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Preise schwanken</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Salvage</h1>
     <p class="lede">Bergung heißt: Wracks finden, die Hülle zu Recycling-Material abkratzen, den Rest zerlegen und alles verkaufen. Hier findest du Schiffe, Preise, Baumaterial und die Regeln rund um Bauteile.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -2502,19 +2617,19 @@
           <tr class="rec">
             <th><a class="ship-a" href="#s-rsi-salvation">RSI Salvation</a><small>Einsteiger-Schiff</small></th>
             <td>1</td><td class="num">6 SCU</td><td class="num">Miete ~31.200 aUEC/Tag<br>Kauf ~1,19 Mio. aUEC</td>
-            <td>Abkratzen und Zerlegen bis Freelancer-Größe. Günstigster Einstieg.</td>
+            <td>Abkratzen und Zerlegen bis Freelancer-Größe. Günstigster Einstieg. Puffer seit 4.10.3: 8 SCU (vorher 6).</td>
             <td><span class="pill go">Einstieg</span></td>
           </tr>
           <tr>
             <th><a class="ship-a" href="#s-misc-fortune">MISC Fortune</a><small>Solo-Bergung</small></th>
             <td>1</td><td class="num">16 SCU</td><td class="num">Miete ~28.400 aUEC/Tag<br>Kauf ~1,80 Mio. aUEC</td>
-            <td>Füllt RMC in 1-SCU-Kisten, die sie außen auswirft. Praktisch beim Verkaufen.</td>
+            <td>Füllt RMC in 1-SCU-Kisten, die sie außen auswirft. Praktisch beim Verkaufen. Puffer seit 4.10.3: 14 SCU (vorher 13).</td>
             <td><span class="pill later">Alternative</span></td>
           </tr>
           <tr class="rec">
             <th><a class="ship-a" href="#s-drak-vulture">Drake Vulture</a><small>Solo-Klassiker</small></th>
-            <td>1</td><td class="num">12 SCU<br>+13 Puffer <i class="gb">Buffer</i></td><td class="num">Miete ~69.500 aUEC/Tag<br>Kauf ~2,51 Mio. aUEC</td>
-            <td>Abkratzen und Zerlegen bis Mercury-Star-Runner-Größe. Das Standard-Schiff für Solo-Bergung.</td>
+            <td>1</td><td class="num">12 SCU<br>+16 Puffer <i class="gb">Buffer</i></td><td class="num">Miete ~69.500 aUEC/Tag<br>Kauf ~2,51 Mio. aUEC</td>
+            <td>Abkratzen und Zerlegen bis Mercury-Star-Runner-Größe. Das Standard-Schiff für Solo-Bergung. Puffer seit 4.10.3: 16 SCU (vorher 13).</td>
             <td><span class="pill later">Upgrade</span></td>
           </tr>
           <tr>
@@ -2526,19 +2641,20 @@
           <tr>
             <th><a class="ship-a" href="#s-argo-moth">ARGO MOTH</a><small>Crew-Schiff</small></th>
             <td>4</td><td class="num">~224 SCU</td><td class="num">Miete ~223.000 aUEC/Tag<br>Kauf ~8,48 Mio. aUEC</td>
-            <td>Drei Bergungstürme, zerlegt bis 600i-Größe.</td>
+            <td>Drei Bergungstürme, zerlegt bis 600i-Größe. Puffer seit 4.10.3: 240 SCU (vorher 64).</td>
             <td><span class="pill no">Später, mit Crew</span></td>
           </tr>
           <tr>
             <th><a class="ship-a" href="#s-aegs-reclaimer">Aegis Reclaimer</a><small>Großbergung</small></th>
             <td>5–12</td><td class="num">420 SCU</td><td class="num">Kauf ~30,2 Mio. aUEC</td>
-            <td>Mit Greifklaue für jedes Schiff, egal wie groß.</td>
+            <td>Mit Greifklaue für jedes Schiff, egal wie groß. Puffer seit 4.10.3: 448 SCU (vorher 240).</td>
             <td><span class="pill no">Org-Projekt</span></td>
           </tr>
         </tbody>
       </table>
     </div>
     <p class="small" style="margin-top:8px">Preise aus unseren Schiffsdaten (günstigster bekannter Händler, Patch 4.10.2). Alle Schiffe mit Bild und 3D findest du im Tab <a href="#schiffe">Schiffe</a>.</p>
+    <div class="hint" style="margin-top:10px"><b>Neu in 4.10.3:</b> Der Puffer <i class="gb">Hull munching capacity</i> ist bei allen fünf Bergungsschiffen gewachsen (Werte in der Tabelle). Dazu ist das Zerlegungsfeld <i class="gb">Disintegration field</i> größer und verzeiht mehr, wenn du nicht exakt ausgerichtet bist. Die Spalte „Fracht“ stammt aus unseren Schiffsdaten und kann vom neuen Puffer abweichen. <a href="https://robertsspaceindustries.com/en/comm-link/Patch-Notes/21429-Star-Citizen-Alpha-4103" target="_blank" rel="noopener">Patch Notes</a></div>
   </section>
 
   <section>
@@ -2547,7 +2663,7 @@
       <table>
         <thead><tr><th>Schiff</th><th>Puffer → Kisten</th><th>Gut zu wissen</th></tr></thead>
         <tbody>
-          <tr><th><a class="ship-a" href="#s-rsi-salvation">RSI Salvation</a><small>6 SCU</small></th><td>Das geborgene Material wird in den hinteren Laderaum ausgegeben, bis zu 6 SCU.</td><td>Kleiner Laderaum, also oft verkaufen fliegen.</td></tr>
+          <tr><th><a class="ship-a" href="#s-rsi-salvation">RSI Salvation</a><small>6 SCU</small></th><td>Das geborgene Material wird in den hinteren Laderaum ausgegeben, bis zu 8 SCU (bis 4.10.2: 6).</td><td>Kleiner Laderaum, also oft verkaufen fliegen.</td></tr>
           <tr><th><a class="ship-a" href="#s-misc-fortune">MISC Fortune</a><small>16 SCU</small></th><td>Ein Spender außen am Schiff <i class="gb">Dispenser</i> fasst bis zu 12 Kisten à 1 SCU. Dazu kommen 4 SCU auf dem Heck-Lift. Laut Spielern füllen sich die Kisten von selbst.</td><td>Am wenigsten Handarbeit, darum für Solo-Spieler beliebt.</td></tr>
           <tr><th><a class="ship-a" href="#s-drak-vulture">Drake Vulture</a><small>12 SCU + 13 Puffer</small></th><td>Im Heck an einem Wand-Panel den Rohstoff wählen und in 1-SCU-Kisten auswerfen lassen. Es gibt auch eine Automatik, die den Puffer nach und nach leert. Die Kisten stellst du mit dem Traktorstrahl <i class="gb">Tractor Beam</i> auf das Frachtgitter <i class="gb">Cargo Grid</i>.</td><td>Dafür brauchst du ein Multitool mit TruHold-Aufsatz oder den MaxLift-Traktorstrahl.</td></tr>
         </tbody>
@@ -2619,7 +2735,7 @@
 <!-- ============ HAULING ============ -->
 <section class="view" id="view-hauling" data-view="hauling" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Preise schwanken</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Hauling</h1>
     <p class="lede">Hauling heißt Fracht fahren: Kisten an einem Ort abholen und an einem anderen abliefern. Mit Frachtaufträgen bekommst du dafür einen festen Lohn und riskierst kein eigenes Geld. Hier steht, welches Schiff du wann brauchst, wie du im Rang aufsteigst und was es bringt.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -2842,7 +2958,7 @@
     <p class="small" style="font-size:14px;margin-top:0">Allgemeine Fehler wie Aufzüge, Hangar oder Abstürze stehen unter <a href="#bugs">Bugs &amp; Workarounds</a>.</p>
     <div class="facts">
       <div class="fact"><strong>Absturz oder Server-Crash</strong><p>Gekaufte Ware ist bei einem Absturz verloren. Auftragsfracht auch, dann scheitert der Auftrag. Gekaufte Ersatzkisten zählen nicht sicher als Auftragsfracht.</p></div>
-      <div class="fact"><strong>Frachtaufzug</strong><p>Seit 4.10.2 gibt es ein Limit, wie viele Kisten du auf einmal holen kannst, und die Plattform bleibt nicht mehr oben hängen. Fehlt Fracht: anderen Aufzug am selben Ort probieren, neu einloggen oder Server wechseln.</p></div>
+      <div class="fact"><strong>Frachtaufzug</strong><p>Seit 4.10.2 gibt es ein Limit, wie viele Kisten du auf einmal holen kannst, und die Plattform bleibt nicht mehr oben hängen. Seit 4.10.3 geht Ladung nicht mehr verloren, wenn das Zurücknehmen scheitert. Fehlt Fracht: anderen Aufzug am selben Ort probieren, neu einloggen oder Server wechseln.</p></div>
       <div class="fact"><strong>Nur eingerastete Kisten</strong><p>Lose Kisten neben dem Gitter rutschen im Flug herum. Erst losfliegen, wenn alles eingerastet ist.</p></div>
       <div class="fact"><strong>Pyro</strong><p>Hauling in Pyro ist seit dem Start unzuverlässig und dort lauern Piraten. Erst in Stanton sicher werden.</p></div>
       <div class="fact"><strong>Piraten</strong><p>Volle Frachter sind beliebte Ziele, auch per Quantum-Abfang <i class="gb">Interdiction</i>. Wertvolle Ladung nicht allein durch unsichere Gegenden fliegen.</p></div>
@@ -2861,7 +2977,7 @@
 <!-- ============ RUF ============ -->
 <section class="view" id="view-ruf" data-view="ruf" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-rep"/></svg>Wissen · Ruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Richtwerte</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-rep"/></svg>Wissen · Ruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Richtwerte</span></div>
     <h1>Ruf</h1>
     <p class="lede">Jeder Auftraggeber merkt sich, wie gut du für ihn arbeitest. Mehr Ruf <i class="gb">Reputation</i> heißt bessere Aufträge, Baupläne und bei manchen sogar Schiffe. Wer früh weiß, bei wem er sammelt, spart sich viele Stunden.</p>
     <p class="small">Deinen Ruf siehst du im mobiGlas unter Ruf <i class="gb">Reputation</i>. Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -2886,8 +3002,8 @@
           <tr class="rec"><th>Mining</th><td><b>Recco Battaglia</b>, Levski (Nyx)</td><td>Gratis <a class="ship-a" href="#s-drak-golem">Golem</a>, <a class="ship-a" href="#s-misc-prospector">Prospector</a> und <a class="ship-a" href="#s-argo-mole">MOLE</a>, Baupläne für Mining-Module und Erzbehälter. <a href="#recco">Zur Anleitung</a></td></tr>
           <tr><th>Salvage</th><td><b>Adagio Holdings</b></td><td>Bessere Bergungsaufträge, Baupläne für Bergungswerkzeug aus bestimmten Material-Aufträgen</td></tr>
           <tr><th>Hauling</th><td><b>Covalex</b>, Red Wind oder Ling Family</td><td>Größere Aufträge und mehr Lohn. <a href="#hauling">Ränge im Hauling-Kapitel</a></td></tr>
-          <tr><th>Söldner</th><td><b>InterSec</b> (Nyx), Foxwell oder Crusader Security</td><td>InterSec ab Sr. Contractor (5.800): „Tactical Strike Group“, je Auftrag 300 Ruf und zwei Baupläne</td></tr>
-          <tr><th>Kopfgeld</th><td><b>Kopfgeldjäger-Gilde</b> <i class="gb">Bounty Hunters Guild</i></td><td>Lizenzen von „Tracker Training Permit“ bis „Master Tracker License“, jede schaltet schwerere Ziele frei</td></tr>
+          <tr><th>Söldner</th><td><b>InterSec</b> (Nyx), Foxwell oder Crusader Security</td><td>InterSec ab Sr. Contractor (5.800): „Tactical Strike Group“, je Auftrag 300 Ruf und zwei Baupläne. Neu in 4.10.3: <a href="#vanduul">Vanduul-Aufträge</a> schon ab Rang 1</td></tr>
+          <tr><th>Kopfgeld</th><td><b>Kopfgeldjäger-Gilde</b> <i class="gb">Bounty Hunters Guild</i></td><td>Lizenzen von „Tracker Training Permit“ bis „Master Tracker License“, jede schaltet schwerere Ziele frei. Seit 4.10.3 geben „High Risk Target“-Aufträge 4.000 statt 2.000 Ruf (zwischen Medium Risk und Very Hard)</td></tr>
           <tr><th>Sammeln &amp; Tauschen</th><td><b>Wikelo</b></td><td>Ab 340 „Very Good Customer“, ab 999 „Very Best Customer“ mit Sondertauschen wie Wolf und Idris. <a href="#hathor">Zu Wikelo</a></td></tr>
         </tbody>
       </table>
@@ -2938,7 +3054,7 @@
 <!-- ============ CRAFTING ============ -->
 <section class="view" id="view-crafting" data-view="crafting" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Crafting seit 4.7</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Crafting seit 4.7</span></div>
     <h1>Crafting</h1>
     <p class="lede">Seit Alpha 4.7 kannst du Waffen, Rüstung, Munition und Schiffsteile selbst herstellen. Du brauchst drei Dinge: einen Bauplan, das passende Material und eine Werkbank. Je besser das Material, desto besser das Ergebnis.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3055,6 +3171,7 @@
     <h1>Schiffe</h1>
     <p class="lede">Alle flugfähigen Schiffe und Fahrzeuge mit Einsatzzweck, Fracht, Crew und Preisen im Spiel. Jedes Schiff kannst du in 3D drehen.</p>
     <div class="chead-act"><a href="#schiffe" data-jump="shmine">Meine Schiffe</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a><a href="#ccu-radar">CCU-Radar</a></div>
+    <div class="hint" style="margin-bottom:12px"><b>Neu in 4.10.3:</b> Die RSI Galaxy (Multi-Crew-Schiff mit Wechselmodul: Fracht bis 720 SCU oder Lazarett) und die Anvil Liberator (Träger für Schiffe und Bodenfahrzeuge) sind spielbar, stehen aber noch nicht in unserer Datenbank, weil Wiki und UEX sie noch nicht führen. Bei Tiburon, Starlite, Ironclad, Ironclad Assault, Pitbull, Basher, M80 und Tyilui kommt der aUEC-Preis nach, sobald UEX ihn kennt. Carrack, Perseus, Starlancer, Starlancer TAC, Hammerhead und Tiburon haben jetzt Size-3-Radare.</div>
     <div class="search">
       <input id="shq" type="search" placeholder="Schiff oder Hersteller suchen, z. B. „Cutlass“ oder „Drake“" aria-label="Schiffe durchsuchen">
       <span class="count" id="shcount"></span>
@@ -3549,7 +3666,7 @@ window.SC_MINE = (function () {
       var cr = cur.getBoundingClientRect(), br = tabsBox.getBoundingClientRect();
       if (cr.left < br.left) tabsBox.scrollLeft += cr.left - br.left - 8; else if (cr.right > br.right) tabsBox.scrollLeft += cr.right - br.right + 16;
     }
-    var titles = { wissen: 'Wissen · SC HANDBUCH', tools: 'Werkzeuge · SC HANDBUCH', start: 'SC HANDBUCH – Dein Begleiter durch das Verse', news: 'News · SC HANDBUCH', tutorial: 'Tutorials · SC HANDBUCH', einsaetze: 'Einsätze · SC HANDBUCH', 'exec-hangar': 'Executive Hangar · SC HANDBUCH', 'siege-orison': 'Siege of Orison · SC HANDBUCH', hathor: 'Hathor & Wikelo · SC HANDBUCH', bunker: 'Bunker-Missionen · SC HANDBUCH', recco: 'Recco Battaglia · SC HANDBUCH', heimat: 'Heimatstadt · SC HANDBUCH', 't-mining': 'Mining lernen · SC HANDBUCH', 't-salvage': 'Salvage lernen · SC HANDBUCH', 't-crafting': 'Crafting lernen · SC HANDBUCH', 'erste-schritte': 'Erste Schritte · SC HANDBUCH', tasten: 'Tasten · SC HANDBUCH', mining: 'Mining · SC HANDBUCH', salvage: 'Salvage · SC HANDBUCH', hauling: 'Hauling · SC HANDBUCH', berufe: 'Berufe · SC HANDBUCH', bugs: 'Bugs & Workarounds · SC HANDBUCH', 't-hauling': 'Hauling lernen · SC HANDBUCH', ueberleben: 'Überleben · SC HANDBUCH', crafting: 'Crafting · SC HANDBUCH', ruf: 'Ruf · SC HANDBUCH', 'ccu-radar': 'CCU-Radar · SC HANDBUCH', glossar: 'Glossar · SC HANDBUCH', schiffe: 'Schiffe · SC HANDBUCH', training: 'Training · SC HANDBUCH', hosas: 'HOSAS · SC HANDBUCH' };
+    var titles = { wissen: 'Wissen · SC HANDBUCH', tools: 'Werkzeuge · SC HANDBUCH', start: 'SC HANDBUCH – Dein Begleiter durch das Verse', news: 'News · SC HANDBUCH', tutorial: 'Tutorials · SC HANDBUCH', einsaetze: 'Einsätze · SC HANDBUCH', 'exec-hangar': 'Executive Hangar · SC HANDBUCH', 'siege-orison': 'Siege of Orison · SC HANDBUCH', vanduul: 'Vanduul-Aufträge · SC HANDBUCH', hathor: 'Hathor & Wikelo · SC HANDBUCH', bunker: 'Bunker-Missionen · SC HANDBUCH', recco: 'Recco Battaglia · SC HANDBUCH', heimat: 'Heimatstadt · SC HANDBUCH', 't-mining': 'Mining lernen · SC HANDBUCH', 't-salvage': 'Salvage lernen · SC HANDBUCH', 't-crafting': 'Crafting lernen · SC HANDBUCH', 'erste-schritte': 'Erste Schritte · SC HANDBUCH', tasten: 'Tasten · SC HANDBUCH', mining: 'Mining · SC HANDBUCH', salvage: 'Salvage · SC HANDBUCH', hauling: 'Hauling · SC HANDBUCH', berufe: 'Berufe · SC HANDBUCH', bugs: 'Bugs & Workarounds · SC HANDBUCH', 't-hauling': 'Hauling lernen · SC HANDBUCH', ueberleben: 'Überleben · SC HANDBUCH', crafting: 'Crafting · SC HANDBUCH', ruf: 'Ruf · SC HANDBUCH', 'ccu-radar': 'CCU-Radar · SC HANDBUCH', glossar: 'Glossar · SC HANDBUCH', schiffe: 'Schiffe · SC HANDBUCH', training: 'Training · SC HANDBUCH', hosas: 'HOSAS · SC HANDBUCH' };
     document.title = titles[h];
     Array.prototype.forEach.call(sub.querySelectorAll('a'), function (a) {
       if (a.getAttribute('href') === '#' + h && !a.dataset.jump) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
@@ -5657,7 +5774,7 @@ window.SC_MINE = (function () {
 <script>
 /* ---------- Globale Suche, Nach-oben-Knopf, Patch-Hinweis ---------- */
 (function () {
-  var PAGE_PATCH = '4.10.2';   /* Stand der handgepflegten Inhalte; bei einem neuen Patch nach der Durchsicht hochsetzen */
+  var PAGE_PATCH = '4.10.3';   /* Stand der handgepflegten Inhalte; bei einem neuen Patch nach der Durchsicht hochsetzen */
   var gs = document.getElementById('gs'), q = document.getElementById('gsq'), list = document.getElementById('gslist');
   var idx = null, shown = [], cur = 0, lastFocus = null;
   function norm(s) { return String(s).toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss').replace(/[’'`´]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
@@ -6400,7 +6517,7 @@ window.SC_MINE = (function () {
   var SEQ = [
     { name: 'Tutorials', home: 'tutorial', list: ['heimat', 'erste-schritte', 'ueberleben', 't-mining', 't-salvage', 't-hauling', 't-crafting', 'training'] },
     { name: 'Berufe', home: 'berufe', list: ['mining', 'salvage', 'hauling', 'crafting', 'ruf'] },
-    { name: 'Einsätze', home: 'einsaetze', list: ['exec-hangar', 'siege-orison', 'hathor', 'recco', 'bunker'] }
+    { name: 'Einsätze', home: 'einsaetze', list: ['exec-hangar', 'siege-orison', 'vanduul', 'hathor', 'recco', 'bunker'] }
   ];
   function title(v) { var e = document.querySelector('#view-' + v + ' h1'); return e ? e.textContent.trim() : v; }
   SEQ.forEach(function (s) {

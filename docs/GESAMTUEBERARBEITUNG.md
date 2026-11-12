@@ -141,3 +141,7 @@ Per Skript getestet, ohne Befund: Mining-RS-Rechner, Fundort-Filter, Frachter-Fi
 - Linkprüfung: 257 interne Anker aus allen Ansichten aufgerufen, keine toten Ziele, keine Skriptfehler. Alle Details-Blöcke lassen sich öffnen, Glossar-Suche filtert, Checkliste speichert nur auf „Erste Schritte“ (so vorgesehen).
 - Performance (gemessen am lokalen Server): Layout-Verschiebung 0 bei Start, Schiffe, Heimatstadt und News; DOMContentLoaded etwa 180 ms; Schiffsbilder laden lazy. Externe Hosts: FleetYards, Star Citizen Wiki, jsDelivr (nur für 3D).
 - Rundungen (2–18 px) und Schriftgrößen folgen Rollen (Chips, Panels, Dialoge); bewusst nicht vereinheitlicht, um keine Regression zu riskieren.
+
+### Update auf Alpha 4.10.3 (2026-11-12)
+Grundlage: offizielle LIVE-Notes (comm-link 21429), vom Nutzer eingefügt. Angepasst: Versionsangaben (Seitenköpfe, Startseite, Meta, `PAGE_PATCH`), Salvage-Puffer und Zerlegungsfeld, Kopfgeld-Ruf (High Risk Target 4.000), InterSec-Hinweis im Ruf-Kapitel, Bug-Karten und Liste „Behoben in 4.10.3“, Battaglia Story 2, Frachtaufzug, Wipe-Hinweis, Kasten „Neu in 4.10.3“ im Einsätze-Hub (IAE, InterSec, Salvage, Schiffe für aUEC), neue Einsatzakte `#vanduul` (Aufträge, Skarnov), Hinweis auf der Schiffe-Seite.
+Offen: Galaxy und Liberator fehlen in `ships.js`, bis Wiki-API und UEX sie führen; aUEC-Preise der nun kaufbaren Schiffe ebenso. Zwei verschiedene Build-Nummern in den Notes (13165946 und 12650677), darum steht keine im Handbuch. Reputationsschwellen der InterSec-Ränge stammen weiter aus Community-Guides.
