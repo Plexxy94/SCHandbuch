@@ -697,7 +697,12 @@ a.chip { text-decoration: none; }
 .nav-search:hover { color: var(--ink); border-color: var(--key-edge); }
 .nav-search svg { width: 15px; height: 15px; flex: none; }
 .nav-search kbd { font: 500 11px var(--f-mono); border: 1px solid var(--key-edge); border-radius: 4px; padding: 0 5px; color: var(--muted); background: var(--panel); }
-.nav-search + .nav-news { margin-left: 0; }
+.nav-search + .nav-news, .nav-ccu + .nav-news { margin-left: 0; }
+.nav-ccu { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; text-decoration: none; }
+.nav-ccu svg { width: 19px; height: 19px; }
+.nav-ccu:hover { color: var(--ink); background: var(--key-bg); }
+.nav-ccu[aria-current="page"] { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+@media (max-width: 640px) { .nav-ccu { width: 30px; height: 30px; } .nav-ccu svg { width: 17px; height: 17px; } }
 @media (max-width: 900px) { .nav-search kbd { display: none; } }
 @media (max-width: 640px) { .nav-search { padding: 4px 9px; font-size: 13px; } .nav-in { column-gap: 8px; } }
 .gs { position: fixed; inset: 0; z-index: 30; display: flex; justify-content: center; align-items: flex-start; padding: max(12px, env(safe-area-inset-top, 0px)) 12px 12px; background: rgba(8, 12, 16, .62); }
@@ -835,11 +840,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <a href="#tasten" role="listitem" class="has-sub" data-group="steuerung" aria-haspopup="true" aria-controls="subnav">Steuerung</a>
       <a href="#berufe" role="listitem" class="has-sub" data-group="berufe" aria-haspopup="true" aria-controls="subnav">Berufe</a>
       <a href="#einsaetze" role="listitem" class="has-sub" data-group="einsaetze" aria-haspopup="true" aria-controls="subnav">Einsätze</a>
-      <a href="#schiffe" role="listitem" class="has-sub" data-group="schiffe" aria-haspopup="true" aria-controls="subnav">Schiffe</a>
+      <a href="#schiffe" role="listitem">Schiffe</a>
       <a href="#bugs" role="listitem">Bugs</a>
       <a href="#glossar" role="listitem" class="nav-opt">Glossar</a>
     </div>
     <button type="button" class="nav-search" id="navsearch" aria-label="Seite durchsuchen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Suche</span><kbd>/</kbd></button>
+    <a class="nav-ccu" href="#ccu-radar" aria-label="CCU-Radar" title="CCU-Radar: lohnende Schiffs-Upgrades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="4.6"/><path d="M12 12 18.6 5.4"/><circle cx="16.4" cy="14.6" r="1.1" fill="currentColor" stroke="none"/></svg><span class="news-dot" id="ccudot" title="Neue Meldung" hidden></span></a>
     <a class="nav-news" href="#news">News<span class="news-dot" id="newsdot" title="Neue Beiträge" hidden></span></a>
   </div>
   <!-- Zweite Reihe je Gruppe. Neue Gruppe (z. B. „Einsätze“ für Executive Hangar, Contested Zones):
@@ -859,10 +865,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     <div class="subnav-in" role="list" aria-label="Steuerung" data-group="steuerung">
       <a href="#tasten" role="listitem">Tastatur</a>
       <a href="#hosas" role="listitem">HOSAS</a>
-    </div>
-    <div class="subnav-in" role="list" aria-label="Schiffe" data-group="schiffe">
-      <a href="#schiffe" role="listitem">Alle Schiffe</a>
-      <a href="#ccu-radar" role="listitem">CCU-Radar</a>
     </div>
     <div class="subnav-in" role="list" aria-label="Berufe" data-group="berufe">
       <a href="#berufe" role="listitem">Übersicht</a>
@@ -3768,7 +3770,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 <!-- ============ CCU-RADAR ============ -->
 <section class="view" id="view-ccu-radar" data-view="ccu-radar" hidden>
   <div class="head">
-    <div class="stamp"><span>Schiffe</span><span>Echtes Geld · USD</span><span>automatisch geprüft</span></div>
+    <div class="stamp"><span>Pledge-Store</span><span>Echtes Geld · USD</span><span>automatisch geprüft</span></div>
     <h1>CCU-Radar</h1>
     <p class="lede">Ein Upgrade <i class="gb">CCU, Cross-Chassis Upgrade</i> kostet die Preisdifferenz zwischen zwei Schiffen. Wird das Zielschiff später teurer, ist ein vorher gekauftes Upgrade mehr wert, als du bezahlt hast. Das Radar meldet, wenn CIG so eine Erhöhung ankündigt, und rechnet aus, welches Upgrade sich auf Vorrat lohnt.</p>
     <div class="oops"><strong>Hier geht es um echtes Geld.</strong> Zum Spielen brauchst du nichts davon: Fast alle Schiffe gibt es im Spiel für aUEC. Angaben ohne Gewähr, vor dem Kauf immer den Preis im Pledge-Store prüfen.</div>
@@ -3941,7 +3943,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   <div class="kekse">
     <strong>Kekse? Gibt's hier keine.</strong>
     <p>Keine Cookies, kein Tracking, keine Statistik und darum auch kein Banner, das du wegklicken musst. Die einzigen Kekse in diesem Universum stecken im Snack-Automaten der nächsten Raumstation.</p>
-    <p>Deine Häkchen bei „Erste Schritte“ und beim Executive Hangar, deine markierten Schiffe, die Auswahl im Planer und wann du zuletzt die News gelesen hast, merkt sich nur dein Browser. Der Link zum Übertragen deiner Schiffe enthält nur die Kürzel der Schiffe. Wir sehen davon nichts. Loswerden kannst du das, indem du die Website-Daten im Browser löschst. Die Signatur-Erkennung im Mining läuft komplett bei dir, kein Screenshot verlässt deinen Rechner.</p>
+    <p>Deine Häkchen bei „Erste Schritte“ und beim Executive Hangar, deine markierten Schiffe, die Auswahl im Planer wann du zuletzt die News gelesen hast und welche CCU-Meldungen du schon kennst, merkt sich nur dein Browser. Der Link zum Übertragen deiner Schiffe enthält nur die Kürzel der Schiffe. Wir sehen davon nichts. Loswerden kannst du das, indem du die Website-Daten im Browser löschst. Die Signatur-Erkennung im Mining läuft komplett bei dir, kein Screenshot verlässt deinen Rechner.</p>
     <p>Wie bei jeder Website sehen die Server, von denen etwas geladen wird, deine IP-Adresse: GitHub Pages (dort liegt die Seite), FleetYards.net (Schiffsbilder und 3D-Modelle), das Star Citizen Wiki (Stadtbilder und Karten) und jsDelivr (3D-Ansicht und Texterkennung, erst wenn du sie benutzt). Die Schriften liegen hier selbst, Google bekommt also nichts mit.</p>
   </div>
   <div class="legal">
@@ -4002,7 +4004,7 @@ window.SC_MINE = (function () {
 (function () {
   /* Ansichten per #hash */
   var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs a, .nav-news'));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs a, .nav-news, .nav-ccu'));
   var names = views.map(function (v) { return v.dataset.view; });
   /* Gruppen mit zweiter Reihe: in einer Ansicht der Gruppe fest sichtbar, sonst beim Darüberfahren über der Seite */
   var sub = document.getElementById('subnav'), subRows = Array.prototype.slice.call(sub.querySelectorAll('.subnav-in'));
@@ -6595,7 +6597,19 @@ window.SC_MINE = (function () {
       }).join('') + '</tbody></table></div>' : '<div class="ccu-empty">Noch keine Änderung. Die Aufzeichnung läuft seit dem 12. Nov. 2026.</div>';
     }).catch(function () {});
   }
-  document.addEventListener('viewchange', function (e) { if (e.detail === 'ccu-radar') load(); });
+  /* Punkt am Radar-Symbol: offene Meldungen, die dieser Browser noch nicht gesehen hat */
+  var SEEN = 'sc-handbuch-ccu', openIds = [];
+  function seen() { try { return JSON.parse(localStorage.getItem(SEEN) || '[]'); } catch (e) { return []; } }
+  function dot() {
+    var s = seen(), onView = !$('view-ccu-radar').hidden;
+    if (onView && openIds.length) { try { localStorage.setItem(SEEN, JSON.stringify(openIds)); } catch (e) {} }
+    $('ccudot').hidden = onView || !openIds.some(function (i) { return s.indexOf(i) === -1; });
+  }
+  fetch('ccu.json?t=' + Math.floor(Date.now() / 6e5)).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
+    openIds = (d.hits || []).filter(function (h) { return !h.done; }).map(function (h) { return h.id; });
+    dot();
+  }).catch(function () {});
+  document.addEventListener('viewchange', function (e) { if (e.detail === 'ccu-radar') load(); dot(); });
   if (location.hash === '#ccu-radar') load();
 })();
 </script>
