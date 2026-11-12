@@ -130,3 +130,9 @@ Alle unter „Noch offen“ genannten Punkte sind abgearbeitet und auf main ver�
 
 ### Nachprüfung (2026-11-12)
 Per Skript getestet, ohne Befund: Mining-RS-Rechner, Fundort-Filter, Frachter-Finder (inkl. Miete), Ruf-Rechner, Tagesplaner (Chips, localStorage `sc-handbuch-plan`), Tasten-, HOSAS- und Bug-Suche, Checkliste „Erste Schritte“ (`sc-handbuch-steps`, Zustand wiederhergestellt), Hangar-Timer, News und CCU-Radar laden Daten, Browser-Zurück, echte Tastaturfokus-Markierung (Tab), Kontrast-Scan Hellmodus (0 Befunde, Verläufe ausgenommen). Screenshots in `docs/screenshots`. Der Ladezustand `[aria-busy]` ist als CSS vorhanden, aber noch nicht an die Datenabrufe angebunden.
+
+### Nachtrag (2026-11-12)
+- Ladezustand (`aria-busy`) an CCU-Radar und Hangar-Timer angebunden.
+- Fund: 64 von 225 gespeicherten 3D-Modell-Links (FleetYards) liefern 404, weil die Blob-Adressen ablaufen. Der 3D-Viewer holt jetzt bei einem Fehler einmal die aktuelle Adresse über `api.fleetyards.net/v1/models/<slug>` (Test: Ballista lädt). Die Daten in `ships.js` bleiben unverändert. `focus-pool.json` (136 Schiffe) ist vollständig erreichbar.
+- Fund: Zahlenmarke in HOSAS hatte im Dunkelmodus Kontrast 1,68 (weiß auf Cyan), jetzt dunkle Schrift. Kontrast-Scan Dunkelmodus danach ohne weiteren Befund.
+- Globale Suche, Training-Seite (Klicks, Regler) ohne Fehler getestet. `style.css` wird mit Versionsparameter geladen, damit Browser nach Änderungen nicht veraltetes CSS zeigen.

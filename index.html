@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23131b23'/%3E%3Ctext x='8' y='43' font-family='Segoe UI,Arial,sans-serif' font-weight='700' font-size='27' fill='%23e2e8ee'%3ESC%3C/text%3E%3Cpath d='M47 46 56 18' stroke='%23f08a3c' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261112">
 </head>
 <body>
 
@@ -4648,11 +4648,23 @@ window.SC_MINE = (function () {
     function loop() { if (!dlg.open) return; ctl.update(); renderer.render(scene, cam); requestAnimationFrame(loop); }
     window.addEventListener('resize', function () { if (dlg.open) size(); });
     return {
-      show: function (url) {
+      show: function (url, slug) {
+        var tried = false;
         size();
         var my = ++token;
         if (obj) { scene.remove(obj); obj.traverse(function (o) { if (o.geometry) o.geometry.dispose(); }); obj = null; }
         msg.hidden = false; msg.textContent = 'Modell wird geladen …';
+        function fail() { if (my === token) msg.textContent = 'Dieses Modell konnte nicht geladen werden.'; }
+        /* Die Modell-Links von FleetYards laufen ab: bei Fehler einmal die aktuelle Adresse über die FleetYards-Schnittstelle holen */
+        function retry() {
+          if (tried || !slug) { fail(); return; }
+          tried = true; msg.textContent = 'Modell wird neu geholt …';
+          fetch('https://api.fleetyards.net/v1/models/' + encodeURIComponent(slug)).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+            if (my !== token) return;
+            if (j && j.holo && j.holo !== url) { url = j.holo; start(); } else fail();
+          }).catch(fail);
+        }
+        function start() {
         loader.load(url, function (gltf) {
           if (my !== token) return;
           obj = gltf.scene;
@@ -4672,8 +4684,10 @@ window.SC_MINE = (function () {
         }, function (ev) {
           if (my === token && ev.lengthComputable) msg.textContent = 'Modell wird geladen … ' + Math.round(ev.loaded / ev.total * 100) + ' %';
         }, function () {
-          if (my === token) msg.textContent = 'Dieses Modell konnte nicht geladen werden.';
+          if (my === token) retry();
         });
+        }
+        start();
         requestAnimationFrame(loop);
       }
     };
@@ -4684,7 +4698,7 @@ window.SC_MINE = (function () {
     msg.hidden = false; msg.textContent = '3D-Ansicht wird vorbereitet …';
     loadLibs().then(function () {
       if (!view3d) view3d = setup();
-      view3d.show(s.glb);
+      view3d.show(s.glb, s.slug);
     }).catch(function () {
       msg.hidden = false; msg.textContent = '3D-Ansicht konnte nicht geladen werden. Prüf deine Internetverbindung.';
     });
@@ -5393,9 +5407,10 @@ window.SC_MINE = (function () {
   var $ = function (id) { return document.getElementById(id); };
   /* Startzeit der roten Ladephase (Unix-Sekunden); der stündliche Job hält sie in news.json aktuell */
   var start = 1792860059, RED = 7200, GREEN = 3600, OFF = 300, CYCLE = RED + GREEN + OFF;
+  $('xh-timer').setAttribute('aria-busy', 'true');
   fetch('news.json?t=' + Math.floor(Date.now() / 6e4)).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
     if (d.exec && d.exec.start) { start = d.exec.start; $('xhsrc').textContent = d.exec.src; tick(); }
-  }).catch(function () {});
+  }).catch(function () {}).then(function () { $('xh-timer').removeAttribute('aria-busy'); });
   var lights = Array.prototype.slice.call($('xhlights').children);
   function mmss(sec) {
     sec = Math.max(0, Math.round(sec));
@@ -6062,6 +6077,7 @@ window.SC_MINE = (function () {
   function load() {
     if (loaded) return; loaded = true;
     var t = '?t=' + Math.floor(Date.now() / 6e5);
+    $('ccu-hits').setAttribute('aria-busy', 'true');
     fetch('ccu.json' + t).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
       var st = '<span>Zuletzt geprüft: ' + new Date(d.checked).toLocaleString('de-DE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' Uhr</span><span>' + (d.threads || 0) + ' Ankündigungen gelesen</span>';
       (d.errors || []).forEach(function (e) { st += '<span class="bad">Quelle ausgefallen, alter Stand: ' + esc(e) + '</span>'; });
@@ -6069,7 +6085,7 @@ window.SC_MINE = (function () {
       var hits = d.hits || [], open = hits.filter(function (h) { return !h.done; });
       $('ccu-hits').innerHTML = (open.length ? '' : '<div class="ccu-empty"><b>Nichts Neues.</b> Aktuell kennt das Radar keine angekündigte Preiserhöhung. Sobald CIG eine nennt, steht sie hier.</div>') + hits.map(hit).join('');
       WB = d.warbond || []; drawWb();
-    }).catch(function () { $('ccu-hits').innerHTML = '<div class="ccu-empty">Die Daten ließen sich nicht laden. Später noch einmal versuchen.</div>'; });
+    }).catch(function () { $('ccu-hits').innerHTML = '<div class="ccu-empty">Die Daten ließen sich nicht laden. Später noch einmal versuchen.</div>'; }).then(function () { $('ccu-hits').removeAttribute('aria-busy'); });
     fetch('pledge-history.json' + t).then(function (r) { return r.ok ? r.json() : []; }).then(function (hs) {
       hs = (hs || []).slice(-25).reverse();
       $('ccu-hist').innerHTML = hs.length ? '<div class="table-wrap ccu-table"><table><thead><tr><th>Datum</th><th>Schiff</th><th>Was</th><th class="n">vorher</th><th class="n">jetzt</th></tr></thead><tbody>' + hs.map(function (e) {

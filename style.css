@@ -1664,3 +1664,7 @@ select { min-height: 44px; border-radius: 2px; }
   .view .tool, .view .ore-card, .view .step, .view .panel, .view .gauge, .view .card-plain { transition: none; }
   [aria-busy="true"]::after { animation: none; transform: none; opacity: .5; }
 }
+
+/* Dunkelmodus: Zahlenmarke auf hellem Cyan braucht dunkle Schrift (Kontrast) */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hc h4 .no { color: #0b1117; } }
+:root[data-theme="dark"] .hc h4 .no { color: #0b1117; }
