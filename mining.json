@@ -1350,6 +1350,10 @@
   "gold": {
    "ref": [
     [
+     33000,
+     "Pyro Gateway (Stanton)"
+    ],
+    [
      31000,
      "TDD Area 18"
     ],
@@ -1364,10 +1368,6 @@
     [
      30000,
      "CBD Lorville"
-    ],
-    [
-     30000,
-     "ARC-L1"
     ]
    ]
   },
@@ -1560,12 +1560,12 @@
      "ArcCorp 141"
     ],
     [
-     74000,
-     "The Golden Riviera"
+     77000,
+     "Levski"
     ],
     [
      74000,
-     "Sacren's Plot"
+     "The Golden Riviera"
     ]
    ]
   },
@@ -1640,6 +1640,10 @@
   "stileron": {
    "ref": [
     [
+     160000,
+     "Levski"
+    ],
+    [
      150000,
      "Deakins Research"
     ],
@@ -1654,10 +1658,6 @@
     [
      140000,
      "TDD New Babbage"
-    ],
-    [
-     140000,
-     "Rayari Kaltag"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-12T13:02:12+00:00"
+ "updated": "2026-11-12T21:29:59+00:00"
 }
