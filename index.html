@@ -7891,7 +7891,11 @@ window.SC_MINE = (function () {
         box.classList.add('is-3d'); box.classList.remove('has-prev'); prev.hidden = true; say('');
         nextBtn.disabled = false; resetBtn.disabled = false;
       }, function () { fallback('Modell gerade nicht verfügbar.'); });
-    }).catch(function () { fallback('3D-Ansicht konnte nicht geladen werden.'); });
+    }).catch(function (e) {
+      if (window.console) console.warn('Schiff im Fokus:', e);
+      /* three.js da, aber kein WebGL-Kontext: meist hat der Browser die Grafik nach einer Überlastung gesperrt */
+      fallback(window.THREE ? '3D ist im Browser gerade gesperrt. Browser neu starten hilft.' : '3D-Ansicht konnte nicht geladen werden.');
+    });
   }
   function start() {
     cur = pick(); meta();
