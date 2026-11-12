@@ -1686,3 +1686,9 @@ select { min-height: 44px; border-radius: 2px; }
 /* Startseite, Steuerung: Tasten sind Info, nur „Alle Tasten“ ist ein Link */
 .t-key { display: flex; align-items: center; gap: 12px; min-height: 40px; padding: 0 8px 0 0; font-size: 15.5px; color: var(--text-primary); }
 .t-keys .t-keys-all { min-height: 36px; font-size: 14px; color: var(--accent-cyan); margin-top: 2px; }
+
+/* Untermenü: Gruppen mit feinem Trennstrich, damit lange Reihen lesbar bleiben */
+.subnav a[data-sep] { position: relative; margin-left: 10px; }
+.subnav a[data-sep]::before { content: ""; position: absolute; left: -7px; top: 22%; bottom: 22%; width: 1px; background: var(--line); }
+.menu-links a[data-sep] { margin-top: 8px; border-top: 1px solid var(--line); }
+@media (min-width: 861px) { .subnav-in { gap: 2px; } .subnav a { font-size: 13.5px; padding: 5px 11px; } }

@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23131b23'/%3E%3Ctext x='8' y='43' font-family='Segoe UI,Arial,sans-serif' font-weight='700' font-size='27' fill='%23e2e8ee'%3ESC%3C/text%3E%3Cpath d='M47 46 56 18' stroke='%23f08a3c' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261114">
+<link rel="stylesheet" href="style.css?v=20261115">
 </head>
 <body>
 
@@ -41,39 +41,39 @@
   <div class="subnav" id="subnav" hidden>
     <div class="subnav-in" role="group" aria-label="Lernen" data-group="lernen">
       <a href="#tutorial">Übersicht</a>
-      <a href="#heimat">Heimatstadt</a>
+      <a href="#heimat" data-sep>Heimatstadt</a>
       <a href="#erste-schritte">Erste Schritte</a>
       <a href="#ueberleben">Überleben</a>
-      <a href="#t-mining">Mining<span class="sub-long"> lernen</span></a>
+      <a href="#t-mining" data-sep>Mining<span class="sub-long"> lernen</span></a>
       <a href="#t-salvage">Salvage<span class="sub-long"> lernen</span></a>
       <a href="#t-hauling">Hauling<span class="sub-long"> lernen</span></a>
       <a href="#t-crafting">Crafting<span class="sub-long"> lernen</span></a>
-      <a href="#training">Training <span class="beta">Beta</span></a>
+      <a href="#training" data-sep>Training <span class="beta">Beta</span></a>
     </div>
     <div class="subnav-in" role="group" aria-label="Wissen" data-group="wissen">
       <a href="#wissen">Übersicht</a>
-      <a href="#berufe">Berufe</a>
+      <a href="#berufe" data-sep>Berufe</a>
       <a href="#mining">Mining</a>
       <a href="#salvage">Salvage</a>
       <a href="#hauling">Hauling</a>
       <a href="#crafting">Crafting</a>
       <a href="#ruf">Ruf</a>
-      <a href="#tasten">Tastatur</a>
+      <a href="#tasten" data-sep>Tastatur</a>
       <a href="#hosas">HOSAS</a>
-      <a href="#schiffe">Schiffe</a>
+      <a href="#schiffe" data-sep>Schiffe</a>
       <a href="#glossar">Glossar</a>
     </div>
     <div class="subnav-in" role="group" aria-label="Tools" data-group="tools">
       <a href="#tools">Übersicht</a>
-      <a href="#tools" data-jump="tg-wirtschaft">Wirtschaft</a>
-      <a href="#tools" data-jump="tg-schiffe">Schiffe</a>
+      <a href="#tools" data-jump="tg-wirtschaft" data-sep>Wirtschaft</a>
+      <a href="#tools" data-jump="tg-schiffe">Schiffs-Tools</a>
       <a href="#tools" data-jump="tg-planung">Planung<span class="sub-long"> und Training</span></a>
       <a href="#tools" data-jump="tg-missionen">Missionen</a>
-      <a href="#ccu-radar">CCU-Radar</a>
+      <a href="#ccu-radar" data-sep>CCU-Radar</a>
     </div>
     <div class="subnav-in" role="group" aria-label="Einsätze" data-group="einsaetze">
       <a href="#einsaetze">Übersicht</a>
-      <a href="#exec-hangar">Executive Hangar</a>
+      <a href="#exec-hangar" data-sep>Executive Hangar</a>
       <a href="#siege-orison">Siege of Orison</a>
       <a href="#hathor">Hathor &amp; Wikelo</a>
       <a href="#recco">Recco<span class="sub-long"> Battaglia</span></a>
@@ -82,7 +82,6 @@
     <div class="subnav-in" role="group" aria-label="Aktuelles" data-group="aktuell">
       <a href="#news">News</a>
       <a href="#bugs">Bugs &amp; Workarounds</a>
-      <a href="#ccu-radar">CCU-Radar</a>
     </div>
   </div>
 </nav>
@@ -3458,7 +3457,7 @@ window.SC_MINE = (function () {
       var row = document.querySelector('.subnav-in[data-group="' + g + '"]');
       var links = Array.prototype.map.call(row.querySelectorAll('a'), function (a) {
         var on = a.getAttribute('href') === '#' + view && !a.dataset.jump;
-        return '<a href="' + a.getAttribute('href') + '"' + (a.dataset.jump ? ' data-jump="' + a.dataset.jump + '"' : '') + (on ? ' aria-current="page"' : '') + '>' + a.innerHTML + '</a>';
+        return '<a href="' + a.getAttribute('href') + '"' + (a.hasAttribute('data-sep') ? ' data-sep' : '') + (a.dataset.jump ? ' data-jump="' + a.dataset.jump + '"' : '') + (on ? ' aria-current="page"' : '') + '>' + a.innerHTML + '</a>';
       }).join('');
       return '<details class="menu-g' + (g === cg ? ' cur' : '') + '" name="menu-g"' + (g === cg ? ' open' : '') + '><summary>' + esc(label) + '<small>' + row.querySelectorAll('a').length + '</small></summary><div class="menu-links">' + links + '</div></details>';
     }).join('');
