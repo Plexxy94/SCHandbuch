@@ -3784,7 +3784,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 
   <section>
     <h2>Warbond-Upgrades im Store</h2>
-    <p class="small" style="margin-bottom:10px">Warbond-Ausgaben sind günstiger als der Listenpreis. Ein Upgrade darauf überbrückt also mehr, als es kostet. Sie lassen sich nur mit frischem Geld kaufen, nicht mit Store-Guthaben. Die Tabelle ist aus den Store-Daten gerechnet; ob ein Angebot in diesem Moment kaufbar ist, zeigt erst der Store.</p>
+    <p class="small" style="margin-bottom:10px">Warbond-Ausgaben sind günstiger als der Listenpreis. Ein Upgrade darauf überbrückt also mehr, als es kostet. Sie lassen sich nur mit frischem Geld kaufen, nicht mit Store-Guthaben. Hier stehen nur Angebote, die der Upgrade-Rechner des Stores beim letzten Lauf wirklich angeboten hat; Quellschiff und Preis sind je Zeile dort abgefragt.</p>
     <div class="table-wrap ccu-table"><table>
       <thead><tr><th>Ziel</th><th class="n">Liste</th><th class="n">Warbond</th><th>Von</th><th class="n">CCU kostet</th><th class="n">überbrückt</th><th class="n">spart</th></tr></thead>
       <tbody id="ccu-wb"></tbody>
@@ -3801,7 +3801,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   <section>
     <h2>So liest du das Radar</h2>
     <div class="facts">
-      <div class="fact"><strong>Quellschiff</strong><p>Das „Von“-Schiff des Upgrades. Das Radar nimmt eines, das möglichst knapp unter dem Ziel liegt und gerade einzeln im Store steht. Ob es dauerhaft dort bleibt, kann niemand zusagen.</p></div>
+      <div class="fact"><strong>Quellschiff</strong><p>Das „Von“-Schiff des Upgrades. Das Radar nimmt eines, das möglichst knapp unter dem Ziel liegt und das der Store gerade selbst als Upgrade-Ziel anbietet. Ob es dauerhaft dort bleibt, kann niemand zusagen.</p></div>
       <div class="fact"><strong>Rechnung</strong><p>„CCU kostet“ ist der Preis heute. „Überbrückt“ ist die Differenz nach der Erhöhung. Der Unterschied ist deine Ersparnis, wenn du das Upgrade später in einer Kette einsetzt.</p></div>
       <div class="fact"><strong>Frist</strong><p>Bis zu diesem Tag gilt der alte Preis. Kauf lieber einen Tag früher: Uhrzeiten nennt CIG selten, und der Store wechselt nach UTC.</p></div>
       <div class="fact"><strong>Was das Radar nicht sieht</strong><p>Es sucht in CIGs Ankündigungen auf Spectrum nach festen Formulierungen. Erhöhungen ohne Zahlen, Angaben nur in Bildern oder Videos und Antworten tief in einem Thread entgehen ihm.</p></div>
@@ -6560,7 +6560,7 @@ window.SC_MINE = (function () {
     /* Quellschiff */
     if (h.from) {
       parts.push('<div><h4>Quellschiff</h4><p><b>' + esc(h.from.name) + '</b> (' + usd(h.from.msrp) + ')</p><p>' +
-        (h.from.std ? 'Steht gerade einzeln im Store' : 'Im Store als Quelle wählbar') + ', kleinster Abstand zum Ziel' + (h.from.fly ? ', flugfähig' : '') + '.' +
+        (h.from.std ? 'Wird im Store gerade angeboten' : 'Im Store als Quelle wählbar') + ', kleinster Abstand zum Ziel' + (h.from.fly ? ', flugfähig' : '') + '.' +
         (h.alts && h.alts.length ? ' Gleich gut: ' + h.alts.map(esc).join(', ') + '.' : '') + '</p></div>');
     } else if (h.note) parts.push('<div><h4>Quellschiff</h4><p>' + esc(h.note) + '</p></div>');
     var calc = h.ccu != null ? '<div class="ccu-calc"><span>CCU kostet ' + (done ? 'vorher' : 'jetzt') + '<b>' + usd(h.ccu) + '</b></span><span>überbrückt danach<b>' + usd(h.value) + '</b></span><span class="save">Ersparnis<b>' + usd(h.saving) + '</b></span></div>' : '';
@@ -6574,7 +6574,7 @@ window.SC_MINE = (function () {
     var rows = wbAll ? WB : WB.slice(0, 10);
     $('ccu-wb').innerHTML = rows.length ? rows.map(function (w) {
       return '<tr><td><b>' + esc(w.ship) + '</b>' + (w.new ? ' <span class="pill go">neu</span>' : '') + '<br><span class="small">' + esc(w.mfr) + '</span></td><td class="n">' + usd(w.msrp) + '</td><td class="n">' + usd(w.wb) + '</td><td>' + esc(w.from) + ' <span class="small">(' + usd(w.from_msrp) + ')</span></td><td class="n">' + usd(w.ccu) + '</td><td class="n">' + usd(w.value) + '</td><td class="n s">' + usd(w.saving) + '</td></tr>';
-    }).join('') : '<tr><td colspan="7">Gerade keine Warbond-Upgrades im Store.</td></tr>';
+    }).join('') : '<tr><td colspan="7">Beim letzten Lauf bot der Store kein Warbond-Upgrade an.</td></tr>';
     var b = $('ccu-wb-more'); b.hidden = WB.length <= 10; b.textContent = wbAll ? 'Weniger zeigen' : 'Alle ' + WB.length + ' zeigen';
   }
   $('ccu-wb-more').addEventListener('click', function () { wbAll = !wbAll; drawWb(); });

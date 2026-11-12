@@ -63,13 +63,20 @@ def fetch_pledge():
     cur = (data.get("app") or {}).get("pricing", {}).get("currencyCode")
     if cur != "USD":
         raise RuntimeError("Store liefert %s statt USD" % cur)
+    # Die Schiffsliste führt auch alte Angebote als „available“. Was der Upgrade-Rechner wirklich anbietet,
+    # zeigt nur die Zielliste ab dem billigsten Schiff: Nur diese Angebote zählen.
+    cheapest = min((s for s in data["ships"] if s.get("msrp")), key=lambda s: s["msrp"])
+    offer = gql("query($f: Int) { to(from: $f, filters: []) { ships { id skus { id } } } }", {"f": cheapest["id"]})
+    live = {k["id"] for x in offer["to"]["ships"] for k in x["skus"]}
+    if len(live) < 5:
+        raise RuntimeError("nur %d aktuelle Angebote erhalten" % len(live))
     ships = []
     for s in data["ships"]:
         if not s.get("msrp"):
             continue
         skus = [{"id": k["id"], "title": k["title"].strip(), "price": usd(k["price"]),
                  "wb": "warbond" in k["title"].lower()}
-                for k in (s.get("skus") or []) if k.get("available")]
+                for k in (s.get("skus") or []) if k.get("available") and k["id"] in live]
         ships.append({"id": s["id"], "name": s["name"].strip(), "mfr": (s.get("manufacturer") or {}).get("name", ""),
                       "msrp": usd(s["msrp"]), "fly": s.get("flyableStatus") == "Flyable",
                       "skus": sorted(skus, key=lambda k: k["id"])})
@@ -305,7 +312,7 @@ def build_hits(found, ships, old_hits, history):
 
 
 def build_warbond(ships, history):
-    """Warbond-Upgrades, die der Store gerade anbietet: rechnerisch, ohne Einzelabfrage je Schiff."""
+    """Warbond-Upgrades, die der Upgrade-Rechner gerade anbietet. Quellschiff und Preis je Zeile beim Store abgefragt."""
     fresh = {(e["id"], e.get("sku")) for e in history
              if e["k"] == "sku+" and e["d"] >= (NOW.date() - timedelta(days=3)).isoformat()}
     out = []
@@ -314,12 +321,17 @@ def build_warbond(ships, history):
         if not wb:
             continue
         k = min(wb, key=lambda k: k["price"])
-        src, _ = pick_source(ships, s, k["price"])
-        if not src:
+        try:
+            src, _ = pick_source(ships, s, k["price"], from_ids(k["id"]))
+            if not src:
+                continue
+            price = ccu_price(src["id"], k["id"])
+        except Exception as e:
+            print("Warbond %s nicht prüfbar: %s" % (s["name"], e))
             continue
         out.append({"ship": s["name"], "mfr": s["mfr"], "msrp": s["msrp"], "wb": k["price"],
-                    "from": src["name"], "from_msrp": src["msrp"], "ccu": k["price"] - src["msrp"],
-                    "value": s["msrp"] - src["msrp"], "saving": s["msrp"] - k["price"],
+                    "from": src["name"], "from_msrp": src["msrp"], "ccu": price,
+                    "value": s["msrp"] - src["msrp"], "saving": s["msrp"] - src["msrp"] - price,
                     "new": (s["id"], k["id"]) in fresh})
     out.sort(key=lambda w: (-w["new"], -w["saving"], w["ship"]))
     return out
