@@ -7812,6 +7812,11 @@ window.SC_MINE = (function () {
     var draco = new T.DRACOLoader(); draco.setDecoderPath(window.SC_3D.cdn + 'examples/js/libs/draco/gltf/');
     var loader = new T.GLTFLoader(); loader.setDRACOLoader(draco);
     var obj = null, token = 0, raf = 0, inFrame = false;
+    /* Drehteller für die Livedrehung: das Modell steht zentriert darin */
+    var pivot = new T.Group(); scene.add(pivot);
+    var SPIN_FPS = 20, SPIN_SPEED = 0.26; /* 20 Bilder/s statt 60, eine Umdrehung in rund 24 s */
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var dragging = false, resumeAt = 0, lastT = 0, timer = 0;
 
     function size() {
       var w = gl.clientWidth, h = gl.clientHeight;
@@ -7820,17 +7825,28 @@ window.SC_MINE = (function () {
     }
     function render() { renderer.render(scene, cam); }
     function active() { return onStart && visible && !document.hidden && obj; }
-    /* Gezeichnet wird nur bei Bedarf: einmal nach dem Laden und während der Nutzer zieht.
-       Keine Autodrehung, kein Ausrollen – im Ruhezustand arbeitet die GPU nicht. */
+    /* Sparsam zeichnen: die Livedrehung läuft mit gedrosselten 20 Bildern/s und nur, solange die Startseite
+       sichtbar ist (Panel im Bild, Tab im Vordergrund). Beim Ziehen pausiert sie, 5 s danach dreht sie weiter.
+       Bei „Bewegung reduzieren“ steht das Schiff still und wird nur beim Ziehen neu gezeichnet. */
+    function spinning() { return !calm.matches && !dragging && performance.now() >= resumeAt; }
     function frame() {
       raf = 0;
-      if (!active()) return;
+      if (!active()) { lastT = 0; return; }
+      var now = performance.now();
+      if (spinning()) { if (lastT) pivot.rotation.y += Math.min(0.25, (now - lastT) / 1000) * SPIN_SPEED; lastT = now; } else lastT = 0;
       inFrame = true; ctl.update(); inFrame = false;
       render();
+      if (spinning() && !timer) timer = setTimeout(function () { timer = 0; kick(); }, 1000 / SPIN_FPS);
     }
     function kick() { if (!raf && !inFrame && active()) raf = requestAnimationFrame(frame); }
     ctl.addEventListener('change', kick);
-    function motion() { ctl.enableDamping = false; ctl.autoRotate = false; }
+    ctl.addEventListener('start', function () { dragging = true; });
+    ctl.addEventListener('end', function () {
+      dragging = false; resumeAt = performance.now() + 5000;
+      clearTimeout(timer); timer = setTimeout(function () { timer = 0; kick(); }, 5000);
+    });
+    if (calm.addEventListener) calm.addEventListener('change', kick);
+    function motion() { ctl.enableDamping = false; ctl.autoRotate = false; resumeAt = 0; lastT = 0; }
     function dispose(o) {
       o.traverse(function (m) {
         if (m.geometry) m.geometry.dispose();
@@ -7843,14 +7859,14 @@ window.SC_MINE = (function () {
     if (window.ResizeObserver) new ResizeObserver(function () { size(); if (obj) render(); }).observe(gl);
     return {
       kick: kick,
-      reset: function () { ctl.reset(); motion(); kick(); },
+      reset: function () { ctl.reset(); pivot.rotation.y = 0; motion(); kick(); },
       load: function (entry, done, fail) {
         var my = ++token;
         size();
         loader.load(entry.holo, function (g) {
           var o = g.scene;
           if (my !== token) { dispose(o); return; }
-          if (obj) { scene.remove(obj); dispose(obj); obj = null; renderer.renderLists.dispose(); }
+          if (obj) { pivot.remove(obj); dispose(obj); obj = null; renderer.renderLists.dispose(); }
           o.traverse(function (m) {
             if (m.isMesh) {
               var old = m.material; m.material = mat;
@@ -7860,7 +7876,7 @@ window.SC_MINE = (function () {
           });
           var bb = new T.Box3().setFromObject(o), c = new T.Vector3(), sz = new T.Vector3();
           bb.getCenter(c); bb.getSize(sz); o.position.sub(c);
-          scene.add(o); obj = o;
+          pivot.rotation.y = 0; pivot.add(o); obj = o;
           /* Abstand so, dass die Hüllkugel bei jeder Drehung ganz ins Bild passt (mit Rand für die Zielmarken) */
           var r = (sz.length() / 2) || 1;
           var vf = cam.fov * Math.PI / 180, hf = 2 * Math.atan(Math.tan(vf / 2) * cam.aspect);
