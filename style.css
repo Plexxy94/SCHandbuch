@@ -1682,3 +1682,7 @@ select { min-height: 44px; border-radius: 2px; }
 .foot-d p { max-width: 90ch; margin: 0 0 8px; }
 .foot-d .legal { margin-top: 0; padding-top: 0; border-top: 0; }
 .foot-d .kekse { margin-top: 0; }
+
+/* Startseite, Steuerung: Tasten sind Info, nur „Alle Tasten“ ist ein Link */
+.t-key { display: flex; align-items: center; gap: 12px; min-height: 40px; padding: 0 8px 0 0; font-size: 15.5px; color: var(--text-primary); }
+.t-keys .t-keys-all { min-height: 36px; font-size: 14px; color: var(--accent-cyan); margin-top: 2px; }
