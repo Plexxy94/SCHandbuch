@@ -767,6 +767,33 @@ a.chip { text-decoration: none; }
 .plan-card .warn { font-size: 13px; color: var(--warn); }
 @media (max-width: 560px) { .plan-card:not(.best) p, .plan-card:not(.best) .warn { display: none; } .plan-q { grid-template-columns: 1fr; gap: 3px; } .plan-q > span { padding-top: 6px; } }
 .plan-links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: auto; padding-top: 6px; font: 600 14px var(--f-display); }
+/* CCU-Radar */
+.ccu-status { display: flex; flex-wrap: wrap; gap: 6px 16px; font: 500 12px var(--f-mono); letter-spacing: .04em; color: var(--muted); }
+.ccu-status .bad { color: var(--warn); }
+.ccu-list { display: flex; flex-direction: column; gap: 14px; }
+.ccu { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.ccu.done { border-left-color: var(--line); opacity: .8; }
+.ccu-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.ccu-top h3 { font: 600 22px var(--f-display); margin: 0; }
+.ccu-top h3 small { font: 500 13px var(--f-body); color: var(--muted); margin-left: 6px; }
+.ccu-price { font: 600 18px var(--f-display); font-variant-numeric: tabular-nums; }
+.ccu-price s { color: var(--muted); font-weight: 500; }
+.ccu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 12px 20px; }
+.ccu-grid > div { min-width: 0; }
+.ccu-grid h4 { margin: 0 0 3px; font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.ccu-grid p { margin: 0; font-size: 14.5px; overflow-wrap: anywhere; }
+.ccu-grid p + p { margin-top: 3px; color: var(--muted); font-size: 13px; }
+.ccu-calc { display: flex; flex-wrap: wrap; gap: 8px; }
+.ccu-calc span { background: var(--key-bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; font-size: 13px; color: var(--muted); display: flex; flex-direction: column; }
+.ccu-calc b { font: 600 19px var(--f-display); color: var(--ink); font-variant-numeric: tabular-nums; }
+.ccu-calc .save { background: var(--ok-soft); border-color: transparent; }
+.ccu-calc .save b { color: var(--ok); }
+.ccu-days { font: 600 12px var(--f-mono); padding: 2px 8px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.ccu-days.hot { background: var(--warn-soft); color: var(--warn); }
+.ccu-table table { min-width: 560px; }
+.ccu-table td.n, .ccu-table th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ccu-table td.s { color: var(--ok); font-weight: 600; }
+.ccu-empty { background: var(--key-bg); border: 1px dashed var(--key-edge); border-radius: 10px; padding: 18px 20px; color: var(--muted); }
 /* Nach oben */
 .totop { position: fixed; right: max(14px, env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 4; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--key-edge); background: var(--panel); color: var(--accent); font: 700 20px var(--f-display); cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s, transform .2s; }
 .totop.on { opacity: 1; pointer-events: auto; transform: none; }
@@ -808,7 +835,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       <a href="#tasten" role="listitem" class="has-sub" data-group="steuerung" aria-haspopup="true" aria-controls="subnav">Steuerung</a>
       <a href="#berufe" role="listitem" class="has-sub" data-group="berufe" aria-haspopup="true" aria-controls="subnav">Berufe</a>
       <a href="#einsaetze" role="listitem" class="has-sub" data-group="einsaetze" aria-haspopup="true" aria-controls="subnav">Einsätze</a>
-      <a href="#schiffe" role="listitem">Schiffe</a>
+      <a href="#schiffe" role="listitem" class="has-sub" data-group="schiffe" aria-haspopup="true" aria-controls="subnav">Schiffe</a>
       <a href="#bugs" role="listitem">Bugs</a>
       <a href="#glossar" role="listitem" class="nav-opt">Glossar</a>
     </div>
@@ -832,6 +859,10 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     <div class="subnav-in" role="list" aria-label="Steuerung" data-group="steuerung">
       <a href="#tasten" role="listitem">Tastatur</a>
       <a href="#hosas" role="listitem">HOSAS</a>
+    </div>
+    <div class="subnav-in" role="list" aria-label="Schiffe" data-group="schiffe">
+      <a href="#schiffe" role="listitem">Alle Schiffe</a>
+      <a href="#ccu-radar" role="listitem">CCU-Radar</a>
     </div>
     <div class="subnav-in" role="list" aria-label="Berufe" data-group="berufe">
       <a href="#berufe" role="listitem">Übersicht</a>
@@ -954,7 +985,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     <a class="chapter" href="#news">
       <span class="no">AKTUELL</span>
       <h3>News</h3>
-      <p>Server-Status, Neues von RSI und frische Videos. Wird stündlich aktualisiert.</p>
+      <p>Server-Status, Neues von RSI und frische Videos. Wird mehrmals täglich aktualisiert.</p>
       <span class="go">Lesen →</span>
     </a>
   </div>
@@ -3718,6 +3749,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   <div class="sh-grid" id="shgrid"></div>
   <button type="button" class="sh-morebtn" id="shmorebtn" hidden></button>
   <p class="empty" id="shnone" hidden>Kein Schiff passt zu diesen Filtern.</p>
+  <div class="learn"><strong>Mit echtem Geld upgraden?</strong> <span>Das CCU-Radar meldet, wenn ein Schiff im Pledge-Store teurer wird und sich ein Upgrade auf Vorrat lohnt.</span> <a class="btn" href="#ccu-radar">Zum CCU-Radar</a></div>
   <p class="small">Preise schwanken je nach Ort und Patch. „ab“ zeigt den günstigsten bekannten Händler. Schiffe ohne Preis gibt es nur im Pledge-Store oder als Belohnung.</p>
 </section>
 
@@ -3732,6 +3764,50 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 <dialog class="sh-dt" id="shdt" aria-labelledby="shdt-title">
   <div class="sh-dt-body" id="shdt-body"></div>
 </dialog>
+
+<!-- ============ CCU-RADAR ============ -->
+<section class="view" id="view-ccu-radar" data-view="ccu-radar" hidden>
+  <div class="head">
+    <div class="stamp"><span>Schiffe</span><span>Echtes Geld · USD</span><span>automatisch geprüft</span></div>
+    <h1>CCU-Radar</h1>
+    <p class="lede">Ein Upgrade <i class="gb">CCU, Cross-Chassis Upgrade</i> kostet die Preisdifferenz zwischen zwei Schiffen. Wird das Zielschiff später teurer, ist ein vorher gekauftes Upgrade mehr wert, als du bezahlt hast. Das Radar meldet, wenn CIG so eine Erhöhung ankündigt, und rechnet aus, welches Upgrade sich auf Vorrat lohnt.</p>
+    <div class="oops"><strong>Hier geht es um echtes Geld.</strong> Zum Spielen brauchst du nichts davon: Fast alle Schiffe gibt es im Spiel für aUEC. Angaben ohne Gewähr, vor dem Kauf immer den Preis im Pledge-Store prüfen.</div>
+    <div class="ccu-status" id="ccu-status"></div>
+  </div>
+
+  <section>
+    <h2>Meldungen</h2>
+    <div class="ccu-list" id="ccu-hits"><div class="ccu-empty">Lade …</div></div>
+  </section>
+
+  <section>
+    <h2>Warbond-Upgrades im Store</h2>
+    <p class="small" style="margin-bottom:10px">Warbond-Ausgaben sind günstiger als der Listenpreis. Ein Upgrade darauf überbrückt also mehr, als es kostet. Sie lassen sich nur mit frischem Geld kaufen, nicht mit Store-Guthaben. Die Tabelle ist aus den Store-Daten gerechnet; ob ein Angebot in diesem Moment kaufbar ist, zeigt erst der Store.</p>
+    <div class="table-wrap ccu-table"><table>
+      <thead><tr><th>Ziel</th><th class="n">Liste</th><th class="n">Warbond</th><th>Von</th><th class="n">CCU kostet</th><th class="n">überbrückt</th><th class="n">spart</th></tr></thead>
+      <tbody id="ccu-wb"></tbody>
+    </table></div>
+    <p style="margin-top:10px"><button type="button" class="btn2" id="ccu-wb-more" hidden></button></p>
+  </section>
+
+  <section>
+    <h2>Preisänderungen im Store</h2>
+    <p class="small" style="margin-bottom:10px">Jeder Lauf vergleicht die Preise mit dem letzten Stand. So fallen auch Erhöhungen auf, die CIG nicht ankündigt.</p>
+    <div id="ccu-hist"></div>
+  </section>
+
+  <section>
+    <h2>So liest du das Radar</h2>
+    <div class="facts">
+      <div class="fact"><strong>Quellschiff</strong><p>Das „Von“-Schiff des Upgrades. Das Radar nimmt eines, das möglichst knapp unter dem Ziel liegt und gerade einzeln im Store steht. Ob es dauerhaft dort bleibt, kann niemand zusagen.</p></div>
+      <div class="fact"><strong>Rechnung</strong><p>„CCU kostet“ ist der Preis heute. „Überbrückt“ ist die Differenz nach der Erhöhung. Der Unterschied ist deine Ersparnis, wenn du das Upgrade später in einer Kette einsetzt.</p></div>
+      <div class="fact"><strong>Frist</strong><p>Bis zu diesem Tag gilt der alte Preis. Kauf lieber einen Tag früher: Uhrzeiten nennt CIG selten, und der Store wechselt nach UTC.</p></div>
+      <div class="fact"><strong>Was das Radar nicht sieht</strong><p>Es sucht in CIGs Ankündigungen auf Spectrum nach festen Formulierungen. Erhöhungen ohne Zahlen, Angaben nur in Bildern oder Videos und Antworten tief in einem Thread entgehen ihm.</p></div>
+    </div>
+  </section>
+
+  <p class="small">Quellen: Preise und Upgrade-Kosten aus der Upgrade-Funktion des <a href="https://robertsspaceindustries.com/pledge/ship-upgrades" target="_blank" rel="noopener">RSI Pledge-Stores</a> (ohne Login, inoffizielle Schnittstelle), Ankündigungen aus <a href="https://robertsspaceindustries.com/spectrum/community/SC/forum/1" target="_blank" rel="noopener">Spectrum, Announcements</a>. Hersteller-Tage der IAE sind von Hand eingetragen. Läuft täglich, während der IAE mehrmals; fällt eine Quelle aus, bleibt der letzte Stand stehen.</p>
+</section>
 
 <!-- ============ GLOSSAR ============ -->
 <section class="view" id="view-glossar" data-view="glossar" hidden>
@@ -3992,7 +4068,7 @@ window.SC_MINE = (function () {
       var cr = cur.getBoundingClientRect(), br = tabsBox.getBoundingClientRect();
       if (cr.left < br.left) tabsBox.scrollLeft += cr.left - br.left - 8; else if (cr.right > br.right) tabsBox.scrollLeft += cr.right - br.right + 16;
     }
-    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', recco: 'Recco Battaglia · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', berufe: 'Berufe · SC Handbuch', bugs: 'Bugs & Workarounds · SC Handbuch', 't-hauling': 'Hauling lernen · SC Handbuch', ueberleben: 'Überleben · SC Handbuch', crafting: 'Crafting · SC Handbuch', ruf: 'Ruf · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
+    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', recco: 'Recco Battaglia · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', berufe: 'Berufe · SC Handbuch', bugs: 'Bugs & Workarounds · SC Handbuch', 't-hauling': 'Hauling lernen · SC Handbuch', ueberleben: 'Überleben · SC Handbuch', crafting: 'Crafting · SC Handbuch', ruf: 'Ruf · SC Handbuch', 'ccu-radar': 'CCU-Radar · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
     document.title = titles[h];
     Array.prototype.forEach.call(sub.querySelectorAll('a'), function (a) {
       if (a.getAttribute('href') === '#' + h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
@@ -5817,7 +5893,7 @@ window.SC_MINE = (function () {
     newsData.then(function (d) {
       if (!(d.commlinks || []).length) throw new Error('leer');
       add(d.commlinks); page = 1;
-      source = 'Direkt von RSI, Stand ' + new Date(d.updated).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) + ' · wird stündlich aktualisiert. „etwa“ = Datum geschätzt.';
+      source = 'Direkt von RSI, Stand ' + new Date(d.updated).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) + ' · wird mehrmals täglich aktualisiert. „etwa“ = Datum geschätzt.';
       $('nwmore').hidden = false;
     }).catch(function () { return loadLive(); })
       .catch(function () { source = 'Die News konnten gerade nicht geladen werden.'; })
@@ -6445,6 +6521,82 @@ window.SC_MINE = (function () {
     draw();
   }).catch(function () {});
   draw();
+})();
+</script>
+<script>
+/* ---------- CCU-Radar: Meldungen aus ccu.json, Preisänderungen aus pledge-history.json (beides vom täglichen Job) ---------- */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  if (!$('view-ccu-radar')) return;
+  var loaded = false;
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function usd(n) { return n == null ? '?' : Number(n).toLocaleString('de-DE', { maximumFractionDigits: 2 }) + ' $'; }
+  function day(iso) { return new Date(iso + (iso.length === 10 ? 'T12:00:00Z' : '')).toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' }); }
+  function safeUrl(u) { return /^https:\/\/robertsspaceindustries\.com\//.test(u || '') ? u : 'https://robertsspaceindustries.com/pledge/ship-upgrades'; }
+  var KIND = { increase: ['Preis steigt', 'later'], flyable: ['Wird flugfähig', 'go'], raised: ['Preis ist gestiegen', 'no'] };
+  function hit(h) {
+    var k = KIND[h.type] || ['Hinweis', 'no'], done = !!h.done, parts = [];
+    var price = h.old != null && h.new != null ? '<span class="ccu-price"><s>' + usd(h.old) + '</s> → ' + usd(h.new) + '</span>' : '';
+    /* Warum */
+    var why = h.type === 'increase' ? 'CIG kündigt die Erhöhung an' + (h.new != null && h.old != null ? ' (+' + usd(h.new - h.old) + ')' : '') + '.'
+      : h.type === 'flyable' ? 'CIG nennt das Schiff als bald flugfähig. Zum Start hebt CIG den Preis oft an, angekündigt ist das hier nicht.'
+      : 'Im Store am ' + day(h.first_seen) + ' aufgefallen, ohne Ankündigung, die das Radar gefunden hat.';
+    parts.push('<div><h4>Warum</h4><p>' + why + '</p><p><a href="' + esc(safeUrl(h.src && h.src.url)) + '" target="_blank" rel="noopener">' + esc(h.src ? h.src.title : 'Quelle') + ' ↗</a>' + (h.src && h.src.site ? ' · ' + esc(h.src.site) : '') + (h.src && h.src.date ? ', ' + day(h.src.date) : '') + '</p></div>');
+    /* Frist */
+    var badge = '';
+    if (!done && h.type !== 'raised') {
+      var f = '';
+      if (h.deadline) {
+        var left = Math.ceil((new Date(h.deadline + 'T00:00:00Z') - Date.now()) / 864e5);
+        badge = left > 0 ? '<span class="ccu-days' + (left <= 2 ? ' hot' : '') + '">noch ' + left + (left === 1 ? ' Tag' : ' Tage') + '</span>' : '<span class="ccu-days hot">Frist läuft ab</span>';
+        f = '<p>Kaufen vor dem <b>' + day(h.deadline) + '</b>.</p><p>' + (h.deadline_text ? 'CIG schreibt „' + esc(h.deadline_text) + '“. Das Datum dazu ist von Hand eingetragen.' : 'Datum aus der Ankündigung.') + '</p>';
+      } else if (h.deadline_text) {
+        f = '<p>CIG schreibt „' + esc(h.deadline_text) + '“.</p><p>Ein Datum dazu kennt das Radar nicht.' + (h.deadline_url ? ' <a href="' + esc(safeUrl(h.deadline_url)) + '" target="_blank" rel="noopener">Zeitplan bei RSI ↗</a>' : '') + '</p>';
+      } else f = '<p>Keine Frist genannt.</p><p>In der Quelle nachlesen.</p>';
+      parts.push('<div><h4>Frist</h4>' + f + '</div>');
+    }
+    /* Quellschiff */
+    if (h.from) {
+      parts.push('<div><h4>Quellschiff</h4><p><b>' + esc(h.from.name) + '</b> (' + usd(h.from.msrp) + ')</p><p>' +
+        (h.from.std ? 'Steht gerade einzeln im Store' : 'Im Store als Quelle wählbar') + ', kleinster Abstand zum Ziel' + (h.from.fly ? ', flugfähig' : '') + '.' +
+        (h.alts && h.alts.length ? ' Gleich gut: ' + h.alts.map(esc).join(', ') + '.' : '') + '</p></div>');
+    } else if (h.note) parts.push('<div><h4>Quellschiff</h4><p>' + esc(h.note) + '</p></div>');
+    var calc = h.ccu != null ? '<div class="ccu-calc"><span>CCU kostet ' + (done ? 'vorher' : 'jetzt') + '<b>' + usd(h.ccu) + '</b></span><span>überbrückt danach<b>' + usd(h.value) + '</b></span><span class="save">Ersparnis<b>' + usd(h.saving) + '</b></span></div>' : '';
+    return '<article class="ccu' + (done ? ' done' : '') + '"><div class="ccu-top"><span class="pill ' + k[1] + '">' + (done && h.type === 'increase' ? 'Erledigt: Preis ist gestiegen' : k[0]) + '</span>' +
+      '<h3>' + esc(h.ship) + (h.mfr ? '<small>' + esc(h.mfr) + '</small>' : '') + '</h3>' + price + badge + '</div>' +
+      '<div class="ccu-grid">' + parts.join('') + '</div>' + calc +
+      (!done && h.ccu != null ? '<p class="small">Im <a href="https://robertsspaceindustries.com/pledge/ship-upgrades" target="_blank" rel="noopener">Upgrade-Rechner bei RSI ↗</a> „' + esc(h.from.name) + '“ als Von und „' + esc(h.ship) + '“ als Ziel wählen.</p>' : '') + '</article>';
+  }
+  var WB = [], wbAll = false;
+  function drawWb() {
+    var rows = wbAll ? WB : WB.slice(0, 10);
+    $('ccu-wb').innerHTML = rows.length ? rows.map(function (w) {
+      return '<tr><td><b>' + esc(w.ship) + '</b>' + (w.new ? ' <span class="pill go">neu</span>' : '') + '<br><span class="small">' + esc(w.mfr) + '</span></td><td class="n">' + usd(w.msrp) + '</td><td class="n">' + usd(w.wb) + '</td><td>' + esc(w.from) + ' <span class="small">(' + usd(w.from_msrp) + ')</span></td><td class="n">' + usd(w.ccu) + '</td><td class="n">' + usd(w.value) + '</td><td class="n s">' + usd(w.saving) + '</td></tr>';
+    }).join('') : '<tr><td colspan="7">Gerade keine Warbond-Upgrades im Store.</td></tr>';
+    var b = $('ccu-wb-more'); b.hidden = WB.length <= 10; b.textContent = wbAll ? 'Weniger zeigen' : 'Alle ' + WB.length + ' zeigen';
+  }
+  $('ccu-wb-more').addEventListener('click', function () { wbAll = !wbAll; drawWb(); });
+  var HK = { msrp: 'Listenpreis', 'sku': 'Angebot', 'sku+': 'Neues Angebot', 'sku-': 'Angebot beendet', 'new': 'Neu im Store' };
+  function load() {
+    if (loaded) return; loaded = true;
+    var t = '?t=' + Math.floor(Date.now() / 6e5);
+    fetch('ccu.json' + t).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
+      var st = '<span>Zuletzt geprüft: ' + new Date(d.checked).toLocaleString('de-DE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' Uhr</span><span>' + (d.threads || 0) + ' Ankündigungen gelesen</span>';
+      (d.errors || []).forEach(function (e) { st += '<span class="bad">Quelle ausgefallen, alter Stand: ' + esc(e) + '</span>'; });
+      $('ccu-status').innerHTML = st;
+      var hits = d.hits || [], open = hits.filter(function (h) { return !h.done; });
+      $('ccu-hits').innerHTML = (open.length ? '' : '<div class="ccu-empty"><b>Nichts Neues.</b> Aktuell kennt das Radar keine angekündigte Preiserhöhung. Sobald CIG eine nennt, steht sie hier.</div>') + hits.map(hit).join('');
+      WB = d.warbond || []; drawWb();
+    }).catch(function () { $('ccu-hits').innerHTML = '<div class="ccu-empty">Die Daten ließen sich nicht laden. Später noch einmal versuchen.</div>'; });
+    fetch('pledge-history.json' + t).then(function (r) { return r.ok ? r.json() : []; }).then(function (hs) {
+      hs = (hs || []).slice(-25).reverse();
+      $('ccu-hist').innerHTML = hs.length ? '<div class="table-wrap ccu-table"><table><thead><tr><th>Datum</th><th>Schiff</th><th>Was</th><th class="n">vorher</th><th class="n">jetzt</th></tr></thead><tbody>' + hs.map(function (e) {
+        return '<tr><td>' + day(e.d) + '</td><td><b>' + esc(e.name) + '</b></td><td>' + (HK[e.k] || esc(e.k)) + (e.title ? ' <span class="small">' + esc(e.title) + '</span>' : '') + '</td><td class="n">' + (e.old != null ? usd(e.old) : '–') + '</td><td class="n">' + (e.new != null ? usd(e.new) : '–') + '</td></tr>';
+      }).join('') + '</tbody></table></div>' : '<div class="ccu-empty">Noch keine Änderung. Die Aufzeichnung läuft seit dem 12. Nov. 2026.</div>';
+    }).catch(function () {});
+  }
+  document.addEventListener('viewchange', function (e) { if (e.detail === 'ccu-radar') load(); });
+  if (location.hash === '#ccu-radar') load();
 })();
 </script>
 </body>

@@ -1,0 +1,34 @@
+name: CCU-Radar aktualisieren
+
+on:
+  schedule:
+    - cron: "23 6 * * *"                 # täglich
+    - cron: "23 16,17,22 13-27 11 *"     # IAE 13.–27.11.: kurz nach dem Warbond-Wechsel um 16:00 UTC, mit Reserve
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ccu
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pledge-Preise und Ankündigungen abrufen
+        run: python3 tools/fetch_ccu.py .
+      - name: Änderungen speichern
+        run: |
+          git add pledge.json pledge-history.json ccu.json
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "CCU-Radar aktualisiert"
+          git pull --rebase
+          git push
