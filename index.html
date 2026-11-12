@@ -7755,7 +7755,6 @@ window.SC_MINE = (function () {
   var box = $('sf'); if (!box) return;
   var stage = $('sf-stage'), gl = $('sf-gl'), msg = $('sf-msg'), prev = $('sf-prev'), openBtn = $('sf-open'), nextBtn = $('sf-next'), resetBtn = $('sf-reset'), det = $('sf-det');
   var SH = {}; (window.SHIPS || []).forEach(function (s) { SH[s.slug] = s; });
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   var compact = window.matchMedia('(max-width: 980px)');
   var LAST = 'sc-handbuch-focus-last';
   var pool = [], cur = null, view = null, want3d = false, busy = false, onStart = true, visible = false;
@@ -7795,7 +7794,8 @@ window.SC_MINE = (function () {
   function setup() {
     var T = window.THREE;
     var renderer = new T.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
-    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    /* kleine Fläche: höhere Auflösung bringt kaum etwas, kostet aber GPU */
+    renderer.setPixelRatio(Math.min(1.25, window.devicePixelRatio || 1));
     renderer.outputEncoding = T.sRGBEncoding;
     renderer.setClearColor(0x000000, 0);
     gl.appendChild(renderer.domElement);
@@ -7806,12 +7806,12 @@ window.SC_MINE = (function () {
     scene.add(new T.HemisphereLight(0x9fe9f7, 0x04080c, 0.75));
     var key = new T.DirectionalLight(0xbff4ff, 0.9); key.position.set(2, 4, 3); scene.add(key);
     var rim = new T.DirectionalLight(0x3fc6e0, 0.7); rim.position.set(-3, 1, -4); scene.add(rim);
-    var mat = new T.MeshStandardMaterial({ color: 0x8fe3f2, emissive: 0x0a3a46, emissiveIntensity: 0.6, metalness: 0.35, roughness: 0.5, transparent: true, opacity: 0.93 });
+    var mat = new T.MeshStandardMaterial({ color: 0x8fe3f2, emissive: 0x0a3a46, emissiveIntensity: 0.6, metalness: 0.35, roughness: 0.5 });
     var ctl = new T.OrbitControls(cam, renderer.domElement);
     ctl.enablePan = false; ctl.enableZoom = false; ctl.rotateSpeed = 0.7;
     var draco = new T.DRACOLoader(); draco.setDecoderPath(window.SC_3D.cdn + 'examples/js/libs/draco/gltf/');
     var loader = new T.GLTFLoader(); loader.setDRACOLoader(draco);
-    var obj = null, token = 0, raf = 0, idleStop = 0, dragging = false;
+    var obj = null, token = 0, raf = 0, inFrame = false;
 
     function size() {
       var w = gl.clientWidth, h = gl.clientHeight;
@@ -7820,25 +7820,17 @@ window.SC_MINE = (function () {
     }
     function render() { renderer.render(scene, cam); }
     function active() { return onStart && visible && !document.hidden && obj; }
-    /* Nur rendern, solange sich etwas bewegt: Autodrehung (begrenzt), Ziehen oder Ausrollen */
+    /* Gezeichnet wird nur bei Bedarf: einmal nach dem Laden und während der Nutzer zieht.
+       Keine Autodrehung, kein Ausrollen – im Ruhezustand arbeitet die GPU nicht. */
     function frame() {
       raf = 0;
       if (!active()) return;
-      var moved = ctl.update();
+      inFrame = true; ctl.update(); inFrame = false;
       render();
-      if (ctl.autoRotate || dragging || moved) raf = requestAnimationFrame(frame);
     }
-    function kick() { if (!raf && active()) raf = requestAnimationFrame(frame); }
+    function kick() { if (!raf && !inFrame && active()) raf = requestAnimationFrame(frame); }
     ctl.addEventListener('change', kick);
-    ctl.addEventListener('start', function () { dragging = true; ctl.autoRotate = false; clearTimeout(idleStop); kick(); });
-    ctl.addEventListener('end', function () { dragging = false; kick(); });
-    function motion() {
-      ctl.enableDamping = !reduce.matches; ctl.dampingFactor = 0.12;
-      ctl.autoRotate = !reduce.matches; ctl.autoRotateSpeed = 0.9;
-      clearTimeout(idleStop);
-      /* keine Daueranimation: nach 40 s bleibt das Schiff stehen */
-      if (ctl.autoRotate) idleStop = setTimeout(function () { ctl.autoRotate = false; }, 40000);
-    }
+    function motion() { ctl.enableDamping = false; ctl.autoRotate = false; }
     function dispose(o) {
       o.traverse(function (m) {
         if (m.geometry) m.geometry.dispose();
