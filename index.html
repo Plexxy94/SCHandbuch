@@ -1410,30 +1410,34 @@ kbd { font-size: 13.5px; padding: 2px 9px; border-radius: 6px; border: 1px solid
   --gl: rgba(255,255,255,.72); --gl2: rgba(255,255,255,.92); --gb: rgba(19,32,44,.16); --fr: rgba(19,32,44,.4);
   --tile: rgba(255,255,255,.78); --tile2: rgba(240,246,250,.7); --tile-bd: rgba(19,32,44,.17); --tile-hi: rgba(14,111,132,.12);
   --am-x: #A4560F; --cy-x: #0E6F84; --lbl: #3E5060; --plate: rgba(19,32,44,.06); --plate2: rgba(19,32,44,.035);
-  --sh1: rgba(19,32,44,.22); --am-glow: rgba(164,86,15,.14); --cy-glow: rgba(14,111,132,.18); --floor: rgba(14,111,132,.22);
+  --sh1: rgba(19,32,44,.22); --aura: rgba(14,111,132,.16); --am-glow: rgba(164,86,15,.14); --cy-glow: rgba(14,111,132,.18); --floor: rgba(14,111,132,.22);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .t-stage {
     --gl: rgba(255,255,255,.055); --gl2: rgba(255,255,255,.12); --gb: rgba(255,255,255,.17); --fr: rgba(231,240,247,.62);
     --tile: rgba(255,255,255,.075); --tile2: rgba(255,255,255,.035); --tile-bd: rgba(255,255,255,.12); --tile-hi: rgba(119,213,232,.16);
     --am-x: #F0A15A; --cy-x: #77D5E8; --lbl: #BCCCD9; --plate: rgba(255,255,255,.07); --plate2: rgba(255,255,255,.04);
-    --sh1: rgba(0,0,0,.75); --am-glow: rgba(240,161,90,.2); --cy-glow: rgba(119,213,232,.16); --floor: rgba(119,213,232,.28);
+    --sh1: rgba(0,0,0,.75); --aura: rgba(119,213,232,.12); --am-glow: rgba(240,161,90,.2); --cy-glow: rgba(119,213,232,.16); --floor: rgba(119,213,232,.28);
   }
 }
 :root[data-theme="dark"] .t-stage {
   --gl: rgba(255,255,255,.055); --gl2: rgba(255,255,255,.12); --gb: rgba(255,255,255,.17); --fr: rgba(231,240,247,.62);
   --tile: rgba(255,255,255,.075); --tile2: rgba(255,255,255,.035); --tile-bd: rgba(255,255,255,.12); --tile-hi: rgba(119,213,232,.16);
   --am-x: #F0A15A; --cy-x: #77D5E8; --lbl: #BCCCD9; --plate: rgba(255,255,255,.07); --plate2: rgba(255,255,255,.04);
-  --sh1: rgba(0,0,0,.75); --am-glow: rgba(240,161,90,.2); --cy-glow: rgba(119,213,232,.16); --floor: rgba(119,213,232,.28);
+  --sh1: rgba(0,0,0,.75); --aura: rgba(119,213,232,.12); --am-glow: rgba(240,161,90,.2); --cy-glow: rgba(119,213,232,.16); --floor: rgba(119,213,232,.28);
 }
 
 #view-start { gap: 56px; }
 .t-stage { position: relative; isolation: isolate; perspective: 1600px; padding: 10px 0 26px; }
 @media (min-width: 1200px) { .t-stage { width: min(1280px, calc(100vw - 56px)); margin-left: 50%; transform: translateX(-50%); } }
-.t-stage::before { content: ""; position: absolute; inset: -50px -70px -30px; z-index: -1; pointer-events: none;
-  background: radial-gradient(560px 320px at 12% 100%, var(--am-glow), transparent 70%), radial-gradient(680px 380px at 90% 0%, var(--cy-glow), transparent 70%); }
-.t-stage::after { content: ""; position: absolute; left: 20%; right: 20%; bottom: 8px; height: 34px; z-index: -1; pointer-events: none;
-  background: radial-gradient(50% 100% at 50% 0, var(--floor), transparent 72%); filter: blur(8px); }
+.t-stage::before { content: ""; position: absolute; top: -90px; bottom: -80px; left: calc(-1 * max(0px, min(110px, (100vw - 100%) / 2 - 16px))); right: calc(-1 * max(0px, min(110px, (100vw - 100%) / 2 - 16px))); z-index: -1; pointer-events: none;
+  /* Alle Verläufe laufen innerhalb der Fläche auf 0 aus (Radien in %, Mittelpunkt = Radius vom Rand), damit keine Kante sichtbar wird */
+  background:
+    radial-gradient(ellipse 30% 30% at 50% 50%, var(--aura), transparent 100%),
+    radial-gradient(ellipse 28% 30% at 72% 30%, var(--cy-glow), transparent 100%),
+    radial-gradient(ellipse 24% 30% at 24% 70%, var(--am-glow), transparent 100%); }
+.t-stage::after { content: ""; position: absolute; left: 14%; right: 14%; bottom: -24px; height: 90px; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, var(--floor), transparent 100%); }
 
 .t-term { display: grid; grid-template-columns: minmax(210px, 270px) minmax(0, 1fr) minmax(210px, 270px); align-items: stretch; }
 
@@ -1525,7 +1529,7 @@ a.t-num:focus-visible { outline-offset: 4px; }
 @media (max-width: 1180px) { .t-term { grid-template-columns: minmax(190px, 220px) minmax(0, 1fr) minmax(190px, 220px); } .t-center { padding: 20px 20px 22px; } .t-grid { gap: 10px; } .t-num { font-size: 36px; } }
 /* Tablet und Handy: Terminal zuerst, Seitenpanels darunter, keine Neigung */
 @media (max-width: 980px) {
-  .t-stage::before { inset: 0; background: radial-gradient(260px 160px at 88% 130px, var(--cy-glow), transparent 70%), radial-gradient(260px 160px at 12% calc(100% - 130px), var(--am-glow), transparent 70%); }
+  .t-stage::before { top: -40px; bottom: -40px; left: 0; right: 0; }
   .t-stage { perspective: none; padding-top: 0; }
   .t-term { grid-template-columns: 1fr; gap: 16px; }
   .t-center { order: -1; box-shadow: inset 0 1px 0 rgba(255,255,255,.28), 0 10px 0 -5px var(--plate), 0 30px 60px -36px var(--sh1); }
