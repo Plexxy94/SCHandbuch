@@ -13,7 +13,27 @@ Fertig und live:
 - Startseite „mobiGlas Terminal B+“ inkl. „Schiff im Fokus“ (zufälliges 3D-Schiff im rechten Panel, `focus-pool.json`), weiche Hintergründe ohne harte Kanten
 - Kapitelkopf mit Inhaltsverzeichnis nur bei: Erste Schritte, Mining, Tasten, Schiffe (plus Hubs Wissen und Werkzeuge)
 
-Offen (siehe Phasen unten): alle übrigen Unterseiten haben noch den alten Kopf (`<div class="head"><div class="stamp">…`).
+## Arbeitsstand auf dem Branch `gesamt/ueberarbeitung` (NICHT auf main, noch nicht live)
+
+Zum Weitermachen: `git fetch && git checkout gesamt/ueberarbeitung`, lokal testen (`python -m http.server 8765` im Projektordner), danach nach main mergen und die Live-Seite prüfen.
+
+Auf dem Branch erledigt:
+- Alle Unterseiten haben jetzt den Kapitelkopf (`.head.chead`), Einsätze als amberfarbene „Einsatzakte“, Inhaltsverzeichnis bei Seiten mit mindestens 3 Abschnitten.
+- „Als Nächstes“-Leiste (`.nextup`, per Skript am Ende der Seiten) für Tutorials, Berufe und Einsätze.
+- Komponentensystem global: Überschriften, Tabellen mit Scrollhinweis und Zebra, Chips, Hinweise, Datenkarten, Mindestschrift 12 px.
+- Hellmodus: Farbtokens abgedunkelt (Cyan `#0B6074`, Amber `#8A4609`, Grün `#226339`) für Kontrast; Kontrast-Scan über alle 31 Ansichten bei 360/390/768/1440/1920 px in Hell und Dunkel ohne Befund (Ausnahme: dekorativer HUD-Text im Schiff-im-Fokus-Panel).
+- Bugfixes: `.cr-bar i` färbte Fachbegriffe cyan, Überlauf der Startseite bei 360 px, Tasten-Karten bei 360 px, Navigationsleiste bei 1440 px.
+- Tote CSS der alten Startseite entfernt (7,5 KB), CSS in `style.css` ausgelagert (index.html verweist per `<link>`).
+- Automatisierte Prüfungen (per JavaScript im Vorschau-Browser): keine Konsolenfehler, alle internen Anker lösen auf, Deep-Links, Mining-Rechner, Schiffsuche, Schiff im Fokus, globale Suche, localStorage-Schlüssel unverändert.
+
+Noch offen:
+- Letzter Gesamtlauf nach der CSS-Auslagerung bei allen fünf Breiten und beiden Farbschemata, Konsole prüfen.
+- Phase 4/5 Feinschliff der Werkzeuge: Rechner (RS, Fundort, Frachter-Finder, Ruf, Recco), Tagesplaner, Timer, Wikelo-Tabelle, CCU-Radar, News, Bugs als „Anwendungen“ optisch weiter angleichen; Hellmodus der Unterseiten per Auge prüfen (bisher nur per Kontrast-Scan).
+- Phase 8: dezente Hover-Beleuchtung auf weiteren Panels, Ladezustände, Fokusmarkierungen auf Unterseiten prüfen.
+- Screenshots der Unterseiten, Abschlussbericht, Veröffentlichung auf main und Live-Prüfung.
+
+Früherer Stand (vor diesem Branch):
+- Alle übrigen Unterseiten hatten noch den alten Kopf (`<div class="head"><div class="stamp">…`).
 
 Geplantes Vorgehen (Entscheidungen, die schon getroffen sind):
 1. Köpfe aller Unterseiten per Skript auf `.head.chead` umstellen (Kategorie „Bereich · Art“, Tags aus dem alten `.stamp`), `data-toc` bei Seiten mit mindestens 3 Abschnitten (`h2`, bei Tutorials `.step h3`).
@@ -100,3 +120,10 @@ Strukturierter Bericht mit: 1. allen überarbeiteten Bereichen, 2. neuen oder ve
 
 ### ABSCHLIESSENDES ZIEL
 SC HANDBUCH soll wie ein zusammenhängendes, professionelles mobiGlas-Terminal aussehen. Die Startseite dient als Launcher. Die Unterseiten wirken wie integrierte Anwendungen des Systems. Die gesamte Website muss atmosphärisch, modern, übersichtlich, gut lesbar, zuverlässig und vollständig responsiv sein. Priorisiere Qualität vor unnötigen Effekten. Arbeite die Aufgaben selbstständig und systematisch ab. Behebe Probleme, bevor du zur nächsten Phase übergehst. Stelle nur bei wirklich kritischen Entscheidungen Rückfragen. Nach Abschluss veröffentlichen und einen vollständigen Bericht liefern.
+
+## Abschluss (2026-11-12)
+
+Alle unter „Noch offen“ genannten Punkte sind abgearbeitet und auf main veröffentlicht:
+- Gesamtlauf nach der CSS-Auslagerung: 31 Ansichten × 360/390/768/1440/1920 px × Hell/Dunkel, kein horizontaler Überlauf, keine Konsolenfehler. Restliche Schrift unter 12 px (Labels, Ruf-Leiter, HOSAS-Tags, Beta-Marke) auf 12 px angehoben.
+- Werkzeuge nutzen das globale Komponentensystem (Datenpanels, Chips, Tabellen); dezente Panel-Beleuchtung, Fokusmarkierung für Eingabefelder und ein Ladezustand (`aria-busy`) ergänzt, alles mit `prefers-reduced-motion`-Ausnahme.
+- Stichproben per Skript: Ruf-Rechner, Schiffsdeep-Link (`#s-drak-golem`), localStorage-Schlüssel unverändert, Schiff im Fokus vorhanden.
