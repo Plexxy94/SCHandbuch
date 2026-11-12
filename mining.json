@@ -1265,6 +1265,10 @@
    "ref": [
     [
      4200,
+     "Pyro Gateway (Stanton)"
+    ],
+    [
+     4200,
      "Rat's Nest"
     ],
     [
@@ -1278,10 +1282,6 @@
     [
      3700,
      "TDD Area 18"
-    ],
-    [
-     3700,
-     "TDD New Babbage"
     ]
    ],
    "raw": [
@@ -1528,10 +1528,6 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     5200,
-     "Pyro Gateway (Stanton)"
-    ],
-    [
      4600,
      "Patch City"
     ],
@@ -1542,6 +1538,10 @@
     [
      4400,
      "TDD Area 18"
+    ],
+    [
+     4400,
+     "TDD New Babbage"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-11T22:42:29+00:00"
+ "updated": "2026-11-12T03:49:56+00:00"
 }
