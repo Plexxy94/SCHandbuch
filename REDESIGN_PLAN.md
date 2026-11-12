@@ -1,5 +1,7 @@
 # Redesign v2 – Arbeitsplan und Risiken
 
+> Hinweis: Dieses Dokument entstand im Vorgänger-Repository `SCfueRoony` auf dem Branch `redesign/v2`. Dieses Repository (`SCHandbuch`) hat den Stand von dort als `main` übernommen und wird über GitHub Pages veröffentlicht.
+
 Branch: `redesign/v2`, abgezweigt von `main` bei `33dba81` (12.11.2026).
 Veröffentlicht wird erst nach Freigabe durch Zusammenführen nach `main`. GitHub Pages liefert nur `main` aus, der Branch ist also nicht live.
 

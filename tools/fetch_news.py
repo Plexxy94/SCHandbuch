@@ -18,7 +18,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 
-UA = {"User-Agent": "SC-Handbuch-News/1.0 (non-commercial fan guide; github.com/Plexxy94/SCfueRoony)"}
+UA = {"User-Agent": "SC-Handbuch-News/1.0 (non-commercial fan guide; github.com/Plexxy94/SCHandbuch)"}
 
 
 def get(url):

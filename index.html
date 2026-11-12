@@ -7,16 +7,18 @@
 <meta name="theme-color" content="#131b23" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Star Citizen Handbuch">
+<meta property="og:title" content="SC HANDBUCH – Dein Begleiter durch das Verse">
+<meta property="og:site_name" content="SC HANDBUCH">
+<meta property="og:url" content="https://plexxy94.github.io/SCHandbuch/">
 <meta property="og:description" content="Inoffizielles deutsches Handbuch: Tutorials, Tasten, Berufe, Einsätze, Schiffe und Bugs mit Workarounds. Ohne Cookies, ohne Tracking.">
 <meta property="og:locale" content="de_DE">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23131b23'/%3E%3Ctext x='8' y='43' font-family='Segoe UI,Arial,sans-serif' font-weight='700' font-size='27' fill='%23e2e8ee'%3ESC%3C/text%3E%3Cpath d='M47 46 56 18' stroke='%23f08a3c' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
-<title>Star Citizen Handbuch</title>
+<title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* Layout: Flughandbuch – feste Navigationsleiste, Startseite mit drei Kapitel-Kacheln, jedes Kapitel als eigene Ansicht (#erste-schritte, #tasten, #mining) */
 /* ==========================================================================
-   Designsystem „Tactical Glass“ (SC/Handbuch 2.0)
+   Designsystem „Tactical Glass“ (SC HANDBUCH)
    1. Grundfarben je Schema   2. abgeleitete Tokens   3. alte Namen als Alias
    Neue Stile nutzen die Grundfarben und die Tokens aus Block 2. Die alten Namen
    (--bg, --panel, --ink …) bleiben, damit bestehende Regeln weiter greifen.
@@ -874,8 +876,13 @@ a:hover { text-decoration-thickness: 2px; }
 .nav::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-cyan) 18%, var(--accent-cyan) 30%, transparent 62%); opacity: .55; pointer-events: none; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .nav, .gs-box, .subnav.float { background: var(--bg-card); } }
 @media (prefers-reduced-transparency: reduce) { .nav, .gs-box, .subnav, .subnav.float { background: var(--bg-card); -webkit-backdrop-filter: none; backdrop-filter: none; } }
-.brand { font-size: 18px; letter-spacing: .04em; }
-.brand span { color: var(--accent-cyan); }
+.brand { flex-direction: column; align-items: flex-start; gap: 0; line-height: 1.1; }
+.brand span { color: inherit; }
+.brand .brand-name { font-size: 18px; letter-spacing: .08em; color: var(--text-primary); }
+.brand .brand-name b { font-weight: 700; color: var(--accent-cyan); }
+.brand .brand-sub { font: 500 9px var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--text-secondary); margin-top: 3px; }
+@media (max-width: 1180px) { .brand .brand-sub { display: none; } }
+@media (max-width: 640px) { .brand .brand-name { font-size: 16px; letter-spacing: .06em; } }
 .tabs a { border-radius: var(--radius-xs); position: relative; }
 .tabs a:hover { color: var(--text-primary); background: var(--cyan-soft); }
 .tabs a[aria-current="page"] { color: var(--accent-cyan); background: transparent; }
@@ -1087,7 +1094,7 @@ footer { border-top-color: var(--border); }
 
 <nav class="nav" aria-label="Hauptnavigation">
   <div class="nav-in">
-    <a class="brand" href="#start">SC<span>/</span><span class="brand-long" style="color:inherit">Handbuch</span></a>
+    <a class="brand" href="#start" aria-label="SC HANDBUCH, zur Startseite"><span class="brand-name">SC <b>HANDBUCH</b></span><span class="brand-sub">Dein Begleiter durch das Verse</span></a>
     <div class="tabs" role="list">
       <a href="#tutorial" role="listitem" class="has-sub" data-group="tutorial" aria-haspopup="true" aria-controls="subnav">Tutorials</a>
       <a href="#tasten" role="listitem" class="has-sub" data-group="steuerung" aria-haspopup="true" aria-controls="subnav">Steuerung</a>
@@ -1174,7 +1181,7 @@ footer { border-top-color: var(--border); }
       <path d="M200 20v46M200 334v46M20 200h46M334 200h46M200 180v40M180 200h40" stroke-width="1"/>
       <path d="M94 94l22 22M306 94l-22 22M94 306l22-22M306 306l-22-22" stroke-width="1"/>
     </svg>
-    <div class="stamp"><span>SC/Handbuch 2.0</span><span>Stand Alpha 4.10.2</span><span>QWERTZ</span><span>Inoffiziell</span></div>
+    <div class="stamp"><span>SC HANDBUCH</span><span>Stand Alpha 4.10.2</span><span>QWERTZ</span><span>Inoffiziell</span></div>
     <h1>Bereit für deinen nächsten Flug?</h1>
     <p class="st-sub">Dein Begleiter durch das Verse.</p>
     <p class="lede">Tutorials, Schiffe, Berufe und praktische Werkzeuge für Star Citizen.</p>
@@ -4354,7 +4361,7 @@ window.SC_MINE = (function () {
       var cr = cur.getBoundingClientRect(), br = tabsBox.getBoundingClientRect();
       if (cr.left < br.left) tabsBox.scrollLeft += cr.left - br.left - 8; else if (cr.right > br.right) tabsBox.scrollLeft += cr.right - br.right + 16;
     }
-    var titles = { start: 'Star Citizen Handbuch', news: 'News · SC Handbuch', tutorial: 'Tutorials · SC Handbuch', einsaetze: 'Einsätze · SC Handbuch', 'exec-hangar': 'Executive Hangar · SC Handbuch', 'siege-orison': 'Siege of Orison · SC Handbuch', hathor: 'Hathor & Wikelo · SC Handbuch', bunker: 'Bunker-Missionen · SC Handbuch', recco: 'Recco Battaglia · SC Handbuch', heimat: 'Heimatstadt · SC Handbuch', 't-mining': 'Mining lernen · SC Handbuch', 't-salvage': 'Salvage lernen · SC Handbuch', 't-crafting': 'Crafting lernen · SC Handbuch', 'erste-schritte': 'Erste Schritte · SC Handbuch', tasten: 'Tasten · SC Handbuch', mining: 'Mining · SC Handbuch', salvage: 'Salvage · SC Handbuch', hauling: 'Hauling · SC Handbuch', berufe: 'Berufe · SC Handbuch', bugs: 'Bugs & Workarounds · SC Handbuch', 't-hauling': 'Hauling lernen · SC Handbuch', ueberleben: 'Überleben · SC Handbuch', crafting: 'Crafting · SC Handbuch', ruf: 'Ruf · SC Handbuch', 'ccu-radar': 'CCU-Radar · SC Handbuch', glossar: 'Glossar · SC Handbuch', schiffe: 'Schiffe · SC Handbuch', training: 'Training · SC Handbuch', hosas: 'HOSAS · SC Handbuch' };
+    var titles = { start: 'SC HANDBUCH – Dein Begleiter durch das Verse', news: 'News · SC HANDBUCH', tutorial: 'Tutorials · SC HANDBUCH', einsaetze: 'Einsätze · SC HANDBUCH', 'exec-hangar': 'Executive Hangar · SC HANDBUCH', 'siege-orison': 'Siege of Orison · SC HANDBUCH', hathor: 'Hathor & Wikelo · SC HANDBUCH', bunker: 'Bunker-Missionen · SC HANDBUCH', recco: 'Recco Battaglia · SC HANDBUCH', heimat: 'Heimatstadt · SC HANDBUCH', 't-mining': 'Mining lernen · SC HANDBUCH', 't-salvage': 'Salvage lernen · SC HANDBUCH', 't-crafting': 'Crafting lernen · SC HANDBUCH', 'erste-schritte': 'Erste Schritte · SC HANDBUCH', tasten: 'Tasten · SC HANDBUCH', mining: 'Mining · SC HANDBUCH', salvage: 'Salvage · SC HANDBUCH', hauling: 'Hauling · SC HANDBUCH', berufe: 'Berufe · SC HANDBUCH', bugs: 'Bugs & Workarounds · SC HANDBUCH', 't-hauling': 'Hauling lernen · SC HANDBUCH', ueberleben: 'Überleben · SC HANDBUCH', crafting: 'Crafting · SC HANDBUCH', ruf: 'Ruf · SC HANDBUCH', 'ccu-radar': 'CCU-Radar · SC HANDBUCH', glossar: 'Glossar · SC HANDBUCH', schiffe: 'Schiffe · SC HANDBUCH', training: 'Training · SC HANDBUCH', hosas: 'HOSAS · SC HANDBUCH' };
     document.title = titles[h];
     Array.prototype.forEach.call(sub.querySelectorAll('a'), function (a) {
       if (a.getAttribute('href') === '#' + h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');

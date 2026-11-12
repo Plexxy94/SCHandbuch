@@ -13,7 +13,7 @@ import sys
 import urllib.request
 from datetime import datetime, timezone
 
-UA = {"User-Agent": "SC-Handbuch-Mining/1.0 (non-commercial fan guide; github.com/Plexxy94/SCfueRoony)"}
+UA = {"User-Agent": "SC-Handbuch-Mining/1.0 (non-commercial fan guide; github.com/Plexxy94/SCHandbuch)"}
 API = "https://api.uexcorp.space/2.0/"
 
 
