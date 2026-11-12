@@ -1,0 +1,188 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Entwurf A: Holografisches Command Deck</title><link rel="stylesheet" href="../fonts/fonts.css"><style>
+:root { --bg: #070D15; --card: #101B28; --elev: #172536; --line: #2C4155; --tx: #E9EFF5; --tx2: #A9BBCA; --cy: #77D5E8; --cy-s: rgba(119,213,232,.13); --am: #F0A15A; --am-s: rgba(240,161,90,.16);
+  --f-d: "Chakra Petch", "Segoe UI", system-ui, sans-serif; --f-b: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; --f-m: "IBM Plex Mono", ui-monospace, monospace; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--tx); font: 16px/1.6 var(--f-b); }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.nav { position: sticky; top: 0; z-index: 5; background: rgba(8,14,22,.82); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.nav-in { max-width: 1120px; margin: 0 auto; padding: 9px 16px; display: flex; align-items: center; gap: 14px; }
+.brand { display: flex; align-items: center; gap: 11px; font: 700 18px var(--f-d); letter-spacing: .08em; }
+.brand b { color: var(--cy); } .brand svg { width: 30px; height: 30px; color: var(--cy); }
+.tabs { display: flex; gap: 2px; margin-left: 14px; }
+.tabs a { font: 600 14.5px var(--f-d); color: var(--tx2); padding: 8px 17px; clip-path: polygon(9px 0,100% 0,calc(100% - 9px) 100%,0 100%); }
+.tabs a.on { color: var(--cy); background: linear-gradient(180deg, transparent 20%, var(--cy-s)); box-shadow: inset 0 -2px 0 var(--cy); }
+.nbtn { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 2px; color: var(--tx2); font: 600 14px var(--f-d); }
+.nbtn kbd { font: 500 11px var(--f-m); border: 1px solid var(--line); padding: 0 5px; border-radius: 4px; }
+.ic { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.menu { display: none; margin-left: auto; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 2px; place-items: center; }
+.menu svg { width: 22px; height: 22px; }
+@media (max-width: 860px) { .tabs, .nbtn { display: none; } .menu { display: grid; } .nav-in { padding: 8px 16px; } }
+.note { max-width: 1120px; margin: 0 auto; padding: 10px 16px; font: 500 12px var(--f-m); letter-spacing: .06em; color: var(--tx2); text-transform: uppercase; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* ===== Variante A: Holografisches Command Deck ===== */
+html, body { overflow-x: clip; } body { background: radial-gradient(900px 520px at 72% 160px, rgba(240,161,90,.13), transparent 62%), radial-gradient(1000px 600px at 20% -100px, rgba(119,213,232,.10), transparent 60%), var(--bg); }
+.hero { position: relative; max-width: 1360px; margin: 6px auto 0; min-height: 640px; isolation: isolate; }
+.scene { position: absolute; right: -15%; top: -30px; width: min(980px, 76%); z-index: -1; color: var(--cy); overflow: visible; }
+.scene .lay { transition: transform .5s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+.hero-copy { position: relative; z-index: 2; padding: 76px 16px 0 clamp(16px, 3vw, 40px); max-width: 620px; }
+.kicker { display: flex; align-items: center; gap: 12px; font: 500 12.5px var(--f-m); letter-spacing: .14em; text-transform: uppercase; color: var(--tx2); }
+.kicker i { width: 38px; height: 3px; background: linear-gradient(90deg, var(--cy) 0 26px, transparent 26px 31px, var(--am) 31px); }
+h1 { margin: 18px 0 0; font: 700 clamp(40px, 6.4vw, 76px)/1 var(--f-d); letter-spacing: -.01em; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--cy); position: relative; white-space: nowrap; }
+h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 3px; background: linear-gradient(90deg, var(--cy), transparent); }
+.sub { margin: 22px 0 0; font: 600 clamp(18px, 2.2vw, 23px) var(--f-d); color: var(--am); letter-spacing: .02em; }
+.lede { margin: 8px 0 0; max-width: 46ch; color: var(--tx2); font-size: 17px; }
+.search { position: relative; display: flex; align-items: center; gap: 12px; margin: 30px 0 0; min-height: 60px; padding: 0 18px; max-width: 600px; background: rgba(10,18,28,.78); border: 1px solid #3C5A70; border-left: 3px solid var(--cy); border-radius: 2px; color: var(--tx2); font-size: 16px; }
+.search::after { content: ""; position: absolute; inset: 5px -5px -5px 5px; border: 1px solid rgba(119,213,232,.28); border-left: 0; border-top: 0; pointer-events: none; transition: inset .2s, border-color .2s; }
+.search:hover::after { inset: 7px -7px -7px 7px; border-color: rgba(119,213,232,.6); }
+.search svg { width: 20px; height: 20px; color: var(--cy); flex: none; }
+.search kbd { margin-left: auto; font: 500 12px var(--f-m); border: 1px solid #3C5A70; padding: 1px 7px; border-radius: 4px; }
+.read { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 22px; font: 500 12.5px var(--f-m); letter-spacing: .08em; text-transform: uppercase; color: var(--tx2); }
+.read b { color: var(--tx); font-weight: 600; }
+/* Abschnittsübergang */
+.sec { display: flex; align-items: center; gap: 0; margin: 28px 0 22px; }
+.sec .tab { font: 700 13px var(--f-m); letter-spacing: .16em; text-transform: uppercase; color: var(--cy); padding: 7px 26px 7px 14px; background: var(--cy-s); clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 100%, 0 100%); box-shadow: inset 3px 0 0 var(--cy); }
+.sec .ln { flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); position: relative; }
+.sec .ln::before { content: ""; position: absolute; left: 0; top: -2px; width: 30px; height: 5px; background: repeating-linear-gradient(90deg, var(--am) 0 2px, transparent 2px 6px); }
+/* Schnellzugriff: große und kleine Flächen */
+.deck { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+.card { position: relative; padding: 22px 22px 20px 26px; background: linear-gradient(135deg, rgba(119,213,232,.10), transparent 50%), var(--card); border: 1px solid var(--line); transition: border-color .2s, background .2s; overflow: hidden; }
+.card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--cy); opacity: .55; }
+.card:hover { border-color: var(--cy); }
+.card:hover .glow { opacity: 1; }
+.glow { position: absolute; inset: 0; opacity: 0; transition: opacity .3s; pointer-events: none; background: radial-gradient(320px 200px at var(--mx, 70%) var(--my, 30%), rgba(119,213,232,.16), transparent 70%); }
+.card h3 { margin: 6px 0 6px; font: 600 22px/1.2 var(--f-d); }
+.card p { margin: 0; color: var(--tx2); font-size: 15.5px; }
+.card .go { display: inline-block; margin-top: 14px; font: 600 15px var(--f-d); color: var(--cy); }
+.card .ico { width: 46px; height: 46px; padding: 11px; background: var(--cy-s); color: var(--cy); clip-path: polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px); }
+.big { grid-column: span 5; grid-row: span 2; clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 34px 100%, 0 calc(100% - 34px)); padding: 30px 30px 28px 34px; background: linear-gradient(160deg, rgba(240,161,90,.14), transparent 45%), linear-gradient(135deg, rgba(119,213,232,.12), transparent 55%), var(--card); }
+.big::before { background: var(--am); opacity: .9; }
+.big h3 { font-size: 34px; margin-top: 14px; }
+.big p { font-size: 17px; max-width: 34ch; }
+.big .rings { position: absolute; right: -36px; bottom: -36px; width: 210px; color: var(--cy); opacity: .55; }
+.sm { grid-column: span 3; }
+.wide { grid-column: span 12; display: grid; grid-template-columns: auto 1fr; gap: 4px 20px; align-items: center; }
+.wide .ico { grid-row: span 2; }
+.wide h3 { margin: 0; } .wide p { grid-column: 2; }
+.tag { position: absolute; top: 12px; right: 16px; font: 500 11.5px var(--f-m); letter-spacing: .1em; color: var(--tx2); }
+.sm:nth-of-type(4) { clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%); }
+@media (max-width: 980px) { .big { grid-column: span 12; grid-row: auto; } .sm { grid-column: span 6; } .wide { grid-column: span 12; } }
+@media (max-width: 860px) {
+  .hero { min-height: 0; margin-top: 8px; }
+  .scene { position: relative; display: block; width: 112%; margin: -6px 0 -64px -6%; right: auto; top: 0; }
+  .hero-copy { padding: 0 16px; }
+  h1 { font-size: 40px; }
+  .search { min-height: 56px; margin-top: 24px; } .search::after { inset: 4px -4px -4px 4px; }
+}
+@media (max-width: 560px) { .sm { grid-column: span 12; } .big { padding: 24px 22px 22px 26px; clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px)); } .big h3 { font-size: 28px; } .tag { display: none; } }
+/* einmaliger Scan beim Laden, keine Dauerschleife */
+.sweep { animation: sweep 1.8s ease-out 1 both .3s; }
+@keyframes sweep { 0% { transform: translateX(-120px); opacity: 0; } 15% { opacity: .9; } 100% { transform: translateX(760px); opacity: 0; } }
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-launch" viewBox="0 0 24 24"><path d="M12 3l5 9h-3v5h-4v-5H7z"/><path d="M9.5 21h5"/></symbol>
+  <symbol id="i-keys" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><path d="M6.5 10h.01M10 10h.01M13.5 10h.01M17 10h.01M7.5 14h9"/></symbol>
+  <symbol id="i-credits" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.6 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.4 0-2.4.8-2.4 1.9 0 2.5 5 1.3 5 3.9 0 1.2-1.1 2-2.6 2-1.1 0-2.1-.5-2.7-1.4M12 6.2v11.6"/></symbol>
+  <symbol id="i-fix" viewBox="0 0 24 24"><path d="M14.6 5.4a4.2 4.2 0 0 0-5.2 5.2L4 16v4h4l5.4-5.4a4.2 4.2 0 0 0 5.2-5.2L16 12l-2.6-.7-.7-2.6z"/></symbol>
+  <symbol id="i-plan" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.8 8.2l-2.2 5.4-5.4 2.2 2.2-5.4z"/></symbol>
+  <symbol id="i-ore" viewBox="0 0 24 24"><path d="M6.5 4h11L21 9.5 12 20 3 9.5z"/><path d="M3 9.5h18M9 4l3 5.5L15 4"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></symbol>
+  <symbol id="i-ship" viewBox="0 0 24 24"><path d="M12 2.5l2.6 7.5 6.4 3.2v2l-6-.9-.9 4.5 2 1.4V22l-4.1-1-4.1 1v-1.8l2-1.4-.9-4.5-6 .9v-2L9.4 10z"/></symbol>
+  <symbol id="i-rep" viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.8-5.4 2.8 1-6-4.4-4.3 6.1-.9z"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4l2.6 1.8M9.5 3h5"/></symbol>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6.4-6.4"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 21V5.5M8.5 7.5h7M8.5 11h5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></symbol>
+  <symbol id="i-news" viewBox="0 0 24 24"><path d="M4 5h13v14H6.5A2.5 2.5 0 0 1 4 16.5z"/><path d="M17 9h3v7.5a2.5 2.5 0 0 1-2.5 2.5M7.5 9h6M7.5 12.5h6M7.5 16h3.5"/></symbol>
+  <symbol id="i-stick" viewBox="0 0 24 24"><path d="M12 4.5V14M9.2 4.5h5.6M6.5 20h11L16 14.5H8z"/></symbol>
+  <symbol id="i-learn" viewBox="0 0 24 24"><path d="M2.5 9L12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11.2v4.6c1.6 1.4 3.4 2.1 5.5 2.1s3.9-.7 5.5-2.1v-4.6"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/><path d="M5.7 5.7l3.7 3.7M14.6 14.6l3.7 3.7M18.3 5.7l-3.7 3.7M9.4 14.6l-3.7 3.7"/></symbol>
+</svg>
+<header class="nav"><div class="nav-in">
+<a class="brand" href="#"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 2.2l12.4 7.1v13.4L16 29.8 3.6 22.7V9.3z" stroke-width="1.6"/><path d="M16 8.4l7 4v7.2l-7 4-7-4v-7.2z" stroke-width="1.2" fill="currentColor" fill-opacity=".16"/><circle cx="16" cy="16" r="2.1" fill="#F0A15A" stroke="none"/></svg><span>SC <b>HANDBUCH</b></span></a>
+<nav class="tabs"><a class="on" href="#">Start</a><a href="#">Lernen</a><a href="#">Wissen</a><a href="#">Tools</a><a href="#">Einsätze</a><a href="#">Aktuelles</a></nav>
+<a class="nbtn" href="#"><svg class="ic" style="width:16px;height:16px" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>Suche <kbd>/</kbd></a>
+<a class="menu" href="#" aria-label="Menü"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></a>
+</div></header>
+<div class="note">Entwurf A · Holografisches Command Deck · Prototyp, keine echten Daten</div>
+<main class="wrap"><section class="hero">
+<svg class="scene" viewBox="0 0 760 540" fill="none" aria-hidden="true" focusable="false">
+<defs>
+<radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFE2B3"/><stop offset=".32" stop-color="#F0A15A"/><stop offset=".72" stop-color="#B14E1A"/><stop offset="1" stop-color="#B14E1A" stop-opacity="0"/></radialGradient>
+<radialGradient id="halo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F0A15A" stop-opacity=".42"/><stop offset=".5" stop-color="#F0A15A" stop-opacity=".12"/><stop offset="1" stop-color="#F0A15A" stop-opacity="0"/></radialGradient>
+<radialGradient id="pl" cx="35%" cy="32%" r="70%"><stop offset="0" stop-color="#DDF6FB"/><stop offset=".5" stop-color="#5DB6C8"/><stop offset="1" stop-color="#14323F"/></radialGradient>
+<radialGradient id="disc" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#77D5E8" stop-opacity=".02"/><stop offset="1" stop-color="#77D5E8" stop-opacity=".12"/></radialGradient>
+<pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".9" fill="#77D5E8" fill-opacity=".55"/></pattern>
+<clipPath id="floor"><ellipse cx="400" cy="340" rx="372" ry="150"/></clipPath>
+<linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#77D5E8" stop-opacity="0"/><stop offset=".7" stop-color="#77D5E8" stop-opacity=".32"/><stop offset="1" stop-color="#BFEFF7" stop-opacity=".9"/></linearGradient>
+</defs>
+<g class="lay" data-d="4">
+  <rect x="20" y="190" width="760" height="300" fill="url(#dots)" clip-path="url(#floor)" opacity=".5"/>
+  <g transform="rotate(-6 400 320)">
+    <ellipse cx="400" cy="320" rx="352" ry="112" fill="url(#disc)" stroke="currentColor" stroke-opacity=".45"/>
+    <ellipse cx="400" cy="320" rx="262" ry="82" fill="url(#disc)" stroke="currentColor" stroke-opacity=".55"/>
+    <ellipse cx="400" cy="320" rx="176" ry="54" fill="url(#disc)" stroke="currentColor" stroke-opacity=".65"/>
+    <ellipse cx="400" cy="320" rx="352" ry="112" stroke="currentColor" stroke-opacity=".5" stroke-dasharray="2 10" stroke-width="3" transform="translate(0 0) scale(1.06 1.06)" transform-origin="400 320"/>
+    <path d="M48 320h-14M752 320h14M400 208v-14M400 432v14" stroke="currentColor" stroke-opacity=".6"/>
+  </g>
+</g>
+<g class="lay" data-d="9">
+  <circle cx="400" cy="318" r="190" fill="url(#halo)"/>
+  <path d="M120 318H680" stroke="#F0A15A" stroke-opacity=".35" stroke-width="1"/>
+  <circle cx="400" cy="318" r="46" fill="url(#sun)"/>
+  <circle cx="400" cy="318" r="74" stroke="#F0A15A" stroke-width="1.6" stroke-dasharray="70 18 28 18" stroke-opacity=".9"/>
+  <circle cx="400" cy="318" r="86" stroke="#F0A15A" stroke-opacity=".45"/>
+  <g transform="rotate(-6 400 320)">
+    <circle cx="238" cy="346" r="13" fill="url(#pl)"/>
+    <circle cx="590" cy="292" r="19" fill="url(#pl)"/><ellipse cx="590" cy="292" rx="33" ry="8" stroke="currentColor" stroke-opacity=".7" transform="rotate(-16 590 292)"/>
+    <circle cx="470" cy="388" r="8" fill="url(#pl)"/>
+  </g>
+</g>
+<g class="lay" data-d="16">
+  <g transform="translate(380 36) rotate(-9 110 75) scale(1.5)" color="#9BE3F0"><g class="ship" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none">
+<path d="M10 78L70 62L150 58L205 74L150 90L70 94Z" fill="currentColor" fill-opacity=".07"/>
+<path d="M120 62L160 56L188 70L150 74Z" fill="currentColor" fill-opacity=".16"/>
+<path d="M70 62L46 12L98 24L134 58Z" fill="currentColor" fill-opacity=".05"/>
+<path d="M70 94L48 142L100 132L134 90Z" fill="currentColor" fill-opacity=".05"/>
+<path d="M10 70L2 78L10 86M2 78H30" opacity=".8"/>
+<path d="M70 78L205 74M96 24L102 60M100 132L102 96M46 12L58 40M48 142L60 114M150 58L150 90" opacity=".55"/>
+<path d="M30 70L26 60L40 66M30 86L26 96L40 90" opacity=".7"/>
+</g></g>
+  <g stroke="#77D5E8" stroke-opacity=".9" stroke-width="1.4"><path d="M368 26h22M368 26v22M706 26h-22M706 26v22M368 250h22M368 250v-22M706 250h-22M706 250v-22"/></g>
+  <path d="M540 250L470 300" stroke="#77D5E8" stroke-opacity=".6"/><circle cx="470" cy="300" r="3" fill="#77D5E8"/>
+  <path d="M706 132h20l14 14h18" stroke="#F0A15A" stroke-opacity=".8"/><circle cx="750" cy="148" r="3" fill="#F0A15A"/>
+</g>
+<g clip-path="url(#floor)"><rect class="sweep" x="0" y="150" width="110" height="260" fill="url(#beam)" opacity="0"/></g>
+</svg>
+<div class="hero-copy">
+<div class="kicker"><i></i>SC HANDBUCH · Stand Alpha 4.10.2 · QWERTZ</div>
+<h1>Bereit für deinen nächsten <em>Flug?</em></h1>
+<p class="sub">Dein Begleiter durch das Verse.</p>
+<p class="lede">Tutorials, Schiffe, Berufe und praktische Werkzeuge für Star Citizen.</p>
+<a class="search" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Handbuch durchsuchen: Schiff, Taste, Erz, Begriff …</span><kbd>/</kbd></a>
+<div class="read"><span>Server <b>läuft normal</b></span><span>Patch <b>4.10.2</b></span></div>
+</div>
+</section>
+<div class="sec"><span class="tab">Schnellzugriff</span><span class="ln"></span></div>
+<div class="deck">
+<a class="card big" href="#"><span class="glow"></span><svg class="rings" viewBox="0 0 200 200" fill="none" stroke="currentColor"><circle cx="100" cy="100" r="96" stroke-dasharray="2 8" stroke-width="3"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44" stroke-dasharray="26 8"/><path d="M100 4v192M4 100h192" stroke-opacity=".4"/></svg><svg class="ic ico" viewBox="0 0 24 24"><use href="#i-launch"/></svg><h3>Neu im Verse</h3><p>Heimatstadt wählen, dann Schritt für Schritt vom Quartier bis zum ersten Auftrag. Du hakst ab, was sitzt.</p><span class="go">Los geht’s →</span></a>
+<a class="card sm" href="#"><span class="glow"></span><span class="tag">NAV·02</span><svg class="ic ico" viewBox="0 0 24 24"><use href="#i-keys"/></svg><h3>Steuerung</h3><p>Tasten für QWERTZ, dazu HOSAS.</p></a>
+<a class="card sm" href="#"><span class="glow"></span><span class="tag">NAV·03</span><svg class="ic ico" viewBox="0 0 24 24"><use href="#i-credits"/></svg><h3>Geld verdienen</h3><p>Berufe im Vergleich.</p></a>
+<a class="card sm" href="#"><span class="glow"></span><span class="tag">NAV·04</span><svg class="ic ico" viewBox="0 0 24 24"><use href="#i-fix"/></svg><h3>Probleme lösen</h3><p>Bugs mit Workarounds.</p></a>
+<a class="card sm" href="#"><span class="glow"></span><span class="tag">NAV·05</span><svg class="ic ico" viewBox="0 0 24 24"><use href="#i-ship"/></svg><h3>Schiffe</h3><p>225 Schiffe mit Preisen.</p></a>
+<a class="card wide" href="#"><span class="glow"></span><svg class="ic ico" viewBox="0 0 24 24"><use href="#i-radar"/></svg><h3>CCU-Radar</h3><p>Meldet Schiffe, die im Pledge-Store teurer werden.</p></a>
+</div>
+<div style="height:60px"></div>
+</main>
+<script>
+(function(){
+ var rm=matchMedia('(prefers-reduced-motion: reduce)').matches, fine=matchMedia('(pointer:fine)').matches;
+ if(!rm&&fine){var h=document.querySelector('.hero'),L=[].slice.call(h.querySelectorAll('.lay'));
+  h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;L.forEach(function(l){var d=+l.dataset.d;l.style.transform='translate('+(x*d*-1.6).toFixed(1)+'px,'+(y*d*-1.2).toFixed(1)+'px)';});});
+  h.addEventListener('pointerleave',function(){L.forEach(function(l){l.style.transform='';});});}
+ [].forEach.call(document.querySelectorAll('.card'),function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});});
+})();
+</script></body></html>
