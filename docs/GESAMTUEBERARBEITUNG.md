@@ -120,3 +120,10 @@ Strukturierter Bericht mit: 1. allen überarbeiteten Bereichen, 2. neuen oder ve
 
 ### ABSCHLIESSENDES ZIEL
 SC HANDBUCH soll wie ein zusammenhängendes, professionelles mobiGlas-Terminal aussehen. Die Startseite dient als Launcher. Die Unterseiten wirken wie integrierte Anwendungen des Systems. Die gesamte Website muss atmosphärisch, modern, übersichtlich, gut lesbar, zuverlässig und vollständig responsiv sein. Priorisiere Qualität vor unnötigen Effekten. Arbeite die Aufgaben selbstständig und systematisch ab. Behebe Probleme, bevor du zur nächsten Phase übergehst. Stelle nur bei wirklich kritischen Entscheidungen Rückfragen. Nach Abschluss veröffentlichen und einen vollständigen Bericht liefern.
+
+## Abschluss (2026-11-12)
+
+Alle unter „Noch offen“ genannten Punkte sind abgearbeitet und auf main veröffentlicht:
+- Gesamtlauf nach der CSS-Auslagerung: 31 Ansichten × 360/390/768/1440/1920 px × Hell/Dunkel, kein horizontaler Überlauf, keine Konsolenfehler. Restliche Schrift unter 12 px (Labels, Ruf-Leiter, HOSAS-Tags, Beta-Marke) auf 12 px angehoben.
+- Werkzeuge nutzen das globale Komponentensystem (Datenpanels, Chips, Tabellen); dezente Panel-Beleuchtung, Fokusmarkierung für Eingabefelder und ein Ladezustand (`aria-busy`) ergänzt, alles mit `prefers-reduced-motion`-Ausnahme.
+- Stichproben per Skript: Ruf-Rechner, Schiffsdeep-Link (`#s-drak-golem`), localStorage-Schlüssel unverändert, Schiff im Fokus vorhanden.
