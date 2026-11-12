@@ -1104,7 +1104,7 @@ footer { border-top-color: var(--border); }
   .nav-ccu svg { width: 21px; height: 21px; }
   .nav-menu { display: inline-flex; }
 }
-@media (max-width: 380px) { .nav-search { width: 44px; padding: 0; justify-content: center; } .nav-search span { display: none; } }
+@media (max-width: 440px) { .nav-search { width: 44px; padding: 0; justify-content: center; } .nav-search span { display: none; } }
 
 @media (min-width: 861px) { .subnav-in { padding-block: 3px; } .subnav a { padding: 4px 10px; } }
 
@@ -1190,21 +1190,232 @@ html.menu-open { overflow: hidden; }
 @media (max-width: 560px) { #st-tools-groups .st-tools, #tools-groups .st-tools { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .toc > summary::after, .menu-g > summary::after { transition: none; } }
 
+
+/* =========================================================================
+   Phase 4: Tactical Glass – mobiGlas Edition
+   Drei Komponentenarten:
+   A  Navigation Card  (.st-card, .st-group, .st-tool, .chapter): abgeschrägte Ecken, Kantenlicht, Kennung
+   B  Data Panel       (.tool, .ore-card, .st-panel, .table-wrap, Tasten-Karten): tiefes Display mit Eckmarken
+   C  Reading Panel    (.step, .panel, .card-plain): ruhig, nur linke Leitkante
+   Dekor (Raster, Hero-Grafik) liegt nur im Kopfbereich und an Rändern, nie hinter Fließtext.
+   ========================================================================= */
+:root {
+  --bg-deep: #E8EFF3; --edge: #6E9AA8; --scan: rgba(14, 111, 132, .07);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg-deep: #09111B; --edge: rgba(119, 213, 232, .55); --scan: rgba(119, 213, 232, .06); }
+}
+:root[data-theme="dark"] { --bg-deep: #09111B; --edge: rgba(119, 213, 232, .55); --scan: rgba(119, 213, 232, .06); }
+
+/* ---- Kopfzeile: Bordcomputer-Leiste ---- */
+.brand { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 11px; align-items: center; }
+.brand-mark { grid-row: span 2; width: 30px; height: 30px; color: var(--accent-cyan); }
+.brand .brand-sub { grid-column: 2; }
+.brand .brand-name { grid-column: 2; }
+.brand:not(:has(.brand-sub:not([hidden]))) .brand-mark { grid-row: auto; }
+@media (max-width: 1180px) { .brand-mark { grid-row: auto; width: 28px; height: 28px; } }
+.nav::before { content: ""; position: absolute; bottom: -1px; left: max(16px, calc((100vw - 1120px) / 2 + 16px)); width: 150px; height: 5px; pointer-events: none;
+  background: repeating-linear-gradient(90deg, var(--accent-cyan) 0 1px, transparent 1px 10px); opacity: .5; }
+.tabs a { clip-path: polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%); padding: 8px 17px; }
+.tabs a:focus-visible, .nav-search:focus-visible, .nav-ccu:focus-visible, .nav-menu:focus-visible { outline-offset: -3px; }
+.tabs a[aria-current="page"] { background: linear-gradient(180deg, transparent 20%, var(--cyan-soft)); }
+.tabs a[aria-current="page"]::before { left: 17px; right: 17px; height: 2px; }
+.nav-search, .nav-ccu, .nav-menu { border-radius: 2px; }
+.nav-search:focus-visible, .nav-ccu:focus-visible, .nav-menu:focus-visible { outline: 0; box-shadow: inset 0 0 0 2px var(--accent-cyan); }
+.nav-led { display: inline-flex; align-items: center; gap: 8px; flex: none; margin-left: auto; padding: 4px 10px; font: 500 12.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; border-left: 1px solid var(--border); }
+.nav-led:hover { color: var(--text-primary); }
+.nav-led i { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px var(--ok-soft); }
+.nav-led.warn i { background: var(--accent-amber); box-shadow: 0 0 0 3px var(--amber-soft); }
+.nav-led.bad i { background: var(--warn); box-shadow: 0 0 0 3px var(--warn-soft); }
+.nav-led + .nav-search { margin-left: 0; }
+@media (max-width: 1100px) { .nav-led { display: none !important; } .nav-led + .nav-search { margin-left: auto; } }
+@media (max-width: 860px) { .nav::before { display: none; } .tabs a { clip-path: none; } }
+
+/* ---- Überschriften in den neu gestalteten Seiten ---- */
+#view-start h2, #view-erste-schritte h2, #view-mining h2, #view-tasten h2 {
+  font-size: clamp(22px, 3vw, 28px); letter-spacing: .01em; text-transform: none; color: var(--text-primary); line-height: 1.2; margin-bottom: 16px; gap: 14px;
+}
+#view-start h2::before, #view-erste-schritte h2::before, #view-mining h2::before, #view-tasten h2::before {
+  width: 6px; height: 26px; margin-right: 0; box-shadow: none; border-radius: 0;
+  background: linear-gradient(var(--accent-cyan) 0 68%, transparent 68% 76%, var(--accent-amber) 76% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+#view-start h2::after, #view-erste-schritte h2::after, #view-mining h2::after, #view-tasten h2::after {
+  background: linear-gradient(90deg, var(--edge), transparent 70%); opacity: .6;
+}
+
+/* ---- A: Navigation Card ---- */
+.st-card, .st-group, .st-tool, .chapter {
+  --cut: 18px; --edge-c: var(--border); --ci: calc(var(--cut) - .59px);
+  position: relative; isolation: isolate; border: 0; border-radius: 0; box-shadow: none; background: var(--edge-c);
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+  transition: background-color .15s, transform .15s;
+}
+.st-tool { --cut: 11px; }
+.st-card::before, .st-group::before, .st-tool::before, .chapter::before {
+  content: ""; position: absolute; inset: 1px; z-index: -1; pointer-events: none;
+  clip-path: polygon(0 0, calc(100% - var(--ci)) 0, 100% var(--ci), 100% 100%, var(--ci) 100%, 0 calc(100% - var(--ci)));
+  background: linear-gradient(135deg, var(--cyan-soft), transparent 42%), var(--bg-card);
+}
+.st-card::after, .st-group::after, .chapter::after { content: ""; position: absolute; left: 0; top: 18px; width: 3px; height: 26px; background: var(--accent-cyan); pointer-events: none; }
+.st-card:hover, .st-group:hover, .st-tool:hover, .chapter:hover { --edge-c: var(--accent-cyan); box-shadow: none; transform: none; background: var(--edge-c); }
+.st-card:hover::before, .st-tool:hover::before, .chapter:hover::before, .st-group:hover::before { background: linear-gradient(135deg, var(--cyan-soft), transparent 70%), var(--bg-card); }
+.st-card:focus-visible, .st-tool:focus-visible, .chapter:focus-visible { outline: 0; --edge-c: var(--accent-cyan); box-shadow: none; }
+.st-card:focus-visible::before, .st-tool:focus-visible::before { box-shadow: inset 0 0 0 2px var(--accent-cyan); }
+.st-card { padding: 24px 22px 22px 25px; counter-increment: nav; }
+.st-quick { counter-reset: nav; }
+/* Kennung oben rechts: reine Dekoration */
+.st-card .st-id { position: absolute; right: 24px; top: 10px; font: 500 11.5px var(--f-mono); letter-spacing: .1em; color: var(--text-secondary); opacity: .85; }
+.st-card .st-id::before { content: "NAV·0" counter(nav); }
+.st-card .ic-box { border: 0; border-radius: 0; background: var(--cyan-soft); width: 48px; height: 48px;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+.st-card h3 { font-size: 22px; }
+.st-card:hover .go, .st-tool:hover b { color: var(--accent-cyan); }
+.st-card .go::after { content: ""; display: inline-block; width: 22px; height: 1px; margin-left: 10px; background: currentColor; vertical-align: middle; transition: width .15s; }
+.st-card:hover .go::after { width: 36px; }
+.st-tool { padding: 14px 16px 14px 18px; }
+.st-tool .ic { border: 0; border-radius: 0; background: var(--cyan-soft); clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px); }
+.st-group { padding: 22px 22px 20px 25px; }
+.st-links a { border-radius: 2px; }
+.chapter { padding-left: 25px; }
+
+/* Werkzeug-Gruppen */
+.st-tg-h { font-size: 13.5px; letter-spacing: .14em; }
+.st-tg-h::before { content: ""; width: 14px; height: 2px; background: var(--accent-amber); }
+
+/* ---- Startseite: Hero ---- */
+.st-hero { --cut: 34px; --ci: calc(var(--cut) - .59px); border: 0; border-radius: 0; background: var(--edge-c, var(--border)); --edge-c: var(--border);
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+  padding: clamp(28px, 5vw, 60px) clamp(20px, 4vw, 52px); min-height: 330px; justify-content: center; }
+.st-hero::before { inset: 1px; clip-path: polygon(0 0, calc(100% - var(--ci)) 0, 100% var(--ci), 100% 100%, var(--ci) 100%, 0 calc(100% - var(--ci)));
+  background-color: var(--bg-card);
+  background-image: linear-gradient(90deg, var(--bg-card) 30%, transparent 78%), linear-gradient(135deg, var(--cyan-soft), transparent 52%), linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px; }
+.st-hero::after { width: 64px; height: 64px; border-radius: 0; border-width: 2px; top: 0; left: 0; }
+.st-deco { position: absolute; right: 0; top: 0; bottom: 0; width: min(640px, 62%); z-index: -1; pointer-events: none; color: var(--accent-cyan); }
+.st-deco svg { position: absolute; right: -4%; top: 50%; height: 118%; width: auto; max-width: 112%; transform: translateY(-50%); }
+.st-hud-ring { opacity: .5; }
+.st-hero h1 { font-size: clamp(34px, 5.8vw, 62px); max-width: 14ch; }
+.st-hero h1::before { content: ""; display: block; width: 56px; height: 3px; margin-bottom: 18px; background: linear-gradient(90deg, var(--accent-cyan) 0 38px, transparent 38px 44px, var(--accent-amber) 44px); }
+.st-hero .start-search { border-radius: 2px; border: 1px solid var(--edge); border-left: 3px solid var(--accent-cyan); background: var(--glass);
+  }
+.st-hero .start-search:hover, .st-hero .start-search:focus-visible { box-shadow: none; background: var(--cyan-soft); }
+.st-hero .start-search:focus-visible { outline: 0; box-shadow: inset 0 0 0 2px var(--accent-cyan); }
+.st-read { font-size: 12.5px; }
+@media (max-width: 860px) { .st-deco { width: 78%; opacity: .55; } .st-deco svg { height: 100%; right: -22%; } }
+@media (max-width: 560px) {
+  .st-hero { --cut: 22px; min-height: 0; padding: 26px 18px 22px; }
+  .st-deco { width: 100%; opacity: .32; }
+  .st-deco svg { right: -38%; height: 78%; top: 36%; }
+  .st-hero::before { background-image: linear-gradient(90deg, var(--bg-card) 20%, transparent 100%), linear-gradient(135deg, var(--cyan-soft), transparent 52%), linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); }
+  .st-hero h1::before { margin-bottom: 12px; }
+  .st-card { --cut: 14px; }
+  .st-card .st-id { display: none; }
+}
+
+/* ---- B: Data Panel ---- */
+.tool, .ore-card, .st-panel {
+  --bk: var(--accent-cyan);
+  position: relative; border: 1px solid var(--border); border-radius: 2px; box-shadow: none;
+  background:
+    linear-gradient(var(--bk), var(--bk)) left top / 16px 2px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) left top / 2px 16px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) right top / 16px 2px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) right top / 2px 16px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) left bottom / 16px 2px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) left bottom / 2px 16px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) right bottom / 16px 2px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) right bottom / 2px 16px no-repeat,
+    linear-gradient(180deg, var(--cyan-soft), transparent 120px),
+    var(--bg-deep);
+  background-origin: border-box;
+}
+.tool::before, .tool::after { display: none; }
+.tool { padding: 22px 24px 24px; }
+.tool-head { padding-bottom: 12px; margin-bottom: 2px; border-bottom: 1px solid var(--border); position: relative; }
+.tool-head::after { content: ""; margin-left: auto; width: 64px; height: 6px; flex: none; background: repeating-linear-gradient(90deg, var(--edge) 0 12px, transparent 12px 16px); opacity: .7; }
+.tool-head::before { content: ""; position: absolute; left: 0; bottom: -1px; width: 56px; height: 2px; background: var(--accent-cyan); }
+.tool-tag { border-radius: 2px; border: 0; padding: 3px 10px 3px 9px; background: var(--cyan-soft); box-shadow: inset 3px 0 0 var(--accent-cyan); font-size: 12px; letter-spacing: .1em; }
+.tool-head h3 { font-size: clamp(21px, 2.6vw, 26px); }
+.rs-out, #rsout { border-left: 2px solid var(--accent-cyan); padding-left: 14px; }
+.tool .search input, .tool input.tool-input { border-radius: 2px; background: var(--bg-primary); border-color: var(--edge); }
+.table-wrap { border-radius: 2px; border-top: 2px solid var(--accent-cyan); background: var(--bg-deep); }
+thead th { background: var(--cyan-soft); color: var(--text-primary); }
+.st-panel { padding: 20px 22px; }
+.st-panel h3 { color: var(--accent-cyan); }
+.ore-card { border-radius: 2px; }
+.top .card { border-radius: 2px; background: var(--bg-deep); border: 1px solid var(--border); border-top: 2px solid var(--accent-cyan); box-shadow: none; }
+.top .card .what { font-size: 17px; }
+.top .card .why { font-size: 15px; color: var(--text-secondary); }
+
+/* Tastenkappen */
+kbd { font-size: 13.5px; padding: 2px 9px; border-radius: 6px; border: 1px solid var(--key-edge); border-bottom: 3px solid color-mix(in srgb, var(--accent-cyan) 55%, var(--key-edge));
+  background: linear-gradient(180deg, var(--bg-elevated), var(--bg-card)); box-shadow: inset 0 1px 0 var(--sheen); color: var(--text-primary); }
+
+/* ---- C: Reading Panel ---- */
+.step, .panel, .card-plain {
+  border: 1px solid var(--border); border-left: 3px solid color-mix(in srgb, var(--accent-cyan) 60%, var(--border)); border-radius: 6px; background: var(--bg-card); box-shadow: none;
+}
+.step { padding: 22px 24px; gap: 8px 18px; grid-template-columns: 46px minmax(0, 1fr); }
+.step .num { width: 44px; height: 44px; border-radius: 8px; border-width: 1px; background: var(--cyan-soft); font-size: 18px; }
+.step.done { border-left-color: var(--ok); }
+.step.done .num { color: var(--bg-primary); }
+.step h3 { font-size: 22px; margin-top: 6px; }
+.step .body { max-width: var(--read); }
+.step li, .step .body p { font-size: 16px; line-height: 1.65; }
+.panel { padding: 8px 20px 12px; }
+.panel h3 { font-size: 19px; padding-bottom: 6px; border-bottom: 1px solid var(--border); margin: 12px 0 4px; }
+.panel h3 small { font-size: 12px; letter-spacing: .08em; color: var(--accent-cyan); }
+.row { padding: 10px 0; }
+.row .a { font-size: 16px; }
+.row .note { font-size: 14px; }
+
+/* Fortschritt: segmentiert */
+.bar { height: 14px; border-radius: 0; background: var(--bg-deep); border: 1px solid var(--border); padding: 2px; }
+.bar i { border-radius: 0; background: repeating-linear-gradient(90deg, var(--accent-cyan) 0 14px, transparent 14px 17px); }
+.progress .count { font-size: 14px; color: var(--text-primary); }
+
+/* ---- Kapitelkopf passend zur Startseite ---- */
+.chead { padding-bottom: 24px; }
+.chead::after { width: 96px; }
+.chead::before { content: ""; position: absolute; left: 104px; bottom: -1px; width: 24px; height: 2px; background: var(--accent-amber); }
+.chead-cat { border: 0; border-radius: 0; padding: 5px 18px 5px 11px; background: var(--cyan-soft); box-shadow: inset 3px 0 0 var(--accent-cyan); clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 100%, 0 100%); }
+.chead-act a { border-radius: 2px; border-color: var(--edge); }
+.toc { border-radius: 2px; background: var(--bg-deep); border-left: 3px solid var(--accent-cyan); }
+.view h1 { text-wrap: balance; }
+#view-erste-schritte h1, #view-mining h1, #view-tasten h1 { font-size: clamp(36px, 5.4vw, 54px); }
+
+/* ---- Eingabe-Hilfen und kleine Korrekturen ---- */
+.hint, .learn { border-radius: 4px; }
+@media (max-width: 560px) {
+  .step { padding: 18px 16px; grid-template-columns: 44px minmax(0, 1fr); gap: 12px 14px; align-items: center; }
+  .step .num { grid-row: 1; }
+  .step h3 { grid-column: 2; grid-row: 1; margin: 0; }
+  .step .body { grid-column: 1 / -1; }
+  .tool { padding: 18px 16px 20px; }
+  .tool-head::after { width: 40px; }
+  .st-panel { padding: 18px 16px; }
+}
+@media (max-width: 560px) { .top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .top .card { padding: 12px 12px 14px; } .top .card .keys { flex-wrap: wrap; } .top .card .what { font-size: 16px; } .top .card .why { font-size: 14.5px; } }
+@media (prefers-reduced-motion: reduce) { .st-card .go::after { transition: none; } }
+@media print { .st-deco { display: none; } .st-card, .st-group, .st-tool, .st-hero { clip-path: none; } }
+
 </style>
 </head>
 <body>
 
 <nav class="nav" aria-label="Hauptnavigation">
   <div class="nav-in">
-    <a class="brand" href="#start" aria-label="SC HANDBUCH, zur Startseite"><span class="brand-name">SC <b>HANDBUCH</b></span><span class="brand-sub">Dein Begleiter durch das Verse</span></a>
-    <div class="tabs" role="list">
-      <a href="#start" role="listitem">Start</a>
-      <a href="#tutorial" role="listitem" class="has-sub" data-group="lernen" aria-haspopup="true" aria-controls="subnav">Lernen</a>
-      <a href="#wissen" role="listitem" class="has-sub" data-group="wissen" aria-haspopup="true" aria-controls="subnav">Wissen</a>
-      <a href="#tools" role="listitem" class="has-sub" data-group="tools" aria-haspopup="true" aria-controls="subnav">Tools</a>
-      <a href="#einsaetze" role="listitem" class="has-sub" data-group="einsaetze" aria-haspopup="true" aria-controls="subnav">Einsätze</a>
-      <a href="#news" role="listitem" class="has-sub" data-group="aktuell" aria-haspopup="true" aria-controls="subnav">Aktuelles<span class="news-dot" id="newsdot" title="Neue Beiträge" hidden></span></a>
+    <a class="brand" href="#start" aria-label="SC HANDBUCH, zur Startseite"><svg class="brand-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 2.2l12.4 7.1v13.4L16 29.8 3.6 22.7V9.3z" stroke-width="1.6"/><path d="M16 8.4l7 4v7.2l-7 4-7-4v-7.2z" stroke-width="1.2" fill="currentColor" fill-opacity=".16"/><path d="M16 2.2V8M3.6 9.3l5.4 3.1M28.4 9.3l-5.4 3.1" stroke-width="1.2" opacity=".7"/><circle cx="16" cy="16" r="2.1" fill="var(--accent-amber)" stroke="none"/></svg><span class="brand-name">SC <b>HANDBUCH</b></span><span class="brand-sub">Dein Begleiter durch das Verse</span></a>
+    <div class="tabs">
+      <a href="#start">Start</a>
+      <a href="#tutorial" class="has-sub" data-group="lernen">Lernen</a>
+      <a href="#wissen" class="has-sub" data-group="wissen">Wissen</a>
+      <a href="#tools" class="has-sub" data-group="tools">Tools</a>
+      <a href="#einsaetze" class="has-sub" data-group="einsaetze">Einsätze</a>
+      <a href="#news" class="has-sub" data-group="aktuell">Aktuelles<span class="news-dot" id="newsdot" title="Neue Beiträge" hidden></span></a>
     </div>
+    <a class="nav-led" id="navled" href="#news" hidden><i></i><span>Server</span></a>
     <button type="button" class="nav-search" id="navsearch" aria-label="Seite durchsuchen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Suche</span><kbd>/</kbd></button>
     <a class="nav-ccu" href="#ccu-radar" aria-label="CCU-Radar" title="CCU-Radar: lohnende Schiffs-Upgrades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="4.6"/><path d="M12 12 18.6 5.4"/><circle cx="16.4" cy="14.6" r="1.1" fill="currentColor" stroke="none"/></svg><span class="news-dot" id="ccudot" title="Neue Meldung" hidden></span></a>
     <button type="button" class="nav-menu" id="navmenu" aria-label="Menü öffnen" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -1213,50 +1424,50 @@ html.menu-open { overflow: hidden; }
        Ein Kapitel gehört zu der ersten Gruppe, in der es steht (Brotkrumen, aktiver Tab); in weiteren Gruppen darf es zusätzlich verlinkt sein.
        Links mit data-jump springen nach dem Seitenwechsel zu dem Element mit dieser ID. -->
   <div class="subnav" id="subnav" hidden>
-    <div class="subnav-in" role="list" aria-label="Lernen" data-group="lernen">
-      <a href="#tutorial" role="listitem">Übersicht</a>
-      <a href="#heimat" role="listitem">Heimatstadt</a>
-      <a href="#erste-schritte" role="listitem">Erste Schritte</a>
-      <a href="#ueberleben" role="listitem">Überleben</a>
-      <a href="#t-mining" role="listitem">Mining<span class="sub-long"> lernen</span></a>
-      <a href="#t-salvage" role="listitem">Salvage<span class="sub-long"> lernen</span></a>
-      <a href="#t-hauling" role="listitem">Hauling<span class="sub-long"> lernen</span></a>
-      <a href="#t-crafting" role="listitem">Crafting<span class="sub-long"> lernen</span></a>
-      <a href="#training" role="listitem">Training <span class="beta">Beta</span></a>
+    <div class="subnav-in" role="group" aria-label="Lernen" data-group="lernen">
+      <a href="#tutorial">Übersicht</a>
+      <a href="#heimat">Heimatstadt</a>
+      <a href="#erste-schritte">Erste Schritte</a>
+      <a href="#ueberleben">Überleben</a>
+      <a href="#t-mining">Mining<span class="sub-long"> lernen</span></a>
+      <a href="#t-salvage">Salvage<span class="sub-long"> lernen</span></a>
+      <a href="#t-hauling">Hauling<span class="sub-long"> lernen</span></a>
+      <a href="#t-crafting">Crafting<span class="sub-long"> lernen</span></a>
+      <a href="#training">Training <span class="beta">Beta</span></a>
     </div>
-    <div class="subnav-in" role="list" aria-label="Wissen" data-group="wissen">
-      <a href="#wissen" role="listitem">Übersicht</a>
-      <a href="#berufe" role="listitem">Berufe</a>
-      <a href="#mining" role="listitem">Mining</a>
-      <a href="#salvage" role="listitem">Salvage</a>
-      <a href="#hauling" role="listitem">Hauling</a>
-      <a href="#crafting" role="listitem">Crafting</a>
-      <a href="#ruf" role="listitem">Ruf</a>
-      <a href="#tasten" role="listitem">Tastatur</a>
-      <a href="#hosas" role="listitem">HOSAS</a>
-      <a href="#schiffe" role="listitem">Schiffe</a>
-      <a href="#glossar" role="listitem">Glossar</a>
+    <div class="subnav-in" role="group" aria-label="Wissen" data-group="wissen">
+      <a href="#wissen">Übersicht</a>
+      <a href="#berufe">Berufe</a>
+      <a href="#mining">Mining</a>
+      <a href="#salvage">Salvage</a>
+      <a href="#hauling">Hauling</a>
+      <a href="#crafting">Crafting</a>
+      <a href="#ruf">Ruf</a>
+      <a href="#tasten">Tastatur</a>
+      <a href="#hosas">HOSAS</a>
+      <a href="#schiffe">Schiffe</a>
+      <a href="#glossar">Glossar</a>
     </div>
-    <div class="subnav-in" role="list" aria-label="Tools" data-group="tools">
-      <a href="#tools" role="listitem">Übersicht</a>
-      <a href="#tools" role="listitem" data-jump="tg-wirtschaft">Wirtschaft</a>
-      <a href="#tools" role="listitem" data-jump="tg-schiffe">Schiffe</a>
-      <a href="#tools" role="listitem" data-jump="tg-planung">Planung<span class="sub-long"> und Training</span></a>
-      <a href="#tools" role="listitem" data-jump="tg-missionen">Missionen</a>
-      <a href="#ccu-radar" role="listitem">CCU-Radar</a>
+    <div class="subnav-in" role="group" aria-label="Tools" data-group="tools">
+      <a href="#tools">Übersicht</a>
+      <a href="#tools" data-jump="tg-wirtschaft">Wirtschaft</a>
+      <a href="#tools" data-jump="tg-schiffe">Schiffe</a>
+      <a href="#tools" data-jump="tg-planung">Planung<span class="sub-long"> und Training</span></a>
+      <a href="#tools" data-jump="tg-missionen">Missionen</a>
+      <a href="#ccu-radar">CCU-Radar</a>
     </div>
-    <div class="subnav-in" role="list" aria-label="Einsätze" data-group="einsaetze">
-      <a href="#einsaetze" role="listitem">Übersicht</a>
-      <a href="#exec-hangar" role="listitem">Executive Hangar</a>
-      <a href="#siege-orison" role="listitem">Siege of Orison</a>
-      <a href="#hathor" role="listitem">Hathor &amp; Wikelo</a>
-      <a href="#recco" role="listitem">Recco<span class="sub-long"> Battaglia</span></a>
-      <a href="#bunker" role="listitem">Bunker</a>
+    <div class="subnav-in" role="group" aria-label="Einsätze" data-group="einsaetze">
+      <a href="#einsaetze">Übersicht</a>
+      <a href="#exec-hangar">Executive Hangar</a>
+      <a href="#siege-orison">Siege of Orison</a>
+      <a href="#hathor">Hathor &amp; Wikelo</a>
+      <a href="#recco">Recco<span class="sub-long"> Battaglia</span></a>
+      <a href="#bunker">Bunker</a>
     </div>
-    <div class="subnav-in" role="list" aria-label="Aktuelles" data-group="aktuell">
-      <a href="#news" role="listitem">News</a>
-      <a href="#bugs" role="listitem">Bugs &amp; Workarounds</a>
-      <a href="#ccu-radar" role="listitem">CCU-Radar</a>
+    <div class="subnav-in" role="group" aria-label="Aktuelles" data-group="aktuell">
+      <a href="#news">News</a>
+      <a href="#bugs">Bugs &amp; Workarounds</a>
+      <a href="#ccu-radar">CCU-Radar</a>
     </div>
   </div>
 </nav>
@@ -1297,15 +1508,42 @@ html.menu-open { overflow: hidden; }
   <a class="status-banner" id="statusbanner" href="#news" hidden></a>
 
   <div class="st-hero">
-    <svg class="st-hud" viewBox="0 0 400 400" fill="none" stroke="currentColor" aria-hidden="true">
-      <circle cx="200" cy="200" r="190" stroke-width="1" stroke-dasharray="2 10"/>
-      <circle cx="200" cy="200" r="150" stroke-width="1"/>
-      <path d="M200 50a150 150 0 0 1 150 150" stroke-width="4"/>
-      <circle cx="200" cy="200" r="104" stroke-width="1" stroke-dasharray="46 14"/>
-      <circle cx="200" cy="200" r="58" stroke-width="1"/>
-      <path d="M200 20v46M200 334v46M20 200h46M334 200h46M200 180v40M180 200h40" stroke-width="1"/>
-      <path d="M94 94l22 22M306 94l-22 22M94 306l22-22M306 306l-22-22" stroke-width="1"/>
-    </svg>
+    <div class="st-deco" aria-hidden="true">
+      <svg viewBox="0 0 600 500" fill="none" stroke="currentColor" stroke-width="1" focusable="false">
+        <defs>
+          <pattern id="st-scan" width="6" height="4" patternUnits="userSpaceOnUse"><path d="M0 .5h6" stroke="currentColor" stroke-opacity=".22"/></pattern>
+          <linearGradient id="st-sweep" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="currentColor" stop-opacity=".02"/><stop offset="1" stop-color="currentColor" stop-opacity=".3"/></linearGradient>
+        </defs>
+        <g class="st-hud-panels">
+          <path d="M330 30h220l30 30v150H360l-30-30z" fill="currentColor" fill-opacity=".04" stroke-opacity=".4"/>
+          <path d="M330 30h220l30 30v150H360l-30-30z" fill="url(#st-scan)" stroke="none"/>
+          <path d="M270 160h210l30 30v140H300l-30-30z" fill="currentColor" fill-opacity=".03" stroke-opacity=".28"/>
+          <path d="M360 300h190l30 30v130H390l-30-30z" fill="currentColor" fill-opacity=".04" stroke-opacity=".34"/>
+          <path d="M360 300h190l30 30v130H390l-30-30z" fill="url(#st-scan)" stroke="none"/>
+          <path d="M346 54h64M346 70h40M346 86h52" stroke-opacity=".35"/>
+          <path d="M378 420h120M378 436h80" stroke-opacity=".3"/>
+        </g>
+        <g class="st-hud-ring">
+          <circle cx="330" cy="250" r="226" stroke-dasharray="1 9" stroke-width="7" stroke-opacity=".6"/>
+          <circle cx="330" cy="250" r="210" stroke-opacity=".5"/>
+          <circle cx="330" cy="250" r="160" stroke-opacity=".4"/>
+          <circle cx="330" cy="250" r="110" stroke-opacity=".5" stroke-dasharray="40 12"/>
+          <circle cx="330" cy="250" r="60" stroke-opacity=".6"/>
+          <ellipse cx="330" cy="250" rx="262" ry="82" transform="rotate(-24 330 250)" stroke-opacity=".38"/>
+          <ellipse cx="330" cy="250" rx="190" ry="48" transform="rotate(38 330 250)" stroke-opacity=".28" stroke-dasharray="3 6"/>
+          <path d="M330 250L384.4 47.2A210 210 0 0 1 520.3 161.3Z" fill="url(#st-sweep)" stroke="none"/>
+          <path d="M330 250L384.4 47.2" stroke-opacity=".85" stroke-width="1.5"/>
+          <path d="M330 14v52M330 434v52M94 250h52M514 250h52M330 232v36M312 250h36" stroke-opacity=".6"/>
+          <path d="M163 83l22 22M497 83l-22 22M163 417l22-22M497 417l-22-22" stroke-opacity=".4"/>
+          <circle cx="452" cy="128" r="4" fill="var(--accent-amber)" stroke="none"/>
+          <circle cx="452" cy="128" r="11" stroke="var(--accent-amber)" stroke-opacity=".6"/>
+          <rect x="255" y="326" width="7" height="7" fill="currentColor" stroke="none" fill-opacity=".8"/>
+          <rect x="402" y="338" width="5" height="5" fill="currentColor" stroke="none" fill-opacity=".6"/>
+          <circle cx="153" cy="171" r="4" fill="currentColor" stroke="none" fill-opacity=".7"/>
+          <g fill="currentColor" stroke="none" fill-opacity=".7" font-family="IBM Plex Mono, monospace" font-size="14" text-anchor="middle"><text x="330" y="9">N</text><text x="582" y="255">O</text><text x="330" y="498">S</text><text x="78" y="255">W</text></g>
+        </g>
+      </svg>
+    </div>
     <div class="stamp"><span>SC HANDBUCH</span><span>Stand Alpha 4.10.2</span><span>QWERTZ</span><span>Inoffiziell</span></div>
     <h1>Bereit für deinen nächsten Flug?</h1>
     <p class="st-sub">Dein Begleiter durch das Verse.</p>
@@ -1317,10 +1555,10 @@ html.menu-open { overflow: hidden; }
   <section aria-labelledby="st-h-quick">
     <h2 id="st-h-quick">Schnellzugriff</h2>
     <div class="st-quick">
-      <a class="st-card" href="#heimat" id="st-new"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-launch"/></svg></span><h3>Neu im Verse</h3><p>Heimatstadt wählen, dann Schritt für Schritt vom Quartier bis zum ersten Auftrag. Du hakst ab, was sitzt.</p><span class="prog" id="st-prog"></span><span class="go" id="st-newgo">Los geht’s →</span></a>
-      <a class="st-card" href="#tasten"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg></span><h3>Steuerung finden</h3><p>Die zehn wichtigsten Tasten und alle weiteren nach Situation, für QWERTZ. Dazu die HOSAS-Belegung.</p><span class="go">Tasten nachschlagen →</span></a>
-      <a class="st-card" href="#berufe"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg></span><h3>Geld verdienen</h3><p>Mining, Salvage, Hauling und Crafting im Vergleich: was es kostet, was es bringt und was zu dir passt.</p><span class="go">Berufe vergleichen →</span></a>
-      <a class="st-card" href="#bugs"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg></span><h3>Probleme lösen</h3><p>Aufzug kommt nicht, Schiff fehlt, Fehlercode? Bekannte Bugs mit Workarounds und die offizielle Liste von CIG.</p><span class="go">Hilfe finden →</span></a>
+      <a class="st-card" href="#heimat" id="st-new"><span class="st-id" aria-hidden="true"></span><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-launch"/></svg></span><h3>Neu im Verse</h3><p>Heimatstadt wählen, dann Schritt für Schritt vom Quartier bis zum ersten Auftrag. Du hakst ab, was sitzt.</p><span class="prog" id="st-prog"></span><span class="go" id="st-newgo">Los geht’s →</span></a>
+      <a class="st-card" href="#tasten"><span class="st-id" aria-hidden="true"></span><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg></span><h3>Steuerung finden</h3><p>Die zehn wichtigsten Tasten und alle weiteren nach Situation, für QWERTZ. Dazu die HOSAS-Belegung.</p><span class="go">Tasten nachschlagen →</span></a>
+      <a class="st-card" href="#berufe"><span class="st-id" aria-hidden="true"></span><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg></span><h3>Geld verdienen</h3><p>Mining, Salvage, Hauling und Crafting im Vergleich: was es kostet, was es bringt und was zu dir passt.</p><span class="go">Berufe vergleichen →</span></a>
+      <a class="st-card" href="#bugs"><span class="st-id" aria-hidden="true"></span><span class="ic-box"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg></span><h3>Probleme lösen</h3><p>Aufzug kommt nicht, Schiff fehlt, Fehlercode? Bekannte Bugs mit Workarounds und die offizielle Liste von CIG.</p><span class="go">Hilfe finden →</span></a>
     </div>
   </section>
 
@@ -3147,10 +3385,11 @@ html.menu-open { overflow: hidden; }
 
 <!-- ============ TASTEN ============ -->
 <section class="view" id="view-tasten" data-view="tasten" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>Standardbelegung Alpha 4.10.2</span><span>QWERTZ</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg>Wissen · Steuerung</span><span class="chead-tag">Standardbelegung Alpha 4.10.2</span><span class="chead-tag">QWERTZ</span></div>
     <h1>Tasten</h1>
     <p class="lede">Die Tasten, die du in den ersten Stunden brauchst. Belegungen ändern sich mit Patches, unsichere Einträge sind markiert.</p>
+    <div class="chead-act"><a href="#tasten" data-jump="q">Taste suchen</a><a href="#hosas">HOSAS-Belegung</a><a href="#training">Training</a></div>
     <div class="legend">
       <span>Für <strong>QWERTZ</strong>: Y und Z gegenüber englischen Guides getauscht</span>
       <span><kbd>R-Alt</kbd> = AltGr</span>
@@ -4633,6 +4872,8 @@ window.SC_MINE = (function () {
   function show() {
     var h = (location.hash || '#start').slice(1);
     if (h === 'hotas') h = 'hosas';
+    var wantPlan = h === 'plan';
+    if (wantPlan) h = 'start';
     /* #s-<slug> öffnet ein Schiff in der Schiffsübersicht */
     var keepScroll = false;
     if (h.indexOf('s-') === 0) { keepScroll = !document.getElementById('view-schiffe').hidden; h = 'schiffe'; }
@@ -4662,6 +4903,12 @@ window.SC_MINE = (function () {
     }
     if (!keepScroll) window.scrollTo(0, 0);
     document.dispatchEvent(new CustomEvent('viewchange', { detail: h }));
+    if (wantPlan) setTimeout(function () {
+      var d = document.getElementById('st-plan'); if (!d) return;
+      d.open = true;
+      d.scrollIntoView({ block: 'start' });
+      var sm = d.querySelector('summary'); if (sm) sm.focus({ preventScroll: true });
+    }, 200);
   }
   window.addEventListener('hashchange', show);
   show();
@@ -7231,6 +7478,7 @@ window.SC_MINE = (function () {
     $('st-status').innerHTML = sys.length ? sys.map(function (s) { var x = stat(s.status); return '<div class="st-stat ' + x[0] + '"><i></i>' + esc(s.name) + '<span>' + x[1] + '</span></div>'; }).join('')
       : '<div class="st-stat warn"><i></i>Status gerade nicht abrufbar</div>';
     var sum = stat(st.summary), fmt = function (x) { return new Date(x).toLocaleString('de-DE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); };
+    var led = $('navled'); if (led && sys.length) { led.className = 'nav-led ' + sum[0]; led.hidden = false; led.setAttribute('aria-label', 'Server-Status: ' + sum[1] + ', Details in den News'); led.title = 'Server-Status: ' + sum[1]; }
     $('st-read').innerHTML = (sys.length ? '<a href="#news"><span class="dot ' + sum[0] + '"></span>Server: <b>' + sum[1] + '</b></a>' : '') +
       (d.issues && d.issues.title ? '<a href="#bugs">Patch: <b>' + esc((/[\d.]+/.exec(d.issues.title) || [''])[0]) + '</b></a>' : '') +
       (d.checked || d.updated ? '<span>Daten: <b>' + fmt(d.checked || d.updated) + '</b></span>' : '');
