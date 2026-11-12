@@ -1668,3 +1668,17 @@ select { min-height: 44px; border-radius: 2px; }
 /* Dunkelmodus: Zahlenmarke auf hellem Cyan braucht dunkle Schrift (Kontrast) */
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hc h4 .no { color: #0b1117; } }
 :root[data-theme="dark"] .hc h4 .no { color: #0b1117; }
+
+/* Footer: Quellen, Datenschutz und Rechtliches eingeklappt, Text bleibt vollständig */
+.foot-row { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: flex-start; }
+.foot-d { flex: 0 1 auto; min-width: 0; }
+.foot-d[open] { flex: 1 1 100%; order: 9; }
+.foot-d > summary { list-style: none; cursor: pointer; padding: 6px 12px; min-height: 32px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--muted); font-size: 13px; }
+.foot-d > summary::-webkit-details-marker { display: none; }
+.foot-d > summary::before { content: "+"; font-family: var(--f-mono); color: var(--accent-cyan); }
+.foot-d[open] > summary::before { content: "\2212"; }
+.foot-d > summary:hover { border-color: var(--accent-cyan); color: var(--ink); }
+.foot-d[open] > summary { margin-bottom: 10px; }
+.foot-d p { max-width: 90ch; margin: 0 0 8px; }
+.foot-d .legal { margin-top: 0; padding-top: 0; border-top: 0; }
+.foot-d .kekse { margin-top: 0; }
