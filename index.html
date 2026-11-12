@@ -656,20 +656,9 @@ details.ref summary { cursor: pointer; font-family: var(--f-display); font-weigh
 .oc-grid .down { color: var(--warn); }
 .ore-link { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline dotted; text-underline-offset: 3px; }
 .ore-link:hover { color: var(--accent); }
-/* Handy: Logo und News in der ersten Zeile, darunter alle Bereiche ohne Scrollen; die Leiste weicht beim Runterscrollen aus */
+/* Leiste weicht auf dem Handy beim Runterscrollen aus (Regeln für Handy und Menü: Abschnitt „Phase 3“ am Ende) */
 .nav { transition: transform .2s ease; }
 .nav.nav-away { transform: translateY(calc(-100% - env(safe-area-inset-top, 0px))); }
-@media (max-width: 640px) {
-  .nav-in { flex-wrap: wrap; row-gap: 4px; padding-block: 8px 6px; }
-  .nav-news { padding: 4px 10px; font-size: 13px; }
-  .tabs { order: 3; flex: 1 0 100%; display: grid; grid-template-columns: repeat(6, auto); justify-content: space-between; gap: 0; overflow: visible; }
-  .tabs a { font-size: clamp(11px, 3.5vw, 13px); letter-spacing: 0; padding: 6px clamp(3px, 1.2vw, 8px); text-align: center; }
-  .tabs a.has-sub::after { display: none; }
-  .tabs a.nav-opt { display: none; }
-  .subnav-in { flex-wrap: wrap; overflow: visible; gap: 2px 4px; padding-block: 5px; }
-  .subnav a { font-size: 12.5px; padding: 4px 8px; }
-  .sub-long { display: none; }
-}
 .xh-now { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .xh-lights { display: flex; gap: 8px; padding: 10px 12px; background: var(--key-bg); border: 1px solid var(--line); border-radius: 10px; }
 .xh-lights i { width: 22px; height: 22px; border-radius: 50%; background: #2a3138; box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .25); }
@@ -1088,6 +1077,119 @@ footer { border-top-color: var(--border); }
   .step { grid-template-columns: 1fr; }
   .step .num { grid-row: auto; }
 }
+
+/* ===== Phase 3: Navigation, Orientierung, Kapitelköpfe ===== */
+/* Leiste: sechs Bereiche, eine Zeile */
+.nav-in { gap: 14px; padding-block: 9px; }
+.tabs { gap: 2px; }
+.tabs a { font-size: 14.5px; padding: 7px 11px; }
+.tabs a.has-sub::after { opacity: .6; }
+.tabs a[aria-current="page"]::before { left: 11px; right: 11px; bottom: 0; }
+.tabs .news-dot { position: static; display: inline-block; width: 8px; height: 8px; margin-left: 6px; vertical-align: 1px; box-shadow: none; }
+.news-dot[hidden] { display: none; }
+.nav-search { min-height: 34px; }
+.nav-menu { display: none; flex: none; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; color: var(--text-primary); background: transparent; border: 1px solid var(--border); border-radius: var(--radius-xs); cursor: pointer; }
+.nav-menu svg { width: 22px; height: 22px; }
+.nav-menu:hover { border-color: var(--accent-cyan); background: var(--cyan-soft); }
+.nav-menu[aria-expanded="true"] { color: var(--accent-cyan); border-color: var(--accent-cyan); }
+@media (max-width: 1000px) { .subnav .sub-long { display: none; } }
+
+/* Handy und Tablet: Marke, Suche, Radar, Menü. Die Bereiche stehen im Menü, die zweite Reihe entfällt (Brotkrumen zeigen den Ort). */
+@media (max-width: 860px) {
+  .tabs, .subnav { display: none !important; }
+  .nav-in { gap: 8px; padding-block: 8px; }
+  .nav-search { margin-left: auto; min-height: 44px; padding: 0 13px; font-size: 14px; }
+  .nav-search svg { width: 18px; height: 18px; }
+  .nav-ccu { width: 44px; height: 44px; }
+  .nav-ccu svg { width: 21px; height: 21px; }
+  .nav-menu { display: inline-flex; }
+}
+@media (max-width: 380px) { .nav-search { width: 44px; padding: 0; justify-content: center; } .nav-search span { display: none; } }
+
+@media (min-width: 861px) { .subnav-in { padding-block: 3px; } .subnav a { padding: 4px 10px; } }
+
+/* Menü-Blatt */
+html.menu-open { overflow: hidden; }
+.menu { margin: 0 0 0 auto; padding: 0; border: 0; border-left: 1px solid var(--border); width: min(100%, 440px); max-width: 100%; height: 100%; max-height: 100%; background: var(--bg-primary); color: var(--text-primary); overscroll-behavior: contain; }
+.menu::backdrop { background: rgba(4, 8, 13, .72); }
+.menu-in { height: 100%; display: flex; flex-direction: column; padding: max(12px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) 16px; gap: 12px; box-sizing: border-box; }
+.menu-top { display: flex; align-items: center; justify-content: space-between; min-height: 44px; }
+.menu-top b { font: 700 13px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-cyan); }
+.menu-x { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-primary); background: transparent; border: 1px solid var(--border); border-radius: var(--radius-xs); cursor: pointer; }
+.menu-x svg { width: 22px; height: 22px; }
+.menu-x:hover { border-color: var(--accent-cyan); }
+.menu-search { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px; font: 500 15px var(--f-body); color: var(--text-secondary); background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xs); cursor: pointer; text-align: left; }
+.menu-search svg { width: 18px; height: 18px; flex: none; color: var(--accent-cyan); }
+.menu-list { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 6px; padding-bottom: 8px; }
+.menu-top-link, .menu-g > summary { display: flex; align-items: center; min-height: 48px; padding: 0 14px; font: 600 17px var(--f-display); letter-spacing: .02em; color: var(--text-primary); text-decoration: none; border: 1px solid var(--border); border-radius: var(--radius-xs); background: var(--bg-card); cursor: pointer; list-style: none; }
+.menu-g > summary::-webkit-details-marker { display: none; }
+.menu-g > summary small { margin-left: 10px; font: 500 12px var(--f-mono); color: var(--text-secondary); }
+.menu-g > summary::after { content: "▾"; margin-left: auto; color: var(--accent-cyan); transition: transform .15s; }
+.menu-g[open] > summary::after { transform: rotate(180deg); }
+.menu-g[open] > summary, .menu-top-link[aria-current="page"] { border-color: var(--accent-cyan); }
+.menu-top-link[aria-current="page"], .menu-g.cur > summary { color: var(--accent-cyan); }
+.menu-links { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; padding: 8px 2px 6px; }
+.menu-links a { display: flex; align-items: center; min-height: 44px; padding: 0 12px; font: 500 15px var(--f-body); color: var(--text-primary); text-decoration: none; border-radius: var(--radius-xs); border-left: 2px solid var(--border); background: transparent; }
+.menu-links a:hover { background: var(--cyan-soft); }
+.menu-links a[aria-current="page"] { color: var(--accent-cyan); border-left-color: var(--accent-cyan); background: var(--cyan-soft); font-weight: 600; }
+.menu-links .sub-long { display: inline; white-space: pre; }
+.menu-links .beta { margin-left: 6px; }
+@media (max-width: 400px) { .menu-links { grid-template-columns: 1fr; } }
+@media (min-width: 861px) { .menu { display: none !important; } }
+
+/* Brotkrumen */
+.crumbs { margin: 0 0 18px; }
+.crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; }
+.crumbs li { display: inline-flex; align-items: center; font: 500 13.5px var(--f-display); letter-spacing: .02em; color: var(--text-secondary); }
+.crumbs li + li::before { content: "›"; margin: 0 9px; color: var(--accent-cyan); opacity: .8; }
+.crumbs a { display: inline-flex; align-items: center; min-height: 32px; color: var(--text-secondary); text-decoration: none; }
+.crumbs a:hover { color: var(--accent-cyan); text-decoration: underline; text-underline-offset: 3px; }
+.crumbs [aria-current="page"] { color: var(--text-primary); font-weight: 600; }
+@media (max-width: 860px) { .crumbs { margin-bottom: 14px; } .crumbs a, .crumbs [aria-current] { min-height: 44px; display: inline-flex; align-items: center; } .crumbs li { font-size: 14.5px; } }
+
+/* Kapitelkopf */
+.chead { gap: 14px; padding-bottom: 22px; border-bottom: 1px solid var(--border); position: relative; }
+.chead::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 96px; height: 2px; background: var(--accent-cyan); }
+.chead-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; font: 500 12.5px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; }
+.chead-cat { display: inline-flex; align-items: center; gap: 7px; margin-right: 12px; padding: 4px 11px 4px 8px; color: var(--accent-cyan); border: 1px solid var(--accent-cyan); border-radius: var(--radius-xs); background: var(--cyan-soft); }
+.chead-cat svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.chead-tag { color: var(--text-secondary); }
+.chead-tag + .chead-tag::before { content: ""; display: inline-block; width: 14px; height: 1px; margin: 0 10px; background: var(--border); vertical-align: middle; }
+.chead-act { display: flex; flex-wrap: wrap; gap: 8px; }
+.chead-act a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; font: 600 14.5px var(--f-display); letter-spacing: .02em; color: var(--text-primary); text-decoration: none; border: 1px solid var(--border); border-radius: var(--radius-xs); background: var(--bg-card); transition: border-color .15s, background .15s, color .15s; }
+.chead-act a:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: var(--cyan-soft); }
+.chead-act a::after { content: "→"; margin-left: 8px; color: var(--accent-cyan); }
+@media (max-width: 560px) { .chead-act a { flex: 1 1 calc(50% - 4px); justify-content: center; text-align: center; padding: 0 10px; } .chead-act a::after { display: none; } }
+
+/* Inhaltsverzeichnis */
+.toc { margin-top: 4px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); }
+.toc > summary { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 16px; font: 600 15.5px var(--f-display); cursor: pointer; list-style: none; }
+.toc > summary::-webkit-details-marker { display: none; }
+.toc > summary small { font: 500 12px var(--f-mono); letter-spacing: .06em; color: var(--text-secondary); }
+.toc > summary::after { content: "▾"; margin-left: auto; color: var(--accent-cyan); transition: transform .15s; }
+.toc[open] > summary::after { transform: rotate(180deg); }
+.toc ol { margin: 0; padding: 2px 16px 12px; list-style: none; counter-reset: toc; columns: 3 230px; column-gap: 28px; }
+.toc li { counter-increment: toc; break-inside: avoid; }
+.toc li a { display: flex; align-items: baseline; gap: 10px; min-height: 38px; padding: 7px 0; color: var(--text-primary); text-decoration: none; line-height: 1.35; font-size: 15px; }
+.toc li a::before { content: counter(toc, decimal-leading-zero); flex: none; font: 500 12px var(--f-mono); color: var(--accent-cyan); }
+.toc li a:hover { color: var(--accent-cyan); }
+@media (max-width: 560px) { .toc ol { columns: 1; } .toc li a { min-height: 44px; align-items: center; } }
+.view h2, .view h3, .view .step h3 { scroll-margin-top: 80px; }
+
+/* Werkzeuge gruppiert (Startseite und Werkzeuge) */
+.st-tg { margin: 0 0 22px; }
+.st-tg-h { display: flex; align-items: center; gap: 12px; margin: 0 0 10px; font: 600 13px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-cyan); }
+.st-tg-h::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+.st-tg-d { margin: -4px 0 10px; font-size: 15px; color: var(--text-secondary); max-width: var(--read); }
+.st-more { margin: 4px 0 14px; }
+#st-tools-groups .st-tools, #tools-groups .st-tools { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.st-gh { margin: 0; font: 600 17px var(--f-display); }
+.st-gh a { color: inherit; text-decoration: none; }
+.st-gh a:hover { color: var(--accent-cyan); }
+.st-group header .st-gh { display: inline; }
+@media (max-width: 560px) { #st-tools-groups .st-tools, #tools-groups .st-tools { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .toc > summary::after, .menu-g > summary::after { transition: none; } }
+
 </style>
 </head>
 <body>
@@ -1096,22 +1198,22 @@ footer { border-top-color: var(--border); }
   <div class="nav-in">
     <a class="brand" href="#start" aria-label="SC HANDBUCH, zur Startseite"><span class="brand-name">SC <b>HANDBUCH</b></span><span class="brand-sub">Dein Begleiter durch das Verse</span></a>
     <div class="tabs" role="list">
-      <a href="#tutorial" role="listitem" class="has-sub" data-group="tutorial" aria-haspopup="true" aria-controls="subnav">Tutorials</a>
-      <a href="#tasten" role="listitem" class="has-sub" data-group="steuerung" aria-haspopup="true" aria-controls="subnav">Steuerung</a>
-      <a href="#berufe" role="listitem" class="has-sub" data-group="berufe" aria-haspopup="true" aria-controls="subnav">Berufe</a>
+      <a href="#start" role="listitem">Start</a>
+      <a href="#tutorial" role="listitem" class="has-sub" data-group="lernen" aria-haspopup="true" aria-controls="subnav">Lernen</a>
+      <a href="#wissen" role="listitem" class="has-sub" data-group="wissen" aria-haspopup="true" aria-controls="subnav">Wissen</a>
+      <a href="#tools" role="listitem" class="has-sub" data-group="tools" aria-haspopup="true" aria-controls="subnav">Tools</a>
       <a href="#einsaetze" role="listitem" class="has-sub" data-group="einsaetze" aria-haspopup="true" aria-controls="subnav">Einsätze</a>
-      <a href="#schiffe" role="listitem">Schiffe</a>
-      <a href="#bugs" role="listitem">Bugs</a>
-      <a href="#glossar" role="listitem" class="nav-opt">Glossar</a>
+      <a href="#news" role="listitem" class="has-sub" data-group="aktuell" aria-haspopup="true" aria-controls="subnav">Aktuelles<span class="news-dot" id="newsdot" title="Neue Beiträge" hidden></span></a>
     </div>
     <button type="button" class="nav-search" id="navsearch" aria-label="Seite durchsuchen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Suche</span><kbd>/</kbd></button>
     <a class="nav-ccu" href="#ccu-radar" aria-label="CCU-Radar" title="CCU-Radar: lohnende Schiffs-Upgrades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="4.6"/><path d="M12 12 18.6 5.4"/><circle cx="16.4" cy="14.6" r="1.1" fill="currentColor" stroke="none"/></svg><span class="news-dot" id="ccudot" title="Neue Meldung" hidden></span></a>
-    <a class="nav-news" href="#news">News<span class="news-dot" id="newsdot" title="Neue Beiträge" hidden></span></a>
+    <button type="button" class="nav-menu" id="navmenu" aria-label="Menü öffnen" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
-  <!-- Zweite Reihe je Gruppe. Neue Gruppe (z. B. „Einsätze“ für Executive Hangar, Contested Zones):
-       eine weitere .subnav-in mit data-group anlegen und oben einen Tab mit gleichem data-group ergänzen. -->
+  <!-- Zweite Reihe je Gruppe (Desktop). Neue Gruppe: weitere .subnav-in mit data-group anlegen und oben einen Tab mit gleichem data-group ergänzen.
+       Ein Kapitel gehört zu der ersten Gruppe, in der es steht (Brotkrumen, aktiver Tab); in weiteren Gruppen darf es zusätzlich verlinkt sein.
+       Links mit data-jump springen nach dem Seitenwechsel zu dem Element mit dieser ID. -->
   <div class="subnav" id="subnav" hidden>
-    <div class="subnav-in" role="list" aria-label="Tutorials" data-group="tutorial">
+    <div class="subnav-in" role="list" aria-label="Lernen" data-group="lernen">
       <a href="#tutorial" role="listitem">Übersicht</a>
       <a href="#heimat" role="listitem">Heimatstadt</a>
       <a href="#erste-schritte" role="listitem">Erste Schritte</a>
@@ -1122,17 +1224,26 @@ footer { border-top-color: var(--border); }
       <a href="#t-crafting" role="listitem">Crafting<span class="sub-long"> lernen</span></a>
       <a href="#training" role="listitem">Training <span class="beta">Beta</span></a>
     </div>
-    <div class="subnav-in" role="list" aria-label="Steuerung" data-group="steuerung">
-      <a href="#tasten" role="listitem">Tastatur</a>
-      <a href="#hosas" role="listitem">HOSAS</a>
-    </div>
-    <div class="subnav-in" role="list" aria-label="Berufe" data-group="berufe">
-      <a href="#berufe" role="listitem">Übersicht</a>
+    <div class="subnav-in" role="list" aria-label="Wissen" data-group="wissen">
+      <a href="#wissen" role="listitem">Übersicht</a>
+      <a href="#berufe" role="listitem">Berufe</a>
       <a href="#mining" role="listitem">Mining</a>
       <a href="#salvage" role="listitem">Salvage</a>
       <a href="#hauling" role="listitem">Hauling</a>
       <a href="#crafting" role="listitem">Crafting</a>
       <a href="#ruf" role="listitem">Ruf</a>
+      <a href="#tasten" role="listitem">Tastatur</a>
+      <a href="#hosas" role="listitem">HOSAS</a>
+      <a href="#schiffe" role="listitem">Schiffe</a>
+      <a href="#glossar" role="listitem">Glossar</a>
+    </div>
+    <div class="subnav-in" role="list" aria-label="Tools" data-group="tools">
+      <a href="#tools" role="listitem">Übersicht</a>
+      <a href="#tools" role="listitem" data-jump="tg-wirtschaft">Wirtschaft</a>
+      <a href="#tools" role="listitem" data-jump="tg-schiffe">Schiffe</a>
+      <a href="#tools" role="listitem" data-jump="tg-planung">Planung<span class="sub-long"> und Training</span></a>
+      <a href="#tools" role="listitem" data-jump="tg-missionen">Missionen</a>
+      <a href="#ccu-radar" role="listitem">CCU-Radar</a>
     </div>
     <div class="subnav-in" role="list" aria-label="Einsätze" data-group="einsaetze">
       <a href="#einsaetze" role="listitem">Übersicht</a>
@@ -1142,8 +1253,21 @@ footer { border-top-color: var(--border); }
       <a href="#recco" role="listitem">Recco<span class="sub-long"> Battaglia</span></a>
       <a href="#bunker" role="listitem">Bunker</a>
     </div>
+    <div class="subnav-in" role="list" aria-label="Aktuelles" data-group="aktuell">
+      <a href="#news" role="listitem">News</a>
+      <a href="#bugs" role="listitem">Bugs &amp; Workarounds</a>
+      <a href="#ccu-radar" role="listitem">CCU-Radar</a>
+    </div>
   </div>
 </nav>
+
+<dialog class="menu" id="menu" aria-label="Menü">
+  <div class="menu-in">
+    <div class="menu-top"><b>Menü</b><button type="button" class="menu-x" id="menu-x" aria-label="Menü schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <button type="button" class="menu-search" data-gs aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Handbuch durchsuchen</span></button>
+    <div class="menu-list" id="menu-list"></div>
+  </div>
+</dialog>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-launch" viewBox="0 0 24 24"><path d="M12 3l5 9h-3v5h-4v-5H7z"/><path d="M9.5 21h5"/></symbol>
@@ -1165,6 +1289,7 @@ footer { border-top-color: var(--border); }
   <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/><path d="M5.7 5.7l3.7 3.7M14.6 14.6l3.7 3.7M18.3 5.7l-3.7 3.7M9.4 14.6l-3.7 3.7"/></symbol>
 </svg>
 <main class="wrap">
+<nav class="crumbs" id="crumbs" aria-label="Brotkrumen" hidden><ol></ol></nav>
 
 <!-- ============ START ============ -->
 <div class="patchnote" id="patchnote" hidden><strong></strong><span></span><a href="#bugs">Bekannte Bugs</a><button type="button" id="patchok">Verstanden</button></div>
@@ -1201,20 +1326,8 @@ footer { border-top-color: var(--border); }
 
   <section aria-labelledby="st-h-tools">
     <h2 id="st-h-tools">Werkzeuge</h2>
-    <div class="st-tools">
-      <button type="button" class="st-tool" id="st-planbtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg><b>Tagesplaner</b><span>Was mache ich heute? Vorschläge nach Zeit, Gruppe und Hangar.</span></button>
-      <a class="st-tool" href="#mining" data-jump="rs-tool"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg><b>Mining-Rechner</b><span>Signatur eingeben, Gestein und Menge ablesen.</span></a>
-      <a class="st-tool" href="#mining" data-jump="loc-tool"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><b>Erz- und Fundort-Suche</b><span>Wo es ein Erz gibt, beste Raffinerie und Verkaufsort.</span></a>
-      <a class="st-tool" href="#hauling" data-jump="hq-tool"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg><b>Frachter-Finder</b><span>Welches Schiff schafft den Auftrag in wie vielen Fahrten?</span></a>
-      <a class="st-tool" href="#schiffe"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg><b>Schiffsdatenbank</b><span>Alle Schiffe mit Preis, Fracht, Crew, Budget-Filter und 3D-Modell.</span></a>
-      <a class="st-tool" href="#ruf" data-jump="rufwho"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-rep"/></svg><b>Ruf-Rechner</b><span>Rang, nächste Stufe und wie viele Aufträge noch fehlen.</span></a>
-      <a class="st-tool" href="#exec-hangar" data-jump="xh-timer"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-timer"/></svg><b>Executive-Hangar-Timer</b><span>Ist der Hangar offen? Live mit Uhrzeit des nächsten Wechsels.</span></a>
-      <a class="st-tool" href="#ccu-radar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-radar"/></svg><b>CCU-Radar</b><span>Meldet Schiffe, die im Pledge-Store teurer werden.</span></a>
-      <a class="st-tool" href="#hosas"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-stick"/></svg><b>HOSAS-Belegung</b><span>Zwei Sticks, jede Taste mit Funktion, mit Suche.</span></a>
-      <a class="st-tool" href="#training"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg><b>Training</b><span>Tasten und Abläufe am PC üben, bevor es ernst wird.</span></a>
-      <a class="st-tool" href="#hathor" data-jump="wkchips"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg><b>Wikelo-Tauschliste</b><span>Alle 39 Schiffe mit Favors und Material, mit Filter.</span></a>
-      <a class="st-tool" href="#glossar"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg><b>Glossar</b><span>aUEC, SCU, NAV, ASOP: Abkürzungen kurz erklärt, mit Suche.</span></a>
-    </div>
+    <div id="st-tools-groups"></div>
+    <p class="small st-more"><a href="#tools">Alle Werkzeuge mit Beschreibung →</a></p>
     <details class="st-plan" id="st-plan">
       <summary><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg>Was mache ich heute? <small>Drei Vorschläge für deine Zeit und deinen Hangar</small></summary>
   <div class="tool" id="plan">
@@ -1295,12 +1408,61 @@ footer { border-top-color: var(--border); }
   </section>
 </section>
 
+<!-- ============ WISSEN (Übersicht) ============ -->
+<section class="view" id="view-wissen" data-view="wissen" hidden>
+  <div class="head chead">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Wissen</span><span class="chead-tag">Nachschlagen</span><span class="chead-tag">Stand Alpha 4.10.2</span></div>
+    <h1>Wissen</h1>
+    <p class="lede">Alles zum Nachschlagen an einem Ort: Berufe und Zahlen, Steuerung, Schiffe, Einsätze und Begriffe. Anleitungen Schritt für Schritt findest du unter Lernen.</p>
+    <div class="chead-act"><a href="#tutorial">Zu den Tutorials</a><a href="#tools">Zu den Werkzeugen</a></div>
+  </div>
+  <div class="st-kb">
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg><p class="st-gh"><a href="#berufe">Berufe und Verdienst</a></p></header>
+      <p>Zahlen und Werkzeuge: Fundorte, Raffinerien, Ränge, Baupläne.</p>
+      <div class="st-links"><a href="#berufe">Berufe im Vergleich</a><a href="#mining">Mining</a><a href="#salvage">Salvage</a><a href="#hauling">Hauling</a><a href="#crafting">Crafting</a><a href="#ruf">Ruf</a></div>
+    </div>
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg><p class="st-gh"><a href="#tasten">Steuerung</a></p></header>
+      <p>Tasten für QWERTZ, nach Situation sortiert, dazu die HOSAS-Belegung.</p>
+      <div class="st-links"><a href="#tasten">Tastatur</a><a href="#hosas">HOSAS</a><a href="#training">Training</a></div>
+    </div>
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg><p class="st-gh"><a href="#schiffe">Schiffe</a></p></header>
+      <p>Alle flugfähigen Schiffe mit Einsatzzweck, Fracht, Crew und Preisen.</p>
+      <div class="st-links"><a href="#schiffe">Schiffsdatenbank</a><a href="#ccu-radar">CCU-Radar</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a></div>
+    </div>
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><p class="st-gh"><a href="#einsaetze">Einsätze</a></p></header>
+      <p>Ablauf, Ausrüstung und Tipps für die großen Missionen.</p>
+      <div class="st-links"><a href="#einsaetze">Übersicht</a><a href="#exec-hangar">Executive Hangar</a><a href="#siege-orison">Siege of Orison</a><a href="#hathor">Hathor &amp; Wikelo</a><a href="#recco">Recco Battaglia</a><a href="#bunker">Bunker</a></div>
+    </div>
+    <div class="st-group">
+      <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-help"/></svg><p class="st-gh"><a href="#glossar">Orientierung und Hilfe</a></p></header>
+      <p>Begriffe, Bugs und die Frage, wo man überhaupt wohnt.</p>
+      <div class="st-links"><a href="#glossar">Glossar</a><a href="#bugs">Bugs &amp; Workarounds</a><a href="#heimat">Heimatstadt</a><a href="#ueberleben">Überleben</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WERKZEUGE (Übersicht, Kacheln erzeugt das Skript aus TOOL_GROUPS) ============ -->
+<section class="view" id="view-tools" data-view="tools" hidden>
+  <div class="head chead">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Tools</span><span class="chead-tag">Rechner, Datenbanken, Timer</span></div>
+    <h1>Werkzeuge</h1>
+    <p class="lede">Rechner, Suchen und Timer, nach Einsatz gruppiert. Ein Klick bringt dich direkt zum Werkzeug.</p>
+    <div class="chead-act" id="tools-jump"></div>
+  </div>
+  <div id="tools-groups"></div>
+</section>
+
 <!-- ============ ERSTE SCHRITTE ============ -->
 <section class="view" id="view-erste-schritte" data-view="erste-schritte" hidden>
-  <div class="head">
-    <div class="stamp"><span>Tutorial</span><span>Stand Alpha 4.10.2</span></div>
+  <div class="head chead" data-toc=".step h3">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">7 Etappen</span></div>
     <h1>Erste Schritte</h1>
     <p class="lede">Sieben Etappen von deinem ersten Login bis zum ersten verdienten Geld. Hak ab, was du geschafft hast. Der Fortschritt bleibt in diesem Browser gespeichert.</p>
+    <div class="chead-act"><a href="#heimat">Heimatstadt wählen</a><a href="#tasten">Tasten nachschlagen</a><a href="#ueberleben">Überleben</a></div>
   </div>
 
   <div class="progress" aria-live="polite">
@@ -3211,10 +3373,11 @@ footer { border-top-color: var(--border); }
 
 <!-- ============ MINING ============ -->
 <section class="view" id="view-mining" data-view="mining" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>Stand Alpha 4.10.2</span><span>Preise schwanken</span></div>
+  <div class="head chead" data-toc="h2">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.2</span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Mining</h1>
     <p class="lede">Werkzeuge und Infos fürs Mining: Signaturen auswerten, Erze und Fundorte suchen, die besten Raffinerien und Verkaufsorte finden, Schiffe und Methoden vergleichen.</p>
+    <div class="chead-act"><a href="#mining" data-jump="rs-tool">RS-Rechner</a><a href="#mining" data-jump="loc-tool">Fundort-Suche</a><a href="#t-mining">Mining lernen</a><a href="#ruf">Ruf-Rechner</a></div>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
   </div>
   <div class="learn"><strong>Neu im Mining?</strong> <span>Das Tutorial zeigt dir Schritt für Schritt eine ganze Runde mit dem Golem, vom Scannen bis zum Verkauf.</span> <a class="btn" href="#t-mining">Mining lernen</a></div>
@@ -3999,10 +4162,11 @@ footer { border-top-color: var(--border); }
 
 <!-- ============ SCHIFFE ============ -->
 <section class="view" id="view-schiffe" data-view="schiffe" hidden>
-  <div class="head">
-    <div class="stamp"><span>Nachschlagen</span><span>Spielversion 4.10.2</span><span>Preise in aUEC</span></div>
+  <div class="head chead">
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg>Wissen · Datenbank</span><span class="chead-tag">Spielversion 4.10.2</span><span class="chead-tag">Preise in aUEC</span></div>
     <h1>Schiffe</h1>
     <p class="lede">Alle flugfähigen Schiffe und Fahrzeuge mit Einsatzzweck, Fracht, Crew und Preisen im Spiel. Jedes Schiff kannst du in 3D drehen.</p>
+    <div class="chead-act"><a href="#schiffe" data-jump="shmine">Meine Schiffe</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a><a href="#ccu-radar">CCU-Radar</a></div>
     <div class="search">
       <input id="shq" type="search" placeholder="Schiff oder Hersteller suchen, z. B. „Cutlass“ oder „Drake“" aria-label="Schiffe durchsuchen">
       <span class="count" id="shcount"></span>
@@ -4292,6 +4456,129 @@ window.SC_MINE = (function () {
 })();
 </script>
 <script>
+/* ---------- Phase 3: Werkzeug-Gruppen, Brotkrumen, Inhaltsverzeichnis, Menü ---------- */
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  /* Werkzeuge: eine Liste speist die Startseite und die Übersicht „Werkzeuge“. j = ID des Ziel-Elements, ic = Symbol aus dem Sprite. */
+  var TOOL_GROUPS = [
+    { id: 'wirtschaft', name: 'Wirtschaft', desc: 'Gestein, Fracht und Ruf: ausrechnen, was sich lohnt.', items: [
+      { n: 'Mining-Rechner', d: 'Signatur eingeben, Gestein und Menge ablesen.', ic: 'ore', h: '#mining', j: 'rs-tool' },
+      { n: 'Erz- und Fundort-Suche', d: 'Wo es ein Erz gibt, beste Raffinerie und Verkaufsort.', ic: 'target', h: '#mining', j: 'loc-tool' },
+      { n: 'Frachter-Finder', d: 'Welches Schiff schafft den Auftrag in wie vielen Fahrten?', ic: 'box', h: '#hauling', j: 'hq-tool' },
+      { n: 'Ruf-Rechner', d: 'Rang, nächste Stufe und wie viele Aufträge noch fehlen.', ic: 'rep', h: '#ruf', j: 'rufwho' }
+    ] },
+    { id: 'schiffe', name: 'Schiffe', desc: 'Finden, vergleichen und im Blick behalten, was Schiffe kosten.', items: [
+      { n: 'Schiffsdatenbank', d: 'Alle Schiffe mit Preis, Fracht, Crew, Budget-Filter und 3D-Modell.', ic: 'ship', h: '#schiffe' },
+      { n: 'Meine Schiffe', d: 'Schiffe markieren, die du hast. Der Tagesplaner nutzt das.', ic: 'ship', h: '#schiffe', j: 'shmine' },
+      { n: 'Frachter-Finder', d: 'Welches Schiff schafft den Auftrag in wie vielen Fahrten?', ic: 'box', h: '#hauling', j: 'hq-tool' },
+      { n: 'CCU-Radar', d: 'Meldet Schiffe, die im Pledge-Store teurer werden.', ic: 'radar', h: '#ccu-radar' }
+    ] },
+    { id: 'planung', name: 'Planung und Training', desc: 'Den Abend planen, die Steuerung belegen und üben.', items: [
+      { n: 'Tagesplaner', d: 'Was mache ich heute? Vorschläge nach Zeit, Gruppe und Hangar.', ic: 'plan', plan: true },
+      { n: 'HOSAS-Belegung', d: 'Zwei Sticks, jede Taste mit Funktion, mit Suche.', ic: 'stick', h: '#hosas' },
+      { n: 'Tasten-Suche', d: 'Aktion oder Taste eintippen, für QWERTZ.', ic: 'keys', h: '#tasten', j: 'q' },
+      { n: 'Tastentraining', d: 'Tasten und Abläufe am PC üben, bevor es ernst wird.', ic: 'learn', h: '#training' }
+    ] },
+    { id: 'missionen', name: 'Missionen', desc: 'Timer und Listen für die großen Einsätze.', items: [
+      { n: 'Executive-Hangar-Timer', d: 'Ist der Hangar offen? Live mit Uhrzeit des nächsten Wechsels.', ic: 'timer', h: '#exec-hangar', j: 'xh-timer' },
+      { n: 'Wikelo-Tauschliste', d: 'Alle 39 Schiffe mit Favors und Material, mit Filter.', ic: 'credits', h: '#hathor', j: 'wkchips' },
+      { n: 'Recco: Wie weit bin ich?', d: 'Ruf bei Recco eintragen, Fortschritt zum nächsten Rang sehen.', ic: 'rep', h: '#recco', j: 'recco-rep' }
+    ] }
+  ];
+  function tile(t, hub) {
+    var inner = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-' + t.ic + '"/></svg><b>' + esc(t.n) + '</b><span>' + esc(t.d) + '</span>';
+    if (t.plan) return hub ? '<a class="st-tool" href="#start" data-jump="st-plan">' + inner + '</a>' : '<button type="button" class="st-tool" id="st-planbtn">' + inner + '</button>';
+    return '<a class="st-tool" href="' + t.h + '"' + (t.j ? ' data-jump="' + t.j + '"' : '') + '>' + inner + '</a>';
+  }
+  function groups(hub) {
+    return TOOL_GROUPS.map(function (g) {
+      var head = hub ? '<h2 class="st-tg-h" id="tg-' + g.id + '">' + esc(g.name) + '</h2><p class="st-tg-d">' + esc(g.desc) + '</p>'
+                     : '<h3 class="st-tg-h">' + esc(g.name) + '</h3>';
+      return '<div class="st-tg">' + head + '<div class="st-tools">' + g.items.map(function (t) { return tile(t, hub); }).join('') + '</div></div>';
+    }).join('');
+  }
+  $('st-tools-groups').innerHTML = groups(false);
+  $('tools-groups').innerHTML = groups(true);
+  $('tools-jump').innerHTML = TOOL_GROUPS.map(function (g) { return '<a href="#tools" data-jump="tg-' + g.id + '">' + esc(g.name) + '</a>'; }).join('');
+  /* Tagesplaner aus der Werkzeug-Übersicht: Planer aufklappen, dann springt data-jump hin */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-jump="st-plan"]');
+    if (a && $('st-plan')) $('st-plan').open = true;
+  });
+
+  /* Brotkrumen: Start › Bereich › Seite. Der Bereich ist der erste, in dessen zweiter Reihe die Seite steht. */
+  var crumbs = $('crumbs'), crumbList = crumbs.querySelector('ol');
+  function crumb(view) {
+    if (view === 'start') { crumbs.hidden = true; return; }
+    var g = window.SC_NAV && window.SC_NAV.groupOf[view];
+    var tab = g && document.querySelector('.tabs a[data-group="' + g + '"]');
+    var items = [['Start', '#start']];
+    var page = document.title.replace(/ · SC HANDBUCH$/, '');
+    if (tab) {
+      var label = tab.textContent.trim(), href = tab.getAttribute('href');
+      if (href === '#' + view) items.push([label, null]); else { items.push([label, href]); items.push([page, null]); }
+    } else items.push([page, null]);
+    crumbList.innerHTML = items.map(function (it) {
+      return '<li>' + (it[1] ? '<a href="' + it[1] + '">' + esc(it[0]) + '</a>' : '<span aria-current="page">' + esc(it[0]) + '</span>') + '</li>';
+    }).join('');
+    crumbs.hidden = false;
+  }
+
+  /* Inhaltsverzeichnis: Köpfe mit data-toc="<Selektor>" bekommen es aus den Überschriften ihrer Ansicht (Sprung per data-jump) */
+  function toc(view) {
+    var v = document.getElementById('view-' + view), head = v && v.querySelector('.chead[data-toc]');
+    if (!head || head.dataset.tocDone) return;
+    var hs = Array.prototype.slice.call(v.querySelectorAll(head.dataset.toc));
+    if (hs.length < 3) return;
+    head.dataset.tocDone = '1';
+    var li = hs.map(function (el, i) {
+      if (!el.id) el.id = 'ch-' + view + '-' + (i + 1);
+      var c = el.cloneNode(true);
+      Array.prototype.forEach.call(c.querySelectorAll('.pill, small, .count, .gb'), function (x) { x.remove(); });
+      return '<li><a href="#' + view + '" data-jump="' + el.id + '">' + esc(c.textContent.replace(/\s+/g, ' ').trim()) + '</a></li>';
+    }).join('');
+    var d = document.createElement('details');
+    d.className = 'toc';
+    d.open = window.matchMedia('(min-width: 900px)').matches;
+    d.innerHTML = '<summary>Inhalt <small>' + hs.length + ' Abschnitte</small></summary><ol>' + li + '</ol>';
+    head.appendChild(d);
+  }
+
+  document.addEventListener('viewchange', function (e) { crumb(e.detail); toc(e.detail); });
+
+  /* Menü (Handy und Tablet): Blatt aus den zweiten Reihen aufgebaut, damit es nie von der Leiste abweicht */
+  var dlg = $('menu'), btn = $('navmenu'), list = $('menu-list'), mq = window.matchMedia('(max-width: 860px)');
+  function build() {
+    var vv = document.querySelector('section.view:not([hidden])'), view = vv ? vv.dataset.view : 'start';
+    var cg = window.SC_NAV && window.SC_NAV.groupOf[view];
+    list.innerHTML = Array.prototype.map.call(document.querySelectorAll('.tabs a'), function (t) {
+      var g = t.dataset.group, label = t.firstChild.textContent.trim();
+      if (!g) return '<a class="menu-top-link"' + (view === 'start' ? ' aria-current="page"' : '') + ' href="' + t.getAttribute('href') + '">' + esc(label) + '</a>';
+      var row = document.querySelector('.subnav-in[data-group="' + g + '"]');
+      var links = Array.prototype.map.call(row.querySelectorAll('a'), function (a) {
+        var on = a.getAttribute('href') === '#' + view && !a.dataset.jump;
+        return '<a href="' + a.getAttribute('href') + '"' + (a.dataset.jump ? ' data-jump="' + a.dataset.jump + '"' : '') + (on ? ' aria-current="page"' : '') + '>' + a.innerHTML + '</a>';
+      }).join('');
+      return '<details class="menu-g' + (g === cg ? ' cur' : '') + '" name="menu-g"' + (g === cg ? ' open' : '') + '><summary>' + esc(label) + '<small>' + row.querySelectorAll('a').length + '</small></summary><div class="menu-links">' + links + '</div></details>';
+    }).join('');
+  }
+  function openMenu() {
+    if (dlg.open) return;
+    build(); dlg.showModal();
+    document.documentElement.classList.add('menu-open'); btn.setAttribute('aria-expanded', 'true');
+  }
+  function cleanup() { document.documentElement.classList.remove('menu-open'); btn.setAttribute('aria-expanded', 'false'); }
+  function closeMenu() { if (dlg.open) dlg.close(); cleanup(); }
+  btn.addEventListener('click', openMenu);
+  $('menu-x').addEventListener('click', closeMenu);
+  dlg.addEventListener('close', cleanup);   /* Escape schließt nativ */
+  dlg.addEventListener('click', function (e) { if (e.target === dlg || (e.target.closest && e.target.closest('a, .menu-search'))) closeMenu(); });
+  mq.addEventListener('change', function (e) { if (!e.matches) closeMenu(); });
+})();
+</script>
+<script>
 (function () {
   /* Ansichten per #hash */
   var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
@@ -4302,8 +4589,9 @@ window.SC_MINE = (function () {
   var groupTabs = tabs.filter(function (a) { return a.dataset.group; });
   var groupOf = {};
   subRows.forEach(function (r) {
-    Array.prototype.forEach.call(r.querySelectorAll('a'), function (a) { groupOf[a.getAttribute('href').slice(1)] = r.dataset.group; });
+    Array.prototype.forEach.call(r.querySelectorAll('a'), function (a) { var k = a.getAttribute('href').slice(1); if (!groupOf[k]) groupOf[k] = r.dataset.group; });
   });
+  window.SC_NAV = { groupOf: groupOf };
   var pinned = null, hover = null, hideT = null;
   function subState() {
     clearTimeout(hideT);
@@ -4314,7 +4602,7 @@ window.SC_MINE = (function () {
     alignSub(g);
   }
   /* Breite Bildschirme: die zweite Reihe mittig unter ihren Tab rücken, das spart Mauswege */
-  var wide = window.matchMedia('(min-width: 641px)');
+  var wide = window.matchMedia('(min-width: 861px)');
   function alignSub(g) {
     var row = subRows.filter(function (r) { return r.dataset.group === g; })[0];
     var tab = groupTabs.filter(function (a) { return a.dataset.group === g; })[0];
@@ -4361,10 +4649,10 @@ window.SC_MINE = (function () {
       var cr = cur.getBoundingClientRect(), br = tabsBox.getBoundingClientRect();
       if (cr.left < br.left) tabsBox.scrollLeft += cr.left - br.left - 8; else if (cr.right > br.right) tabsBox.scrollLeft += cr.right - br.right + 16;
     }
-    var titles = { start: 'SC HANDBUCH – Dein Begleiter durch das Verse', news: 'News · SC HANDBUCH', tutorial: 'Tutorials · SC HANDBUCH', einsaetze: 'Einsätze · SC HANDBUCH', 'exec-hangar': 'Executive Hangar · SC HANDBUCH', 'siege-orison': 'Siege of Orison · SC HANDBUCH', hathor: 'Hathor & Wikelo · SC HANDBUCH', bunker: 'Bunker-Missionen · SC HANDBUCH', recco: 'Recco Battaglia · SC HANDBUCH', heimat: 'Heimatstadt · SC HANDBUCH', 't-mining': 'Mining lernen · SC HANDBUCH', 't-salvage': 'Salvage lernen · SC HANDBUCH', 't-crafting': 'Crafting lernen · SC HANDBUCH', 'erste-schritte': 'Erste Schritte · SC HANDBUCH', tasten: 'Tasten · SC HANDBUCH', mining: 'Mining · SC HANDBUCH', salvage: 'Salvage · SC HANDBUCH', hauling: 'Hauling · SC HANDBUCH', berufe: 'Berufe · SC HANDBUCH', bugs: 'Bugs & Workarounds · SC HANDBUCH', 't-hauling': 'Hauling lernen · SC HANDBUCH', ueberleben: 'Überleben · SC HANDBUCH', crafting: 'Crafting · SC HANDBUCH', ruf: 'Ruf · SC HANDBUCH', 'ccu-radar': 'CCU-Radar · SC HANDBUCH', glossar: 'Glossar · SC HANDBUCH', schiffe: 'Schiffe · SC HANDBUCH', training: 'Training · SC HANDBUCH', hosas: 'HOSAS · SC HANDBUCH' };
+    var titles = { wissen: 'Wissen · SC HANDBUCH', tools: 'Werkzeuge · SC HANDBUCH', start: 'SC HANDBUCH – Dein Begleiter durch das Verse', news: 'News · SC HANDBUCH', tutorial: 'Tutorials · SC HANDBUCH', einsaetze: 'Einsätze · SC HANDBUCH', 'exec-hangar': 'Executive Hangar · SC HANDBUCH', 'siege-orison': 'Siege of Orison · SC HANDBUCH', hathor: 'Hathor & Wikelo · SC HANDBUCH', bunker: 'Bunker-Missionen · SC HANDBUCH', recco: 'Recco Battaglia · SC HANDBUCH', heimat: 'Heimatstadt · SC HANDBUCH', 't-mining': 'Mining lernen · SC HANDBUCH', 't-salvage': 'Salvage lernen · SC HANDBUCH', 't-crafting': 'Crafting lernen · SC HANDBUCH', 'erste-schritte': 'Erste Schritte · SC HANDBUCH', tasten: 'Tasten · SC HANDBUCH', mining: 'Mining · SC HANDBUCH', salvage: 'Salvage · SC HANDBUCH', hauling: 'Hauling · SC HANDBUCH', berufe: 'Berufe · SC HANDBUCH', bugs: 'Bugs & Workarounds · SC HANDBUCH', 't-hauling': 'Hauling lernen · SC HANDBUCH', ueberleben: 'Überleben · SC HANDBUCH', crafting: 'Crafting · SC HANDBUCH', ruf: 'Ruf · SC HANDBUCH', 'ccu-radar': 'CCU-Radar · SC HANDBUCH', glossar: 'Glossar · SC HANDBUCH', schiffe: 'Schiffe · SC HANDBUCH', training: 'Training · SC HANDBUCH', hosas: 'HOSAS · SC HANDBUCH' };
     document.title = titles[h];
     Array.prototype.forEach.call(sub.querySelectorAll('a'), function (a) {
-      if (a.getAttribute('href') === '#' + h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      if (a.getAttribute('href') === '#' + h && !a.dataset.jump) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     subState();
     var sr = sub.querySelector('.subnav-in:not([hidden])'), sc = sr && sr.querySelector('a[aria-current]');
@@ -4378,7 +4666,7 @@ window.SC_MINE = (function () {
   window.addEventListener('hashchange', show);
   show();
   /* Handy: Leiste beim Runterscrollen ausblenden, beim Hochscrollen sofort zeigen */
-  var navEl = document.querySelector('.nav'), narrow = window.matchMedia('(max-width: 640px)'), lastY = window.scrollY;
+  var navEl = document.querySelector('.nav'), narrow = window.matchMedia('(max-width: 860px)'), lastY = window.scrollY;
   window.addEventListener('scroll', function () {
     var y = window.scrollY, d = y - lastY;
     if (!narrow.matches || y < 80 || d < -4) navEl.classList.remove('nav-away');
