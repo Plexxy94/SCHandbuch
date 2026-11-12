@@ -3681,7 +3681,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 <!-- ============ NEWS ============ -->
 <section class="view" id="view-news" data-view="news" hidden>
   <div class="head">
-    <div class="stamp"><span>Aktualisiert sich selbst</span><span>Quellen: RSI, YouTube</span></div>
+    <div class="stamp"><span>Aktualisiert sich selbst</span><span>Quellen: RSI, Spectrum, YouTube</span></div>
     <h1>News</h1>
     <p class="lede">Offizielle Ankündigungen von RSI, der aktuelle Server-Status und die neuesten Videos. Die Titel sind im englischen Original, ein Klick öffnet den Beitrag bei RSI oder YouTube.</p>
   </div>
@@ -5777,7 +5777,8 @@ window.SC_MINE = (function () {
   var DAY = 864e5, now = Date.now();
   function esc(s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function when(iso, approx) {
-    var d = new Date(iso), days = Math.floor((now - d) / DAY);
+    /* nach Kalendertagen zählen, nicht nach 24-Stunden-Blöcken */
+    var d = new Date(iso), n0 = new Date(now), days = Math.round((new Date(n0.getFullYear(), n0.getMonth(), n0.getDate()) - new Date(d.getFullYear(), d.getMonth(), d.getDate())) / DAY);
     var rel = (approx ? 'etwa ' : '') + (days <= 0 ? 'heute' : days === 1 ? 'gestern' : 'vor ' + days + ' Tagen');
     return d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' }) + '<small>' + rel + '</small>';
   }
@@ -5785,7 +5786,7 @@ window.SC_MINE = (function () {
   var CATS = [['alle', 'Alle'], ['patch', 'Patch & Release'], ['roadmap', 'Roadmap'], ['woche', 'Wochenüberblick'], ['monat', 'Monatsbericht'], ['schiffe', 'Schiffe'], ['events', 'Events & Aktionen'], ['lore', 'Lore'], ['community', 'Community'], ['sonst', 'Sonstiges']];
   function cat(c) {
     var t = (c.title || '') + ' ' + (c.series || '');
-    if (/patch notes|release info|alpha \d|hotfix|\bptu\b|evocati/i.test(t)) return 'patch';
+    if (/patch notes|release notes|release info|alpha \d|hotfix|\bptu\b|evocati/i.test(t)) return 'patch';
     if (/roadmap/i.test(t)) return 'roadmap';
     if (/this week in star citizen/i.test(t)) return 'woche';
     if (/monthly report/i.test(t)) return 'monat';
@@ -5804,7 +5805,7 @@ window.SC_MINE = (function () {
       var isNew = lastSeen && new Date(c.date).getTime() > lastSeen;
       return '<a class="nw-item' + (c.k === 'patch' ? ' patch' : '') + '" href="' + esc(c.url) + '" target="_blank" rel="noopener">' +
         '<span class="nw-date">' + when(c.date, c.approx) + '</span><span><span class="nw-title">' + esc(c.title) + '</span>' +
-        '<span class="nw-meta">' + (isNew ? '<span class="nw-new">Neu</span>' : '') + '<span class="sh-tag' + (c.k === 'patch' ? ' tip' : ' cat') + '">' + LABEL[c.k] + '</span></span></span></a>';
+        '<span class="nw-meta">' + (isNew ? '<span class="nw-new">Neu</span>' : '') + '<span class="sh-tag' + (c.k === 'patch' ? ' tip' : ' cat') + '">' + LABEL[c.k] + '</span>' + (c.src ? '<span class="sh-tag">' + esc(c.src) + '</span>' : '') + '</span></span></a>';
     }).join('') : '<p class="small">In dieser Kategorie gibt es gerade nichts.</p>';
     $('nwsrc').textContent = source;
   }
@@ -5822,7 +5823,7 @@ window.SC_MINE = (function () {
     var seen = {}; items.forEach(function (i) { seen[i.id] = 1; });
     rows.forEach(function (c) {
       if (seen[c.id]) return;
-      items.push({ id: c.id, title: c.title, url: c.url || c.rsi_url, date: c.date || c.created_at, series: c.series, category: c.category, approx: c.approx });
+      items.push({ id: c.id, title: c.title, url: c.url || c.rsi_url, date: c.date || c.created_at, series: c.series, category: c.category, approx: c.approx, src: c.src });
     });
     items.forEach(function (i) { i.k = cat(i); });
     items.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
@@ -5895,7 +5896,8 @@ window.SC_MINE = (function () {
     newsData.then(function (d) {
       if (!(d.commlinks || []).length) throw new Error('leer');
       add(d.commlinks); page = 1;
-      source = 'Direkt von RSI, Stand ' + new Date(d.updated).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) + ' · wird mehrmals täglich aktualisiert. „etwa“ = Datum geschätzt.';
+      var fmtT = function (x) { return new Date(x).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }); };
+      source = 'Direkt von RSI und aus Spectrum. Zuletzt geprüft ' + fmtT(d.checked || d.updated) + ', letzter neuer Beitrag erfasst ' + fmtT(d.updated) + '. Wird mehrmals täglich geprüft. „etwa“ = Datum geschätzt.';
       $('nwmore').hidden = false;
     }).catch(function () { return loadLive(); })
       .catch(function () { source = 'Die News konnten gerade nicht geladen werden.'; })

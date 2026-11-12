@@ -71,6 +71,20 @@
  ],
  "commlinks": [
   {
+   "id": 9575984,
+   "title": "IAE 2956 - Choose Your Adventure - FAQ",
+   "src": "Spectrum",
+   "url": "https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/iae-2956-faq-choose-your-adventure",
+   "date": "2026-11-10T21:00:00+00:00"
+  },
+  {
+   "id": 20943,
+   "title": "Monthly Store Bundle 2026",
+   "url": "https://robertsspaceindustries.com/en/comm-link/transmission/20943-Monthly-Store-Bundle-2026",
+   "date": "2026-11-10T13:01:30+00:00",
+   "approx": true
+  },
+  {
    "id": 21434,
    "title": "Twitch Drops: IAE 2956",
    "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21434-Twitch-Drops-IAE-2956",
@@ -99,6 +113,13 @@
    "approx": true
   },
   {
+   "id": 9574567,
+   "title": "Intergalactic Aerospace Expo 2956: Save the Date!",
+   "src": "Spectrum",
+   "url": "https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/intergalactic-aerospace-expo-2956-save-the-date",
+   "date": "2026-11-06T15:40:00+00:00"
+  },
+  {
    "id": 21389,
    "title": "Countdown to IAE 2956 - The Ultimate Ship Show Returns",
    "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21389-Countdown-To-IAE-2956",
@@ -125,6 +146,13 @@
    "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21311-November-2026-Subscriber-Promotions",
    "date": "2026-11-03T18:59:22+00:00",
    "approx": true
+  },
+  {
+   "id": 9575799,
+   "title": "RSI Launcher 2.19.2 Release Notes",
+   "src": "Spectrum",
+   "url": "https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/rsi-launcher-2-19-1-release-notes",
+   "date": "2026-11-03T15:00:00+00:00"
   },
   {
    "id": 21431,
@@ -163,6 +191,13 @@
    "series": "None"
   },
   {
+   "id": 9574653,
+   "title": "Updates to Pledge Gifting - FAQ",
+   "src": "Spectrum",
+   "url": "https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/updates-to-pledge-gifting-faq",
+   "date": "2026-10-27T15:43:00+00:00"
+  },
+  {
    "id": 21390,
    "title": "Roadmap Roundup - October 21, 2026",
    "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21390-Roadmap-Roundup-October-21-2026",
@@ -170,6 +205,13 @@
    "channel": "Transmission",
    "category": "Lore",
    "series": "Roadmap Roundup"
+  },
+  {
+   "id": 9571353,
+   "title": "Day of the Vara 2956",
+   "src": "Spectrum",
+   "url": "https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/day-of-the-vara-2956",
+   "date": "2026-10-21T16:00:00+00:00"
   },
   {
    "id": 21337,
@@ -188,13 +230,6 @@
    "channel": "Transmission",
    "category": "Undefined",
    "series": "None"
-  },
-  {
-   "id": 20943,
-   "title": "Monthly Store Bundle 2026",
-   "url": "https://robertsspaceindustries.com/en/comm-link/transmission/20943-Monthly-Store-Bundle-2026",
-   "date": "2026-10-16T10:50:57+00:00",
-   "approx": true
   },
   {
    "id": 21381,
@@ -222,6 +257,20 @@
    "channel": "Transmission",
    "category": "Undefined",
    "series": "None"
+  },
+  {
+   "id": 21279,
+   "title": "October 2026 Subscriber Promotions",
+   "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21279-October-2026-Subscriber-Promotions",
+   "date": "2026-10-13T13:01:30+00:00",
+   "approx": true
+  },
+  {
+   "id": 21276,
+   "title": "RSI Discovery Month Digital Goodies Pack - Available Now!",
+   "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21276-RSI-Discovery-Month-Digital-Goodies-Pack",
+   "date": "2026-10-13T13:01:30+00:00",
+   "approx": true
   },
   {
    "id": 21374,
@@ -278,18 +327,11 @@
    "series": "None"
   },
   {
-   "id": 21279,
-   "title": "October 2026 Subscriber Promotions",
-   "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21279-October-2026-Subscriber-Promotions",
-   "date": "2026-10-09T10:50:57+00:00",
-   "approx": true
-  },
-  {
-   "id": 21276,
-   "title": "RSI Discovery Month Digital Goodies Pack - Available Now!",
-   "url": "https://robertsspaceindustries.com/en/comm-link/transmission/21276-RSI-Discovery-Month-Digital-Goodies-Pack",
-   "date": "2026-10-09T10:50:57+00:00",
-   "approx": true
+   "id": 9572473,
+   "title": "Alpha 4.10.2 - RSI Discovery Month",
+   "src": "Spectrum",
+   "url": "https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/alpha-4-10-2-rsi-discovery-month",
+   "date": "2026-10-09T13:55:00+00:00"
   },
   {
    "id": 21373,
@@ -299,6 +341,13 @@
    "channel": "Transmission",
    "category": "Undefined",
    "series": "None"
+  },
+  {
+   "id": 9572510,
+   "title": "RSI Launcher 2.18 Release Notes",
+   "src": "Spectrum",
+   "url": "https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/rsi-launcher-2-18-release-notes",
+   "date": "2026-10-06T17:20:00+00:00"
   },
   {
    "id": 21352,
@@ -600,5 +649,6 @@
    }
   ]
  },
- "updated": "2026-11-10T20:50:09+00:00"
+ "updated": "2026-11-12T13:01:33+00:00",
+ "checked": "2026-11-12T13:01:33+00:00"
 }

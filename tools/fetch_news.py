@@ -101,6 +101,24 @@ def guess_date(title, ago, now):
     return now
 
 
+def spectrum_threads(cutoff):
+    """Ankündigungen von CIG im Spectrum-Forum „Announcements“ (ohne Login lesbar, genaues Datum)."""
+    body = json.dumps({"channel_id": "1", "page": 1, "sort": "newest", "label_id": None}).encode()
+    req = urllib.request.Request("https://robertsspaceindustries.com/api/spectrum/forum/channel/threads", data=body,
+                                 headers={**UA, "Content-Type": "application/json"}, method="POST")
+    with urllib.request.urlopen(req, timeout=60) as r:
+        d = json.load(r)
+    out = []
+    for t in (d.get("data") or {}).get("threads") or []:
+        date = datetime.fromtimestamp(t.get("time_created") or 0, timezone.utc)
+        if date < cutoff or not t.get("slug"):
+            continue
+        out.append({"id": 9000000 + int(t["id"]), "title": (t.get("subject") or "").strip(), "src": "Spectrum",
+                    "url": "https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/" + t["slug"],
+                    "date": date.isoformat(timespec="seconds")})
+    return out
+
+
 def commlinks(prev, days=40):
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(days=days)
@@ -120,8 +138,20 @@ def commlinks(prev, days=40):
     old = {c["id"]: c["date"] for c in prev if c.get("approx")}
     for c in rsi:
         if c["id"] not in by_id:
-            date = old.get(c["id"]) or guess_date(c["title"], c["ago"], now).isoformat(timespec="seconds")
+            guess = guess_date(c["title"], c["ago"], now)
+            date = old.get(c["id"])
+            # neu veröffentlichte alte Beiträge (z. B. das monatliche Store-Bundle) bekommen ihr neues Datum
+            if not date or guess - datetime.fromisoformat(date) > timedelta(days=3):
+                date = guess.isoformat(timespec="seconds")
             by_id[c["id"]] = {"id": c["id"], "title": c["title"], "url": c["url"], "date": date, "approx": True}
+    try:
+        for t in spectrum_threads(cutoff):
+            by_id[t["id"]] = t
+    except Exception as exc:
+        print(f"Spectrum: Fehler {exc}", file=sys.stderr)
+        for c in prev:      # bei einem Ausfall die bekannten Spectrum-Beiträge behalten
+            if c.get("src") == "Spectrum":
+                by_id.setdefault(c["id"], c)
     out = [c for c in by_id.values() if c["date"] and datetime.fromisoformat(c["date"]) >= cutoff]
     out.sort(key=lambda c: (c["date"], c["id"]), reverse=True)
     return out
@@ -191,13 +221,14 @@ def main(path):
     for key in ("status", "videos", "commlinks", "exec", "issues"):
         if key not in new and key in old:
             new[key] = old[key]
-    if {k: old.get(k) for k in new} == new:
-        print("unverändert")
-        return
-    new["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    # „updated“ = letzter neuer Inhalt, „checked“ = letzter Lauf. So sieht man, dass geprüft wurde, auch wenn nichts Neues kam.
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    same = {k: old.get(k) for k in new} == new
+    new["updated"] = old.get("updated", now) if same else now
+    new["checked"] = now
+    print("unverändert" if same else "aktualisiert")
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(new, fh, ensure_ascii=False, indent=1)
-    print("aktualisiert")
 
 
 if __name__ == "__main__":
