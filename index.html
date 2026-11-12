@@ -1477,6 +1477,44 @@ a.t-num:focus-visible { outline-offset: 4px; }
 .t-holo:hover .scanl, .t-holo:focus-visible .scanl { animation: holoscan 1.4s ease-out 1; }
 @keyframes holoscan { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: .85; } 100% { transform: translateY(124px); opacity: 0; } }
 
+/* Schiff im Fokus: 3D-Holo im rechten Panel. Die Bühne ist in beiden Farbschemata ein dunkler Projektor. */
+.sf-stage { position: relative; margin-top: 14px; aspect-ratio: 6 / 5; overflow: hidden; color: #77D5E8; border: 1px solid rgba(119,213,232,.28);
+  background: radial-gradient(70% 45% at 50% 88%, rgba(119,213,232,.16), transparent 100%), radial-gradient(90% 70% at 50% 40%, #0d1c26, #060b10 100%); }
+.sf-stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .35;
+  background: repeating-linear-gradient(180deg, rgba(119,213,232,.07) 0 1px, transparent 1px 4px); }
+.sf-stage .t-holo { position: absolute; inset: 0; margin: 0; padding: 14px 8px 6px; border: 0; color: #77D5E8; background: none; display: flex; align-items: center; }
+.sf-stage .t-holo::before, .sf-stage .t-holo::after { display: none; }
+.sf-prev { position: absolute; inset: 12% 8% 18%; width: 84%; height: 70%; object-fit: contain; filter: grayscale(1) brightness(1.15) contrast(1.05); mix-blend-mode: screen; opacity: .8; }
+.sf-gl { position: absolute; inset: 0; opacity: 0; transition: opacity .5s; }
+.sf-gl canvas { display: block; width: 100% !important; height: 100% !important; touch-action: none; cursor: grab; }
+.sf-gl canvas:active { cursor: grabbing; }
+.sf.is-3d .sf-gl { opacity: 1; }
+.sf.is-3d .t-holo, .sf.is-3d .sf-prev, .sf.has-prev .t-holo { display: none; }
+.sf-hud { position: absolute; inset: 0; pointer-events: none; }
+.sf-hud i { position: absolute; width: 12px; height: 12px; border: 0 solid #77D5E8; opacity: .85; }
+.sf-hud .c1 { left: 6px; top: 6px; border-width: 2px 0 0 2px; } .sf-hud .c2 { right: 6px; top: 6px; border-width: 2px 2px 0 0; }
+.sf-hud .c3 { left: 6px; bottom: 6px; border-width: 0 0 2px 2px; } .sf-hud .c4 { right: 6px; bottom: 6px; border-width: 0 2px 2px 0; border-color: #F0A15A; }
+.sf-hud .x { left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border: 0; opacity: .35;
+  background: linear-gradient(#77D5E8, #77D5E8) center / 1px 100% no-repeat, linear-gradient(#77D5E8, #77D5E8) center / 100% 1px no-repeat; }
+.sf.is-3d .sf-hud .x { opacity: .18; }
+.sf-tag { position: absolute; left: 22px; top: 7px; font: 500 10.5px var(--f-mono); letter-spacing: .14em; color: rgba(119,213,232,.75); }
+.sf-msg { position: absolute; left: 8px; right: 8px; bottom: 10px; text-align: center; font: 500 12px var(--f-mono); color: #BCE9F2; text-shadow: 0 1px 2px #000; }
+.sf-open { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; white-space: nowrap;
+  font: 600 13px var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: #06121a; background: #77D5E8; border: 0; border-radius: 4px; cursor: pointer; }
+.sf-open svg { width: 18px; height: 18px; }
+.sf-open:hover, .sf-open:focus-visible { background: #a6e6f2; }
+.sf-id { display: flex; flex-direction: column; gap: 2px; margin-top: 10px; min-height: 42px; }
+.sf-id b { font: 600 17px/1.2 var(--f-display); color: var(--text-primary); overflow-wrap: anywhere; }
+.sf-id span { font: 500 12.5px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--lbl); }
+.sf-act { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+.sf-act button { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; color: var(--cy-x); background: var(--tile); border: 1px solid var(--tile-bd); border-radius: 4px; cursor: pointer; transition: border-color .15s, background .15s; }
+.sf-act button svg { width: 19px; height: 19px; }
+.sf-act button:hover:not(:disabled), .sf-act button:focus-visible { border-color: var(--cy-x); background: var(--tile-hi); }
+.sf-act button:disabled { opacity: .4; cursor: default; }
+.sf-det { margin-left: auto; display: inline-flex; align-items: center; min-height: 40px; padding: 0 4px; font: 600 14px var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: var(--cy-x); text-decoration: none; }
+.sf-det:hover, .sf-det:focus-visible { color: var(--am-x); }
+@media (max-width: 980px) { .sf-stage { aspect-ratio: 16 / 9; max-height: 340px; } }
+
 /* Zentrales Terminal */
 .t-center { position: relative; z-index: 2; padding: 22px 28px 24px; background: linear-gradient(180deg, var(--gl2), var(--gl)); border: 1px solid var(--gb);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.28), 0 14px 0 -7px var(--plate), 0 27px 0 -15px var(--plate2), 0 50px 90px -40px var(--sh1); }
@@ -1708,9 +1746,10 @@ a.t-num:focus-visible { outline-offset: 4px; }
         <div class="t-lab">Schnellstart<b>3 Schritte</b></div>
         <ol class="t-qs"><li><a href="#heimat"><kbd>1</kbd>Heimatstadt wählen</a></li><li><a href="#erste-schritte"><kbd>2</kbd>Erste Schritte abhaken</a></li><li><a href="#tutorial"><kbd>3</kbd>Beruf lernen</a></li></ol>
       </div>
-      <div class="t-blk">
-        <div class="t-lab">Schiffsdatenbank<b>3D</b></div>
-        <a class="t-holo" href="#schiffe" aria-label="Schiffsdatenbank öffnen"><svg viewBox="0 0 240 200" fill="none" aria-hidden="true" focusable="false">
+      <div class="t-blk sf" id="sf" role="group" aria-label="Schiff im Fokus">
+        <div class="t-lab">Schiff im Fokus<b>3D</b></div>
+        <div class="sf-stage" id="sf-stage">
+        <a class="t-holo sf-fb" href="#schiffe" aria-label="Schiffsdatenbank öffnen"><svg viewBox="0 0 240 200" fill="none" aria-hidden="true" focusable="false">
 <defs>
 <linearGradient id="hl-cone" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="currentColor" stop-opacity=".22"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>
 <radialGradient id="hl-eng" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFD9A0"/><stop offset=".5" stop-color="#F0A15A" stop-opacity=".8"/><stop offset="1" stop-color="#F0A15A" stop-opacity="0"/></radialGradient>
@@ -1734,6 +1773,18 @@ a.t-num:focus-visible { outline-offset: 4px; }
 <path d="M120 118V170" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="2 4"/>
 <rect class="scanl" x="22" y="40" width="196" height="2" fill="currentColor"/>
 </svg></a>
+          <img class="sf-prev" id="sf-prev" alt="" hidden>
+          <div class="sf-gl" id="sf-gl"></div>
+          <div class="sf-hud" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i><i class="x"></i><span class="sf-tag" id="sf-tag">SCAN</span></div>
+          <span class="sf-msg" id="sf-msg" role="status" hidden></span>
+          <button type="button" class="sf-open" id="sf-open" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg>3D-Hologramm starten</button>
+        </div>
+        <div class="sf-id"><b id="sf-name">Schiffsdatenbank</b><span id="sf-mfr"></span></div>
+        <div class="sf-act">
+          <button type="button" id="sf-next" aria-label="Anderes Schiff zeigen" title="Anderes Schiff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.6-4.5M4 4v4h4M4 13a8 8 0 0 0 14.6 4.5M20 20v-4h-4"/></svg></button>
+          <button type="button" id="sf-reset" aria-label="Ansicht zurücksetzen" title="Ansicht zurücksetzen" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
+          <a class="sf-det" id="sf-det" href="#schiffe">Details<span aria-hidden="true"> →</span></a>
+        </div>
       </div>
     </aside>
   </div>
@@ -6147,6 +6198,8 @@ window.SC_MINE = (function () {
     }, Promise.resolve());
     return libsReady;
   }
+  /* „Schiff im Fokus“ auf der Startseite nutzt denselben Ladeweg, damit three.js nur einmal geladen wird */
+  window.SC_3D = { libs: loadLibs, cdn: CDN };
   function setup() {
     var T = window.THREE;
     var renderer = new T.WebGLRenderer({ antialias: true });
@@ -7691,6 +7744,195 @@ window.SC_MINE = (function () {
     ['pointerleave', 'blur'].forEach(function (ev) { t.addEventListener(ev, function () { say(sel); }); });
     t.addEventListener('pointermove', function (e) { var r = t.getBoundingClientRect(); t.style.setProperty('--mx', (e.clientX - r.left) + 'px'); t.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
   });
+})();
+</script>
+<script>
+/* ---------- Startseite: „Schiff im Fokus“ – echtes 3D-Holo aus dem geprüften Modell-Pool (focus-pool.json, erzeugt von tools/build_focus_pool.py) ----------
+   Lädt three.js erst, wenn das Panel sichtbar ist (gleicher Ladeweg wie die 3D-Ansicht der Schiffsdatenbank, window.SC_3D).
+   Am Handy (gestapeltes Layout) zuerst nur ein Vorschaubild, 3D auf Knopfdruck. Bei jedem Fehler bleibt das SVG-Schiff stehen. */
+(function () {
+  function $(id) { return document.getElementById(id); }
+  var box = $('sf'); if (!box) return;
+  var stage = $('sf-stage'), gl = $('sf-gl'), msg = $('sf-msg'), prev = $('sf-prev'), openBtn = $('sf-open'), nextBtn = $('sf-next'), resetBtn = $('sf-reset'), det = $('sf-det');
+  var SH = {}; (window.SHIPS || []).forEach(function (s) { SH[s.slug] = s; });
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var compact = window.matchMedia('(max-width: 980px)');
+  var LAST = 'sc-handbuch-focus-last';
+  var pool = [], cur = null, view = null, want3d = false, busy = false, onStart = true, visible = false;
+
+  function say(t) { msg.hidden = !t; msg.textContent = t || ''; }
+  function fallback(t) {
+    box.classList.remove('is-3d', 'has-prev'); prev.hidden = true; openBtn.hidden = true; busy = false;
+    nextBtn.disabled = !pool.length; resetBtn.disabled = true;
+    say(t || '');
+  }
+  /* Zufall ohne direkte Wiederholung (auch nicht über einen neuen Seitenaufruf hinweg) */
+  function pick() {
+    var last = cur ? cur.slug : null;
+    if (!last) { try { last = localStorage.getItem(LAST); } catch (e) {} }
+    var c = pool.filter(function (p) { return p.slug !== last; });
+    var p = (c.length ? c : pool)[Math.floor(Math.random() * (c.length || pool.length))];
+    try { localStorage.setItem(LAST, p.slug); } catch (e) {}
+    return p;
+  }
+  function meta() {
+    var s = SH[cur.slug];
+    $('sf-name').textContent = s.full || s.n;
+    $('sf-mfr').textContent = s.mn || '';
+    $('sf-tag').textContent = 'SCAN · ' + (s.m || '').toUpperCase();
+    det.href = '#s-' + s.slug;
+    det.setAttribute('aria-label', 'Details zu ' + (s.full || s.n) + ' in der Schiffsdatenbank');
+  }
+  function preview() {
+    var s = SH[cur.slug];
+    if (box.classList.contains('is-3d') || !s.img) { prev.hidden = true; box.classList.remove('has-prev'); return; }
+    prev.onload = function () { if (!want3d) { prev.hidden = false; box.classList.add('has-prev'); } };
+    prev.onerror = function () { prev.hidden = true; box.classList.remove('has-prev'); };
+    prev.src = s.img;
+  }
+
+  /* ---- three.js-Bühne, einmal angelegt und danach wiederverwendet ---- */
+  function setup() {
+    var T = window.THREE;
+    var renderer = new T.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    renderer.outputEncoding = T.sRGBEncoding;
+    renderer.setClearColor(0x000000, 0);
+    gl.appendChild(renderer.domElement);
+    renderer.domElement.setAttribute('aria-label', 'Schiffsmodell, mit Maus oder Finger drehen');
+    var scene = new T.Scene();
+    scene.fog = new T.Fog(0x071118, 1, 2); /* Tiefenwirkung: hintere Teile werden dunkler */
+    var cam = new T.PerspectiveCamera(32, 1, 0.1, 5000);
+    scene.add(new T.HemisphereLight(0x9fe9f7, 0x04080c, 0.75));
+    var key = new T.DirectionalLight(0xbff4ff, 0.9); key.position.set(2, 4, 3); scene.add(key);
+    var rim = new T.DirectionalLight(0x3fc6e0, 0.7); rim.position.set(-3, 1, -4); scene.add(rim);
+    var mat = new T.MeshStandardMaterial({ color: 0x8fe3f2, emissive: 0x0a3a46, emissiveIntensity: 0.6, metalness: 0.35, roughness: 0.5, transparent: true, opacity: 0.93 });
+    var ctl = new T.OrbitControls(cam, renderer.domElement);
+    ctl.enablePan = false; ctl.enableZoom = false; ctl.rotateSpeed = 0.7;
+    var draco = new T.DRACOLoader(); draco.setDecoderPath(window.SC_3D.cdn + 'examples/js/libs/draco/gltf/');
+    var loader = new T.GLTFLoader(); loader.setDRACOLoader(draco);
+    var obj = null, token = 0, raf = 0, idleStop = 0, dragging = false;
+
+    function size() {
+      var w = gl.clientWidth, h = gl.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
+    }
+    function render() { renderer.render(scene, cam); }
+    function active() { return onStart && visible && !document.hidden && obj; }
+    /* Nur rendern, solange sich etwas bewegt: Autodrehung (begrenzt), Ziehen oder Ausrollen */
+    function frame() {
+      raf = 0;
+      if (!active()) return;
+      var moved = ctl.update();
+      render();
+      if (ctl.autoRotate || dragging || moved) raf = requestAnimationFrame(frame);
+    }
+    function kick() { if (!raf && active()) raf = requestAnimationFrame(frame); }
+    ctl.addEventListener('change', kick);
+    ctl.addEventListener('start', function () { dragging = true; ctl.autoRotate = false; clearTimeout(idleStop); kick(); });
+    ctl.addEventListener('end', function () { dragging = false; kick(); });
+    function motion() {
+      ctl.enableDamping = !reduce.matches; ctl.dampingFactor = 0.12;
+      ctl.autoRotate = !reduce.matches; ctl.autoRotateSpeed = 0.9;
+      clearTimeout(idleStop);
+      /* keine Daueranimation: nach 40 s bleibt das Schiff stehen */
+      if (ctl.autoRotate) idleStop = setTimeout(function () { ctl.autoRotate = false; }, 40000);
+    }
+    function dispose(o) {
+      o.traverse(function (m) {
+        if (m.geometry) m.geometry.dispose();
+        if (m.material && m.material !== mat) [].concat(m.material).forEach(function (x) {
+          Object.keys(x).forEach(function (k) { if (x[k] && x[k].isTexture) x[k].dispose(); });
+          x.dispose();
+        });
+      });
+    }
+    if (window.ResizeObserver) new ResizeObserver(function () { size(); if (obj) render(); }).observe(gl);
+    return {
+      kick: kick,
+      reset: function () { ctl.reset(); motion(); kick(); },
+      load: function (entry, done, fail) {
+        var my = ++token;
+        size();
+        loader.load(entry.holo, function (g) {
+          var o = g.scene;
+          if (my !== token) { dispose(o); return; }
+          if (obj) { scene.remove(obj); dispose(obj); obj = null; renderer.renderLists.dispose(); }
+          o.traverse(function (m) {
+            if (m.isMesh) {
+              var old = m.material; m.material = mat;
+              [].concat(old).forEach(function (x) { if (x && x !== mat) { Object.keys(x).forEach(function (k) { if (x[k] && x[k].isTexture) x[k].dispose(); }); x.dispose(); } });
+              if (!m.geometry.attributes.normal) m.geometry.computeVertexNormals();
+            }
+          });
+          var bb = new T.Box3().setFromObject(o), c = new T.Vector3(), sz = new T.Vector3();
+          bb.getCenter(c); bb.getSize(sz); o.position.sub(c);
+          scene.add(o); obj = o;
+          /* Abstand so, dass die Hüllkugel bei jeder Drehung ganz ins Bild passt (mit Rand für die Zielmarken) */
+          var r = (sz.length() / 2) || 1;
+          var vf = cam.fov * Math.PI / 180, hf = 2 * Math.atan(Math.tan(vf / 2) * cam.aspect);
+          var dist = r / Math.sin(Math.min(vf, hf) / 2) * 1.12;
+          cam.position.set(0.7, 0.42, 0.72).normalize().multiplyScalar(dist);
+          cam.near = dist / 100; cam.far = dist * 4; cam.updateProjectionMatrix();
+          scene.fog.near = dist - r * 0.4; scene.fog.far = dist + r * 2.2;
+          ctl.target.set(0, 0, 0); ctl.update(); ctl.saveState();
+          motion(); render(); kick();
+          done();
+        }, null, function () { if (my === token) fail(); });
+      }
+    };
+  }
+
+  function load3d() {
+    if (!cur || busy) return;
+    want3d = true; busy = true;
+    nextBtn.disabled = true; resetBtn.disabled = true; openBtn.hidden = true;
+    say('Hologramm wird geladen …');
+    var my = cur;
+    if (!window.SC_3D || !window.WebGLRenderingContext) { fallback('3D ist hier nicht verfügbar.'); return; }
+    window.SC_3D.libs().then(function () {
+      if (!view) view = setup();
+      view.load(my, function () {
+        busy = false;
+        if (my !== cur) { load3d(); return; }
+        box.classList.add('is-3d'); box.classList.remove('has-prev'); prev.hidden = true; say('');
+        nextBtn.disabled = false; resetBtn.disabled = false;
+      }, function () { fallback('Modell gerade nicht verfügbar.'); });
+    }).catch(function () { fallback('3D-Ansicht konnte nicht geladen werden.'); });
+  }
+  function start() {
+    cur = pick(); meta();
+    if (compact.matches && !want3d) { preview(); openBtn.hidden = false; nextBtn.disabled = false; return; }
+    if (visible) load3d();
+  }
+
+  nextBtn.addEventListener('click', function () {
+    if (!pool.length || busy) return;
+    cur = pick(); meta();
+    if (want3d || (!compact.matches && visible)) load3d(); else preview();
+  });
+  resetBtn.addEventListener('click', function () { if (view) view.reset(); });
+  openBtn.addEventListener('click', load3d);
+  /* nur arbeiten, wenn die Startseite angezeigt wird und das Panel im Bild ist */
+  document.addEventListener('viewchange', function (e) { onStart = e.detail === 'start'; if (view) view.kick(); });
+  document.addEventListener('visibilitychange', function () { if (view) view.kick(); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      visible = en[0].isIntersecting;
+      if (visible && cur && !want3d && !compact.matches) load3d();
+      if (view) view.kick();
+    }, { rootMargin: '120px' }).observe(stage);
+  } else visible = true;
+  compact.addEventListener && compact.addEventListener('change', function () { if (!compact.matches && cur && !want3d && visible) load3d(); });
+
+  nextBtn.disabled = true;
+  fetch('focus-pool.json?v=' + Math.floor(Date.now() / 864e5)).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    pool = (d && d.ships || []).filter(function (p) { return SH[p.slug] && p.holo; });
+    if (!pool.length) return fallback('');
+    /* erst nach dem ersten Bild der Seite anfangen */
+    (window.requestIdleCallback || function (f) { setTimeout(f, 300); })(start);
+  }).catch(function () { fallback(''); });
 })();
 </script>
 </body>
