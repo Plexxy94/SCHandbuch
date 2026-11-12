@@ -127,3 +127,6 @@ Alle unter „Noch offen“ genannten Punkte sind abgearbeitet und auf main ver�
 - Gesamtlauf nach der CSS-Auslagerung: 31 Ansichten × 360/390/768/1440/1920 px × Hell/Dunkel, kein horizontaler Überlauf, keine Konsolenfehler. Restliche Schrift unter 12 px (Labels, Ruf-Leiter, HOSAS-Tags, Beta-Marke) auf 12 px angehoben.
 - Werkzeuge nutzen das globale Komponentensystem (Datenpanels, Chips, Tabellen); dezente Panel-Beleuchtung, Fokusmarkierung für Eingabefelder und ein Ladezustand (`aria-busy`) ergänzt, alles mit `prefers-reduced-motion`-Ausnahme.
 - Stichproben per Skript: Ruf-Rechner, Schiffsdeep-Link (`#s-drak-golem`), localStorage-Schlüssel unverändert, Schiff im Fokus vorhanden.
+
+### Nachprüfung (2026-11-12)
+Per Skript getestet, ohne Befund: Mining-RS-Rechner, Fundort-Filter, Frachter-Finder (inkl. Miete), Ruf-Rechner, Tagesplaner (Chips, localStorage `sc-handbuch-plan`), Tasten-, HOSAS- und Bug-Suche, Checkliste „Erste Schritte“ (`sc-handbuch-steps`, Zustand wiederhergestellt), Hangar-Timer, News und CCU-Radar laden Daten, Browser-Zurück, echte Tastaturfokus-Markierung (Tab), Kontrast-Scan Hellmodus (0 Befunde, Verläufe ausgenommen). Screenshots in `docs/screenshots`. Der Ladezustand `[aria-busy]` ist als CSS vorhanden, aber noch nicht an die Datenabrufe angebunden.
