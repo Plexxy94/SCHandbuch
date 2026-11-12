@@ -13,7 +13,27 @@ Fertig und live:
 - Startseite „mobiGlas Terminal B+“ inkl. „Schiff im Fokus“ (zufälliges 3D-Schiff im rechten Panel, `focus-pool.json`), weiche Hintergründe ohne harte Kanten
 - Kapitelkopf mit Inhaltsverzeichnis nur bei: Erste Schritte, Mining, Tasten, Schiffe (plus Hubs Wissen und Werkzeuge)
 
-Offen (siehe Phasen unten): alle übrigen Unterseiten haben noch den alten Kopf (`<div class="head"><div class="stamp">…`).
+## Arbeitsstand auf dem Branch `gesamt/ueberarbeitung` (NICHT auf main, noch nicht live)
+
+Zum Weitermachen: `git fetch && git checkout gesamt/ueberarbeitung`, lokal testen (`python -m http.server 8765` im Projektordner), danach nach main mergen und die Live-Seite prüfen.
+
+Auf dem Branch erledigt:
+- Alle Unterseiten haben jetzt den Kapitelkopf (`.head.chead`), Einsätze als amberfarbene „Einsatzakte“, Inhaltsverzeichnis bei Seiten mit mindestens 3 Abschnitten.
+- „Als Nächstes“-Leiste (`.nextup`, per Skript am Ende der Seiten) für Tutorials, Berufe und Einsätze.
+- Komponentensystem global: Überschriften, Tabellen mit Scrollhinweis und Zebra, Chips, Hinweise, Datenkarten, Mindestschrift 12 px.
+- Hellmodus: Farbtokens abgedunkelt (Cyan `#0B6074`, Amber `#8A4609`, Grün `#226339`) für Kontrast; Kontrast-Scan über alle 31 Ansichten bei 360/390/768/1440/1920 px in Hell und Dunkel ohne Befund (Ausnahme: dekorativer HUD-Text im Schiff-im-Fokus-Panel).
+- Bugfixes: `.cr-bar i` färbte Fachbegriffe cyan, Überlauf der Startseite bei 360 px, Tasten-Karten bei 360 px, Navigationsleiste bei 1440 px.
+- Tote CSS der alten Startseite entfernt (7,5 KB), CSS in `style.css` ausgelagert (index.html verweist per `<link>`).
+- Automatisierte Prüfungen (per JavaScript im Vorschau-Browser): keine Konsolenfehler, alle internen Anker lösen auf, Deep-Links, Mining-Rechner, Schiffsuche, Schiff im Fokus, globale Suche, localStorage-Schlüssel unverändert.
+
+Noch offen:
+- Letzter Gesamtlauf nach der CSS-Auslagerung bei allen fünf Breiten und beiden Farbschemata, Konsole prüfen.
+- Phase 4/5 Feinschliff der Werkzeuge: Rechner (RS, Fundort, Frachter-Finder, Ruf, Recco), Tagesplaner, Timer, Wikelo-Tabelle, CCU-Radar, News, Bugs als „Anwendungen“ optisch weiter angleichen; Hellmodus der Unterseiten per Auge prüfen (bisher nur per Kontrast-Scan).
+- Phase 8: dezente Hover-Beleuchtung auf weiteren Panels, Ladezustände, Fokusmarkierungen auf Unterseiten prüfen.
+- Screenshots der Unterseiten, Abschlussbericht, Veröffentlichung auf main und Live-Prüfung.
+
+Früherer Stand (vor diesem Branch):
+- Alle übrigen Unterseiten hatten noch den alten Kopf (`<div class="head"><div class="stamp">…`).
 
 Geplantes Vorgehen (Entscheidungen, die schon getroffen sind):
 1. Köpfe aller Unterseiten per Skript auf `.head.chead` umstellen (Kategorie „Bereich · Art“, Tags aus dem alten `.stamp`), `data-toc` bei Seiten mit mindestens 3 Abschnitten (`h2`, bei Tutorials `.step h3`).
