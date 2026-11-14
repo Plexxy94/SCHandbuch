@@ -1211,10 +1211,6 @@
    "ref": [
     [
      30000,
-     "Rod's Fuel"
-    ],
-    [
-     30000,
      "Patch City"
     ],
     [
@@ -1228,6 +1224,10 @@
     [
      30000,
      "Dudley & Daughters"
+    ],
+    [
+     30000,
+     "Canard View"
     ]
    ]
   },
@@ -1326,11 +1326,7 @@
   "diamond": {
    "ref": [
     [
-     9700,
-     "HUR-L1"
-    ],
-    [
-     8200,
+     7800,
      "Rod's Fuel"
     ],
     [
@@ -1344,6 +1340,10 @@
     [
      7700,
      "Pickers Field"
+    ],
+    [
+     7700,
+     "Rappel"
     ]
    ]
   },
@@ -1374,10 +1374,6 @@
   "hephaestanite": {
    "ref": [
     [
-     5800,
-     "MIC-L4"
-    ],
-    [
      5300,
      "TDD New Babbage"
     ],
@@ -1392,6 +1388,10 @@
     [
      4800,
      "TDD Orison"
+    ],
+    [
+     4800,
+     "ARC-L4"
     ]
    ]
   },
@@ -1415,7 +1415,7 @@
     ],
     [
      3600,
-     "Megumi"
+     "Dudley & Daughters"
     ]
    ],
    "raw": [
@@ -1452,10 +1452,6 @@
   "laranite": {
    "ref": [
     [
-     9700,
-     "Rod's Fuel"
-    ],
-    [
      9000,
      "Dudley & Daughters"
     ],
@@ -1470,6 +1466,10 @@
     [
      8700,
      "Gaslight"
+    ],
+    [
+     8700,
+     "Rat's Nest"
     ]
    ]
   },
@@ -1528,10 +1528,6 @@
      "Stanton Gateway (Pyro)"
     ],
     [
-     5400,
-     "Nyx Gateway (Stanton)"
-    ],
-    [
      4900,
      "Pyro Gateway (Stanton)"
     ],
@@ -1542,6 +1538,10 @@
     [
      4600,
      "Seraphim"
+    ],
+    [
+     4500,
+     "Nyx Gateway (Stanton)"
     ]
    ]
   },
@@ -1712,14 +1712,6 @@
   "titanium": {
    "ref": [
     [
-     9900,
-     "Megumi"
-    ],
-    [
-     9100,
-     "ARC-L3"
-    ],
-    [
      8300,
      "TDD Area 18"
     ],
@@ -1730,6 +1722,14 @@
     [
      8300,
      "CBD Lorville"
+    ],
+    [
+     8300,
+     "Ruin Station"
+    ],
+    [
+     8300,
+     "Checkmate"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-14T07:38:29+00:00"
+ "updated": "2026-11-14T15:07:49+00:00"
 }
