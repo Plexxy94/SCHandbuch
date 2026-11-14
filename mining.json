@@ -1118,10 +1118,6 @@
      "Rod's Fuel"
     ],
     [
-     11000,
-     "ARC-L3"
-    ],
-    [
      10000,
      "TDD Area 18"
     ],
@@ -1132,11 +1128,19 @@
     [
      10000,
      "CBD Lorville"
+    ],
+    [
+     10000,
+     "HUR-L3"
     ]
    ]
   },
   "aluminum": {
    "ref": [
+    [
+     4100,
+     "Everus Harbor"
+    ],
     [
      4000,
      "Dudley & Daughters"
@@ -1152,10 +1156,6 @@
     [
      3800,
      "CBD Lorville"
-    ],
-    [
-     3800,
-     "TDD Orison"
     ]
    ]
   },
@@ -1310,16 +1310,16 @@
      "Orbituary"
     ],
     [
-     4100,
-     "Everus Harbor"
-    ],
-    [
      3700,
      "TDD Area 18"
     ],
     [
      3700,
      "TDD New Babbage"
+    ],
+    [
+     3700,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1528,6 +1528,10 @@
      "Stanton Gateway (Pyro)"
     ],
     [
+     5100,
+     "Nyx Gateway (Stanton)"
+    ],
+    [
      4900,
      "Pyro Gateway (Stanton)"
     ],
@@ -1538,10 +1542,6 @@
     [
      4600,
      "Seraphim"
-    ],
-    [
-     4500,
-     "Nyx Gateway (Stanton)"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-14T15:07:49+00:00"
+ "updated": "2026-11-14T19:57:08+00:00"
 }
