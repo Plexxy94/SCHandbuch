@@ -1118,20 +1118,20 @@
      "Rod's Fuel"
     ],
     [
+     11000,
+     "ARC-L3"
+    ],
+    [
      10000,
      "TDD Area 18"
     ],
     [
      10000,
+     "TDD New Babbage"
+    ],
+    [
+     10000,
      "CBD Lorville"
-    ],
-    [
-     10000,
-     "ARC-L3"
-    ],
-    [
-     10000,
-     "HUR-L3"
     ]
    ]
   },
@@ -1140,10 +1140,6 @@
     [
      4000,
      "Dudley & Daughters"
-    ],
-    [
-     4000,
-     "Port Tressler"
     ],
     [
      3800,
@@ -1156,6 +1152,10 @@
     [
      3800,
      "CBD Lorville"
+    ],
+    [
+     3800,
+     "TDD Orison"
     ]
    ]
   },
@@ -1190,10 +1190,6 @@
      "Rod's Fuel"
     ],
     [
-     23000,
-     "HUR-L3"
-    ],
-    [
      22000,
      "HUR-L1"
     ],
@@ -1204,6 +1200,10 @@
     [
      22000,
      "HUR-L5"
+    ],
+    [
+     21000,
+     "Endgame"
     ]
    ]
   },
@@ -1310,16 +1310,16 @@
      "Orbituary"
     ],
     [
+     4100,
+     "Everus Harbor"
+    ],
+    [
      3700,
      "TDD Area 18"
     ],
     [
      3700,
      "TDD New Babbage"
-    ],
-    [
-     3700,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1328,10 +1328,6 @@
     [
      9700,
      "HUR-L1"
-    ],
-    [
-     8600,
-     "ARC-L5"
     ],
     [
      8200,
@@ -1344,6 +1340,10 @@
     [
      7700,
      "CBD Lorville"
+    ],
+    [
+     7700,
+     "Pickers Field"
     ]
    ]
   },
@@ -1378,12 +1378,12 @@
      "MIC-L4"
     ],
     [
-     4800,
-     "TDD Area 18"
+     5300,
+     "TDD New Babbage"
     ],
     [
      4800,
-     "TDD New Babbage"
+     "TDD Area 18"
     ],
     [
      4800,
@@ -1657,12 +1657,16 @@
     ],
     [
      140000,
-     "TDD New Babbage"
+     "TDD Area 18"
     ]
    ]
   },
   "taranite": {
    "ref": [
+    [
+     28000,
+     "TDD New Babbage"
+    ],
     [
      28000,
      "Fallow Field"
@@ -1678,10 +1682,6 @@
     [
      27000,
      "CBD Lorville"
-    ],
-    [
-     27000,
-     "TDD Orison"
     ]
    ]
   },
@@ -1716,20 +1716,20 @@
      "Megumi"
     ],
     [
+     9100,
+     "ARC-L3"
+    ],
+    [
+     8300,
+     "TDD Area 18"
+    ],
+    [
      8300,
      "TDD New Babbage"
     ],
     [
      8300,
      "CBD Lorville"
-    ],
-    [
-     8300,
-     "Ruin Station"
-    ],
-    [
-     8300,
-     "Checkmate"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-14T00:21:32+00:00"
+ "updated": "2026-11-14T07:38:29+00:00"
 }
