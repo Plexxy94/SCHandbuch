@@ -1227,7 +1227,7 @@
     ],
     [
      29000,
-     "TDD New Babbage"
+     "CBD Lorville"
     ]
    ]
   },
@@ -1327,10 +1327,6 @@
    "ref": [
     [
      7700,
-     "TDD New Babbage"
-    ],
-    [
-     7700,
      "CBD Lorville"
     ],
     [
@@ -1344,6 +1340,10 @@
     [
      7700,
      "Dunboro"
+    ],
+    [
+     7700,
+     "TDD Orison"
     ]
    ]
   },
@@ -1524,12 +1524,12 @@
   "quartz": {
    "ref": [
     [
-     4600,
-     "Patch City"
+     4700,
+     "Seraphim"
     ],
     [
      4600,
-     "Seraphim"
+     "Patch City"
     ],
     [
      4400,
@@ -1552,12 +1552,12 @@
      "ArcCorp 141"
     ],
     [
-     91000,
-     "ArcCorp 157"
-    ],
-    [
      79000,
      "Ashland"
+    ],
+    [
+     75000,
+     "ArcCorp 157"
     ],
     [
      75000,
@@ -1665,7 +1665,7 @@
    "ref": [
     [
      28000,
-     "TDD New Babbage"
+     "TDD Orison"
     ],
     [
      28000,
@@ -1681,7 +1681,7 @@
     ],
     [
      27000,
-     "CBD Lorville"
+     "TDD New Babbage"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-15T14:48:04+00:00"
+ "updated": "2026-11-15T20:24:59+00:00"
 }
