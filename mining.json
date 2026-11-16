@@ -1142,10 +1142,6 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     3900,
-     "Port Tressler"
-    ],
-    [
      3800,
      "TDD Area 18"
     ],
@@ -1156,6 +1152,10 @@
     [
      3800,
      "TDD Orison"
+    ],
+    [
+     3800,
+     "Stanton Gateway (Nyx)"
     ]
    ]
   },
@@ -1452,12 +1452,12 @@
   "laranite": {
    "ref": [
     [
-     9700,
-     "Rod's Fuel"
+     9800,
+     "HUR-L1"
     ],
     [
-     8700,
-     "TDD Area 18"
+     9700,
+     "Rod's Fuel"
     ],
     [
      8700,
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-16T08:01:29+00:00"
+ "updated": "2026-11-16T18:37:18+00:00"
 }
