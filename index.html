@@ -15,13 +15,13 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261116">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <script>try{if(JSON.parse(localStorage.getItem("sc-handbuch-me")||"{}").ss)document.documentElement.classList.add("ss")}catch(e){}</script>
-<script>/* Gemeinsamer JSON-Abruf: gleiche Dateien (news.json, ccu.json, …) mit beliebigem Zeitstempel-Parameter werden 60 Sekunden lang nur einmal geladen und an alle Nutzer weitergereicht. Die vier Startdateien beginnen schon hier, nicht erst am Ende der Seite. */(function(){var f=window.fetch,c={};if(!f)return;function key(u){var m=/^([\w.-]+\.json)\?(?:t|v)=\d+$/.exec(u);return m&&m[1];}window.fetch=function(u,o){var k=typeof u==="string"&&!o&&key(u);if(k){var e=c[k];if(!e||Date.now()-e.t>6e4){e=c[k]={t:Date.now(),p:f.call(window,u)};}return e.p.then(function(r){return r.clone();});}return f.apply(this,arguments);};["news.json","ccu.json","version.json","content-status.json"].forEach(function(n){var m=Math.floor(Date.now()/6e5);window.fetch(n+"?t="+m).catch(function(){});});})();</script>
+<script>/* Gemeinsamer JSON-Abruf: gleiche Dateien (news.json, ccu.json, …) mit beliebigem Zeitstempel-Parameter werden 60 Sekunden lang nur einmal geladen und an alle Nutzer weitergereicht. Fehlerantworten werden nicht zwischengespeichert, bei 5xx wird einmal wiederholt. Die vier Startdateien beginnen schon hier, nicht erst am Ende der Seite. */(function(){var f=window.fetch,c={};if(!f)return;function key(u){var m=/^([\w.-]+\.json)\?(?:t|v)=\d+$/.exec(u);return m&&m[1];}function load(u,k){function bad(){if(c[k])c[k].bad=1;}return f.call(window,u).then(function(r){if(r.status>=500){return new Promise(function(ok){setTimeout(ok,600);}).then(function(){return f.call(window,u);}).then(function(r2){if(!r2.ok)bad();return r2;});}if(!r.ok)bad();return r;},function(e){bad();throw e;});}window.fetch=function(u,o){var k=typeof u==="string"&&!o&&key(u);if(k){var e=c[k];if(!e||e.bad||Date.now()-e.t>6e4){e=c[k]={t:Date.now(),p:load(u,k)};}return e.p.then(function(r){return r.clone();});}return f.apply(this,arguments);};["news.json","ccu.json","version.json","content-status.json"].forEach(function(n){var m=Math.floor(Date.now()/6e5);window.fetch(n+"?t="+m).catch(function(){});});})();</script>
 <link rel="preload" href="fonts/chakra-petch-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/chakra-petch-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="ships.js?v=20261112" as="script">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261152">
+<link rel="stylesheet" href="style.css?v=20261153">
 </head>
 <body>
 
@@ -4087,12 +4087,11 @@ window.SC_MINE = (function () {
   rows.forEach(function (r) { r.dataset.t = norm(r.textContent); });
   function filter() {
     var v = norm(q.value.trim());
-    var shown = 0;
-    rows.forEach(function (r) {
-      var hit = !v || r.dataset.t.indexOf(v) !== -1;
-      r.hidden = !hit;
-      if (hit) shown++;
-    });
+    var shown = 0, stem = false;
+    function run(vv) { shown = 0; rows.forEach(function (r) { var hit = !vv || r.dataset.t.indexOf(vv) !== -1; r.hidden = !hit; if (hit) shown++; }); }
+    run(v);
+    /* nichts gefunden: Endung abschneiden („landen“ findet „Landung“) */
+    if (!shown && v.length >= 5) { var st = v.slice(0, v.length - 2); run(st); if (shown) { stem = true; v = st; } else run(v); }
     panels.forEach(function (p) {
       var head = norm(p.querySelector('h3').textContent);
       var any = p.querySelectorAll('.row:not([hidden])').length > 0;
@@ -4103,7 +4102,7 @@ window.SC_MINE = (function () {
       p.hidden = !any;
     });
     none.hidden = shown > 0;
-    count.textContent = v ? shown + ' Treffer' : rows.length + ' Belegungen';
+    count.textContent = v ? shown + ' Treffer' + (stem ? ' (ähnliche Wörter)' : '') : rows.length + ' Belegungen';
   }
   q.addEventListener('input', filter);
   filter();
@@ -6652,7 +6651,7 @@ window.SC_MINE = (function () {
   var STAT = { operational: ['', 'läuft normal'], ok: ['', 'läuft normal'], degraded: ['warn', 'eingeschränkt'], disrupted: ['warn', 'gestört'], notice: ['warn', 'Hinweis'],
     maintenance: ['warn', 'Wartung'], partial: ['warn', 'teilweise gestört'], down: ['bad', 'ausgefallen'], major: ['bad', 'großer Ausfall'] };
   function stat(s) { return STAT[String(s || '').toLowerCase()] || ['warn', s || 'unbekannt']; }
-  fetch('news.json' + t).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
+  fetch('news.json' + t).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
     var st = d.status || {}, sys = st.systems || [];
     $('st-status').innerHTML = sys.length ? sys.map(function (s) { var x = stat(s.status); return '<div class="st-stat ' + x[0] + '"><i></i>' + esc(s.name) + '<span>' + x[1] + '</span></div>'; }).join('')
       : '<div class="st-stat warn"><i></i>Status gerade nicht abrufbar</div>';
@@ -6667,7 +6666,7 @@ window.SC_MINE = (function () {
       return '<a class="st-newsrow" href="' + (ok ? esc(c.url) : '#news') + '"' + (ok ? ' target="_blank" rel="noopener"' : '') + '><time>' + new Date(c.date).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' }) + '</time><span>' + esc(c.title) + '</span></a>';
     }).join('') : '<span class="small">Gerade keine Meldungen.</span>';
   }).catch(function () { $('st-status').innerHTML = '<div class="st-stat warn"><i></i>Status gerade nicht abrufbar</div>'; $('st-news').innerHTML = '<span class="small">News ließen sich nicht laden.</span>'; });
-  fetch('ccu.json' + t).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
+  fetch('ccu.json' + t).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
     var open = (d.hits || []).filter(function (h) { return !h.done; });
     $('st-ccu').innerHTML = open.length ? open.slice(0, 2).map(function (h) {
       return '<b>' + esc(h.ship) + '</b>' + (h.old != null && h.new != null ? ' wird teurer: ' + h.old + ' $ → ' + h.new + ' $' : '') + (h.saving != null ? ', Upgrade spart ' + h.saving + ' $' : '') + '.';

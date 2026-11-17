@@ -2173,3 +2173,10 @@ html.ss .fbar { margin-top: 6px; padding: 6px 10px; }
 @media (max-width: 640px) { #st-news { min-height: 270px; } }
 .chead-tag.vtag { text-align: left; max-width: 100%; }
 .chead-tag.vtag::before { margin-top: 1px; }
+
+/* Abnahme: Leiste ab 1501 px (Marken-Untertitel, Server-Text und Suchbeschriftung machten sie zu breit, der letzte Reiter war abgeschnitten) */
+@media (min-width: 861px) { .brand .brand-sub, .nav-led span, .nav-search span { display: none; } }
+/* Abnahme: mitlaufendes Verzeichnis bei genau 1600 px nicht am linken Rand abschneiden */
+@media (min-width: 1600px) { .toc-rail:not([hidden]) { left: max(8px, calc(50% - 560px - 236px)); } }
+/* Abnahme: Statuszeile des Hero hat immer zwei Zeilen reserviert (kein Springen, wenn news.json eintrifft) */
+.hx-status .st-read, .t-center .hx-status .st-read { flex: 1 0 100%; justify-content: center; min-height: 18px; }
