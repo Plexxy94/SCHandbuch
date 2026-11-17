@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261116">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261121">
+<link rel="stylesheet" href="style.css?v=20261123">
 </head>
 <body>
 
@@ -117,6 +117,7 @@
   <symbol id="i-news" viewBox="0 0 24 24"><path d="M4 5h13v14H6.5A2.5 2.5 0 0 1 4 16.5z"/><path d="M17 9h3v7.5a2.5 2.5 0 0 1-2.5 2.5M7.5 9h6M7.5 12.5h6M7.5 16h3.5"/></symbol>
   <symbol id="i-stick" viewBox="0 0 24 24"><path d="M12 4.5V14M9.2 4.5h5.6M6.5 20h11L16 14.5H8z"/></symbol>
   <symbol id="i-learn" viewBox="0 0 24 24"><path d="M2.5 9L12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11.2v4.6c1.6 1.4 3.4 2.1 5.5 2.1s3.9-.7 5.5-2.1v-4.6"/></symbol>
+  <symbol id="i-craft" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.4"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1"/></symbol>
   <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/><path d="M5.7 5.7l3.7 3.7M14.6 14.6l3.7 3.7M18.3 5.7l-3.7 3.7M9.4 14.6l-3.7 3.7"/></symbol>
 </svg>
 <main class="wrap">
@@ -124,55 +125,74 @@
 
 <!-- ============ START ============ -->
 <div class="patchnote" id="patchnote" hidden><strong></strong><span></span><a href="#bugs">Bekannte Bugs</a><button type="button" id="patchok">Verstanden</button></div>
-<section class="view" id="view-start" data-view="start">
+<section class="view hx" id="view-start" data-view="start">
   <a class="status-banner" id="statusbanner" href="#news" hidden></a>
 
-  <div class="t-stage">
-  <div class="t-term">
-    <aside class="t-side l" aria-label="Das Handbuch in Zahlen">
-      <div class="t-blk">
-        <div class="t-lab">Handbuch<b>Alpha 4.10.3</b></div>
-        <div class="t-nums">
-          <a class="t-num cy" href="#schiffe"><span id="tm-ships">–</span><small>Schiffe</small></a>
-          <div class="t-num"><span id="tm-pages">–</span><small>Seiten</small></div>
-          <a class="t-num" href="#tutorial"><span id="tm-tut">–</span><small>Tutorials</small></a>
-          <a class="t-num" href="#einsaetze"><span id="tm-ops">–</span><small>Einsätze</small></a>
-        </div>
-      </div>
-      <div class="t-blk">
-        <div class="t-lab">Steuerung<b>QWERTZ</b></div>
-        <div class="t-keys"><div class="t-key"><kbd>F1</kbd>mobiGlas</div><div class="t-key"><kbd>F2</kbd>Sternenkarte</div><div class="t-key"><kbd>I</kbd>Inventar</div><a class="t-keys-all" href="#tasten">Alle Tasten<span aria-hidden="true"> →</span></a></div>
-      </div>
-    </aside>
-
-    <section class="t-center" aria-labelledby="st-title">
-      <nav class="tabstrip" aria-label="Bereiche"><a href="#tutorial"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg><span>Einstieg</span></a><a href="#berufe"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg><span>Berufe</span></a><a href="#schiffe"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg><span>Schiffe</span></a><a href="#einsaetze"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><span>Einsätze</span></a><a href="#tools"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg><span>Tools</span></a><a href="#news"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg><span>Hilfe</span></a></nav>
-      <div class="t-kicker">SC HANDBUCH · Inoffiziell · Alpha 4.10.3</div>
+  <!-- 1 · Hero: Patchstand und Suche -->
+  <div class="t-stage hero-stage">
+    <section class="t-center hx-hero" aria-labelledby="st-title">
+      <div class="t-kicker">SC HANDBUCH · Inoffiziell</div>
       <h1 id="st-title">Bereit für deinen nächsten <em>Flug?</em></h1>
       <p class="t-sub">Dein Begleiter durch das Verse.</p>
       <button type="button" class="t-search" data-gs aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Handbuch durchsuchen: Schiff, Taste, Erz, Begriff, Bug …</span><kbd>/</kbd></button>
-      <div class="st-read" id="st-read" aria-live="polite"></div>
-      <div class="t-grid" id="launcher">
-      <a class="t-tile sel" href="#heimat" id="st-new" data-d="Heimatstadt wählen, dann Schritt für Schritt vom Quartier bis zum ersten Auftrag. Du hakst ab, was sitzt."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-launch"/></svg><span class="t-tl">Neu im Verse</span><span class="t-tl-sub"><span id="st-newgo">Los geht’s →</span><span class="prog" id="st-prog"></span></span></a>
-      <a class="t-tile" href="#tasten" data-d="Die wichtigsten Tasten und alle weiteren nach Situation, für QWERTZ. Dazu die HOSAS-Belegung."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg><span class="t-tl">Steuerung</span></a>
-      <a class="t-tile" href="#berufe" data-d="Mining, Salvage, Hauling und Crafting im Vergleich: was es kostet, was es bringt, was zu dir passt."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg><span class="t-tl">Berufe</span></a>
-      <a class="t-tile" href="#schiffe" data-d="Alle flugfähigen Schiffe mit Preis, Fracht, Crew und 3D-Modell, mit Budget-Filter."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg><span class="t-tl">Schiffe</span></a>
-      <a class="t-tile" href="#bugs" data-d="Bekannte Bugs mit Workarounds und die offizielle Liste von CIG."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg><span class="t-tl">Bugs</span></a>
-      <a class="t-tile" href="#mining" data-jump="rs-tool" data-d="Signatur eingeben, Gestein und Menge ablesen, Fundorte und Raffinerien suchen."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg><span class="t-tl">Mining</span></a>
-      <a class="t-tile" href="#hauling" data-jump="hq-tool" data-d="Welches Schiff schafft den Auftrag in wie vielen Fahrten?"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg><span class="t-tl">Frachter-Finder</span></a>
-      <a class="t-tile" href="#ccu-radar" data-d="Meldet Schiffe, die im Pledge-Store teurer werden."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-radar"/></svg><span class="t-tl">CCU-Radar</span></a>
-      <a class="t-tile" href="#glossar" data-d="aUEC, SCU, NAV, ASOP: Abkürzungen kurz erklärt, mit Suche."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg><span class="t-tl">Glossar</span></a>
-      <a class="t-tile" href="#plan" data-d="Was mache ich heute? Drei Vorschläge nach Zeit, Gruppe und Hangar."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg><span class="t-tl">Tagesplaner</span></a>
+      <div class="hx-status">
+        <a class="hx-patch" href="#patchnotes"><i aria-hidden="true"></i>LIVE <b>Alpha 4.10.3</b><span>Patchnotes</span></a>
+        <div class="st-read" id="st-read" aria-live="polite"></div>
       </div>
-      <p class="t-info" id="t-info"><b>Auswahl</b><span id="t-info-t"></span></p>
-      <div class="t-hint"><span><b>/</b>Suche</span><span><b>Tab</b>Weiter</span><span><b>Enter</b>Öffnen</span><span><b>Esc</b>Schließen</span></div>
+      <div class="hx-foot">
+        <div class="hx-nums" aria-label="Das Handbuch in Zahlen"><a href="#schiffe"><b id="tm-ships">–</b> Schiffe</a><span><b id="tm-pages">–</b> Seiten</span><a href="#tutorial"><b id="tm-tut">–</b> Tutorials</a><a href="#einsaetze"><b id="tm-ops">–</b> Einsätze</a></div>
+        <div class="hx-keys" aria-label="Steuerung QWERTZ"><span><kbd>F1</kbd>mobiGlas</span><span><kbd>F2</kbd>Sternenkarte</span><span><kbd>I</kbd>Inventar</span><a href="#tasten">Alle Tasten<span aria-hidden="true"> →</span></a></div>
+      </div>
     </section>
+  </div>
 
-    <aside class="t-side r" aria-label="Schnellstart und Schiffsdatenbank">
-      <div class="t-blk">
-        <div class="t-lab">Schnellstart<b>3 Schritte</b></div>
-        <ol class="t-qs"><li><a href="#heimat"><kbd>1</kbd>Heimatstadt wählen</a></li><li><a href="#erste-schritte"><kbd>2</kbd>Erste Schritte abhaken</a></li><li><a href="#tutorial"><kbd>3</kbd>Beruf lernen</a></li></ol>
-      </div>
+  <!-- 2 · Vier Schnellzugriffe -->
+  <section class="hx-sec" aria-labelledby="st-h-qa">
+    <h2 class="hx-eyebrow" id="st-h-qa">Was möchtest du gerade tun?</h2>
+    <div class="qa">
+      <a class="chapter qa-card prime" id="st-new" href="#heimat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-launch"/></svg><h3>Neu im Verse?</h3><p>Heimatstadt wählen, Schritt für Schritt bis zum ersten Auftrag.</p><span class="go"><span id="st-newgo">Los geht’s →</span><span class="prog" id="st-prog"></span></span></a>
+      <a class="chapter qa-card" href="#plan"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg><h3>Was mache ich heute?</h3><p>Drei Vorschläge nach Zeit, Gruppe und Hangar.</p><span class="go">Planer öffnen →</span></a>
+      <a class="chapter qa-card" href="#tools"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg><h3>Werkzeuge</h3><p>Rechner, Suchen und Timer für Mining, Fracht, Schiffe, Ruf.</p><span class="go">Alle Werkzeuge →</span></a>
+      <a class="chapter qa-card" href="#bugs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-help"/></svg><h3>Ein Problem?</h3><p>Bekannte Bugs mit Workarounds, Überleben und Server-Status.</p><span class="go">Hilfe finden →</span></a>
+    </div>
+    <details class="st-plan" id="st-plan">
+      <summary><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg>Was mache ich heute? <small>Drei Vorschläge für deine Zeit und deinen Hangar</small></summary>
+  <div class="tool" id="plan">
+    <div class="tool-head"><span class="tool-tag">Planer</span><h3>Was mache ich heute?</h3></div>
+    <div class="plan-q"><span>Zeit</span><div class="chips" id="plan-t" role="group" aria-label="Wie viel Zeit hast du?"></div>
+      <span>Wie</span><div class="chips" id="plan-h" role="group" aria-label="Allein oder mit anderen?"></div>
+      <span>Lust auf</span><div class="chips" id="plan-m" role="group" aria-label="Worauf hast du Lust?"></div>
+      <span>Hangar</span><div><div class="chips" id="plan-s" role="group" aria-label="Welche Schiffe hast du?"></div><div class="plan-hangar" id="plan-hangar"></div><label class="check plan-rent"><input type="checkbox" id="plan-r"> Mieten ist okay <span class="small">(schlägt auch Mietschiffe vor)</span></label></div>
+    </div>
+    <div class="plan-live" id="plan-live"></div>
+    <div class="plan-out" id="plan-out"></div>
+    <p class="small" style="margin:0">Vorschläge nach festen Regeln aus den Kapiteln dieser Seite, keine berechneten Bestwerte. Erträge sind Richtwerte.</p>
+  </div>
+    </details>
+  </section>
+
+  <!-- 3 · Berufe (Karten erzeugt das Skript aus der Berufe-Liste) -->
+  <section class="hx-sec" aria-labelledby="st-h-prof">
+    <div class="hx-h"><h2 id="st-h-prof">Berufe</h2><a href="#berufe">Alle Berufe →</a></div>
+    <div class="st-prof" id="st-prof"></div>
+  </section>
+
+  <!-- 4 · Wichtige Werkzeuge -->
+  <section class="hx-sec" aria-labelledby="st-h-tools">
+    <div class="hx-h"><h2 id="st-h-tools">Häufig genutzte Werkzeuge</h2><a href="#tools">Alle Werkzeuge →</a></div>
+    <div id="st-tools-groups"></div>
+  </section>
+
+  <!-- 5 · Persönliche Schnellzugriffe (nur sichtbar, wenn im Browser etwas gespeichert ist) -->
+  <section class="hx-sec" id="st-mine-sec" aria-labelledby="st-h-mine" hidden>
+    <div class="hx-h"><h2 id="st-h-mine">Dein Stand</h2><span class="small">nur in diesem Browser gespeichert</span></div>
+    <div class="st-mine" id="st-mine"></div>
+  </section>
+
+  <!-- 6 · Schiff im Fokus -->
+  <section class="hx-sec" aria-labelledby="st-h-ship">
+    <div class="hx-h"><h2 id="st-h-ship">Schiff im Fokus</h2><a href="#schiffe">Schiffsdatenbank →</a></div>
+    <div class="hx-ship">
       <div class="t-blk sf" id="sf" role="group" aria-label="Schiff im Fokus">
         <div class="t-lab">Schiff im Fokus<b>3D</b></div>
         <div class="sf-stage" id="sf-stage">
@@ -213,33 +233,42 @@
           <a class="sf-det" id="sf-det" href="#schiffe">Details<span aria-hidden="true"> →</span></a>
         </div>
       </div>
-    </aside>
-  </div>
-  </div>
-
-  <section aria-labelledby="st-h-tools">
-    <h2 id="st-h-tools">Werkzeuge</h2>
-    <div id="st-tools-groups"></div>
-    <p class="small st-more"><a href="#tools">Alle Werkzeuge mit Beschreibung →</a></p>
-    <details class="st-plan" id="st-plan">
-      <summary><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg>Was mache ich heute? <small>Drei Vorschläge für deine Zeit und deinen Hangar</small></summary>
-  <div class="tool" id="plan">
-    <div class="tool-head"><span class="tool-tag">Planer</span><h3>Was mache ich heute?</h3></div>
-    <div class="plan-q"><span>Zeit</span><div class="chips" id="plan-t" role="group" aria-label="Wie viel Zeit hast du?"></div>
-      <span>Wie</span><div class="chips" id="plan-h" role="group" aria-label="Allein oder mit anderen?"></div>
-      <span>Lust auf</span><div class="chips" id="plan-m" role="group" aria-label="Worauf hast du Lust?"></div>
-      <span>Hangar</span><div><div class="chips" id="plan-s" role="group" aria-label="Welche Schiffe hast du?"></div><div class="plan-hangar" id="plan-hangar"></div><label class="check plan-rent"><input type="checkbox" id="plan-r"> Mieten ist okay <span class="small">(schlägt auch Mietschiffe vor)</span></label></div>
+      <div class="hx-shipinfo">
+        <p>Zufällig ausgewählt, drehbar mit der Maus oder dem Finger. Die Datenbank kennt alle flugfähigen Schiffe mit Einsatzzweck, Fracht, Crew, Preisen im Spiel und Budget-Filter.</p>
+        <div class="st-links"><a href="#schiffe">Schiffsdatenbank</a><a href="#schiffe" data-jump="shmine">Meine Schiffe</a><a href="#ccu-radar">CCU-Radar</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a></div>
+      </div>
     </div>
-    <div class="plan-live" id="plan-live"></div>
-    <div class="plan-out" id="plan-out"></div>
-    <p class="small" style="margin:0">Vorschläge nach festen Regeln aus den Kapiteln dieser Seite, keine berechneten Bestwerte. Erträge sind Richtwerte.</p>
-  </div>
-    </details>
   </section>
 
-  <section aria-labelledby="st-h-kb">
-    <h2 id="st-h-kb">Wissensdatenbank</h2>
-    <div class="st-kb">
+  <!-- 7 · Server-Status, News, Patchnotes -->
+  <section class="hx-sec" aria-labelledby="st-h-now">
+    <div class="hx-h"><h2 id="st-h-now">News und Status</h2><a href="#news">Alle News →</a></div>
+    <div class="st-now hx-now">
+      <div class="st-panel">
+        <h3>Server-Status <a href="#news" data-jump="nwstatus">Details →</a></h3>
+        <div id="st-status"><div class="st-stat"><i></i>Wird geladen …</div></div>
+        <h3 class="hx-h3b">CCU-Radar <a href="#ccu-radar">Öffnen →</a></h3>
+        <div id="st-ccu" class="small">Wird geladen …</div>
+      </div>
+      <div class="st-panel">
+        <h3>Neues von RSI <a href="#news">Alle News →</a></h3>
+        <div id="st-news"><span class="small">Wird geladen …</span></div>
+      </div>
+      <div class="st-panel">
+        <h3>Patchnotes <a href="#patchnotes">Öffnen →</a></h3>
+        <p class="hx-pn"><b>Alpha 4.10.3</b><span>LIVE</span></p>
+        <p class="small">Die Änderungen je Patch: LIVE-Releases, PTU-Builds und Hotfixes, filterbar und durchsuchbar.</p>
+        <p class="small"><a href="#bugs">Bekannte Bugs und Workarounds →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rest: alles, was bisher auf der Startseite stand, eingeklappt -->
+  <section class="hx-sec" aria-labelledby="st-h-more">
+    <h2 class="hx-eyebrow" id="st-h-more">Mehr im Handbuch</h2>
+    <details class="hx-more">
+      <summary>Alle Bereiche im Überblick <small>Tutorials, Steuerung, Berufe, Einsätze, Schiffe, Hilfe</small></summary>
+      <div class="st-kb">
     <div class="st-group">
       <header><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg><h3><a href="#tutorial">Tutorials</a></h3></header>
       <p>Schritt für Schritt vom ersten Login bis zur ersten Runde in jedem Beruf.</p>
@@ -271,33 +300,17 @@
       <div class="st-links"><a href="#bugs">Bugs & Workarounds</a><a href="#glossar">Glossar</a><a href="#news">News</a></div>
     </div>
     </div>
-  </section>
-
-  <section aria-labelledby="st-h-now">
-    <h2 id="st-h-now">News und Status</h2>
-    <div class="st-now">
-      <div class="st-panel">
-        <h3>Server-Status <a href="#news">Details →</a></h3>
-        <div id="st-status"><div class="st-stat"><i></i>Wird geladen …</div></div>
-        <h3 style="margin-top:8px">CCU-Radar <a href="#ccu-radar">Öffnen →</a></h3>
-        <div id="st-ccu" class="small">Wird geladen …</div>
-      </div>
-      <div class="st-panel">
-        <h3>Neues von RSI <a href="#news">Alle News →</a></h3>
-        <div id="st-news"><span class="small">Wird geladen …</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Gut zu wissen</h2>
-    <div class="facts">
+    </details>
+    <details class="hx-more">
+      <summary>Gut zu wissen <small>Fünf Dinge für den Anfang</small></summary>
+      <div class="facts">
       <div class="fact"><strong>Es ist eine Alpha</strong><p>Bugs gehören dazu. Hängt etwas, hilft oft neu einloggen oder ein anderer Server. <a href="#bugs">Bekannte Bugs →</a></p></div>
       <div class="fact"><strong>aUEC ist Spielgeld</strong><p>Alles, was du im Spiel kaufst, kann bei einem großen Patch zurückgesetzt werden. Gekaufte Pledge-Schiffe bleiben.</p></div>
       <div class="fact"><strong>Nichts überstürzen</strong><p>Erst mieten, dann kaufen. Mieten kostet einen Bruchteil und zeigt dir, ob dir etwas Spaß macht.</p></div>
       <div class="fact"><strong>Wo wohnen?</strong><p>Vier Städte zur Wahl, jede mit eigenen Vor- und Nachteilen. <a href="#heimat">Zum Vergleich →</a></p></div>
       <div class="fact"><strong>F halten hilft fast immer</strong><p>Im Interaktionsmodus zeigt dir das Spiel, was du mit einem Objekt machen kannst.</p></div>
     </div>
+    </details>
   </section>
 </section>
 
@@ -3574,25 +3587,25 @@ window.SC_MINE = (function () {
   /* Werkzeuge: eine Liste speist die Startseite und die Übersicht „Werkzeuge“. j = ID des Ziel-Elements, ic = Symbol aus dem Sprite. */
   var TOOL_GROUPS = [
     { id: 'wirtschaft', name: 'Wirtschaft', desc: 'Gestein, Fracht und Ruf: ausrechnen, was sich lohnt.', items: [
-      { n: 'Mining-Rechner', d: 'Signatur eingeben, Gestein und Menge ablesen.', ic: 'ore', h: '#mining', j: 'rs-tool' },
-      { n: 'Erz- und Fundort-Suche', d: 'Wo es ein Erz gibt, beste Raffinerie und Verkaufsort.', ic: 'target', h: '#mining', j: 'loc-tool' },
-      { n: 'Frachter-Finder', d: 'Welches Schiff schafft den Auftrag in wie vielen Fahrten?', ic: 'box', h: '#hauling', j: 'hq-tool' },
+      { f: 1, n: 'Mining-Rechner', d: 'Signatur eingeben, Gestein und Menge ablesen.', ic: 'ore', h: '#mining', j: 'rs-tool' },
+      { f: 1, n: 'Erz- und Fundort-Suche', d: 'Wo es ein Erz gibt, beste Raffinerie und Verkaufsort.', ic: 'target', h: '#mining', j: 'loc-tool' },
+      { f: 1, n: 'Frachter-Finder', d: 'Welches Schiff schafft den Auftrag in wie vielen Fahrten?', ic: 'box', h: '#hauling', j: 'hq-tool' },
       { n: 'Ruf-Rechner', d: 'Rang, nächste Stufe und wie viele Aufträge noch fehlen.', ic: 'rep', h: '#ruf', j: 'rufwho' }
     ] },
     { id: 'schiffe', name: 'Schiffe', desc: 'Finden, vergleichen und im Blick behalten, was Schiffe kosten.', items: [
-      { n: 'Schiffsdatenbank', d: 'Alle Schiffe mit Preis, Fracht, Crew, Budget-Filter und 3D-Modell.', ic: 'ship', h: '#schiffe' },
+      { f: 1, n: 'Schiffsdatenbank', d: 'Alle Schiffe mit Preis, Fracht, Crew, Budget-Filter und 3D-Modell.', ic: 'ship', h: '#schiffe' },
       { n: 'Meine Schiffe', d: 'Schiffe markieren, die du hast. Der Tagesplaner nutzt das.', ic: 'ship', h: '#schiffe', j: 'shmine' },
       { n: 'Frachter-Finder', d: 'Welches Schiff schafft den Auftrag in wie vielen Fahrten?', ic: 'box', h: '#hauling', j: 'hq-tool' },
-      { n: 'CCU-Radar', d: 'Meldet Schiffe, die im Pledge-Store teurer werden.', ic: 'radar', h: '#ccu-radar' }
+      { f: 1, n: 'CCU-Radar', d: 'Meldet Schiffe, die im Pledge-Store teurer werden.', ic: 'radar', h: '#ccu-radar' }
     ] },
     { id: 'planung', name: 'Planung und Training', desc: 'Den Abend planen, die Steuerung belegen und üben.', items: [
-      { n: 'Tagesplaner', d: 'Was mache ich heute? Vorschläge nach Zeit, Gruppe und Hangar.', ic: 'plan', plan: true },
+      { f: 1, n: 'Tagesplaner', d: 'Was mache ich heute? Vorschläge nach Zeit, Gruppe und Hangar.', ic: 'plan', plan: true },
       { n: 'HOSAS-Belegung', d: 'Zwei Sticks, jede Taste mit Funktion, mit Suche.', ic: 'stick', h: '#hosas' },
-      { n: 'Tasten-Suche', d: 'Aktion oder Taste eintippen, für QWERTZ.', ic: 'keys', h: '#tasten', j: 'q' },
+      { f: 1, n: 'Tasten-Suche', d: 'Aktion oder Taste eintippen, für QWERTZ.', ic: 'keys', h: '#tasten', j: 'q' },
       { n: 'Tastentraining', d: 'Tasten und Abläufe am PC üben, bevor es ernst wird.', ic: 'learn', h: '#training' }
     ] },
     { id: 'missionen', name: 'Missionen', desc: 'Timer und Listen für die großen Einsätze.', items: [
-      { n: 'Executive-Hangar-Timer', d: 'Ist der Hangar offen? Live mit Uhrzeit des nächsten Wechsels.', ic: 'timer', h: '#exec-hangar', j: 'xh-timer' },
+      { f: 1, n: 'Executive-Hangar-Timer', d: 'Ist der Hangar offen? Live mit Uhrzeit des nächsten Wechsels.', ic: 'timer', h: '#exec-hangar', j: 'xh-timer' },
       { n: 'Wikelo-Tauschliste', d: 'Alle 39 Schiffe mit Favors und Material, mit Filter.', ic: 'credits', h: '#hathor', j: 'wkchips' },
       { n: 'Recco: Wie weit bin ich?', d: 'Ruf bei Recco eintragen, Fortschritt zum nächsten Rang sehen.', ic: 'rep', h: '#recco', j: 'recco-rep' }
     ] }
@@ -3609,7 +3622,8 @@ window.SC_MINE = (function () {
       return '<div class="st-tg">' + head + '<div class="st-tools">' + g.items.map(function (t) { return tile(t, hub); }).join('') + '</div></div>';
     }).join('');
   }
-  $('st-tools-groups').innerHTML = groups(false);
+  /* Startseite: nur die häufig genutzten Werkzeuge (f: 1), die volle Liste steht unter „Werkzeuge“ */
+  $('st-tools-groups').innerHTML = '<div class="st-tools hx-tools">' + TOOL_GROUPS.reduce(function (a, g) { return a.concat(g.items.filter(function (t) { return t.f; })); }, []).map(function (t) { return tile(t, false); }).join('') + '</div>';
   $('tools-groups').innerHTML = groups(true);
   $('tools-jump').innerHTML = TOOL_GROUPS.map(function (g) { return '<a href="#tools" data-jump="tg-' + g.id + '">' + esc(g.name) + '</a>'; }).join('');
   /* Tagesplaner aus der Werkzeug-Übersicht: Planer aufklappen, dann springt data-jump hin */
@@ -3658,11 +3672,11 @@ window.SC_MINE = (function () {
 
   /* Berufe als Anlaufstelle: je Beruf Tutorial, Wissen und Werkzeuge. Eine Liste speist die Leiste auf den Berufs- und Tutorial-Seiten und die Übersicht „Berufe“. */
   var PROF = [
-    { id: 'mining', name: 'Mining', tut: 't-mining', wiki: 'mining', tools: [['Mining-Rechner', 'rs-tool'], ['Erz- und Fundort-Suche', 'loc-tool']] },
-    { id: 'salvage', name: 'Salvage', tut: 't-salvage', wiki: 'salvage', tools: [] },
-    { id: 'hauling', name: 'Hauling', tut: 't-hauling', wiki: 'hauling', tools: [['Frachter-Finder', 'hq-tool']] },
-    { id: 'crafting', name: 'Crafting', tut: 't-crafting', wiki: 'crafting', tools: [] },
-    { id: 'ruf', name: 'Ruf', tut: null, wiki: 'ruf', tools: [['Ruf-Rechner', 'rufwho']] }
+    { id: 'mining', ic: 'ore', d: 'Erz abbauen, raffinieren, verkaufen.', name: 'Mining', tut: 't-mining', wiki: 'mining', tools: [['Mining-Rechner', 'rs-tool'], ['Erz- und Fundort-Suche', 'loc-tool']] },
+    { id: 'salvage', ic: 'fix', d: 'Wracks zerlegen, RMC und Baumaterial.', name: 'Salvage', tut: 't-salvage', wiki: 'salvage', tools: [] },
+    { id: 'hauling', ic: 'box', d: 'Fracht liefern und handeln.', name: 'Hauling', tut: 't-hauling', wiki: 'hauling', tools: [['Frachter-Finder', 'hq-tool']] },
+    { id: 'crafting', ic: 'craft', d: 'Baupläne, Material und Qualität.', name: 'Crafting', tut: 't-crafting', wiki: 'crafting', tools: [] },
+    { id: 'ruf', ic: 'rep', d: 'Ränge, Aufträge, Belohnungen.', name: 'Ruf', tut: null, wiki: 'ruf', tools: [['Ruf-Rechner', 'rufwho']] }
   ];
   function profBar(p, view) {
     var parts = [];
@@ -3677,6 +3691,11 @@ window.SC_MINE = (function () {
     if (!p || !head || v.querySelector('.pf-bar')) return;
     head.insertAdjacentHTML('afterend', profBar(p, view));
   }
+  if ($('st-prof')) $('st-prof').innerHTML = PROF.map(function (p) {
+    var l = (p.tut ? '<a href="#' + p.tut + '">Tutorial</a>' : '') + '<a href="#' + p.wiki + '">Wissen</a>' +
+      (p.tools[0] ? '<a href="#' + p.wiki + '" data-jump="' + p.tools[0][1] + '">' + esc(p.tools[0][0].replace(/ und Fundort-Suche/, '-Suche')) + '</a>' : '');
+    return '<div class="pr-card"><a class="pr-main" href="#' + p.wiki + '"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-' + p.ic + '"/></svg><b>' + esc(p.name) + '</b><span>' + esc(p.d) + '</span></a><div class="pr-links">' + l + '</div></div>';
+  }).join('');
   (function () {
     var v = $('view-berufe'), ch = v && v.querySelector('.chapters');
     if (!ch) return;
@@ -3687,7 +3706,28 @@ window.SC_MINE = (function () {
     }).join('') + '</div></section>');
   })();
 
-  document.addEventListener('viewchange', function (e) { crumb(e.detail); toc(e.detail); profBars(e.detail); });
+  /* Dein Stand: nur Dinge, die im Browser vorhanden sind (Häkchen, Meine Schiffe, Hangar-Abhakliste) */
+  function mine() {
+    var sec = $('st-mine-sec'), box = $('st-mine');
+    if (!sec) return;
+    var items = [], done = 0, total = document.querySelectorAll('#steps input[type=checkbox]').length;
+    Array.prototype.forEach.call(document.querySelectorAll('#steps input[type=checkbox]'), function (b) { if (b.checked) done++; });
+    if (done) items.push(['Erste Schritte', done + ' von ' + total + ' geschafft', done === total ? '#tutorial' : '#erste-schritte', done === total ? 'Weitere Tutorials →' : 'Weitermachen →']);
+    var ships = window.SC_MINE ? window.SC_MINE.list().length : 0;
+    if (ships) items.push(['Meine Schiffe', ships + (ships === 1 ? ' Schiff' : ' Schiffe') + ' markiert', '#schiffe', 'Hangar ansehen →', 'shmine']);
+    var xh = 0; try { var o = JSON.parse(localStorage.getItem('sc-exec-check') || '{}'); Object.keys(o).forEach(function (k) { if (o[k]) xh++; }); } catch (e) {}
+    if (xh) items.push(['Executive Hangar', xh + (xh === 1 ? ' Punkt' : ' Punkte') + ' abgehakt', '#exec-hangar', 'Weiter abhaken →']);
+    sec.hidden = !items.length;
+    box.innerHTML = items.map(function (it) {
+      return '<a class="mn-card" href="' + it[2] + '"' + (it[4] ? ' data-jump="' + it[4] + '"' : '') + '><span class="mn-k">' + esc(it[0]) + '</span><b>' + esc(it[1]) + '</b><span class="mn-go">' + esc(it[3]) + '</span></a>';
+    }).join('');
+  }
+  document.addEventListener('minechange', mine);
+  document.addEventListener('change', function (e) { if (e.target.closest && e.target.closest('#steps')) mine(); });
+  window.addEventListener('load', mine);
+  mine();
+
+  document.addEventListener('viewchange', function (e) { crumb(e.detail); toc(e.detail); profBars(e.detail); if (e.detail === 'start') mine(); });
 
   /* Menü (Handy und Tablet): Blatt aus den zweiten Reihen aufgebaut, damit es nie von der Leiste abweicht */
   var dlg = $('menu'), btn = $('navmenu'), list = $('menu-list'), mq = window.matchMedia('(max-width: 860px)');
@@ -6430,7 +6470,7 @@ window.SC_MINE = (function () {
     var sum = stat(st.summary), fmt = function (x) { return new Date(x).toLocaleString('de-DE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); };
     var led = $('navled'); if (led && sys.length) { led.className = 'nav-led ' + sum[0]; led.hidden = false; led.setAttribute('aria-label', 'Server-Status: ' + sum[1] + ', Details in den News'); led.title = 'Server-Status: ' + sum[1]; }
     $('st-read').innerHTML = (sys.length ? '<a href="#news"><span class="dot ' + sum[0] + '"></span>Server: <b>' + sum[1] + '</b></a>' : '') +
-      (d.issues && d.issues.title ? '<a href="#bugs">Patch: <b>' + esc((/[\d.]+/.exec(d.issues.title) || [''])[0]) + '</b></a>' : '') +
+      (d.issues && d.issues.title ? '<a href="#bugs">Bug-Liste: <b>' + esc((/[\d.]+/.exec(d.issues.title) || [''])[0]) + '</b></a>' : '') +
       (d.checked || d.updated ? '<span>Daten: <b>' + fmt(d.checked || d.updated) + '</b></span>' : '');
     var rows = (d.commlinks || []).slice(0, 5);
     $('st-news').innerHTML = rows.length ? rows.map(function (c) {
@@ -6456,14 +6496,6 @@ window.SC_MINE = (function () {
   var row = function (g) { var r = document.querySelector('.subnav-in[data-group="' + g + '"]'); return r ? r.querySelectorAll('a').length - 1 : 0; };
   $('tm-tut').textContent = document.querySelectorAll('#view-tutorial .chapter').length || '–';
   $('tm-ops').textContent = row('einsaetze') || '–';
-  var tiles = Array.prototype.slice.call(document.querySelectorAll('#launcher .t-tile')), info = $('t-info-t'), sel = document.querySelector('#launcher .t-tile.sel');
-  function say(t) { info.textContent = (t && t.dataset.d) || ''; }
-  say(sel);
-  tiles.forEach(function (t) {
-    ['pointerenter', 'focus'].forEach(function (ev) { t.addEventListener(ev, function () { say(t); }); });
-    ['pointerleave', 'blur'].forEach(function (ev) { t.addEventListener(ev, function () { say(sel); }); });
-    t.addEventListener('pointermove', function (e) { var r = t.getBoundingClientRect(); t.style.setProperty('--mx', (e.clientX - r.left) + 'px'); t.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
-  });
 })();
 </script>
 <script>
