@@ -18,25 +18,35 @@
   }
   V.cmp = cmp; V.fmt = fmt;
 
-  /* Prüfstand einer Seite oder eines Hubs: { patch, date, state: ok|old|unknown, hub, kind, note, basis } */
-  function leaves(id, seen) {
+  /* Prüfstand einer Seite oder eines Hubs.
+     Zustände: ok (für die LIVE-Version geprüft), prior (für eine frühere Version geprüft, erneute Prüfung steht aus, NICHT automatisch veraltet),
+     partial (konkrete Abweichungen bekannt oder nur teilweise aktualisiert; nur mit state "teilweise" und reason in content-status.json),
+     outdated (nachweislich veraltet; nur mit state "veraltet" und reason), unknown (kein Prüfstand erfasst).
+     Eine neue LIVE-Version macht aus ok automatisch prior, nie aus prior outdated. */
+  function leafIds(id, seen) {
     seen = seen || {};
     if (seen[id]) return [];
     seen[id] = 1;
-    if (V.hubs[id]) return V.hubs[id].from.reduce(function (a, k) { return a.concat(leaves(k, seen)); }, []);
-    var p = V.pages[id];
-    return p && p.patch ? [p.patch] : [];
+    if (V.hubs[id]) return V.hubs[id].from.reduce(function (a, k) { return a.concat(leafIds(k, seen)); }, []);
+    return V.pages[id] ? [id] : [];
+  }
+  function pageState(p) {
+    var live = V.live && V.live.version;
+    if (p.state === 'veraltet') return 'outdated';
+    if (!p.patch) return 'unknown';
+    if (p.state === 'teilweise') return 'partial';
+    return live && cmp(p.patch, live) < 0 ? 'prior' : 'ok';
   }
   V.status = function (id) {
-    var live = V.live && V.live.version, hub = !!V.hubs[id], p = V.pages[id], patch, date = null, kind = 'Stand';
+    var hub = !!V.hubs[id], p = V.pages[id];
     if (hub) {
-      var ls = leaves(id);
-      patch = ls.length ? ls.reduce(function (a, b) { return cmp(a, b) <= 0 ? a : b; }) : null;
-      kind = 'Ältester Stand';
-    } else if (p) { patch = p.patch; date = p.date; kind = p.kind || 'Stand'; }
-    else return null;
-    var state = !patch ? 'unknown' : (live && cmp(patch, live) < 0 ? 'old' : 'ok');
-    return { patch: patch, date: date, state: state, hub: hub, kind: kind, note: p && p.note, basis: p && p.basis };
+      var ids = leafIds(id), counts = { ok: 0, prior: 0, partial: 0, outdated: 0, unknown: 0 }, oldest = null;
+      ids.forEach(function (k) { var q = V.pages[k]; counts[pageState(q)]++; if (q.patch && (!oldest || cmp(q.patch, oldest) < 0)) oldest = q.patch; });
+      var live = V.live && V.live.version;
+      return { hub: true, patch: oldest, date: null, state: !oldest ? 'unknown' : (live && cmp(oldest, live) < 0 ? 'prior' : 'ok'), counts: counts, total: ids.length, kind: 'Stand' };
+    }
+    if (!p) return null;
+    return { hub: false, patch: p.patch, date: p.date, state: pageState(p), kind: p.kind || 'Stand', note: p.note, reason: p.reason, basis: p.basis };
   };
   /* Höchster eingetragener Prüfstand: unter LIVE heißt, dass noch keine Seite auf die neue Version durchgesehen ist */
   V.reviewedMax = function () {
@@ -55,21 +65,46 @@
     });
     Array.prototype.forEach.call(document.querySelectorAll('[data-sc-if]'), function (el) { el.hidden = !map[el.dataset.scIf]; });
     var liveDate = live && live.date ? fmt(live.date) : '';
+    var shortDate = function (d) { return fmt(d, /^2026/.test(d) && live && /^2026/.test(live.date)); };
     Array.prototype.forEach.call(document.querySelectorAll('.vtag[data-vpage]'), function (el) {
-      var s = V.status(el.dataset.vpage); if (!s) { el.hidden = true; return; }
-      var txt, tip = [];
-      if (s.state === 'unknown') { txt = 'Prüfstand nicht erfasst'; tip.push('Für diese Seite ist kein geprüfter Patch eingetragen.'); }
-      else {
-        txt = s.kind + ' ' + s.patch + (s.date && !s.hub ? ' · ' + fmt(s.date, /^2026/.test(s.date) && live && /^2026/.test(live.date)) : '');
-        if (s.state === 'old') txt += ' · LIVE ' + live.version;
-        tip.push((s.hub ? 'Älteste geprüfte Unterseite: Patch ' : 'Zuletzt geprüft für Patch ') + s.patch + (s.date && !s.hub ? ' (' + fmt(s.date) + ')' : '') + '.');
-        if (s.state === 'old') tip.push('Aktuelle LIVE-Version ist ' + live.version + (liveDate ? ' (seit ' + liveDate + ')' : '') + '. Zahlen und Aussagen können abweichen.');
-        else tip.push('Entspricht der aktuellen LIVE-Version ' + (live ? live.version : '') + '.');
+      var view = el.dataset.vpage, s = V.status(view); if (!s) { el.hidden = true; return; }
+      if (el.tagName !== 'BUTTON') {   /* aus der Textmarke wird ein Knopf, der den Detailbereich öffnet */
+        var b = document.createElement('button'); b.type = 'button'; b.className = el.className; b.dataset.vpage = view; b.hidden = el.hidden; el.replaceWith(b); el = b;
+        b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'vp-' + view);
+        b.addEventListener('click', function () { var pn = document.getElementById('vp-' + view); var open = pn.hidden; pn.hidden = !open; b.setAttribute('aria-expanded', String(open)); });
       }
-      if (s.note) tip.push(s.note);
-      if (s.basis) tip.push('Grundlage: ' + s.basis + '.');
-      el.className = 'chead-tag vtag ' + s.state;
-      el.textContent = txt; el.title = tip.join(' '); el.hidden = false;
+      var txt;
+      if (s.state === 'unknown') txt = 'Prüfstand nicht erfasst';
+      else if (s.state === 'outdated') txt = 'Nachweislich veraltet';
+      else if (s.hub) txt = 'Älteste Prüfung: ' + s.patch;
+      else {
+        txt = (s.kind === 'Datenstand' ? 'Datenstand ' : 'Geprüft für ') + s.patch + (s.date ? ' · ' + shortDate(s.date) : '');
+        if (s.state === 'partial') txt += s.kind === 'Datenstand' ? ' · bekannte Lücken' : ' · teils aktualisiert';
+      }
+      el.className = 'chead-tag vtag ' + s.state; el.textContent = txt; el.hidden = false;
+      /* Detailbereich: zugänglich per Tastatur, mit Prüfversion, Prüfdatum, aktueller LIVE-Version und Hinweisen */
+      var meta = el.parentElement, pn = document.getElementById('vp-' + view);
+      if (!pn) { pn = document.createElement('div'); pn.id = 'vp-' + view; pn.className = 'vpanel'; pn.hidden = true; pn.setAttribute('role', 'region'); pn.setAttribute('aria-label', 'Prüfstand dieser Seite'); meta.insertAdjacentElement('afterend', pn); }
+      var rows = [];
+      var row = function (k, v) { if (v) rows.push('<dt>' + k + '</dt><dd>' + v + '</dd>'); };
+      var E = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+      if (s.hub) {
+        row('Ältester Prüfstand', s.patch ? 'Version ' + E(s.patch) : '');
+        var c = s.counts, parts = [];
+        if (c.ok) parts.push(c.ok + ' für LIVE geprüft'); if (c.prior) parts.push(c.prior + ' für eine frühere Version geprüft'); if (c.partial) parts.push(c.partial + ' teils aktualisiert'); if (c.outdated) parts.push(c.outdated + ' nachweislich veraltet'); if (c.unknown) parts.push(c.unknown + ' ohne erfassten Prüfstand');
+        row('Seiten in diesem Bereich', s.total + ': ' + parts.join(', '));
+      } else {
+        row(s.kind === 'Datenstand' ? 'Datenstand' : 'Geprüft für', s.patch ? 'Version ' + E(s.patch) : '');
+        row('Prüfdatum', s.date ? E(fmt(s.date)) : (s.patch ? 'nicht angegeben' : ''));
+      }
+      if (live) row('Aktuelle LIVE-Version', E(live.version) + (liveDate ? ' (seit ' + E(liveDate) + ')' : ''));
+      var how = { ok: 'Für die aktuelle LIVE-Version geprüft.', prior: 'Für eine frühere Version geprüft. Eine erneute Prüfung steht aus. Das heißt nicht, dass die Seite falsch ist.',
+        partial: 'Teilweise auf neuere Versionen aktualisiert oder mit bekannten Abweichungen, siehe Hinweis.', outdated: 'Nachweislich veraltet, siehe Hinweis.', unknown: 'Für diese Seite ist kein Prüfstand erfasst.' }[s.state];
+      if (s.hub) how = 'Zusammenfassung der Unterseiten, kein eigener Prüfstand.';
+      row('Einordnung', how);
+      row('Hinweis', [s.reason, s.note && s.note !== s.reason ? s.note : ''].filter(Boolean).map(E).join(' '));
+      row('Grundlage', s.basis ? E(s.basis) : '');
+      pn.innerHTML = '<dl class="vp-dl">' + rows.join('') + '</dl>';
     });
     /* Hinweisleiste: nur wenn LIVE neuer ist als jede geprüfte Seite */
     var n = document.getElementById('patchnote'), top = V.reviewedMax();
@@ -77,7 +112,7 @@
       var seen = ''; try { seen = localStorage.getItem('sc-handbuch-patch') || ''; } catch (e) {}
       if (seen !== live.version) {
         n.querySelector('strong').textContent = 'Patch ' + live.version + ' ist live';
-        n.querySelector('span').textContent = 'Die Inhalte sind noch nicht auf diese Version durchgesehen (höchster Prüfstand: ' + top + '). Jede Seite zeigt oben ihren eigenen Stand. Tasten, Preise, Ruf-Werte und Bugs können abweichen.';
+        n.querySelector('span').textContent = 'Die Seiten sind noch nicht für diese Version geprüft (höchster Prüfstand: ' + top + '). Oben bei jeder Seite steht, für welche Version sie geprüft ist. Einzelne Werte können abweichen.';
         n.hidden = false;
         var ok = document.getElementById('patchok');
         if (ok && !ok.dataset.bound) { ok.dataset.bound = '1'; ok.addEventListener('click', function () { n.hidden = true; try { localStorage.setItem('sc-handbuch-patch', live.version); } catch (e) {} }); }

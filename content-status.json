@@ -1,10 +1,11 @@
 {
-  "_hinweis": "Prüfstand je Seite, von Hand gepflegt. Eine Seite gilt nur dann als aktuell, wenn hier der Patch der globalen LIVE-Version (version.json, automatisch) eingetragen ist. Eine neue LIVE-Version ändert diese Datei NICHT: Seiten mit älterem Prüfstand werden dadurch automatisch als älter als LIVE gekennzeichnet. Erst nach einer echten Durchsicht der Seite patch und date hier anheben. patch = Spielversion, auf die sich die Zahlen und Aussagen der Seite beziehen. date = Tag der Durchsicht oder der Quelle (JJJJ-MM-TT, auch JJJJ-MM). basis = woher die Angabe stammt. Hubs (from) zeigen den ältesten Prüfstand ihrer Unterseiten.",
+  "_hinweis": "Prüfstand je Seite, von Hand gepflegt. patch = Spielversion, für die Zahlen und Aussagen der Seite zuletzt geprüft wurden; date = Tag der Durchsicht (JJJJ-MM-TT oder JJJJ-MM); basis = woher die Angabe stammt. Optional: state = \"teilweise\" (konkrete Abweichungen bekannt oder nur teilweise aktualisiert) oder \"veraltet\" (nachweislich veraltet); beides verlangt reason (belegbare Begründung, die auch auf der Seite steht). Ohne state gilt: Prüfstand gleich LIVE = grün, älterer Prüfstand = neutral „Geprüft für x“ (erneute Prüfung steht aus, nicht automatisch veraltet). Eine neue LIVE-Version (version.json, automatisch) ändert diese Datei nie. Erst nach einer echten Durchsicht patch und date anheben. Ablauf und Regeln: docs/PRUEFSTAND_CHECKLISTE.md, Prüfskript: tools/check_content_status.py. Hubs (from) zeigen den ältesten Prüfstand ihrer Unterseiten.",
   "pages": {
     "mining": {
       "patch": "4.10.2",
       "date": "2026-10-09",
-      "basis": "Seitentext: Spieldaten 4.10.2, Stand 9. Oktober 2026 · Kopfzeile 4.10.3 war nur ein Stempel"
+      "basis": "Seitentext: Spieldaten 4.10.2, Stand 9. Oktober 2026",
+      "intern": "Kopfzeile stand nach dem Update auf 4.10.3 (Commit 137960d) auf 4.10.3, war aber nur ein Stempel; Inhalt ist der Stand der Seitentexte."
     },
     "t-mining": {
       "patch": "4.10.2",
@@ -15,49 +16,58 @@
       "patch": "4.10.2",
       "date": "2026-10-30",
       "basis": "Seitentext: UEX-Preise Stand 30. Oktober (4.10.2)",
-      "note": "Puffergrößen sind bereits für 4.10.3 eingetragen."
+      "state": "teilweise",
+      "reason": "Die Puffergrößen der Schiffe sind bereits auf 4.10.3 aktualisiert. Preise und die übrigen Angaben stammen aus 4.10.2."
     },
     "t-salvage": {
       "patch": "4.10.2",
       "date": null,
-      "basis": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
+      "basis": "Stand der Seite vor dem Update auf 4.10.3. Beim Update wurde diese Seite inhaltlich nicht geändert.",
+      "intern": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
     },
     "hauling": {
       "patch": "4.10.2",
       "date": "2026-10",
       "basis": "Seitentext: Fracht, Löhne und Handel aus Patch 4.10.2",
-      "note": "Einzelne Fehlerbehebungen aus 4.10.3 sind vermerkt."
+      "state": "teilweise",
+      "reason": "Einzelne Fehlerbehebungen aus 4.10.3 sind vermerkt. Ob die für 4.10.3 angekündigte Überarbeitung der Auftragslöhne in LIVE angekommen ist, ist noch nicht geprüft."
     },
     "t-hauling": {
       "patch": "4.10.2",
       "date": null,
-      "basis": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
+      "basis": "Stand der Seite vor dem Update auf 4.10.3. Beim Update wurde diese Seite inhaltlich nicht geändert.",
+      "intern": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
     },
     "crafting": {
       "patch": "4.10.2",
       "date": null,
-      "basis": "Seitentext: Stand laut Community-Guides für Alpha 4.10.2 · Kopfzeile 4.10.3 war nur ein Stempel"
+      "basis": "Seitentext: Stand laut Community-Guides für Alpha 4.10.2",
+      "intern": "Kopfzeile stand nach dem Update auf 4.10.3 (Commit 137960d) auf 4.10.3, war aber nur ein Stempel; Inhalt ist der Stand der Seitentexte."
     },
     "t-crafting": {
       "patch": "4.10.2",
       "date": null,
-      "basis": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
+      "basis": "Stand der Seite vor dem Update auf 4.10.3. Beim Update wurde diese Seite inhaltlich nicht geändert.",
+      "intern": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
     },
     "ruf": {
       "patch": "4.10.2",
       "date": "2026-10-11",
       "basis": "Seitentext: Schwellen laut Community-Guides für 4.10.2, Stand 11. Oktober",
-      "note": "Einzelne Änderungen aus 4.10.3 sind eingetragen."
+      "state": "teilweise",
+      "reason": "Einzelne Änderungen aus 4.10.3 sind eingetragen, etwa der Ruf für High-Risk-Target-Aufträge. Die übrigen Werte stammen aus 4.10.2."
     },
     "ueberleben": {
       "patch": "4.10.2",
       "date": null,
-      "basis": "Seitentext: Stand laut Community-Guides und Wiki für Alpha 4.10.2 · Kopfzeile 4.10.3 war nur ein Stempel"
+      "basis": "Seitentext: Stand laut Community-Guides und Wiki für Alpha 4.10.2",
+      "intern": "Kopfzeile stand nach dem Update auf 4.10.3 (Commit 137960d) auf 4.10.3, war aber nur ein Stempel; Inhalt ist der Stand der Seitentexte."
     },
     "erste-schritte": {
       "patch": "4.10.2",
       "date": null,
-      "basis": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
+      "basis": "Stand der Seite vor dem Update auf 4.10.3. Beim Update wurde diese Seite inhaltlich nicht geändert.",
+      "intern": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
     },
     "heimat": {
       "patch": "4.10.3",
@@ -68,7 +78,8 @@
       "patch": "4.10.2",
       "date": "2026-11-03",
       "basis": "Kopfzeile: Stand 3. Nov. 2026",
-      "note": "Enthält Hinweise zu 4.10.3. Die offizielle CIG-Bugliste darunter wird stündlich automatisch geladen."
+      "state": "teilweise",
+      "reason": "Enthält Hinweise zu 4.10.3. Die offizielle Bugliste darunter wird stündlich automatisch geladen, die handgepflegten Texte stammen vom 3. November."
     },
     "vanduul": {
       "patch": "4.10.3",
@@ -79,23 +90,27 @@
       "patch": "4.10",
       "date": "2026-09-20",
       "basis": "Seitentext: Werte aus Community-Guides für 4.10 (Stand 20. September 2026)",
-      "note": "Eine Fehlerbehebung aus 4.10.3 ist vermerkt."
+      "state": "teilweise",
+      "reason": "Werte aus Community-Guides für 4.10. Eine Fehlerbehebung aus 4.10.3 ist vermerkt."
     },
     "exec-hangar": {
       "patch": "4.10.2",
       "date": "2026-10-30",
-      "basis": "Seitentext: Stand 30. Oktober 2026, Patch 4.10.2 · Kopfzeile 4.10.3 war nur ein Stempel"
+      "basis": "Seitentext: Stand 30. Oktober 2026, Patch 4.10.2",
+      "intern": "Kopfzeile stand nach dem Update auf 4.10.3 (Commit 137960d) auf 4.10.3, war aber nur ein Stempel; Inhalt ist der Stand der Seitentexte."
     },
     "siege-orison": {
       "patch": "4.10.2",
       "date": "2026-10-30",
-      "basis": "Seitentext: Stand 30. Oktober 2026, Patch 4.10.2 · Kopfzeile 4.10.3 war nur ein Stempel"
+      "basis": "Seitentext: Stand 30. Oktober 2026, Patch 4.10.2",
+      "intern": "Kopfzeile stand nach dem Update auf 4.10.3 (Commit 137960d) auf 4.10.3, war aber nur ein Stempel; Inhalt ist der Stand der Seitentexte."
     },
     "hathor": {
       "patch": "4.10.2",
       "date": "2026-10-30",
       "basis": "Seitentext: Stand 30. Oktober 2026, Patch 4.10.2",
-      "note": "Die Wikelo-Tauschliste ist vom 4. November 2026."
+      "state": "teilweise",
+      "reason": "Die Wikelo-Tauschliste stammt vom 4. November 2026. Seit 4.10.3 können sich Angebote geändert haben."
     },
     "bunker": {
       "patch": null,
@@ -121,7 +136,9 @@
       "patch": "4.10.2",
       "date": null,
       "basis": "Datenstand: Schiffsdaten und Preise aus Spielversion 4.10.2-LIVE.12881860 (Kopf von ships.js)",
-      "kind": "Datenstand"
+      "kind": "Datenstand",
+      "state": "teilweise",
+      "reason": "RSI Galaxy und Anvil Liberator (neu in 4.10.3) fehlen noch in der Datenbank, weil Wiki und UEX sie nicht führen. Bei mehreren Schiffen fehlt der aUEC-Preis noch."
     }
   },
   "hubs": {

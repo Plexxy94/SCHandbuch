@@ -1951,15 +1951,28 @@ select { min-height: 44px; border-radius: 2px; }
 .mine-btn, .d3 { min-height: 32px; }
 @media (pointer: coarse) { .mine-btn, .d3 { min-height: 40px; } .view details:not([class]) > summary, .view details.ref > summary, .view details.sh-more > summary { padding-block: 12px; } }
 
-/* ---------- Seitenstand (version.js): neutral, wenn auf LIVE-Stand; Bernstein, wenn vor LIVE; gestrichelt, wenn nicht erfasst ---------- */
+/* ---------- Prüfstand im Seitenkopf (version.js): ruhig und zurückhaltend ----------
+   grün = für LIVE geprüft · grau (hohler Punkt) = für eine frühere Version geprüft, erneute Prüfung steht aus ·
+   bernstein = konkrete Abweichungen bekannt oder teils aktualisiert · rot = nachweislich veraltet · gepunktet = nicht erfasst */
 .chead-tag.vtag[hidden] { display: none; }
-.chead-tag.vtag { cursor: help; }
-.chead-tag.vtag.ok::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--ok, #226339); vertical-align: 1px; }
-.chead-tag.vtag.old { color: var(--accent-amber); }
-.chead-tag.vtag.old::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--accent-amber); vertical-align: 1px; }
-.chead-tag.vtag.unknown { color: var(--text-secondary); text-decoration: underline dotted; text-underline-offset: 3px; }
-.chead-meta .chead-cat + .chead-tag.vtag::before { content: none; }
-.chead-tag.vtag.ok::before, .chead-tag.vtag.old::before { content: ""; }
+.chead-tag.vtag { appearance: none; display: inline-flex; align-items: center; gap: 7px; min-height: 28px; padding: 2px 4px 2px 0; margin: 0; background: none; border: 0; border-radius: 2px; font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--text-secondary); cursor: pointer; }
+.chead-tag.vtag:hover, .chead-tag.vtag:focus-visible { color: var(--text-primary); }
+.chead-tag.vtag::before { content: ""; display: inline-block; flex: none; width: 8px; height: 8px; margin: 0; border-radius: 50%; background: transparent; border: 1.5px solid var(--text-secondary); }
+.chead-tag.vtag::after { content: "▾"; font-size: 10px; opacity: .65; }
+.chead-tag.vtag[aria-expanded="true"]::after { transform: rotate(180deg); }
+.chead-tag.vtag.ok::before { background: var(--ok); border-color: var(--ok); }
+.chead-tag.vtag.partial { color: var(--accent-amber); }
+.chead-tag.vtag.partial::before { background: var(--accent-amber); border-color: var(--accent-amber); }
+.chead-tag.vtag.outdated { color: var(--warn); }
+.chead-tag.vtag.outdated::before { background: var(--warn); border-color: var(--warn); }
+.chead-tag.vtag.unknown { text-decoration: underline dotted; text-underline-offset: 3px; }
+.chead-tag.vtag.unknown::before { border-style: dotted; }
+.vpanel { margin: 6px 0 2px; padding: 10px 14px; background: var(--bg-deep); border: 1px solid var(--border); border-left: 3px solid var(--text-secondary); border-radius: 2px; font: 400 14.5px/1.45 var(--f-body); color: var(--text-primary); }
+.vpanel[hidden] { display: none; }
+.vp-dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 16px; margin: 0; }
+.vp-dl dt { font: 600 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--text-secondary); padding-top: 3px; }
+.vp-dl dd { margin: 0; }
+@media (max-width: 560px) { .vp-dl { grid-template-columns: minmax(0, 1fr); gap: 0; } .vp-dl dd { margin-bottom: 8px; } }
 .hx-patch .hx-test { color: var(--am-x); }
 .hx-patch .hx-test[hidden] { display: none; }
 .hx-patch .hx-test b { color: inherit; }
@@ -2158,3 +2171,5 @@ html.ss .fbar { margin-top: 6px; padding: 6px 10px; }
 #st-status { min-height: 128px; }
 #st-ccu { min-height: 44px; }
 @media (max-width: 640px) { #st-news { min-height: 270px; } }
+.chead-tag.vtag { text-align: left; max-width: 100%; }
+.chead-tag.vtag::before { margin-top: 1px; }
