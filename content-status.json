@@ -17,7 +17,7 @@
       "date": "2026-10-30",
       "basis": "Seitentext: UEX-Preise Stand 30. Oktober (4.10.2)",
       "state": "teilweise",
-      "reason": "Die Puffergrößen der Schiffe sind bereits auf 4.10.3 aktualisiert. Preise und die übrigen Angaben stammen aus 4.10.2."
+      "reason": "Puffergrößen (offizielle Patch Notes 4.10.3) und die Gebühren für Salvage Rights (Spieldaten 4.10.3) sind geprüft. RMC-Preise und die übrigen Angaben stammen aus 4.10.2."
     },
     "t-salvage": {
       "patch": "4.10.2",
@@ -55,7 +55,7 @@
       "date": "2026-10-11",
       "basis": "Seitentext: Schwellen laut Community-Guides für 4.10.2, Stand 11. Oktober",
       "state": "teilweise",
-      "reason": "Einzelne Änderungen aus 4.10.3 sind eingetragen, etwa der Ruf für High-Risk-Target-Aufträge. Die übrigen Werte stammen aus 4.10.2."
+      "reason": "Die Ruf-Leitern von InterSec, Foxwell, den Hauling-Firmen und der Kopfgeldjäger-Gilde sind gegen die Spieldaten von 4.10.3 geprüft. Wikelo-Werte und übrige Texte stammen aus Community-Guides für 4.10.2."
     },
     "ueberleben": {
       "patch": "4.10.2",
@@ -91,7 +91,7 @@
       "date": "2026-09-20",
       "basis": "Seitentext: Werte aus Community-Guides für 4.10 (Stand 20. September 2026)",
       "state": "teilweise",
-      "reason": "Werte aus Community-Guides für 4.10. Eine Fehlerbehebung aus 4.10.3 ist vermerkt."
+      "reason": "Ränge, Schwellen, Belohnungen und Ruf je Auftrag sind gegen die Spieldaten von 4.10.3 geprüft und bestätigt. Beträge in aUEC, Reisehinweise und Bug-Angaben stammen aus Community-Guides für 4.10."
     },
     "exec-hangar": {
       "patch": "4.10.2",

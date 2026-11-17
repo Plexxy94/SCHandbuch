@@ -317,7 +317,7 @@
       <div class="fact"><strong>Es ist eine Alpha</strong><p>Bugs gehören dazu. Hängt etwas, hilft oft neu einloggen oder ein anderer Server. <a href="#bugs">Bekannte Bugs →</a></p></div>
       <div class="fact"><strong>aUEC ist Spielgeld</strong><p>Alles, was du im Spiel kaufst, kann bei einem großen Patch zurückgesetzt werden. Gekaufte Pledge-Schiffe bleiben.</p></div>
       <div class="fact"><strong>Nichts überstürzen</strong><p>Erst mieten, dann kaufen. Mieten kostet einen Bruchteil und zeigt dir, ob dir etwas Spaß macht.</p></div>
-      <div class="fact"><strong>Wo wohnen?</strong><p>Vier Städte zur Wahl, jede mit eigenen Vor- und Nachteilen. <a href="#heimat">Zum Vergleich →</a></p></div>
+      <div class="fact"><strong>Wo wohnen?</strong><p>Vier Heimatstädte in Stanton, dazu Orte in Nyx und Pyro. Jede mit eigenen Vor- und Nachteilen. <a href="#heimat">Zum Vergleich →</a></p></div>
       <div class="fact"><strong>F halten hilft fast immer</strong><p>Im Interaktionsmodus zeigt dir das Spiel, was du mit einem Objekt machen kannst.</p></div>
     </div>
     </details>
@@ -394,7 +394,7 @@
         <ol>
           <li>Du wachst in deinem Quartier (Hab) in einer Stadt oder Station auf.</li>
           <li><kbd>F1</kbd> öffnet das mobiGlas, dein Handgelenk-Computer für Karte, Aufträge und Inventar.</li>
-          <li><kbd>I</kbd> öffnet dein Inventar. Zieh Rüstung, Helm und Rucksack an, falls sie im Spind liegen.</li>
+          <li><kbd>I</kbd> öffnet dein Inventar. Zieh Rüstung, Helm und Rucksack an, falls sie im Spind liegen. Das Inventar ist dein persönliches Gepäck. Deine Schiffe, Fahrzeuge und Lagergegenstände nach Ort listet dagegen die Assets-App im mobiGlas.</li>
           <li>Oben im HUD siehst du Hunger und Durst. Kauf dir zu Beginn etwas zu essen und zu trinken und pack es ins Inventar.</li>
         </ol>
         <div class="hint">Tipp: Ein Helm ist im All Pflicht. Ohne Helm stirbst du beim Aussteigen im Vakuum. <kbd>L-Alt</kbd><span class="plus">+</span><kbd>H</kbd> setzt ihn auf.</div>
@@ -428,7 +428,7 @@
           <li><kbd>Leertaste</kbd> zum Abheben, <kbd>N</kbd> Fahrwerk einfahren, mit <kbd>W</kbd> langsam aus dem Hangar.</li>
           <li>Steuern: Maus für die Richtung, <kbd>Q</kbd><kbd>E</kbd> rollen, <kbd>L-Shift</kbd> Boost, <kbd>X</kbd> bremsen.</li>
         </ol>
-        <div class="oops"><strong>Typischer Fehler:</strong> Nicht zu schnell im Hangar oder über der Stadt fliegen. In Sperrzonen sind deine Waffen gesperrt, aber Unfälle passieren trotzdem.</div>
+        <div class="oops"><strong>Typischer Fehler:</strong> Nicht zu schnell im Hangar oder über der Stadt fliegen. In Sperrzonen sind Waffen meist gesperrt, aber Unfälle passieren trotzdem, und Sperrzonen schützen dich nicht vor allem.</div>
         <label class="check"><input type="checkbox" id="s3"> Geschafft</label>
       </div>
     </article>
@@ -460,7 +460,7 @@
           <li><kbd>N</kbd> Fahrwerk ausfahren. Über dem Platz <kbd>N</kbd> <span class="mod">halten</span> für die Autolandung.</li>
           <li><kbd>R-Alt</kbd><span class="plus">+</span><kbd>R</kbd> herunterfahren, <kbd>Z</kbd> <span class="mod">halten</span> zum Aufstehen.</li>
         </ol>
-        <div class="hint">Tipp: Lass dein Schiff nach dem Landen im Hangar stehen. Einfach weglaufen ist okay, es wird beim Ausloggen gespeichert.</div>
+        <div class="hint">Tipp: Lager dein Schiff nach dem Landen am ASOP-Terminal ein, das ist der reguläre Weg. Ein Fehler beim Einlagern (siehe Bugs) ist der einzige Grund, es stattdessen einfach stehen zu lassen. Mit 4.10.3 wird auch ein Schiff auf dem Pad eingelagert, wenn du den Hangar verlässt.</div>
         <label class="check"><input type="checkbox" id="s5"> Geschafft</label>
       </div>
     </article>
@@ -569,18 +569,18 @@
 
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Stadt</th><th>Lage</th><th>Schiffe</th><th>Raffinerie</th><th>Mining nah</th><th>RMC</th><th>Bugs gerade</th></tr></thead>
+        <thead><tr><th>Stadt</th><th>Lage</th><th>Schiffe</th><th>Raffinerie</th><th>Mining nah</th><th>RMC</th><th>Gemeldete Bugs</th></tr></thead>
         <tbody>
-          <tr><th>Lorville<small>Hurston</small></th><td>zentral, kurze Wege</td><td>kaufen und mieten</td><td>HUR-L1, HUR-L2</td><td><a href="#mining" data-loc="Aberdeen">Aberdeen</a></td><td class="num">~6.000</td><td><span class="pill no">viele vor 4.10.3</span></td></tr>
+          <tr><th>Lorville<small>Hurston</small></th><td>zentral, eher kurze Wege</td><td>kaufen und mieten</td><td>HUR-L1, HUR-L2</td><td><a href="#mining" data-loc="Aberdeen">Aberdeen</a></td><td class="num">~6.000</td><td><span class="pill no">viele vor 4.10.3</span></td></tr>
           <tr><th>Area18<small>ArcCorp</small></th><td>mittel</td><td>kaufen und mieten</td><td>ARC-L1, ARC-L2, ARC-L4</td><td><a href="#mining" data-loc="Wala">Wala</a></td><td class="num">~6.000</td><td><span class="pill later">einzelne</span></td></tr>
-          <tr><th>New Babbage<small>microTech</small></th><td>am Rand, lange Wege</td><td>nur mieten</td><td>MIC-L1, MIC-L2, MIC-L5</td><td><a href="#mining" data-loc="Clio">Clio</a>, <a href="#mining" data-loc="Euterpe">Euterpe</a></td><td class="num">~6.000</td><td><span class="pill no">viele vor 4.10.3</span></td></tr>
+          <tr><th>New Babbage<small>microTech</small></th><td>am Rand, eher lange Wege</td><td>nur mieten</td><td>MIC-L1, MIC-L2, MIC-L5</td><td><a href="#mining" data-loc="Clio">Clio</a>, <a href="#mining" data-loc="Euterpe">Euterpe</a></td><td class="num">~6.000</td><td><span class="pill no">viele vor 4.10.3</span></td></tr>
           <tr class="rec"><th>Orison<small>Crusader</small></th><td>mittel, langer Weg aus der Atmosphäre</td><td>kaufen und mieten</td><td>CRU-L1</td><td><a href="#mining" data-loc="Daymar">Daymar</a>, <a href="#mining" data-loc="Cellin">Cellin</a>, <a href="#mining" data-loc="Yela">Yela</a></td><td class="num">~7.700</td><td><span class="pill go">wenige</span></td></tr>
           <tr><th>Levski<small>Nyx</small></th><td>weit weg, Asteroid Delamar</td><td>kaufen, Teach’s Ship Shop</td><td>Levski</td><td><a href="#recco">Recco-Aufträge</a> vor Ort</td><td class="num">–</td><td><span class="pill later">einzelne</span></td></tr>
           <tr><th>Checkmate, Orbituary, Ruin Station<small>Pyro</small></th><td>weit weg, gesetzlos</td><td>kaufen, Buy and Fly (Checkmate)</td><td>jeweils vor Ort</td><td>Pyro-Monde</td><td class="num">~7.200 (Ruin Station)</td><td><span class="pill later">einzelne</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="small" style="margin-top:8px">RMC = bester Ankaufspreis für Recycling-Material in der Stadt, in aUEC pro SCU. Ein Klick auf einen Mond öffnet die Fundort-Suche. „Viele vor 4.10.3“: Die Bug-Spalte beruht auf Meldungen bis 12. Nov. Patch 4.10.3 behebt 14 Hangar- und ASOP-Fehler, neue Berichte sammeln sich erst. Quellen: <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360056254754-Star-Citizen-Alpha-4-10-3-Known-Issues" target="_blank" rel="noopener">RSI Known Issues 4.10.3</a> und <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a>.</p>
+    <p class="small" style="margin-top:8px">RMC = bester Ankaufspreis für Recycling-Material in der Stadt, in aUEC pro SCU. Ein Klick auf einen Mond öffnet die Fundort-Suche. „Viele vor 4.10.3“: Die Bug-Spalte zählt nur gemeldete Fehler. Wenige Meldungen heißen nicht, dass eine Stadt zuverlässiger ist, oft melden von dort schlicht weniger Spieler. Sie beruht auf Meldungen bis 12. Nov. Patch 4.10.3 behebt 14 Hangar- und ASOP-Fehler, neue Berichte sammeln sich erst. Quellen: <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360056254754-Star-Citizen-Alpha-4-10-3-Known-Issues" target="_blank" rel="noopener">RSI Known Issues 4.10.3</a> und <a href="https://www.sc-advisory.space/" target="_blank" rel="noopener">sc-advisory.space</a>.</p>
 
     <div class="city-grid">
       <article class="city">
@@ -589,7 +589,7 @@
           <h3>Lorville <small>Hurston</small> <span class="pill no">viele vor 4.10.3</span></h3>
           <p class="city-lede">Die Industriestadt des Konzerns Hurston Dynamics. Düster, verraucht, mitten im System.</p>
           <ul class="pc">
-            <li class="pro">Kürzeste Wege: Hurston liegt zentral, die meisten Ziele sind schnell erreicht.</li>
+            <li class="pro">Eher kurze Wege: Hurston liegt zentral. Wie lange eine Reise wirklich dauert, hängt von Ziel, Quantum-Antrieb und Server ab.</li>
             <li class="pro">Größter Schiffshändler: New Deal verkauft über 100 Schiffe, darunter <a class="ship-a" href="#s-drak-golem">Golem</a>, <a class="ship-a" href="#s-misc-prospector">Prospector</a>, <a class="ship-a" href="#s-drak-vulture">Vulture</a> und <a class="ship-a" href="#s-grin-roc">ROC</a>.</li>
             <li class="pro">Raffinerien HUR-L1 und HUR-L2 nah, guter Mining-Mond <a href="#mining" data-loc="Aberdeen">Aberdeen</a>.</li>
             <li class="con">Zum Raumhafen <i class="gb">Teasa Spaceport</i> fährst du mit der Bahn. Das dauert.</li>
@@ -622,7 +622,7 @@
           <ul class="pc">
             <li class="pro">Ruhig und gut zu finden.</li>
             <li class="pro">Drei Raffinerien in der Nähe: MIC-L1, MIC-L2, MIC-L5. Auf <a href="#mining" data-loc="Clio">Clio</a> und <a href="#mining" data-loc="Euterpe">Euterpe</a> gibt es Taranit.</li>
-            <li class="con">Am Rand des Systems: die längsten Wege zu allen anderen Zielen.</li>
+            <li class="con">Am Rand des Systems: oft längere Wege zu den anderen Zielen (Richtwert, die Dauer hängt vom Antrieb ab).</li>
             <li class="con">Kein Schiffshändler, nur ein Mietservice <i class="gb">Regal Luxury Rentals</i>.</li>
             <li class="con">Draußen eisig. Ohne warme Kleidung frierst du. Der Raumhafen liegt außerhalb und ist mit der Bahn verbunden.</li>
           </ul>
@@ -769,7 +769,7 @@
           <li><b>Drei Stufen:</b> leicht <i class="gb">Minor</i>, mittel <i class="gb">Moderate</i> und schwer <i class="gb">Severe</i>. Je nach Körperteil wackelt die Waffe, du läufst langsamer, bist schneller außer Atem oder siehst verschwommen. Schwere Verletzungen am Arm verhindern, dass du etwas hältst, am Bein kommst du nur noch kriechend voran.</li>
           <li><b>Sofort helfen:</b> Der MedPen <i class="gb">Hemozal</i> stellt Gesundheit wieder her und stoppt Blutungen. Immer zwei, drei dabeihaben. <kbd>LMB</kbd> sticht dich selbst, <kbd>RMB</kbd> einen Mitspieler.</li>
           <li><b>Nicht übertreiben:</b> Jeder Pen erhöht den Blutdrogenwert <i class="gb">Blood Drug Level</i>. Bei 100&nbsp;% kommt die Überdosis.</li>
-          <li><b>Ganz heilen:</b> In der Klinik <i class="gb">Clinic</i> einer Stadt oder Station am Terminal einchecken, ins Bett legen, Behandlung wählen. Die Betten dort kosten nichts.</li>
+          <li><b>Ganz heilen:</b> In der Klinik <i class="gb">Clinic</i> einer Stadt oder Station am Terminal einchecken, ins Bett legen, Behandlung wählen. Die Betten dort kosten laut Spielern nichts.</li>
         </ul>
       </div>
       <div class="card-plain">
@@ -782,7 +782,7 @@
         </ul>
       </div>
     </div>
-    <div class="hint" style="margin-top:12px">Auch Schiffe haben Med-Betten. Je größer das Bett, desto weiter darf es weg sein, um dich wiederzubeleben: kleine Betten nur 50&nbsp;km, große im ganzen System. Schiffsbetten brauchen MedGel, das du nachfüllen musst.</div>
+    <div class="hint" style="margin-top:12px">Auch Schiffe haben Med-Betten. Nicht jedes Schiff hat eins (zum Beispiel Cutlass Red, Starlancer TAC, Carrack, Idris, Polaris oder die Galaxy mit Medical Module). Die Reichweite hängt von der Stufe des Betts ab, Stand 4.10.3 laut Wiki: Stufe 3 etwa 50&nbsp;km, Stufe 2 etwa 8.000&nbsp;km, Stufe 1 praktisch das ganze System. Schiffsbetten brauchen MedGel: Ein Respawn kostet 1 SCU, das Bett fasst je nach Stufe 2, 4 oder 6 SCU, und du musst nachfüllen.</div>
   </section>
 
   <section>
@@ -792,7 +792,7 @@
         <h3>So bekommst du es zurück</h3>
         <ol>
           <li>Zum Schiffsterminal <i class="gb">ASOP Terminal</i> gehen, an dem du auch sonst Schiffe rufst.</li>
-          <li>Das Schiff wählen und „Claim“ starten. Alle Schiffe sind im Moment dauerhaft versichert, auch die im Spiel gekauften.</li>
+          <li>Das Schiff wählen und „Claim“ starten. Laut Wiki gelten seit 4.3.0 alle Schiffe als dauerhaft versichert, auch die im Spiel gekauften. Das kann sich mit Patches ändern.</li>
           <li>Warten. Seit 4.10 hängt die Wartezeit am Schiffswert: Eine Aurora ist fast sofort da, große Schiffe brauchen deutlich länger.</li>
           <li>Wer es eilig hat, zahlt fürs Beschleunigen <i class="gb">Expedite</i>. Das verkürzt die Wartezeit, ganz überspringen lässt sie sich nicht.</li>
         </ol>
@@ -853,7 +853,7 @@
       <div class="fact"><strong>Langsam an Stationen</strong><p>Wer zu schnell anfliegt und rammt, bekommt Schaden und CrimeStat. Im Landeanflug lieber gemütlich.</p></div>
       <div class="fact"><strong>Scan abwarten</strong><p>Will die Sicherheit dich scannen, langsam werden und warten, bis der Scan durch ist.</p></div>
       <div class="fact"><strong>Nur auf Rot schießen</strong><p>Zielen nur auf Feinde mit roter Markierung. Ein Treffer auf ein fremdes Schiff reicht für CrimeStat.</p></div>
-      <div class="fact"><strong>Sicherheitszonen</strong><p>In Städten und Stationen gilt Waffenruhe <i class="gb">Armistice Zone</i>. Waffen und Schiffsgeschütze sind dort gesperrt.</p></div>
+      <div class="fact"><strong>Sicherheitszonen</strong><p>In Städten und rund um Stationen gilt Waffenruhe <i class="gb">Armistice Zone</i>. Wie streng sie ist, hängt vom Ort ab: Es gibt strengere und mildere Zonen, und welcher Ort welche Regel hat, konnten wir nicht belegen. Schäden an fremden Schiffen und Stationsabwehr gelten dort als Verstoß (Crimestat). Sicher bist du dort trotzdem nicht: Unfälle, Abstürze, Fehler und andere Spieler gibt es auch in Stationsnähe.</p></div>
       <div class="fact"><strong>Selbstzerstörung</strong><p><kbd>Backspace</kbd> halten im Schiff zerstört es. Nicht aus Versehen drücken.</p></div>
     </div>
     <p class="small" style="margin-top:12px">Stand laut Community-Guides und Star Citizen Wiki für Alpha 4.10.2. Genaue Wartezeiten, Strafhöhen und Gefängniszeiten nennt CIG nicht, sie hängen vom Schiff und von den Vergehen ab. Quellen: <a href="https://starcitizen.tools/Medical" target="_blank" rel="noopener">Star Citizen Wiki: Medical</a> und <a href="https://starcitizen.tools/Ship_Insurance" target="_blank" rel="noopener">Ship Insurance</a>, <a href="https://support.robertsspaceindustries.com/hc/en-us/articles/360008162913-Crime-Rating" target="_blank" rel="noopener">RSI Support: Crime Rating</a>, <a href="https://timesaver.gg/blog/star-citizen-ship-claiming-paint-gone-fix-alpha-4-10-1" target="_blank" rel="noopener">Timesaver (Claim in 4.10)</a>, <a href="https://expcarry.com/star-citizen-crimestat-prison-guide" target="_blank" rel="noopener">expcarry (CrimeStat und Klescher in 4.10.2)</a>, <a href="https://atlasreeve.com/guides/medical-imprints/" target="_blank" rel="noopener">AtlasReeve</a>.</p>
@@ -877,7 +877,7 @@
         <ol>
           <li><b>Kurz warten und neu versuchen.</b> Landeservice, Aufzüge und Terminals kommen oft nur verzögert.</li>
           <li><b>Server wechseln:</b> ins Hauptmenü und neu beitreten, notfalls eine andere Region. Hilft bei Aufzügen, ATC, Läden und Missionen am häufigsten.</li>
-          <li><b>Spiel ganz neu starten:</b> Spiel und Launcher schließen, im Task-Manager prüfen, dann neu. Nach einem Absturz innerhalb von 15 Minuten wieder rein, dann bist du noch am alten Ort.</li>
+          <li><b>Spiel ganz neu starten:</b> Spiel und Launcher schließen, im Task-Manager prüfen, dann neu. Nach einem Absturz innerhalb von 15 Minuten wieder rein: Dann stehen die Chancen gut, dass du noch am alten Ort bist. Eine Garantie gibt es nicht, auch Inventar und Fracht können fehlen.</li>
           <li><b>Shader-Cache leeren</b> bei Grafikfehlern nach einem Patch: Ordner <code>%LOCALAPPDATA%\Star Citizen</code> löschen.</li>
           <li><b>Spieldateien prüfen:</b> im RSI Launcher „Verify“.</li>
           <li><b>Character Repair</b> auf der RSI-Website in den Kontoeinstellungen. Setzt dich in deine Heimatstadt zurück. Danach 30–60 Minuten nicht einloggen, sonst kann es mehr kaputt machen.</li>
@@ -1122,7 +1122,7 @@
       <article class="bug" data-cat="mission">
         <h3>Kein Zielmarker oder keine Gegner <i class="gb">Mission Service</i></h3>
         <p>Aufträge ohne Quantum-Markierung, Ziele erscheinen nicht, Belohnung fehlt. Auf vollen Servern häufiger. Betrifft Hauling, Kopfgeld, Boarding und andere.</p>
-        <p class="wa"><b>Workaround:</b> Abbrechen und auf einem anderen Server neu annehmen.</p>
+        <p class="wa"><b>Workaround:</b> Abbrechen und auf einem anderen Server neu annehmen. Ein abgebrochener Auftrag kann Ruf kosten.</p>
         <div class="bug-meta"><span class="pill later">Spielerberichte · 13. Okt.</span></div>
       </article>
       <article class="bug" data-cat="mission">
@@ -1182,7 +1182,7 @@
       <article class="bug" data-cat="login">
         <h3>Endloser Ladebildschirm, Menü reagiert nicht <i class="gb">Infinite Loading</i></h3>
         <p>Vor allem nach einem Server-Absturz.</p>
-        <p class="wa"><b>Workaround:</b> Spiel ganz beenden und neu starten. Nach einem Absturz innerhalb von 15 Minuten wieder einloggen, dann geht es am alten Ort weiter.</p>
+        <p class="wa"><b>Workaround:</b> Spiel ganz beenden und neu starten. Nach einem Absturz innerhalb von 15 Minuten wieder einloggen: Meist geht es dann am alten Ort weiter, garantiert ist das nicht, und Inventar oder Fracht können trotzdem verloren sein.</p>
         <div class="bug-meta"><span class="pill no">CIG bestätigt</span></div>
       </article>
       <article class="bug" data-cat="login">
@@ -1373,7 +1373,7 @@
   <div class="head chead" data-toc="h3">
     <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag vtag" data-vpage="t-salvage" hidden></span></div>
     <h1>Salvage lernen</h1>
-    <p class="lede">Eine ganze Runde mit der Salvation: Auftrag holen, Wrack prüfen, Hülle abkratzen, zerlegen und verkaufen. Nichts kann explodieren, und Bergungsaufträge kosten keine Gebühr.</p>
+    <p class="lede">Eine ganze Runde mit der Salvation: Auftrag holen, Wrack prüfen, Hülle abkratzen, zerlegen und verkaufen. Nichts kann explodieren. Versorgungsaufträge von Adagio kosten nichts, für das Recht an einem Wrack (Salvage Rights) zahlst du dagegen 1.000 bis 50.000 aUEC.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Preise, Schiffe und Regeln findest du im <a href="#salvage">Salvage-Kapitel</a>.</p>
   </div>
 
@@ -1381,7 +1381,7 @@
     <div class="card-plain">
       <h3>Eine Runde mit der <a class="ship-a" href="#s-rsi-salvation">Salvation</a> <span class="pill go">Einstieg</span></h3>
       <ol>
-        <li><b>Auftrag holen:</b> <kbd>F1</kbd> mobiGlas → Verträge <i class="gb">Contracts</i> → Reiter Salvage. Bergungsaufträge kosten keine Gebühr und markieren ein Wrack.</li>
+        <li><b>Auftrag holen:</b> <kbd>F1</kbd> mobiGlas → Verträge <i class="gb">Contracts</i> → Reiter Salvage. Die Adagio-Versorgungsaufträge kosten keine Gebühr. Ein „Salvage Rights“-Claim, der dir die Koordinaten eines Wracks verkauft, kostet je nach Schwierigkeit 1.000, 5.000, 20.000 oder 50.000 aUEC. Du kannst ihn ohne Strafe vorzeitig abbrechen.</li>
         <li><b>Besitzer prüfen</b> <i class="gb">Owner</i><b>:</b> <kbd>V</kbd> Scan-Modus <i class="gb">Scanning Mode</i>, auf das Wrack zielen, <kbd>LMB</kbd> halten. Steht als Besitzer „Gamerules“, ist es frei. Steht dort ein Spielername: Finger weg.</li>
         <li><b>Hülle abkratzen:</b> <kbd>M</kbd> Bergungsmodus <i class="gb">Salvage Mode</i>, nah ran, <kbd>LMB</kbd> feuern. Die Schilde des Wracks müssen aus sein.</li>
         <li><b>Puffer leeren</b> <i class="gb">Buffer</i><b>:</b> Ist der Puffer voll, kommt das Material in Kisten. Wie das bei deinem Schiff geht, steht im <a href="#salvage">Salvage-Kapitel unter „Puffer leeren“</a>.</li>
@@ -1571,7 +1571,7 @@
     <a class="chapter first" href="#exec-hangar">
       <span class="no">PYRO · GRUPPE · PVP</span>
       <h2>Executive Hangar</h2>
-      <p>Sieben Platinen aus den umkämpften Zonen sammeln, den Hangar öffnen und eines von acht Schiffen dauerhaft behalten. Mit Live-Timer und Abhak-Liste.</p>
+      <p>Sieben Platinen aus den umkämpften Zonen sammeln, den Hangar öffnen und eines von acht Schiffen behalten (bei einem Wipe kann es verschwinden). Mit berechnetem Timer und Abhak-Liste.</p>
       <span class="go">Zur Anleitung →</span>
     </a>
     <a class="chapter" href="#siege-orison">
@@ -1689,7 +1689,7 @@
   <section>
     <h2>Gut zu wissen</h2>
     <div class="facts">
-      <div class="fact"><strong>Dauerhaft</strong><p>4.10.3 erhält den Fortschritt (Long Term Persistence), das Startgeld beträgt 20.000 aUEC.</p></div>
+      <div class="fact"><strong>Persistenz</strong><p>4.10.3 erhält den Fortschritt (Long Term Persistence), das Startgeld beträgt 20.000 aUEC. Eine Garantie für künftige Patches gibt es nicht.</p></div>
       <div class="fact"><strong>Baupläne</strong><p>Wie beim <a href="#crafting">Crafting</a>: Die Belohnung ist ein Bauplan, kein fertiger Gegenstand. Für einen bestimmten Bauplan musst du den Auftrag eventuell mehrfach machen.</p></div>
       <div class="fact"><strong>Noch offen</strong><p>Werte und Belohnungen einzelner Aufträge nennt CIG in den Notes nicht. Hier stehen nur die offiziellen Angaben.</p></div>
     </div>
@@ -1732,7 +1732,7 @@
         </tbody>
       </table>
     </div>
-    <p class="small" style="margin-top:8px"><b>Hinweis Golem:</b> Das Star Citizen Wiki und expcarry nennen bei Prestige 1 die Golem Alliance, scminer.rocks dort nur einen Auftrag über 25.000 aUEC. Bei Prospector und MOLE sind sich alle drei Quellen einig. Die Schwellen stammen aus Community-Guides, nicht von CIG.</p>
+    <p class="small" style="margin-top:8px"><b>Geprüft:</b> Die Schwellen und Belohnungen stimmen mit den Spieldaten von 4.10.3 überein (Star Citizen Wiki API): „Extra Special Job“ ab Prestige 1 (10.800) gibt die Golem Alliance, „Scan with a Prospector Payout“ ab Prestige 2 (30.000) die Prospector Alliance, „Mining and MOLE“ ab Prestige 3 (69.600) die MOLE Alliance. Der Gegenhinweis von scminer.rocks (nur ein Auftrag über 25.000 aUEC) trifft für 4.10.3 nicht zu. Story 2 und 3 brauchen den jeweils vorigen Story-Auftrag, und „Minor Mining Job“ erst nach Story 1. Rang und Ruf allein reichen also nicht immer, damit ein Auftrag erscheint.</p>
 
     <div class="tool" style="margin-top:14px">
       <div class="tool-head"><span class="tool-tag">Werkzeug</span><h3>Wie weit bin ich?</h3></div>
@@ -1748,7 +1748,7 @@
     <ol class="xh-steps">
       <li><b>Nach Levski:</b> Laut Wiki gibt es seit 4.9 einen Sprungpunkt direkt von Stanton nach Nyx, sonst geht es über Pyro. Vor dem Sprung voll tanken. Levski liegt im Glaciem Ring auf dem Asteroiden Delamar.</li>
       <li><b>Recco finden:</b> Sie steht in ihrer Werkstatt in Levski. Ansprechen und „Welcome to the System“ annehmen. Das gibt den ersten Bauplan, rund 56.000 aUEC und 800 Ruf.</li>
-      <li><b>Bis Associate (2.400):</b> drei, vier Einstiegsaufträge, etwa „Minor Mining Job“. Die bringen je um 40.000 aUEC.</li>
+      <li><b>Bis Associate (2.400):</b> nach Story 1 (800 Ruf) rund acht Einstiegsaufträge zu je 200 Ruf, etwa „Minor Mining Job“ oder Erz-Scans. Sie bringen laut scminer.rocks je um 40.000 aUEC.</li>
       <li><b>Story 2:</b> „Emergency: Blinding Hope in Trouble“. Ein Bergbauschiff gegen Piraten der Moraine verteidigen. Ein bewaffnetes Schiff oder ein Mitspieler hilft.</li>
       <li><b>Bis Trusted Associate (6.000)</b> weitere Aufträge, dann Story 3 „Idea for Isaac“. Sie erscheint erst, wenn Story 2 abgeschlossen ist <b>und</b> der Ruf reicht.</li>
       <li><b>Ruf sammeln:</b> wiederholbare Aufträge fahren, bis die nächste Prestige-Stufe erreicht ist.</li>
@@ -1763,7 +1763,7 @@
         <thead><tr><th>Auftrag</th><th class="num">Ruf</th><th>Gut zu wissen</th></tr></thead>
         <tbody>
           <tr><th>Story- und Prestige-Aufträge</th><td class="num">800</td><td>Jeder nur einmal.</td></tr>
-          <tr><th>Mining-Aufträge zum Einstieg</th><td class="num">bis 800</td><td>Laut scminer.rocks z. B. „Minor Mining Job“, um 40.000 aUEC.</td></tr>
+          <tr><th>Mining-Aufträge zum Einstieg</th><td class="num">100–600</td><td>Laut Spieldaten je Auftrag 100 bis 300 Ruf bei Associate und 200 bis 600 bei Trusted Associate; „Minor Mining Job“ und die Einstiegs-Scans geben 200. Die aUEC-Angabe um 40.000 stammt von scminer.rocks.</td></tr>
           <tr><th>Schiff in Not <i class="gb">Ship in Distress</i></th><td class="num">~300</td><td>Mit Entern und Kampf zu Fuß.</td></tr>
           <tr><th>Erze scannen</th><td class="num">~200</td><td>Wenig Risiko, zählt aber manchmal nicht (siehe Bugs).</td></tr>
           <tr><th>Blackbox bergen</th><td class="num">–</td><td>Die gefährlichen Varianten sind nichts für ein Mining-Schiff. Die sehr gefährliche Variante gibt den Bauplan für das CQ7-Gewehr.</td></tr>
@@ -1800,7 +1800,7 @@
     <h2>Aktuelle Bugs</h2>
     <div class="facts">
       <div class="fact"><strong>Scan zählt nicht</strong><p>Laut Spielern hat manchmal schon jemand anderes den Asteroiden gescannt, dann zählt der Auftrag nicht. Anderen Auftrag nehmen oder Server wechseln.</p></div>
-      <div class="fact"><strong>Story 2 hängt</strong><p>„Blinding Hope“ ließ sich bei manchen nicht abschließen, weil der Zähler für die Gegner an Bord bei null blieb. In 4.10.3 behoben. Hängt es trotzdem: abbrechen und auf einem anderen Server neu annehmen.</p></div>
+      <div class="fact"><strong>Story 2 hängt</strong><p>„Blinding Hope“ ließ sich bei manchen nicht abschließen, weil der Zähler für die Gegner an Bord bei null blieb. In 4.10.3 behoben. Hängt es trotzdem: abbrechen und auf einem anderen Server neu annehmen. Das Abbrechen kann Ruf kosten.</p></div>
       <div class="fact"><strong>Story 3 fehlt</strong><p>Fehlt „Idea for Isaac“, obwohl Story 2 und der Ruf passen, liegt es meist am Server. Wechseln und neu nachsehen.</p></div>
       <div class="fact"><strong>Levski allgemein</strong><p>Geländer nicht überspringen, fremde Hangars vor dem Besitzer verlassen. Mehr unter <a href="#bugs">Bugs</a>.</p></div>
     </div>
@@ -1813,25 +1813,25 @@
   <div class="head chead am" data-toc="h2">
     <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag vtag" data-vpage="exec-hangar" hidden></span><span class="chead-tag">PvP-Gebiet</span></div>
     <h1>Executive Hangar</h1>
-    <p class="lede">In Pyro liegen drei gesicherte Hangars voller Beute. Wer sieben Platinen <i class="gb">Compboards</i> aus den umkämpften Zonen <i class="gb">Contested Zones</i> sammelt, öffnet einen davon und darf eines von acht Schiffen dauerhaft behalten.</p>
+    <p class="lede">In Pyro liegen drei gesicherte Hangars voller Beute. Wer sieben Platinen <i class="gb">Compboards</i> aus den umkämpften Zonen <i class="gb">Contested Zones</i> sammelt, öffnet einen davon und darf eines von acht Schiffen behalten (bei einem Wipe kann es verschwinden).</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
   </div>
 
   <div class="tool" id="xh-timer">
-    <div class="tool-head"><span class="tool-tag">Live</span><h3>Ist der Hangar gerade offen?</h3></div>
+    <div class="tool-head"><span class="tool-tag">Berechnet</span><h3>Ist der Hangar gerade offen?</h3></div>
     <div class="xh-now">
       <div class="xh-lights" id="xhlights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div><b class="xh-state" id="xhstate">…</b><span class="xh-sub" id="xhsub"></span></div>
     </div>
     <p class="small" id="xhnote" style="margin:0"></p>
-    <p class="small" style="margin:0">So funktionieren die fünf Lichter im Hangar: In der Ladephase wird alle 24 Minuten ein rotes Licht grün. Danach ist der Hangar eine Stunde offen, alle 12 Minuten geht ein grünes Licht aus. 5 Minuten nach dem letzten werden alle wieder rot. Ein Durchlauf dauert 185 Minuten. Zählt im Spiel immer, was die Lichter zeigen. Startzeit laut <span id="xhsrc">contestedzonetimers.com</span>.</p>
+    <p class="small" style="margin:0">So funktionieren die fünf Lichter im Hangar: In der Ladephase wird alle 24 Minuten ein rotes Licht grün. Danach ist der Hangar eine Stunde offen, alle 12 Minuten geht ein grünes Licht aus. 5 Minuten nach dem letzten werden alle wieder rot. Ein Durchlauf dauert 185 Minuten. Die Anzeige wird aus einem festen Startzeitpunkt berechnet und ist keine Abfrage des Spiel-Servers. Nach Server-Neustarts oder Verschiebungen kann sie abweichen. Zählt im Spiel immer, was die Lichter zeigen. Startzeit laut <span id="xhsrc">contestedzonetimers.com</span>.</p>
   </div>
 
   <section>
     <h2>Kurz erklärt</h2>
     <div class="facts">
       <div class="fact"><strong>Wo</strong><p>Die Platinen liegen in Checkmate, Orbituary und Ruin Station. Der Hangar ist PYAM-EXHANG-0-1 südwestlich der Sonne von Pyro, von drei Basen ist immer nur eine aktiv.</p></div>
-      <div class="fact"><strong>Belohnung</strong><p>Ein Schiff, das dir dauerhaft gehört. Dazu Bauteile der Klasse A und seltene Waffen im Hangar.</p></div>
+      <div class="fact"><strong>Belohnung</strong><p>Ein Schiff, das du im Spiel behältst. Es ist verdient, nicht gekauft: Bei einem Wipe kann es verschwinden. Dazu Bauteile der Klasse A und seltene Waffen im Hangar.</p></div>
       <div class="fact"><strong>Gefahr</strong><p>Pyro ist gesetzlos. Dich erwarten KI-Gegner und fast immer andere Spieler, die dasselbe wollen.</p></div>
       <div class="fact"><strong>Am besten in der Gruppe</strong><p>Eine kleine Gruppe mit verteilten Aufgaben: Karten und Platinen holen, Wache halten, fliegen und Beute tragen.</p></div>
     </div>
@@ -2258,7 +2258,7 @@
   <div class="head chead" data-toc="h2">
     <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg>Einstieg · Steuerung</span><span class="chead-tag vtag" data-vpage="tasten" hidden></span><span class="chead-tag">QWERTZ</span></div>
     <h1>Tasten</h1>
-    <p class="lede">Die Tasten, die du in den ersten Stunden brauchst. Belegungen ändern sich mit Patches, unsichere Einträge sind markiert.</p>
+    <p class="lede">Die Tasten, die du in den ersten Stunden brauchst. Belegungen ändern sich mit Patches, unsichere Einträge sind markiert. Abgleich mit dem Star Citizen Wiki (Stand Juli 2026): Gekoppelt/Entkoppelt (L-Alt + C) und Tempomat (C) korrigiert, Flight Ready, Autolandung und Helm weichen vom Wiki ab oder fehlen dort.</p>
     <div class="chead-act"><a href="#tasten" data-jump="q">Taste suchen</a><a href="#hosas">HOSAS-Belegung</a><a href="#training">Training</a></div>
     <div class="legend">
       <span>Für <strong>QWERTZ</strong>: Y und Z gegenüber englischen Guides getauscht</span>
@@ -2301,7 +2301,7 @@
         <div class="row"><span class="a">Um die Ecke lehnen</span><span class="k"><kbd>Q</kbd><kbd>E</kbd></span></div>
         <div class="row"><span class="a">Frei umsehen</span><span class="k"><kbd>Y</kbd><span class="mod">halten</span></span></div>
         <div class="row"><span class="a">Taschenlampe</span><span class="k"><kbd>T</kbd></span></div>
-        <div class="row"><span class="a">Helm auf/ab</span><span class="k"><kbd>L-Alt</kbd><span class="plus">+</span><kbd>H</kbd></span></div>
+        <div class="row verify"><span class="a">Helm auf/ab<span class="note">im Wiki nicht gelistet</span></span><span class="k"><kbd>L-Alt</kbd><span class="plus">+</span><kbd>H</kbd></span></div>
       </div>
       <div class="panel">
         <h3>Waffen &amp; Werkzeug zu Fuß <small>FPS</small></h3>
@@ -2335,18 +2335,18 @@
         <div class="row"><span class="a">Nicken &amp; Gieren</span><span class="k"><kbd>Maus</kbd></span></div>
         <div class="row"><span class="a">Boost</span><span class="k"><kbd>L-Shift</kbd><span class="mod">halten</span></span></div>
         <div class="row"><span class="a">Raumbremse</span><span class="k"><kbd>X</kbd></span></div>
-        <div class="row"><span class="a">Gekoppelt / Entkoppelt</span><span class="k"><kbd>C</kbd></span></div>
-        <div class="row"><span class="a">Tempomat (Cruise)</span><span class="k"><kbd>L-Alt</kbd><span class="plus">+</span><kbd>C</kbd></span></div>
+        <div class="row"><span class="a">Gekoppelt / Entkoppelt</span><span class="k"><kbd>L-Alt</kbd><span class="plus">+</span><kbd>C</kbd></span></div>
+        <div class="row"><span class="a">Tempomat (Cruise)</span><span class="k"><kbd>C</kbd></span></div>
         <div class="row verify"><span class="a">Geschwindigkeitsbegrenzer</span><span class="k"><kbd>L-Alt</kbd><span class="plus">+</span><kbd>Mausrad</kbd></span></div>
         <div class="row"><span class="a">Umsehen im Cockpit</span><span class="k"><kbd>Y</kbd><span class="mod">halten</span></span></div>
         <div class="row"><span class="a">Nach hinten schauen</span><span class="k"><kbd>,</kbd><span class="mod">halten</span></span></div>
       </div>
       <div class="panel">
         <h3>Schiff: Start, Landung, Systeme <small>Flug</small></h3>
-        <div class="row"><span class="a">Flight Ready (hoch-/runterfahren)</span><span class="k"><kbd>R-Alt</kbd><span class="plus">+</span><kbd>R</kbd></span></div>
+        <div class="row verify"><span class="a">Flight Ready (hoch-/runterfahren)<span class="note">Wiki nennt nur R</span></span><span class="k"><kbd>R-Alt</kbd><span class="plus">+</span><kbd>R</kbd></span></div>
         <div class="row"><span class="a">Start-/Landeerlaubnis (ATC)</span><span class="k"><kbd>L-Alt</kbd><span class="plus">+</span><kbd>N</kbd></span></div>
         <div class="row"><span class="a">Fahrwerk / Landemodus</span><span class="k"><kbd>N</kbd></span></div>
-        <div class="row"><span class="a">Autolandung</span><span class="k"><kbd>N</kbd><span class="mod">halten</span></span></div>
+        <div class="row verify"><span class="a">Autolandung<span class="note">Wiki nennt Strg halten</span></span><span class="k"><kbd>N</kbd><span class="mod">halten</span></span></div>
         <div class="row"><span class="a">VTOL umschalten</span><span class="k"><kbd>K</kbd></span></div>
         <div class="row"><span class="a">Türen &amp; Luken ver-/entriegeln</span><span class="k"><kbd>R-Alt</kbd><span class="plus">+</span><kbd>K</kbd></span></div>
         <div class="row"><span class="a">Scheinwerfer</span><span class="k"><kbd>L</kbd></span></div>
@@ -2457,7 +2457,7 @@
         <thead><tr><th>Beruf</th><th>Ohne eigenes Schiff</th><th>Erstes Schiff (Kaufpreis)</th><th>Risiko</th><th>Allein?</th><th>So fühlt es sich an</th></tr></thead>
         <tbody>
           <tr><th><a href="#mining">Mining</a></th><td>Zu Fuß mit dem Multitool oder im ROC</td><td><a class="ship-a" href="#s-drak-golem">Golem</a> ~1 Mio., <a class="ship-a" href="#s-misc-prospector">Prospector</a> ~2,8 Mio.</td><td>Mittel: Steine können explodieren, das Erz wartet Stunden in der Raffinerie</td><td>Ja, die <a class="ship-a" href="#s-argo-mole">MOLE</a> mit Crew</td><td>Konzentriert: Steine suchen, Laser im grünen Bereich halten</td></tr>
-          <tr><th><a href="#salvage">Salvage</a></th><td>Zu Fuß mit dem Multitool, das Geld steckt in Bauteilen</td><td><a class="ship-a" href="#s-rsi-salvation">Salvation</a> ~1,2 Mio., <a class="ship-a" href="#s-drak-vulture">Vulture</a> ~2,5 Mio.</td><td>Gering: nichts explodiert, Aufträge kosten keine Gebühr</td><td>Ja</td><td>Ruhig: Hülle abkratzen, RMC ohne Raffinerie verkaufen</td></tr>
+          <tr><th><a href="#salvage">Salvage</a></th><td>Zu Fuß mit dem Multitool, das Geld steckt in Bauteilen</td><td><a class="ship-a" href="#s-rsi-salvation">Salvation</a> ~1,2 Mio., <a class="ship-a" href="#s-drak-vulture">Vulture</a> ~2,5 Mio.</td><td>Gering: nichts explodiert, Adagio-Aufträge ohne Gebühr, Wrack-Claims kosten 1.000 bis 50.000 aUEC</td><td>Ja</td><td>Ruhig: Hülle abkratzen, RMC ohne Raffinerie verkaufen</td></tr>
           <tr><th><a href="#hauling">Hauling</a></th><td>Mit dem Startschiff, wenn es ein Frachtgitter hat</td><td><a class="ship-a" href="#s-drak-golem-ox">Golem OX</a> ~1,15 Mio., <a class="ship-a" href="#s-misc-hull-a">Hull A</a> ~1,6 Mio. (mietbar)</td><td>Gering mit Aufträgen, hoch beim Handel mit eigenem Geld</td><td>Ja</td><td>Entspannt: fliegen, Kisten stapeln, Rang aufbauen</td></tr>
           <tr><th><a href="#crafting">Crafting</a></th><td>Ja, eine Werkbank im Hangar reicht</td><td>Kein Schiff nötig</td><td>Keins, nur Material und Zeit</td><td>Ja</td><td>Verdient kein Geld, macht deine Ausrüstung besser</td></tr>
         </tbody>
@@ -2550,7 +2550,7 @@
         </tbody>
       </table>
     </div>
-    <p class="small" style="margin-top:8px">Grundwerte und Basispreise pro SCU laut Community-Datenbanken mit Spieldaten von Patch 4.10.2 (Stand 9. Oktober 2026). Der Basispreis ist kein garantierter Verkaufserlös. Faustregel: <b>3.100–3.600</b> ist wertvoll, <b>3.800–3.900</b> solide, <b>4.180–4.300</b> billige Masse. Flüchtige Erze werden im Laderaum instabil.</p>
+    <p class="small" style="margin-top:8px">Grundwerte und Basispreise pro SCU laut Community-Datenbanken mit Spieldaten von Patch 4.10.2 (Stand 9. Oktober 2026). Der Basispreis ist kein garantierter Verkaufserlös und nicht der Marktpreis: Die UEX-Verkaufspreise für raffiniertes Erz lagen am 17.11.2026 teils deutlich anders (z. B. Quantanium ~149.000, Lindinium ~48.000, Beryll ~19.900 aUEC/SCU). Faustregel: <b>3.100–3.600</b> ist wertvoll, <b>3.800–3.900</b> solide, <b>4.180–4.300</b> billige Masse. Flüchtige Erze werden im Laderaum instabil.</p>
     </details>
   </section>
 
@@ -2759,7 +2759,7 @@
         </tbody>
       </table>
     </div>
-    <p class="small" style="margin-top:8px">Preise aus unseren Schiffsdaten (günstigster bekannter Händler, Patch 4.10.2). Alle Schiffe mit Bild und 3D findest du im Tab <a href="#schiffe">Schiffe</a>.</p>
+    <p class="small" style="margin-top:8px">Preise aus unseren Schiffsdaten (günstigster bekannter Händler, mit den Wiki-Daten von 4.10.3 abgeglichen). Alle Schiffe mit Bild und 3D findest du im Tab <a href="#schiffe">Schiffe</a>.</p>
     <div class="hint" style="margin-top:10px"><b>Neu in 4.10.3:</b> Der Puffer <i class="gb">Hull munching capacity</i> ist bei allen fünf Bergungsschiffen gewachsen (Werte in der Tabelle). Dazu ist das Zerlegungsfeld <i class="gb">Disintegration field</i> größer und verzeiht mehr, wenn du nicht exakt ausgerichtet bist. Die Spalte „Fracht“ stammt aus unseren Schiffsdaten und kann vom neuen Puffer abweichen. <a href="https://robertsspaceindustries.com/en/comm-link/Patch-Notes/21429-Star-Citizen-Alpha-4103" target="_blank" rel="noopener">Patch Notes</a></div>
   </section>
 
@@ -2769,13 +2769,13 @@
       <table>
         <thead><tr><th>Schiff</th><th>Puffer → Kisten</th><th>Gut zu wissen</th></tr></thead>
         <tbody>
-          <tr><th><a class="ship-a" href="#s-rsi-salvation">RSI Salvation</a><small>6 SCU</small></th><td>Das geborgene Material wird in den hinteren Laderaum ausgegeben, bis zu 8 SCU (bis 4.10.2: 6).</td><td>Kleiner Laderaum, also oft verkaufen fliegen.</td></tr>
-          <tr><th><a class="ship-a" href="#s-misc-fortune">MISC Fortune</a><small>16 SCU</small></th><td>Ein Spender außen am Schiff <i class="gb">Dispenser</i> fasst bis zu 12 Kisten à 1 SCU. Dazu kommen 4 SCU auf dem Heck-Lift. Laut Spielern füllen sich die Kisten von selbst.</td><td>Am wenigsten Handarbeit, darum für Solo-Spieler beliebt.</td></tr>
-          <tr><th><a class="ship-a" href="#s-drak-vulture">Drake Vulture</a><small>12 SCU + 13 Puffer</small></th><td>Im Heck an einem Wand-Panel den Rohstoff wählen und in 1-SCU-Kisten auswerfen lassen. Es gibt auch eine Automatik, die den Puffer nach und nach leert. Die Kisten stellst du mit dem Traktorstrahl <i class="gb">Tractor Beam</i> auf das Frachtgitter <i class="gb">Cargo Grid</i>.</td><td>Dafür brauchst du ein Multitool mit TruHold-Aufsatz oder den MaxLift-Traktorstrahl.</td></tr>
+          <tr><th><a class="ship-a" href="#s-rsi-salvation">RSI Salvation</a><small>Fracht 6 SCU · Puffer 8 SCU</small></th><td>Das geborgene Material wird in den hinteren Laderaum ausgegeben, bis zu 8 SCU (bis 4.10.2: 6).</td><td>Kleiner Laderaum, also oft verkaufen fliegen.</td></tr>
+          <tr><th><a class="ship-a" href="#s-misc-fortune">MISC Fortune</a><small>Fracht 16 SCU · Puffer 14 SCU</small></th><td>Ein Spender außen am Schiff <i class="gb">Dispenser</i> fasst bis zu 12 Kisten à 1 SCU. Dazu kommen 4 SCU auf dem Heck-Lift. Laut Spielern füllen sich die Kisten von selbst.</td><td>Am wenigsten Handarbeit, darum für Solo-Spieler beliebt.</td></tr>
+          <tr><th><a class="ship-a" href="#s-drak-vulture">Drake Vulture</a><small>Fracht 12 SCU · Puffer 16 SCU</small></th><td>Im Heck an einem Wand-Panel den Rohstoff wählen und in 1-SCU-Kisten auswerfen lassen. Es gibt auch eine Automatik, die den Puffer nach und nach leert. Die Kisten stellst du mit dem Traktorstrahl <i class="gb">Tractor Beam</i> auf das Frachtgitter <i class="gb">Cargo Grid</i>.</td><td>Dafür brauchst du ein Multitool mit TruHold-Aufsatz oder den MaxLift-Traktorstrahl.</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="small" style="margin-top:8px">Angaben laut Star Citizen Wiki und Spielerberichten. Der Vulture-Ablauf stammt aus einer älteren Anleitung (Patch 3.22). Diese Mechanik ändert sich öfter mit Patches, also beim ersten Mal im Spiel genau hinschauen.</p>
+    <p class="small" style="margin-top:8px"><b>Drei verschiedene Zahlen:</b> Der <b>Puffer</b> <i class="gb">Hull munching capacity</i> fasst das abgekratzte RMC, bevor es in Kisten ausgegeben wird (4.10.3 laut offiziellen Patch Notes: Salvation 8, Fortune 14, Vulture 16, MOTH 240, Reclaimer 448 SCU). Die <b>Frachtkapazität</b> ist der normale Laderaum bzw. das Frachtgitter, in das die Kisten kommen. Das Rohmaterial der <b>Strukturbergung</b> (Rubble, Pieces, Salvage) ist ein eigener Warentyp, für den weder CIG noch das Wiki eine eigene Puffergröße nennen. Angaben laut Star Citizen Wiki und Spielerberichten. Der Vulture-Ablauf stammt aus einer älteren Anleitung (Patch 3.22). Diese Mechanik ändert sich öfter mit Patches, also beim ersten Mal im Spiel genau hinschauen.</p>
   </section>
 
   <section>
@@ -2823,7 +2823,7 @@
       <div class="fact"><strong>Sperrzonen <i class="gb">Armistice Zone</i></strong><p>Bergung in der Sperrzone um Städte und Stationen gilt als Verstoß <i class="gb">Armistice Violation</i>, auch bei verlassenen Schiffen. Das gibt Strafe und Crimestat.</p></div>
       <div class="fact"><strong>Zeitdruck bei Aufträgen</strong><p>Nach einer Weile tauchen Sicherheitskräfte <i class="gb">Security</i> am Wrack auf. Zügig arbeiten und rechtzeitig abfliegen.</p></div>
       <div class="fact"><strong>Zerbrechen <i class="gb">Fracture</i> ist endgültig</strong><p>Beim Zerbrechen sterben alle Insassen, und nicht abmontierte Bauteile gehen verloren. Deshalb immer erst Teile abnehmen und abkratzen.</p></div>
-      <div class="fact"><strong>Abstürze</strong><p>Loses RMC im Laderaum übersteht einen Server-Absturz nicht sicher. Lieber oft verkaufen und nicht mit vollem Laderaum ausloggen.</p></div>
+      <div class="fact"><strong>Abstürze</strong><p>Loses RMC im Laderaum übersteht einen Server-Absturz nicht sicher, und eine Wiederherstellung ist nicht garantiert. Lieber oft verkaufen und nicht mit vollem Laderaum ausloggen.</p></div>
       <div class="fact"><strong>Gebrickte Bauteile <i class="gb">Bricked</i></strong><p>Hat der Besitzer sein Schiff per Versicherung neu angefordert (Besitzer „Gamerules“), sind Wrack und eingebaute Bauteile gebrickt, also unbrauchbar. Hülle und Struktur kannst du trotzdem bergen, die Bauteile lassen sich laut Spielern oft nicht einmal ausbauen. Auch Bauteil-Aufträge scheitern daran. Für Bauteile lieber frisch zerstörte Schiffe nehmen. <span class="small">Stand: Community-Berichte, keine offizielle Angabe für 4.10.</span></p></div>
       <div class="fact"><strong>Piraten</strong><p>Wracks ziehen auch andere an. In Pyro besonders vorsichtig sein.</p></div>
     </div>
@@ -2832,7 +2832,7 @@
   <section>
     <h2 id="a-sv-vs">Salvage oder Mining?</h2>
     <div class="two">
-      <div class="card-plain"><h3>Salvage passt, wenn …</h3><ul><li>du lieber ruhig und ohne Explosionsgefahr arbeitest</li><li>du allein spielst und Aufträge ohne Gebühr magst</li><li>du gern mit Bauteilen handelst</li></ul></div>
+      <div class="card-plain"><h3>Salvage passt, wenn …</h3><ul><li>du lieber ruhig und ohne Explosionsgefahr arbeitest</li><li>du allein spielst und Aufträge ohne Gefechte magst (Wrack-Claims kosten 1.000 bis 50.000 aUEC)</li><li>du gern mit Bauteilen handelst</li></ul></div>
       <div class="card-plain"><h3>Mining passt, wenn …</h3><ul><li>dir das Feintuning mit dem Laser Spaß macht</li><li>du auf seltene, wertvolle Erze aus bist</li><li>du schon zu Fuß oder mit einem kleinen Schiff wie dem Golem loslegen willst</li></ul><p class="small"><a href="#mining">Zum Mining-Kapitel →</a></p></div>
     </div>
   </section>
@@ -2843,7 +2843,7 @@
   <div class="head chead" data-toc="h2">
     <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg>Berufe · Wissen</span><span class="chead-tag vtag" data-vpage="hauling" hidden></span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Hauling</h1>
-    <p class="lede">Hauling heißt Fracht fahren: Kisten an einem Ort abholen und an einem anderen abliefern. Mit Frachtaufträgen bekommst du dafür einen festen Lohn und riskierst kein eigenes Geld. Hier steht, welches Schiff du wann brauchst, wie du im Rang aufsteigst und was es bringt.</p>
+    <p class="lede">Hauling heißt Fracht fahren: Kisten an einem Ort abholen und an einem anderen abliefern. Mit Frachtaufträgen bekommst du dafür einen festen Lohn und setzt kein eigenes Geld ein, ganz ohne Risiko ist es aber nicht. Hier steht, welches Schiff du wann brauchst, wie du im Rang aufsteigst und was es bringt.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
   </div>
 
@@ -2853,8 +2853,8 @@
     <h2 id="a-hl-wege">Zwei Wege mit Fracht</h2>
     <div class="two">
       <div class="card-plain">
-        <h3>Frachtaufträge <i class="gb">Hauling Contracts</i> <span class="pill go">ohne Risiko</span></h3>
-        <p class="small" style="font-size:14px">Eine Firma stellt die Ware, du fährst sie. Du bekommst einen festen Lohn und Ruf <i class="gb">Reputation</i> bei der Firma. Eigenes Geld brauchst du nicht. Welche Aufträge du siehst, hängt aber von deinem Rang ab.</p>
+        <h3>Frachtaufträge <i class="gb">Hauling Contracts</i> <span class="pill go">fester Lohn</span></h3>
+        <p class="small" style="font-size:14px">Eine Firma stellt die Ware, du fährst sie. Du bekommst einen festen Lohn und Ruf <i class="gb">Reputation</i> bei der Firma. Eigenes Geld setzt du nicht ein, ganz ohne Risiko ist es trotzdem nicht: Fracht kann bei Absturz, Überfall oder Fehlern verloren gehen, und ein gescheiterter Auftrag kann Ruf kosten. Welche Aufträge du siehst, hängt außerdem von deinem Rang ab.</p>
       </div>
       <div class="card-plain">
         <h3>Handel <i class="gb">Trading</i> <span class="pill later">eigenes Geld</span></h3>
@@ -3007,14 +3007,14 @@
         <tbody id="hq-table"></tbody>
       </table>
     </div>
-    <p class="small" style="margin-top:8px">Fracht, Preise und Kistengrößen aus den Spieldaten von Patch 4.10.2 (Star Citizen Wiki API, günstigster bekannter Händler). Die größte Kiste ist aus den Maßen der Frachtgitter berechnet. Bei Golem OX und Hermes nennen die Spieldaten nur 1 SCU, Hersteller und Spieler bestätigen aber Kisten bis 32 SCU (*).</p>
+    <p class="small" style="margin-top:8px">Fracht, Preise und Kistengrößen aus den Spieldaten von Patch 4.10.2 (Star Citizen Wiki API, günstigster bekannter Händler). Die größte Kiste ist aus den Maßen der Frachtgitter berechnet. Die Wiki-Daten von 4.10.3 weichen dabei ab: Dort steht als größte Kiste 16 SCU bei Hull C, Hull B, RAFT, C1 Spirit, Freelancer MAX, Zeus, Starlancer MAX und Taurus (wir rechnen mit 32) und 32 SCU bei Caterpillar und Star Runner (wir rechnen ohne). Welche Angabe stimmt, konnten wir nicht klären. Teste deshalb vor jedem großen Auftrag mit einer einzelnen Kiste. Bei Golem OX und Hermes nennen die Spieldaten nur 1 SCU, Hersteller und Spieler bestätigen aber Kisten bis 32 SCU (*).</p>
   </section>
 
   <section>
     <h2 id="a-hl-miete">Mieten oder kaufen?</h2>
     <div class="facts">
       <div class="fact"><strong>Erst mieten</strong><p>Ein Tag Miete kostet etwa 2–2,5 % des Kaufpreises. Ein Kauf rechnet sich also erst nach rund 40–50 Miettagen. Probier ein Schiff vorher aus.</p></div>
-      <div class="fact"><strong>Wann sich ein Kauf lohnt</strong><p>Kaufpreis geteilt durch deinen Verdienst pro Stunde. Rechenbeispiel: RAFT für 3,37 Mio. bei 120.000 aUEC pro Stunde hat sich nach etwa 28 Stunden bezahlt.</p></div>
+      <div class="fact"><strong>Wann sich ein Kauf lohnt</strong><p>Kaufpreis geteilt durch den <b>zusätzlichen Nettogewinn</b> pro Stunde. Einnahmen (Lohn der Aufträge) minus Betriebskosten (Treibstoff, Reparatur, Claim, Miete) ergeben den Nettogewinn. Zählen darf nur der Gewinn, den du mit dem Schiff mehr machst als ohne. Rechenbeispiel mit angenommenen Zahlen: RAFT für 3,37 Mio., 120.000 aUEC Einnahmen und 20.000 aUEC Kosten pro Stunde ergeben 100.000 Netto, also etwa 34 Stunden. Ohne Abzug der Kosten sähe es nach 28 Stunden besser aus, als es ist. Eine Prognose ist das nicht.</p></div>
       <div class="fact"><strong>Größer ist nicht besser</strong><p>Ein großes Schiff mit kleinem Auftrag kostet mehr Treibstoff. Seit 4.10 hängt auch die Wartezeit beim Anfordern <i class="gb">Claim</i> am Schiffswert.</p></div>
       <div class="fact"><strong>Wipe-Risiko</strong><p>Im Spiel gekaufte Schiffe und aUEC können bei einem Wipe verschwinden, zuletzt mit 4.8.0 am 14. Mai 2026. Gekaufte Pledge-Schiffe bleiben.</p></div>
     </div>
@@ -3069,7 +3069,7 @@
       <div class="fact"><strong>Pyro</strong><p>Hauling in Pyro ist seit dem Start unzuverlässig und dort lauern Piraten. Erst in Stanton sicher werden.</p></div>
       <div class="fact"><strong>Piraten</strong><p>Volle Frachter sind beliebte Ziele, auch per Quantum-Abfang <i class="gb">Interdiction</i>. Wertvolle Ladung nicht allein durch unsichere Gegenden fliegen.</p></div>
       <div class="fact"><strong>Treibstoff</strong><p>Seit 4.10 kosten Wasserstoff und Quantum-Treibstoff deutlich mehr. Lange Strecken fressen mehr vom Gewinn.</p></div>
-      <div class="fact"><strong>Fracht bleibt erhalten</strong><p>Seit 4.10 überstehen Warenkisten im Lager <i class="gb">Long Term Persistence</i> künftige Patches.</p></div>
+      <div class="fact"><strong>Fracht bleibt erhalten</strong><p>Laut Patch Notes bleiben Waren im Lager seit 4.10 erhalten <i class="gb">Long Term Persistence</i>. Für künftige Patches gibt es keine Garantie, und bei einem Absturz kann Fracht trotzdem verloren gehen.</p></div>
     </div>
   </section>
 
@@ -3128,7 +3128,7 @@
       <div id="rufout" class="small">Noch kein Ruf eingegeben.</div>
       <div id="rufladder" class="ruf-ladder"></div>
     </div>
-    <p class="small" style="margin-top:8px">Schwellen laut Community-Guides für 4.10.2, nicht von CIG. Für Covalex und die Kopfgeldjäger-Gilde sind keine Zahlen bekannt, nur die Ränge.</p>
+    <p class="small" style="margin-top:8px">Schwellen für Recco, InterSec, Foxwell, Hauling-Firmen und Kopfgeldjäger-Gilde laut Auftragsvoraussetzungen in den Spieldaten von 4.10.3 (Star Citizen Wiki API), Wikelo laut Community-Guides. Bei Adagio ist die Leiter nur bis Contractor belegt. Der Rang allein schaltet nichts frei: Manche Aufträge verlangen zusätzlich einen vorherigen Story-Auftrag, haben Wartezeiten oder erscheinen nur zufällig. Ob ein Auftrag wirklich angeboten wird, zeigt nur das mobiGlas.</p>
   </section>
 
   <section>
@@ -3208,7 +3208,7 @@
     <h2 id="a-cr-bauen">Was du bauen kannst</h2>
     <div class="two">
       <div class="card-plain">
-        <h3>1.606 Baupläne nach Art</h3>
+        <h3>1.633 Baupläne (4.10.3), Aufteilung nach Art von 4.10.2 (1.606)</h3>
         <div class="cr-bars">
         <div class="cr-bar"><span>Rüstung <i class="gb">Armor</i></span><div><i style="width:100%"></i></div><b>880</b></div>
         <div class="cr-bar"><span>Schiffskomponenten <i class="gb">Ship Components</i></span><div><i style="width:43%"></i></div><b>381</b></div>
@@ -3222,7 +3222,7 @@
       </div>
       <div class="card-plain">
         <h3>Am häufigsten gebraucht</h3>
-        <div class="ores cr-mats"><div class="ore"><b>Aslarit <i class="gb">Aslarite</i></b><span class="w">in 856 von 1.606 Material-Slots</span></div><div class="ore"><b>Ouratit <i class="gb">Ouratite</i></b><span class="w">häufig gebraucht</span></div><div class="ore"><b>Laranit <i class="gb">Laranite</i></b><span class="w">häufig gebraucht</span></div><div class="ore"><b>Wolfram <i class="gb">Tungsten</i></b><span class="w">häufig gebraucht</span></div><div class="ore"><b>Eisen <i class="gb">Iron</i></b><span class="w">häufig gebraucht</span></div><div class="ore"><b>Agricium <i class="gb">Agricium</i></b><span class="w">häufig gebraucht</span></div></div>
+        <div class="ores cr-mats"><div class="ore"><b>Aslarit <i class="gb">Aslarite</i></b><span class="w">in 872 von 1.633 Bauplänen (Spieldaten 4.10.3). Ein Bauplan hat meist mehrere Material-Slots, insgesamt 4.285</span></div><div class="ore"><b>Ouratit <i class="gb">Ouratite</i></b><span class="w">häufig gebraucht</span></div><div class="ore"><b>Laranit <i class="gb">Laranite</i></b><span class="w">häufig gebraucht</span></div><div class="ore"><b>Wolfram <i class="gb">Tungsten</i></b><span class="w">häufig gebraucht</span></div><div class="ore"><b>Eisen <i class="gb">Iron</i></b><span class="w">häufig gebraucht</span></div><div class="ore"><b>Agricium <i class="gb">Agricium</i></b><span class="w">häufig gebraucht</span></div></div>
         <p class="small">Wo du diese Erze findest, zeigt die <a href="#mining">Fundort-Suche im Mining-Kapitel</a>. Wer viel craften will, legt sich zuerst einen Vorrat Aslarit an.</p>
       </div>
     </div>
@@ -3332,7 +3332,7 @@
   <button type="button" class="sh-morebtn" id="shmorebtn" hidden></button>
   <p class="empty" id="shnone" hidden>Kein Schiff passt zu diesen Filtern.</p>
   <div class="learn"><strong>Mit echtem Geld upgraden?</strong> <span>Das CCU-Radar meldet, wenn ein Schiff im Pledge-Store teurer wird und sich ein Upgrade auf Vorrat lohnt.</span> <a class="btn" href="#ccu-radar">Zum CCU-Radar</a></div>
-  <p class="small">Preise schwanken je nach Ort und Patch. „ab“ zeigt den günstigsten bekannten Händler. Schiffe ohne Preis gibt es nur im Pledge-Store oder als Belohnung.</p>
+  <p class="small">Preise schwanken je nach Ort und Patch. „ab“ zeigt den günstigsten bekannten Händler. Bei Schiffen ohne Preis ist uns kein aUEC-Preis bekannt. Das heißt nicht, dass es sie nur für echtes Geld gibt: Manche sind bei UEX und im Wiki noch nicht erfasst, andere gibt es als Belohnung oder bei Events.</p>
 </section>
 
 <dialog class="sh-3d" id="sh3d-dlg" aria-labelledby="sh3d-title">
@@ -4137,7 +4137,7 @@ window.SC_MINE = (function () {
     ['Quantensprung', 'flug', 'Auch QT. Überlichtschnelle Reise zwischen Planeten, Monden und Stationen. Ziel per Sternenkarte setzen.'],
     ['ATC', 'flug', 'Air Traffic Control, die Flugkontrolle. Erteilt Start- und Landeerlaubnis über <em>L-Alt + N</em>.'],
     ['Sperrzone', 'flug', 'Bereich um Städte und Stationen (Armistice Zone). Waffen sind gesperrt, Quantensprung nicht möglich.'],
-    ['Gekoppelt / Entkoppelt', 'flug', 'Coupled: Das Schiff bremst automatisch ab. Decoupled: Es gleitet weiter wie im echten All. Umschalten mit <em>C</em>.'],
+    ['Gekoppelt / Entkoppelt', 'flug', 'Coupled: Das Schiff bremst automatisch ab. Decoupled: Es gleitet weiter wie im echten All. Umschalten mit <em>L-Alt + C</em>.'],
     ['Gimbal', 'flug', 'Schwenkbare Waffenhalterung. Waffen folgen dem Mauszeiger statt starr nach vorn zu schießen.'],
     ['VTOL', 'flug', 'Senkrechtstart und -landung. Manche Schiffe schwenken dafür ihre Triebwerke. Taste <em>K</em>.'],
     ['Interdiction', 'flug', 'Jemand reißt dich aus dem Quantensprung, oft Piraten. Dann: Schilde hoch, weg oder kämpfen.'],
@@ -4241,13 +4241,13 @@ window.SC_MINE = (function () {
     schiff: {
       W: 'Schub vorwärts', S: 'Schub rückwärts', A: 'Seitlich nach links', D: 'Seitlich nach rechts', Space: 'Nach oben gleiten · abheben', LCtrl: 'Nach unten gleiten',
       Q: 'Nach links rollen', E: 'Nach rechts rollen', LShift: 'Boost (halten) · L-Shift + U: Notausstieg', X: 'Raumbremse',
-      C: 'Gekoppelt ↔ Entkoppelt · L-Alt + C: Tempomat', N: 'Fahrwerk · halten: Autolandung · L-Alt + N: Start-/Landeerlaubnis',
+      C: 'Tempomat (Cruise) · L-Alt + C: Gekoppelt ↔ Entkoppelt', N: 'Fahrwerk · halten: Autolandung · L-Alt + N: Start-/Landeerlaubnis',
       K: 'VTOL · AltGr + K: Türen ver-/entriegeln', L: 'Scheinwerfer', U: 'Energie: alle Systeme an/aus', I: 'Energie: Antrieb an/aus', O: 'Energie: Schilde an/aus', P: 'Energie: Waffen an/aus',
       B: 'Halten: Master Mode SCM ↔ NAV', R: 'AltGr + R: Flight Ready (hoch-/runterfahren)', T: 'Ziel im Blickfeld wechseln', G: 'Gimbal-Modus · Raketen scharf machen',
       H: 'Täuschkörper (Decoy)', J: 'Störsignal (Noise)', V: 'Scan-Modus', Tab: 'Halten: Radar-Ping', M: 'Mining-/Salvage-Modus',
       Z: 'Halten: Sitz verlassen · AltGr + Z: Schleudersitz!', Y: 'Halten: im Cockpit umsehen', ',': 'Halten: nach hinten schauen', F7: 'Mehr Energie auf Schilde',
       '4': 'Angreifer durchschalten', '5': 'Feinde durchschalten', '6': 'Freunde durchschalten', F1: 'mobiGlas', F2: 'Sternenkarte', F4: 'Kamera wechseln',
-      Back: 'Halten: SELBSTZERSTÖRUNG. Finger weg!', LAlt: 'Modifikator für Landeerlaubnis, Tempomat, Speed-Limiter', AltGr: 'Modifikator für Flight Ready, Türen, Schleudersitz',
+      Back: 'Halten: SELBSTZERSTÖRUNG. Finger weg!', LAlt: 'Modifikator für Landeerlaubnis, Entkoppelt-Modus, Speed-Limiter', AltGr: 'Modifikator für Flight Ready, Türen, Schleudersitz',
       LMB: 'Waffengruppe 1 · in NAV halten: Quantensprung', RMB: 'Waffengruppe 2', MMB: 'Raketen-Modus', Wheel: 'L-Alt + Rad: Geschwindigkeitsbegrenzer (prüfen)'
     },
     mining: {
@@ -4337,7 +4337,7 @@ window.SC_MINE = (function () {
     { q: 'Scheinwerfer an', k: 'L', a: 'L' },
     { q: 'Waffen mit Energie versorgen', k: 'P', a: 'P' },
     { q: 'Täuschkörper gegen Raketen abwerfen', k: 'H', a: 'H' },
-    { q: 'Entkoppelten Flug umschalten', k: 'C', a: 'C' },
+    { q: 'Entkoppelten Flug umschalten', k: 'C', m: 'LAlt', a: 'L-Alt + C' },
     { q: 'Helm aufsetzen', k: 'H', m: 'LAlt', a: 'L-Alt + H' },
     { q: 'Waffe nachladen', k: 'R', a: 'R' },
     { q: 'Taschenlampe einschalten', k: 'T', a: 'T' },
@@ -4976,7 +4976,7 @@ window.SC_MINE = (function () {
     var price = '';
     if (s.b) price += '<span>Kauf ab <b>' + fmt(s.b[0]) + ' aUEC</b></span><span class="where">' + esc(s.b[1]) + (s.nb > 1 ? ' · +' + (s.nb - 1) + ' weitere' : '') + '</span>';
     if (s.r) price += '<span>Miete ab <b>' + fmt(s.r[0]) + ' aUEC</b>/Tag</span><span class="where">' + esc(s.r[1]) + '</span>';
-    if (!price) price = '<span class="where">Im Spiel nicht kaufbar (Pledge oder Belohnung)</span>';
+    if (!price) price = '<span class="where">Kein aUEC-Preis bekannt</span>';
     el.innerHTML =
       '<div class="sh-img">' + (s.img ? '<img src="' + esc(s.img) + '" alt="' + esc(s.full) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') +
       '<span class="sh-mcode">' + esc(s.m || '') + '</span>' + window.SC_MINE.btn(s.slug) + '</div>' +
@@ -5233,7 +5233,7 @@ window.SC_MINE = (function () {
     else if (s.scu) t += 'Es fasst ' + fmt(s.scu) + ' SCU Fracht. ';
     if (s.b) t += 'Im Spiel kaufbar ab ' + fmt(s.b[0]) + ' aUEC' + (s.nb > 1 ? ' an ' + s.nb + ' Orten' : '') + '. ';
     if (s.r) t += 'Mieten ab ' + fmt(s.r[0]) + ' aUEC pro Tag. ';
-    if (!s.b && !s.r) t += 'Im Spiel derzeit nicht kaufbar. ';
+    if (!s.b && !s.r) t += 'Ein aUEC-Preis ist uns nicht bekannt (noch nicht erfasst, nicht im Handel oder nur als Belohnung). ';
     return t;
   }
   function stat(label, val, unit) {
@@ -5343,15 +5343,19 @@ window.SC_MINE = (function () {
   }
   window.SC_RS_MATCH = match;
   inp.addEventListener('input', function () {
-    var v = parseInt(inp.value.replace(/[^0-9]/g, ''), 10);
+    var raw = inp.value.trim().replace(/[\u00a0' ]/g, '');
+    if (!raw) { out.innerHTML = '<span class="small">Noch keine Zahl eingegeben.</span>'; return; }
+    var s2 = raw.replace(/[.,](?=\d{3}(?:\D|$))/g, '');
+    if (!/^\d+$/.test(s2)) { out.innerHTML = '<span class="small">Signaturen sind ganze, positive Zahlen, zum Beispiel 3.170.</span>'; return; }
+    var v = parseInt(s2, 10);
     if (!v) { out.innerHTML = '<span class="small">Noch keine Zahl eingegeben.</span>'; return; }
     var hits = match(v);
-    if (!hits.length) { out.innerHTML = '<span class="small">Kein bekanntes Mineral passt genau. Prüf die Zahl noch einmal, oder es ist kein Gestein (z. B. ein Schiff oder Trümmer).</span>'; return; }
+    if (!hits.length) { out.innerHTML = '<span class="small">Kein bekanntes Mineral passt genau. Prüf die Zahl noch einmal, oder es ist kein Gestein (z. B. ein Schiff oder Trümmer). Bei gemischten Vorkommen kann die Zahl aus mehreren Mineralen bestehen, die der Rechner nicht erkennt.</span>'; return; }
     out.innerHTML = hits.slice(0, 4).map(function (h, i) {
       var o = h.o, val = o[3] ? 'Basiswert ' + fmt(o[3]) + ' aUEC/SCU' : (o[4] ? 'Mineral zeigt erst der Scan' : 'Basiswert unbekannt');
       var nm = o[4] ? o[1] : '<a href="#mining" data-loc="' + o[1] + '">' + o[1] + '</a>';
       return '<div class="rs-hit' + (i === 0 ? ' top' : '') + '"><span><b>' + h.n + ' × ' + nm + '</b> <i class="gb">' + o[2] + '</i><br><span class="small">Grundwert ' + fmt(o[0]) + ' · ' + val + '</span></span></div>';
-    }).join('') + (hits.length > 1 ? '<span class="small">Mehrere Möglichkeiten: Der Detail-Scan (V, linke Maustaste halten) klärt es.</span>' : '');
+    }).join('') + (hits.length > 4 ? '<span class="small">Dazu kommen ' + (hits.length - 4) + ' weitere Möglichkeiten.</span>' : '') + (hits.length > 1 ? '<span class="small">Mehrere Möglichkeiten: Der Detail-Scan (V, linke Maustaste halten) klärt es.</span>' : '') + '<span class="small">Der Rechner nimmt an, dass alle Felsen im Cluster dieselbe Sorte sind (Anzahl × Grundwert). Mischvorkommen oder Felsen verschiedener Größe können andere Summen ergeben, dann hilft nur der Detail-Scan.</span>';
   });
 })();
 </script>
@@ -6041,16 +6045,35 @@ window.SC_MINE = (function () {
   var RANKS = [[0, 'Prospective Associate', ''], [2400, 'Associate', 'Story 2'], [6000, 'Trusted Associate', 'Story 3 mit den Erzbehälter-Bauplänen'],
     [10800, 'Prestige 1', 'Golem Alliance'], [30000, 'Prestige 2', 'Prospector Alliance'], [69600, 'Prestige 3', 'MOLE Alliance']];
   var fmt = function (n) { return n.toLocaleString('de-DE'); };
+  /* Zahl lesen: 2400, 2.400, 2 400, -150, 2400,5 (Komma oder Punkt als Dezimaltrenner, Nachkommastellen werden ignoriert) */
+  function parseRep(raw) {
+    var s = String(raw).replace(/[\u2212\u2013]/g, '-').trim();
+    if (!s) return { empty: true };
+    var neg = /^-/.test(s); s = s.replace(/^[-+]\s*/, '');
+    if (!/^[0-9][0-9.,'\u00a0 ]*$/.test(s)) return { bad: true };
+    s = s.replace(/[\u00a0' ]/g, '');
+    var v;
+    if (/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(s)) v = parseFloat(s.replace(/\./g, '').replace(',', '.'));
+    else if (/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(s)) v = parseFloat(s.replace(/,/g, ''));
+    else if (/^\d+([.,]\d+)?$/.test(s)) v = parseFloat(s.replace(',', '.'));
+    else return { bad: true };
+    if (!isFinite(v) || v > 1e9) return { bad: true };
+    var frac = v !== Math.floor(v); v = Math.floor(v);
+    return { v: neg ? -v : v, frac: frac };
+  }
+  window.scParseRep = parseRep;
   function draw() {
-    var t = inp.value.replace(/[^0-9]/g, '');
-    if (!t) { out.textContent = 'Noch kein Ruf eingegeben.'; fill.style.width = '0'; return; }
-    var r = +t, cur = RANKS[0], next = null;
+    var p = parseRep(inp.value);
+    if (p.empty) { out.textContent = 'Noch kein Ruf eingegeben.'; fill.style.width = '0'; return; }
+    if (p.bad) { out.textContent = 'Das ist keine gültige Zahl. Beispiel: 2400 oder 2.400.'; fill.style.width = '0'; return; }
+    var r = p.v, cur = null, next = null, note = p.frac ? ' (Nachkommastellen werden ignoriert.)' : '';
     RANKS.forEach(function (k) { if (r >= k[0]) cur = k; else if (!next) next = k; });
-    fill.style.width = Math.min(100, r / RANKS[RANKS.length - 1][0] * 100) + '%';
-    if (!next) { out.innerHTML = '<b>' + cur[1] + '</b>: alles freigeschaltet. Die MOLE wartet im Auftrag „Mining and MOLE“.'; return; }
+    fill.style.width = Math.max(0, Math.min(100, r / RANKS[RANKS.length - 1][0] * 100)) + '%';
+    if (!cur) { out.innerHTML = 'Dein Ruf ist <b>negativ</b> (' + fmt(r) + '), du liegst unter der ersten Stufe. Bis <b>' + RANKS[0][1] + '</b> fehlen <b>' + fmt(RANKS[0][0] - r) + ' Ruf</b>.' + note; return; }
+    if (!next) { out.innerHTML = '<b>' + cur[1] + '</b>: alles freigeschaltet. Die MOLE wartet im Auftrag „Mining and MOLE“.' + note; return; }
     var left = next[0] - r;
     out.innerHTML = 'Du bist <b>' + cur[1] + '</b>. Bis <b>' + next[1] + '</b> (' + next[2] + ') fehlen noch <b>' + fmt(left) + ' Ruf</b>: ' +
-      'etwa ' + Math.ceil(left / 800) + ' Aufträge à 800, ' + Math.ceil(left / 300) + ' à 300 oder ' + Math.ceil(left / 200) + ' Scans à 200.';
+      'etwa ' + Math.ceil(left / 800) + ' Aufträge à 800, ' + Math.ceil(left / 300) + ' à 300 oder ' + Math.ceil(left / 200) + ' Scans à 200. Der Rang allein schaltet nichts frei: Story-Aufträge müssen vorher erledigt sein.' + note;
   }
   inp.addEventListener('input', draw);
 })();
@@ -6125,6 +6148,8 @@ window.SC_MINE = (function () {
   var L = {
     recco: ['Recco Battaglia', [[0, 'Prospective Associate'], [2400, 'Associate', 'Story 2'], [6000, 'Trusted Associate', 'Story 3, Erzbehälter-Baupläne'], [10800, 'Prestige 1', 'Golem Alliance'], [30000, 'Prestige 2', 'Prospector Alliance'], [69600, 'Prestige 3', 'MOLE Alliance']]],
     intersec: ['InterSec', C], foxwell: ['Foxwell', C], adagio: ['Adagio', C],
+    haul: ['Hauling-Firmen', [[0, 'Trainee'], [1, 'Jr. Runner'], [50, 'Rookie'], [250, 'Junior'], [2500, 'Runner'], [5250, 'Member'], [27750, 'Experienced'], [77750, 'Senior'], [237750, 'Master']]],
+    bhg: ['Kopfgeldjäger-Gilde', [[0, 'Applicant'], [1, 'Probationary Guild Member'], [3000, 'Junior Guild Member'], [10000, 'Guild Member'], [40000, 'Senior Guild Member'], [200000, 'Veteran Guild Member'], [480000, 'Guild Steward']]],
     wikelo: ['Wikelo', [[0, 'New Customer'], [340, 'Very Good Customer', 'z. B. Wolf für 5 Favors'], [999, 'Very Best Customer', 'z. B. Idris-P']]]
   };
   var cur = 'recco', inp = document.getElementById('rufxp'), out = document.getElementById('rufout'), fill = document.getElementById('ruffill'), lad = document.getElementById('rufladder');
@@ -6141,15 +6166,17 @@ window.SC_MINE = (function () {
     who.appendChild(b);
   });
   function draw() {
-    var R = L[cur][1], t = inp.value.replace(/[^0-9]/g, ''), r = t ? +t : -1, rank = null, next = null;
+    var R = L[cur][1], p = window.scParseRep(inp.value), t = !p.empty && !p.bad, r = t ? p.v : -1e12, rank = null, next = null;
     R.forEach(function (k) { if (r >= k[0]) rank = k; else if (!next) next = k; });
     lad.innerHTML = R.map(function (k) { return '<span class="' + (r >= k[0] ? 'on' : k === next ? 'next' : '') + '">' + fmt(k[0]) + ' · ' + k[1] + '</span>'; }).join('');
-    fill.style.width = t ? Math.min(100, r / R[R.length - 1][0] * 100) + '%' : '0';
-    if (!t) { out.textContent = 'Noch kein Ruf eingegeben.'; return; }
+    fill.style.width = t ? Math.max(0, Math.min(100, r / R[R.length - 1][0] * 100)) + '%' : '0';
+    if (p.empty) { out.textContent = 'Noch kein Ruf eingegeben.'; return; }
+    if (p.bad) { out.textContent = 'Das ist keine gültige Zahl. Beispiel: 2400 oder 2.400.'; return; }
+    if (!rank) { out.innerHTML = 'Dein Ruf ist <b>negativ</b> (' + fmt(r) + '), du liegst unter der ersten Stufe bei ' + L[cur][0] + '. Bis <b>' + next[1] + '</b> fehlen ' + fmt(next[0] - r) + ' Ruf.'; return; }
     if (!next) { out.innerHTML = '<b>' + rank[1] + '</b>: höchster Rang erreicht.'; return; }
     var left = next[0] - r;
     out.innerHTML = 'Du bist <b>' + rank[1] + '</b> bei ' + L[cur][0] + '. Bis <b>' + next[1] + '</b>' + (next[2] ? ' (' + next[2] + ')' : '') +
-      ' fehlen noch <b>' + fmt(left) + ' Ruf</b>' + (cur === 'wikelo' ? '. Ruf gibt es bei Wikelo für erledigte Tausch-Aufträge.'
+      ' fehlen noch <b>' + fmt(left) + ' Ruf</b>' + (cur === 'haul' || cur === 'bhg' ? '. Wie viele Aufträge das sind, hängt von Firma und Auftrag ab.' : cur === 'wikelo' ? '. Ruf gibt es bei Wikelo für erledigte Tausch-Aufträge.'
         : ': etwa ' + n(left, 800) + ' à 800, ' + n(left, 300) + ' à 300 oder ' + n(left, 200) + ' à 200.');
   }
   inp.addEventListener('input', draw);
@@ -6386,7 +6413,7 @@ window.SC_MINE = (function () {
       if (has('mine')) c.ore = 'deinem Mining-Schiff';
       if (has('salv')) c.salv = 'deinem Salvage-Schiff';
       if (has('fight')) c.fight = 'deinem Kampfschiff';
-      if (has('cargo')) { c.scu = 64; c.cargo = 'deinem Frachter'; } else if (has('start') || !st.s.length) { c.scu = 4; c.cargo = 'deinem Startschiff'; }
+      if (has('cargo')) { c.scu = 64; c.cargo = 'deinem Frachter'; } else if (has('start') || !st.s.length) { c.scu = 0; c.unk = true; c.cargo = 'deinem Schiff'; }
     }
     /* Mieten: füllt nur Lücken. Bevorzugt die Schiffe aus den Tutorials, sonst das günstigste mietbare. */
     c.rent = {};
@@ -6422,7 +6449,7 @@ window.SC_MINE = (function () {
       who2: function (c, h) { return c.crew && h !== 'solo' ? 3 : 0; },
       t: function (c) { return 'Mining-Runde mit ' + c.ore; },
       p: function (c, t) { return t === 30 ? 'Für eine halbe Stunde: eine Ladung abbauen und in die Raffinerie geben. Abholen und verkaufen dann beim nächsten Mal.' : 'Steine scannen, Laser im grünen Bereich halten, Ladung in die Raffinerie. Der Raffinerie-Auftrag läuft weiter, auch wenn du ausloggst.'; },
-      e: 'Ertrag hängt stark vom Erz ab', w: 'Das Erz wartet Stunden in der Raffinerie. Vor einem Patch abholen.',
+      e: 'Ertrag hängt stark vom Erz ab (Richtwert, keine Zusage)', w: 'Das Erz wartet Stunden in der Raffinerie. Vor einem Patch abholen.',
       l: [['Runde Schritt für Schritt', '#t-mining'], ['RS-Rechner und Fundorte', '#mining']] },
     { id: 'recco', cap: 'ore', ty: ['ruf', 'geld'], min: 120, who: { solo: 3, duo: 2, gruppe: 1 }, best: [300], ship: true,
       ok: function (c) { return !!c.ore; },
@@ -6431,13 +6458,13 @@ window.SC_MINE = (function () {
     { id: 'salv', cap: 'salv', ty: ['geld', 'chill'], min: 30, who: { solo: 3, duo: 2, gruppe: 1 }, ship: true,
       ok: function (c) { return !!c.salv; },
       t: function (c) { return 'Bergungsrunde mit ' + c.salv; },
-      p: function () { return 'Auftrag holen, Hülle abkratzen, RMC ohne Raffinerie verkaufen. Nichts explodiert, und Bergungsaufträge kosten keine Gebühr.'; },
-      e: 'Geld gleich nach der Runde, ohne Wartezeit', l: [['Runde Schritt für Schritt', '#t-salvage'], ['Wo RMC am meisten bringt', '#salvage']] },
+      p: function () { return 'Auftrag holen, Hülle abkratzen, RMC ohne Raffinerie verkaufen. Nichts explodiert. Adagio-Aufträge kosten nichts, Wrack-Claims 1.000 bis 50.000 aUEC.'; },
+      e: 'Geld gleich nach der Runde, ohne Wartezeit (Wrack-Claims kosten vorher 1.000 bis 50.000 aUEC)', l: [['Runde Schritt für Schritt', '#t-salvage'], ['Wo RMC am meisten bringt', '#salvage']] },
     { id: 'haul', ty: ['geld', 'chill', 'ruf'], min: 30, who: { solo: 3, duo: 2, gruppe: 1 }, ship: true,
-      ok: function (c) { return c.scu > 0; },
+      ok: function (c) { return c.scu > 0 || c.unk; },
       t: 'Frachtaufträge fahren',
-      p: function (c) { return (c.scu >= 64 ? 'Mit ' + c.cargo + (c.own.length ? ' (' + c.scu + ' SCU)' : '') + ' passen auch größere Aufträge. Vorher im Frachter-Finder die Kistengröße prüfen.' : 'Mit ' + c.cargo + ' gehen die kleinen Aufträge für Trainee und Rookie. Kein eigenes Geld nötig.') + ' Bei einer Firma bleiben, dann steigt der Rang schneller.'; },
-      e: '75.000–150.000 aUEC pro Stunde mit einem Auftrag (Richtwert)', l: [['Erster Auftrag', '#t-hauling'], ['Ränge und Frachter-Finder', '#hauling']] },
+      p: function (c) { return (c.scu >= 64 ? 'Mit ' + c.cargo + (c.own.length ? ' (' + c.scu + ' SCU)' : '') + ' passen auch größere Aufträge. Vorher im Frachter-Finder die Kistengröße prüfen.' : (c.unk ? 'Prüf zuerst im Frachter-Finder, wie viel Fracht und welche Kistengröße dein Schiff nimmt. Hat es ein Frachtgitter, gehen die kleinsten Trainee-Aufträge.' : 'Mit ' + c.cargo + ' gehen die kleinen Aufträge für Trainee und Rookie. Kein eigenes Geld nötig.')) + ' Bei einer Firma bleiben, dann steigt der Rang schneller.'; },
+      e: 'Richtwert aus Community-Berichten (4.10.2): 75.000–150.000 aUEC pro Stunde mit einem Auftrag, je nach Rang und Auftrag', l: [['Erster Auftrag', '#t-hauling'], ['Ränge und Frachter-Finder', '#hauling']] },
     { id: 'trade', cap: 'cargo', ty: ['geld'], min: 120, who: { solo: 2, duo: 3, gruppe: 2 }, ship: true,
       ok: function (c) { return c.scu >= 64 || !!c.rent.cargo; },
       t: 'Handel auf eigene Rechnung', p: function (c) { return 'Ware kaufen und woanders teurer verkaufen, mit ' + (c.scu >= 64 ? c.cargo : c.rent.cargo.n) + '. Mehr Gewinn als Aufträge, aber dein eigenes Geld steckt in der Fracht.'; },
@@ -6449,7 +6476,7 @@ window.SC_MINE = (function () {
       t: 'Siege of Orison', p: function () { return 'Drei Plattformen zu Fuß zurückerobern, in einer eigenen Instanz für 1 bis 4 Spieler. Nur KI-Gegner, keine Fremden. Die Gruppe vorher bilden.'; },
       e: 'aUEC, Chance auf einen Bauplan, Beute', l: [['Ablauf und Tipps', '#siege-orison']] },
     { id: 'exec', ty: ['action'], min: 300, who: { solo: 1, duo: 2, gruppe: 3 },
-      t: 'Executive Hangar', p: function () { return 'Sieben Platinen aus den Contested Zones in Pyro holen und damit einen Hangar öffnen. Dafür gibt es ein Schiff, das dir bleibt.'; },
+      t: 'Executive Hangar', p: function () { return 'Sieben Platinen aus den Contested Zones in Pyro holen und damit einen Hangar öffnen. Dafür gibt es ein Schiff, das du im Spiel behältst (außer bei einem Wipe).'; },
       e: 'Ein Schiff, dazu Bauteile der Klasse A', w: 'Pyro ist gesetzlos, fast immer sind andere Spieler dort.', l: [['Timer, Karten und Ablauf', '#exec-hangar']] },
     { id: 'hathor', ty: ['action', 'ruf'], min: 120, who: { solo: 1, duo: 2, gruppe: 3 }, best: [300],
       t: 'Hathor: Carinit für Wikelo', p: function () { return 'Laser-Plattform auf Daymar oder Aberdeen starten, Höhle freischießen, Carinit holen. 50 Carinit sind 1 Favor, damit tauscht Wikelo Schiffe und Rüstung.'; },
