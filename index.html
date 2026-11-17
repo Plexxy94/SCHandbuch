@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261116">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261117">
+<link rel="stylesheet" href="style.css?v=20261121">
 </head>
 <body>
 
@@ -24,11 +24,12 @@
     <a class="brand" href="#start" aria-label="SC HANDBUCH, zur Startseite"><svg class="brand-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 2.2l12.4 7.1v13.4L16 29.8 3.6 22.7V9.3z" stroke-width="1.6"/><path d="M16 8.4l7 4v7.2l-7 4-7-4v-7.2z" stroke-width="1.2" fill="currentColor" fill-opacity=".16"/><path d="M16 2.2V8M3.6 9.3l5.4 3.1M28.4 9.3l-5.4 3.1" stroke-width="1.2" opacity=".7"/><circle cx="16" cy="16" r="2.1" fill="var(--accent-amber)" stroke="none"/></svg><span class="brand-name">SC <b>HANDBUCH</b></span><span class="brand-sub">Dein Begleiter durch das Verse</span></a>
     <div class="tabs">
       <a href="#start">Start</a>
-      <a href="#tutorial" class="has-sub" data-group="lernen">Lernen</a>
-      <a href="#wissen" class="has-sub" data-group="wissen">Wissen</a>
-      <a href="#tools" class="has-sub" data-group="tools">Tools</a>
+      <a href="#tutorial" class="has-sub" data-group="einstieg">Einstieg</a>
+      <a href="#berufe" class="has-sub" data-group="berufe">Berufe</a>
+      <a href="#schiffe" class="has-sub" data-group="schiffe">Schiffe</a>
       <a href="#einsaetze" class="has-sub" data-group="einsaetze">Einsätze</a>
-      <a href="#news" class="has-sub" data-group="aktuell">News<span class="news-dot" id="newsdot" title="Neue Beiträge" hidden></span></a>
+      <a href="#tools" class="has-sub" data-group="tools">Tools</a>
+      <a href="#news" class="has-sub" data-group="hilfe" data-crumb-page>Hilfe &amp; Aktuelles<span class="news-dot" id="newsdot" title="Neue Beiträge" hidden></span></a>
     </div>
     <a class="nav-led" id="navled" href="#news" hidden><i></i><span>Server</span></a>
     <button type="button" class="nav-search" id="navsearch" aria-label="Seite durchsuchen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Suche</span><kbd>/</kbd></button>
@@ -37,39 +38,31 @@
   </div>
   <!-- Zweite Reihe je Gruppe (Desktop). Neue Gruppe: weitere .subnav-in mit data-group anlegen und oben einen Tab mit gleichem data-group ergänzen.
        Ein Kapitel gehört zu der ersten Gruppe, in der es steht (Brotkrumen, aktiver Tab); in weiteren Gruppen darf es zusätzlich verlinkt sein.
+       data-views="a b" an einem Link: weitere Ansichten, die zu diesem Eintrag gehören (aktiver Zustand, Gruppe, Brotkrumen), z. B. das Tutorial eines Berufs.
        Links mit data-jump springen nach dem Seitenwechsel zu dem Element mit dieser ID. -->
   <div class="subnav" id="subnav" hidden>
-    <div class="subnav-in" role="group" aria-label="Lernen" data-group="lernen">
+    <div class="subnav-in" role="group" aria-label="Einstieg" data-group="einstieg">
       <a href="#tutorial">Übersicht</a>
       <a href="#heimat" data-sep>Heimatstadt</a>
       <a href="#erste-schritte">Erste Schritte</a>
       <a href="#ueberleben">Überleben</a>
-      <a href="#t-mining" data-sep>Mining<span class="sub-long"> lernen</span></a>
-      <a href="#t-salvage">Salvage<span class="sub-long"> lernen</span></a>
-      <a href="#t-hauling">Hauling<span class="sub-long"> lernen</span></a>
-      <a href="#t-crafting">Crafting<span class="sub-long"> lernen</span></a>
-      <a href="#training" data-sep>Training <span class="beta">Beta</span></a>
-    </div>
-    <div class="subnav-in" role="group" aria-label="Wissen" data-group="wissen">
-      <a href="#wissen">Übersicht</a>
-      <a href="#berufe" data-sep>Berufe</a>
-      <a href="#mining">Mining</a>
-      <a href="#salvage">Salvage</a>
-      <a href="#hauling">Hauling</a>
-      <a href="#crafting">Crafting</a>
-      <a href="#ruf">Ruf</a>
+      <a href="#training">Training <span class="beta">Beta</span></a>
       <a href="#tasten" data-sep>Tastatur</a>
       <a href="#hosas">HOSAS</a>
-      <a href="#schiffe" data-sep>Schiffe</a>
-      <a href="#glossar">Glossar</a>
     </div>
-    <div class="subnav-in" role="group" aria-label="Tools" data-group="tools">
-      <a href="#tools">Übersicht</a>
-      <a href="#tools" data-jump="tg-wirtschaft" data-sep>Wirtschaft</a>
-      <a href="#tools" data-jump="tg-schiffe">Schiffs-Tools</a>
-      <a href="#tools" data-jump="tg-planung">Planung<span class="sub-long"> und Training</span></a>
-      <a href="#tools" data-jump="tg-missionen">Missionen</a>
+    <div class="subnav-in" role="group" aria-label="Berufe" data-group="berufe">
+      <a href="#berufe">Übersicht</a>
+      <a href="#mining" data-views="t-mining" data-sep>Mining</a>
+      <a href="#salvage" data-views="t-salvage">Salvage</a>
+      <a href="#hauling" data-views="t-hauling">Hauling</a>
+      <a href="#crafting" data-views="t-crafting">Crafting</a>
+      <a href="#ruf">Ruf</a>
+    </div>
+    <div class="subnav-in" role="group" aria-label="Schiffe" data-group="schiffe">
+      <a href="#schiffe">Schiffsdatenbank</a>
+      <a href="#schiffe" data-jump="shmine">Meine Schiffe</a>
       <a href="#ccu-radar" data-sep>CCU-Radar</a>
+      <a href="#hauling" data-jump="hq-tool">Frachter-Finder</a>
     </div>
     <div class="subnav-in" role="group" aria-label="Einsätze" data-group="einsaetze">
       <a href="#einsaetze">Übersicht</a>
@@ -80,10 +73,21 @@
       <a href="#recco">Recco<span class="sub-long"> Battaglia</span></a>
       <a href="#bunker">Bunker</a>
     </div>
-    <div class="subnav-in" role="group" aria-label="News" data-group="aktuell">
+    <div class="subnav-in" role="group" aria-label="Tools" data-group="tools">
+      <a href="#tools">Übersicht</a>
+      <a href="#tools" data-jump="tg-wirtschaft" data-sep>Wirtschaft</a>
+      <a href="#tools" data-jump="tg-schiffe">Schiffs-Tools</a>
+      <a href="#tools" data-jump="tg-planung">Planung<span class="sub-long"> und Training</span></a>
+      <a href="#tools" data-jump="tg-missionen">Missionen</a>
+      <a href="#ccu-radar" data-sep>CCU-Radar</a>
+    </div>
+    <div class="subnav-in" role="group" aria-label="Hilfe &amp; Aktuelles" data-group="hilfe">
       <a href="#news">News</a>
       <a href="#patchnotes">Patchnotes</a>
+      <a href="#news" data-jump="nwstatus">Server-Status</a>
       <a href="#bugs">Bugs &amp; Workarounds</a>
+      <a href="#glossar" data-sep>Glossar</a>
+      <a href="#wissen">Alle Inhalte</a>
     </div>
   </div>
 </nav>
@@ -142,7 +146,7 @@
     </aside>
 
     <section class="t-center" aria-labelledby="st-title">
-      <nav class="tabstrip" aria-label="Bereiche"><a href="#tutorial"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg><span>Lernen</span></a><a href="#wissen"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg><span>Wissen</span></a><a href="#tools"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg><span>Tools</span></a><a href="#einsaetze"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><span>Einsätze</span></a><a href="#news"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg><span>News</span></a></nav>
+      <nav class="tabstrip" aria-label="Bereiche"><a href="#tutorial"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg><span>Einstieg</span></a><a href="#berufe"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg><span>Berufe</span></a><a href="#schiffe"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg><span>Schiffe</span></a><a href="#einsaetze"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><span>Einsätze</span></a><a href="#tools"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg><span>Tools</span></a><a href="#news"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg><span>Hilfe</span></a></nav>
       <div class="t-kicker">SC HANDBUCH · Inoffiziell · Alpha 4.10.3</div>
       <h1 id="st-title">Bereit für deinen nächsten <em>Flug?</em></h1>
       <p class="t-sub">Dein Begleiter durch das Verse.</p>
@@ -300,10 +304,10 @@
 <!-- ============ WISSEN (Übersicht) ============ -->
 <section class="view" id="view-wissen" data-view="wissen" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Wissen</span><span class="chead-tag">Nachschlagen</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Hilfe · Alle Inhalte</span><span class="chead-tag">Nachschlagen</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Wissen</h1>
-    <p class="lede">Alles zum Nachschlagen an einem Ort: Berufe und Zahlen, Steuerung, Schiffe, Einsätze und Begriffe. Anleitungen Schritt für Schritt findest du unter Lernen.</p>
-    <div class="chead-act"><a href="#tutorial">Zu den Tutorials</a><a href="#tools">Zu den Werkzeugen</a></div>
+    <p class="lede">Alles zum Nachschlagen an einem Ort: Berufe und Zahlen, Steuerung, Schiffe, Einsätze und Begriffe. Anleitungen Schritt für Schritt findest du unter Einstieg und Berufe.</p>
+    <div class="chead-act"><a href="#tutorial">Zu den Tutorials</a><a href="#berufe">Zu den Berufen</a><a href="#tools">Zu den Werkzeugen</a></div>
   </div>
   <div class="st-kb">
     <div class="st-group">
@@ -348,7 +352,7 @@
 <!-- ============ ERSTE SCHRITTE ============ -->
 <section class="view" id="view-erste-schritte" data-view="erste-schritte" hidden>
   <div class="head chead" data-toc=".step h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">7 Etappen</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">7 Etappen</span></div>
     <h1>Erste Schritte</h1>
     <p class="lede">Sieben Etappen von deinem ersten Login bis zum ersten verdienten Geld. Hak ab, was du geschafft hast. Der Fortschritt bleibt in diesem Browser gespeichert.</p>
     <div class="chead-act"><a href="#heimat">Heimatstadt wählen</a><a href="#tasten">Tasten nachschlagen</a><a href="#ueberleben">Überleben</a></div>
@@ -475,7 +479,7 @@
 <!-- ============ TUTORIALS: ÜBERSICHT ============ -->
 <section class="view" id="view-tutorial" data-view="tutorial" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorials</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">QWERTZ</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorials</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">QWERTZ</span></div>
     <h1>Tutorials</h1>
     <p class="lede">Schritt-für-Schritt-Anleitungen für den Einstieg. Wenn du weißt, wie es geht, findest du Werkzeuge und Nachschlage-Infos unter <a href="#berufe">Berufe</a>.</p>
   </div>
@@ -534,7 +538,7 @@
 <!-- ============ TUTORIAL: HEIMATSTADT ============ -->
 <section class="view" id="view-heimat" data-view="heimat" hidden>
   <div class="head chead" data-toc="h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand 12. Nov. 2026</span><span class="chead-tag">Patch 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorial</span><span class="chead-tag">Stand 12. Nov. 2026</span><span class="chead-tag">Patch 4.10.3</span></div>
     <h1>Heimatstadt wählen</h1>
     <p class="lede">Beim ersten Login wählst du deine Heimatstadt <i class="gb">Primary Residence</i>. Dort wachst du nach dem Einloggen auf, dort liegt dein Inventar, und dorthin schickt das Spiel Belohnungen. Wechseln kannst du laut Wiki nur beim ersten Login nach einem neuen Patch. Zur Wahl stehen die vier Städte in Stanton sowie Orte in Nyx und Pyro, die weiter unten stehen.</p>
   </div>
@@ -728,7 +732,7 @@
 <!-- ============ TUTORIAL: ÜBERLEBEN ============ -->
 <section class="view" id="view-ueberleben" data-view="ueberleben" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Überleben</h1>
     <p class="lede">Irgendwann bist du verletzt, stirbst, verlierst ein Schiff oder hast plötzlich einen CrimeStat. Kein Drama. Hier steht, was dann passiert, was es kostet und wie du es vermeidest.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -837,7 +841,7 @@
 <!-- ============ BUGS & WORKAROUNDS ============ -->
 <section class="view" id="view-bugs" data-view="bugs" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>News · Bugs</span><span class="chead-tag">LIVE 4.10.2 · 4.10.3 im Test</span><span class="chead-tag">Stand 3. Nov. 2026</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Hilfe · Bugs</span><span class="chead-tag">LIVE 4.10.2 · 4.10.3 im Test</span><span class="chead-tag">Stand 3. Nov. 2026</span></div>
     <h1>Bugs &amp; Workarounds</h1>
     <p class="lede">Star Citizen ist eine Alpha, irgendwas hakt immer. Hier stehen die Fehler, die gerade am häufigsten nerven, und was dagegen hilft. Gesammelt aus der offiziellen Liste von CIG, den Patch Notes und aktuellen Spielerberichten.</p>
     <div class="bug-status" id="bugstatus" hidden></div>
@@ -1233,7 +1237,7 @@
 <!-- ============ TUTORIAL: MINING ============ -->
 <section class="view" id="view-t-mining" data-view="t-mining" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Mining lernen</h1>
     <p class="lede">Eine ganze Runde vom ersten Ping bis zum Geld auf dem Konto. Am einfachsten mit dem Golem, zu Fuß mit dem Multitool geht es auch.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Werkzeuge wie den RS-Rechner und die Erz-Suche findest du im <a href="#mining">Mining-Kapitel</a>.</p>
@@ -1345,7 +1349,7 @@
 <!-- ============ TUTORIAL: SALVAGE ============ -->
 <section class="view" id="view-t-salvage" data-view="t-salvage" hidden>
   <div class="head chead" data-toc="h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Salvage lernen</h1>
     <p class="lede">Eine ganze Runde mit der Salvation: Auftrag holen, Wrack prüfen, Hülle abkratzen, zerlegen und verkaufen. Nichts kann explodieren, und Bergungsaufträge kosten keine Gebühr.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Preise, Schiffe und Regeln findest du im <a href="#salvage">Salvage-Kapitel</a>.</p>
@@ -1415,7 +1419,7 @@
 <!-- ============ TUTORIAL: HAULING ============ -->
 <section class="view" id="view-t-hauling" data-view="t-hauling" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Hauling lernen</h1>
     <p class="lede">Dein erster Frachtauftrag: annehmen, Kisten holen, einladen, fliegen, abliefern. Eigenes Geld brauchst du dafür nicht, nur ein Schiff mit Frachtgitter und einen Traktorstrahl.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Ränge, Schiffe und den Frachter-Finder findest du im <a href="#hauling">Hauling-Kapitel</a>.</p>
@@ -1473,7 +1477,7 @@
 <!-- ============ TUTORIAL: CRAFTING ============ -->
 <section class="view" id="view-t-crafting" data-view="t-crafting" hidden>
   <div class="head chead" data-toc="h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Crafting lernen</h1>
     <p class="lede">Vom Bauplan bis zum fertigen Gegenstand in drei Schritten.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Was Qualität bewirkt und was du alles bauen kannst, steht im <a href="#crafting">Crafting-Kapitel</a>.</p>
@@ -2230,7 +2234,7 @@
 <!-- ============ TASTEN ============ -->
 <section class="view" id="view-tasten" data-view="tasten" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg>Wissen · Steuerung</span><span class="chead-tag">Standardbelegung Alpha 4.10.2</span><span class="chead-tag">QWERTZ</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg>Einstieg · Steuerung</span><span class="chead-tag">Standardbelegung Alpha 4.10.2</span><span class="chead-tag">QWERTZ</span></div>
     <h1>Tasten</h1>
     <p class="lede">Die Tasten, die du in den ersten Stunden brauchst. Belegungen ändern sich mit Patches, unsichere Einträge sind markiert.</p>
     <div class="chead-act"><a href="#tasten" data-jump="q">Taste suchen</a><a href="#hosas">HOSAS-Belegung</a><a href="#training">Training</a></div>
@@ -2387,7 +2391,7 @@
 <!-- ============ BERUFE: ÜBERSICHT ============ -->
 <section class="view" id="view-berufe" data-view="berufe" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg>Berufe</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
     <h1>Berufe</h1>
     <p class="lede">Womit du im Verse Geld verdienst oder deine Ausrüstung verbesserst. Hier siehst du die Berufe im Vergleich. In den Kapiteln stehen Werkzeuge, Preise und Tabellen zum Nachschlagen.</p>
   </div>
@@ -2457,7 +2461,7 @@
 <!-- ============ MINING ============ -->
 <section class="view" id="view-mining" data-view="mining" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg>Berufe · Wissen</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Mining</h1>
     <p class="lede">Werkzeuge und Infos fürs Mining: Signaturen auswerten, Erze und Fundorte suchen, die besten Raffinerien und Verkaufsorte finden, Schiffe und Methoden vergleichen.</p>
     <div class="chead-act"><a href="#mining" data-jump="rs-tool">RS-Rechner</a><a href="#mining" data-jump="loc-tool">Fundort-Suche</a><a href="#t-mining">Mining lernen</a><a href="#ruf">Ruf-Rechner</a></div>
@@ -2661,7 +2665,7 @@
 <!-- ============ SALVAGE ============ -->
 <section class="view" id="view-salvage" data-view="salvage" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Berufe · Wissen</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Salvage</h1>
     <p class="lede">Bergung heißt: Wracks finden, die Hülle zu Recycling-Material abkratzen, den Rest zerlegen und alles verkaufen. Hier findest du Schiffe, Preise, Baumaterial und die Regeln rund um Bauteile.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -2815,7 +2819,7 @@
 <!-- ============ HAULING ============ -->
 <section class="view" id="view-hauling" data-view="hauling" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg>Berufe · Wissen</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Hauling</h1>
     <p class="lede">Hauling heißt Fracht fahren: Kisten an einem Ort abholen und an einem anderen abliefern. Mit Frachtaufträgen bekommst du dafür einen festen Lohn und riskierst kein eigenes Geld. Hier steht, welches Schiff du wann brauchst, wie du im Rang aufsteigst und was es bringt.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3057,7 +3061,7 @@
 <!-- ============ RUF ============ -->
 <section class="view" id="view-ruf" data-view="ruf" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-rep"/></svg>Wissen · Ruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Richtwerte</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-rep"/></svg>Berufe · Ruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Richtwerte</span></div>
     <h1>Ruf</h1>
     <p class="lede">Jeder Auftraggeber merkt sich, wie gut du für ihn arbeitest. Mehr Ruf <i class="gb">Reputation</i> heißt bessere Aufträge, Baupläne und bei manchen sogar Schiffe. Wer früh weiß, bei wem er sammelt, spart sich viele Stunden.</p>
     <p class="small">Deinen Ruf siehst du im mobiGlas unter Ruf <i class="gb">Reputation</i>. Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3134,7 +3138,7 @@
 <!-- ============ CRAFTING ============ -->
 <section class="view" id="view-crafting" data-view="crafting" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Wissen · Beruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Crafting seit 4.7</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Berufe · Wissen</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Crafting seit 4.7</span></div>
     <h1>Crafting</h1>
     <p class="lede">Seit Alpha 4.7 kannst du Waffen, Rüstung, Munition und Schiffsteile selbst herstellen. Du brauchst drei Dinge: einen Bauplan, das passende Material und eine Werkbank. Je besser das Material, desto besser das Ergebnis.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3219,7 +3223,7 @@
 <!-- ============ NEWS ============ -->
 <section class="view" id="view-news" data-view="news" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg>News · Meldungen</span><span class="chead-tag">Aktualisiert sich selbst</span><span class="chead-tag">Quellen: RSI, Spectrum, YouTube</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg>Hilfe · News</span><span class="chead-tag">Aktualisiert sich selbst</span><span class="chead-tag">Quellen: RSI, Spectrum, YouTube</span></div>
     <h1>News</h1>
     <p class="lede">Offizielle Ankündigungen von RSI, der aktuelle Server-Status und die neuesten Videos. Die Titel sind im englischen Original, ein Klick öffnet den Beitrag bei RSI oder YouTube.</p>
   </div>
@@ -3248,7 +3252,7 @@
 <!-- ============ PATCHNOTES ============ -->
 <section class="view" id="view-patchnotes" data-view="patchnotes" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg>News · Patchnotes</span><span class="chead-tag" id="pn-upd">Wird geladen …</span><span class="chead-tag">Original Englisch</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-news"/></svg>Hilfe · Patchnotes</span><span class="chead-tag" id="pn-upd">Wird geladen …</span><span class="chead-tag">Original Englisch</span></div>
     <h1>Patchnotes</h1>
     <p class="lede">Die Änderungen je Patch an einem Ort: LIVE-Releases, PTU-Builds und Hotfixes. Die Seite liest die Notes automatisch von RSI und aus dem Spectrum-Forum ein. Die Texte stehen im englischen Original, die Gliederung ist deutsch.</p>
   </div>
@@ -3258,7 +3262,7 @@
 
 <section class="view" id="view-schiffe" data-view="schiffe" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg>Wissen · Datenbank</span><span class="chead-tag">Spielversion 4.10.2</span><span class="chead-tag">Preise in aUEC</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg>Schiffe · Datenbank</span><span class="chead-tag">Spielversion 4.10.2</span><span class="chead-tag">Preise in aUEC</span></div>
     <h1>Schiffe</h1>
     <p class="lede">Alle flugfähigen Schiffe und Fahrzeuge mit Einsatzzweck, Fracht, Crew und Preisen im Spiel. Jedes Schiff kannst du in 3D drehen.</p>
     <div class="chead-act"><a href="#schiffe" data-jump="shmine">Meine Schiffe</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a><a href="#ccu-radar">CCU-Radar</a></div>
@@ -3321,7 +3325,7 @@
 <!-- ============ CCU-RADAR ============ -->
 <section class="view" id="view-ccu-radar" data-view="ccu-radar" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-radar"/></svg>Tools · CCU-Radar</span><span class="chead-tag">Pledge-Store</span><span class="chead-tag">Echtes Geld · USD</span><span class="chead-tag">automatisch geprüft</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-radar"/></svg>Schiffe · CCU-Radar</span><span class="chead-tag">Pledge-Store</span><span class="chead-tag">Echtes Geld · USD</span><span class="chead-tag">automatisch geprüft</span></div>
     <h1>CCU-Radar</h1>
     <p class="lede">Ein Upgrade <i class="gb">CCU, Cross-Chassis Upgrade</i> kostet die Preisdifferenz zwischen zwei Schiffen. Wird das Zielschiff später teurer, ist ein vorher gekauftes Upgrade mehr wert, als du bezahlt hast. Das Radar meldet, wenn CIG so eine Erhöhung ankündigt, und rechnet aus, welches Upgrade sich auf Vorrat lohnt.</p>
     <div class="oops"><strong>Hier geht es um echtes Geld.</strong> Zum Spielen brauchst du nichts davon: Fast alle Schiffe gibt es im Spiel für aUEC. Angaben ohne Gewähr, vor dem Kauf immer den Preis im Pledge-Store prüfen.</div>
@@ -3365,7 +3369,7 @@
 <!-- ============ GLOSSAR ============ -->
 <section class="view" id="view-glossar" data-view="glossar" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Wissen · Nachschlagen</span><span class="chead-tag">Stand Alpha 4.10</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Hilfe · Glossar</span><span class="chead-tag">Stand Alpha 4.10</span></div>
     <h1>Glossar</h1>
     <p class="lede">Die Begriffe und Abkürzungen, über die du in den ersten Wochen stolperst, kurz erklärt.</p>
     <div class="search">
@@ -3381,7 +3385,7 @@
 <!-- ============ TRAINING ============ -->
 <section class="view" id="view-training" data-view="training" hidden>
   <div class="head chead" data-toc="h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Lernen · Tutorial</span><span class="chead-tag">Beta</span><span class="chead-tag">am PC mit Tastatur</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Training</span><span class="chead-tag">Beta</span><span class="chead-tag">am PC mit Tastatur</span></div>
     <h1>Training</h1>
     <p class="lede">Tasten lernen, bevor du im Cockpit sitzt. Drei Übungen zum Ausprobieren.</p>
   </div>
@@ -3442,7 +3446,7 @@
 <!-- ============ HOSAS ============ -->
 <section class="view" id="view-hosas" data-view="hosas" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-stick"/></svg>Wissen · Steuerung</span><span class="chead-tag">Dual Virpil Alpha Prime</span><span class="chead-tag">Buzzzkiller-Profil</span><span class="chead-tag">Stand 5. Aug 2026 · Alpha 4.10</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-stick"/></svg>Einstieg · Steuerung</span><span class="chead-tag">Dual Virpil Alpha Prime</span><span class="chead-tag">Buzzzkiller-Profil</span><span class="chead-tag">Stand 5. Aug 2026 · Alpha 4.10</span></div>
     <h1>HOSAS</h1>
     <p class="lede">Tipp auf einen Knopf am Stick und sieh, was er in jeder Richtung macht. Oder such nach einer Funktion und finde heraus, wo sie liegt.</p>
     <div class="ho-bar">
@@ -3624,7 +3628,7 @@ window.SC_MINE = (function () {
     var page = document.title.replace(/ · SC HANDBUCH$/, '');
     if (tab) {
       var label = tab.textContent.trim(), href = tab.getAttribute('href');
-      if (href === '#' + view) items.push([label, null]); else { items.push([label, href]); items.push([page, null]); }
+      if (href === '#' + view && !(tab.hasAttribute('data-crumb-page') && page !== label)) items.push([label, null]); else { items.push([label, href]); items.push([page, null]); }
     } else items.push([page, null]);
     crumbList.innerHTML = items.map(function (it) {
       return '<li>' + (it[1] ? '<a href="' + it[1] + '">' + esc(it[0]) + '</a>' : '<span aria-current="page">' + esc(it[0]) + '</span>') + '</li>';
@@ -3652,7 +3656,38 @@ window.SC_MINE = (function () {
     head.appendChild(d);
   }
 
-  document.addEventListener('viewchange', function (e) { crumb(e.detail); toc(e.detail); });
+  /* Berufe als Anlaufstelle: je Beruf Tutorial, Wissen und Werkzeuge. Eine Liste speist die Leiste auf den Berufs- und Tutorial-Seiten und die Übersicht „Berufe“. */
+  var PROF = [
+    { id: 'mining', name: 'Mining', tut: 't-mining', wiki: 'mining', tools: [['Mining-Rechner', 'rs-tool'], ['Erz- und Fundort-Suche', 'loc-tool']] },
+    { id: 'salvage', name: 'Salvage', tut: 't-salvage', wiki: 'salvage', tools: [] },
+    { id: 'hauling', name: 'Hauling', tut: 't-hauling', wiki: 'hauling', tools: [['Frachter-Finder', 'hq-tool']] },
+    { id: 'crafting', name: 'Crafting', tut: 't-crafting', wiki: 'crafting', tools: [] },
+    { id: 'ruf', name: 'Ruf', tut: null, wiki: 'ruf', tools: [['Ruf-Rechner', 'rufwho']] }
+  ];
+  function profBar(p, view) {
+    var parts = [];
+    if (p.tut) parts.push('<a href="#' + p.tut + '"' + (view === p.tut ? ' aria-current="page"' : '') + '>Tutorial</a>');
+    parts.push('<a href="#' + p.wiki + '"' + (view === p.wiki ? ' aria-current="page"' : '') + '>Wissen</a>');
+    p.tools.forEach(function (t) { parts.push('<a href="#' + p.wiki + '" data-jump="' + t[1] + '">' + esc(t[0]) + '</a>'); });
+    return '<nav class="pf-bar" aria-label="' + esc(p.name) + ': Tutorial, Wissen, Werkzeuge"><b>' + esc(p.name) + '</b>' + parts.join('') + '</nav>';
+  }
+  function profBars(view) {
+    var p = PROF.filter(function (x) { return x.tut === view || x.wiki === view; })[0];
+    var v = document.getElementById('view-' + view), head = v && v.querySelector('.chead');
+    if (!p || !head || v.querySelector('.pf-bar')) return;
+    head.insertAdjacentHTML('afterend', profBar(p, view));
+  }
+  (function () {
+    var v = $('view-berufe'), ch = v && v.querySelector('.chapters');
+    if (!ch) return;
+    ch.insertAdjacentHTML('afterend', '<section class="pf-hub"><h2>Alles zu einem Beruf</h2><div class="pf-grid">' + PROF.map(function (p) {
+      var t = (p.tut ? '<a href="#' + p.tut + '">Tutorial</a>' : '') + '<a href="#' + p.wiki + '">Wissen</a>' +
+        p.tools.map(function (x) { return '<a href="#' + p.wiki + '" data-jump="' + x[1] + '">' + esc(x[0]) + '</a>'; }).join('');
+      return '<div class="pf-card"><h3>' + esc(p.name) + '</h3><div class="pf-links">' + t + '</div></div>';
+    }).join('') + '</div></section>');
+  })();
+
+  document.addEventListener('viewchange', function (e) { crumb(e.detail); toc(e.detail); profBars(e.detail); });
 
   /* Menü (Handy und Tablet): Blatt aus den zweiten Reihen aufgebaut, damit es nie von der Leiste abweicht */
   var dlg = $('menu'), btn = $('navmenu'), list = $('menu-list'), mq = window.matchMedia('(max-width: 860px)');
@@ -3664,7 +3699,7 @@ window.SC_MINE = (function () {
       if (!g) return '<a class="menu-top-link"' + (view === 'start' ? ' aria-current="page"' : '') + ' href="' + t.getAttribute('href') + '">' + esc(label) + '</a>';
       var row = document.querySelector('.subnav-in[data-group="' + g + '"]');
       var links = Array.prototype.map.call(row.querySelectorAll('a'), function (a) {
-        var on = a.getAttribute('href') === '#' + view && !a.dataset.jump;
+        var on = window.SC_NAV.linkOn(a, view);
         return '<a href="' + a.getAttribute('href') + '"' + (a.hasAttribute('data-sep') ? ' data-sep' : '') + (a.dataset.jump ? ' data-jump="' + a.dataset.jump + '"' : '') + (on ? ' aria-current="page"' : '') + '>' + a.innerHTML + '</a>';
       }).join('');
       return '<details class="menu-g' + (g === cg ? ' cur' : '') + '" name="menu-g"' + (g === cg ? ' open' : '') + '><summary>' + esc(label) + '<small>' + row.querySelectorAll('a').length + '</small></summary><div class="menu-links">' + links + '</div></details>';
@@ -3695,9 +3730,16 @@ window.SC_MINE = (function () {
   var groupTabs = tabs.filter(function (a) { return a.dataset.group; });
   var groupOf = {};
   subRows.forEach(function (r) {
-    Array.prototype.forEach.call(r.querySelectorAll('a'), function (a) { var k = a.getAttribute('href').slice(1); if (!groupOf[k]) groupOf[k] = r.dataset.group; });
+    Array.prototype.forEach.call(r.querySelectorAll('a'), function (a) {
+      var k = a.getAttribute('href').slice(1); if (!groupOf[k]) groupOf[k] = r.dataset.group;
+      (a.dataset.views || '').split(' ').forEach(function (x) { if (x && !groupOf[x]) groupOf[x] = r.dataset.group; });
+    });
   });
-  window.SC_NAV = { groupOf: groupOf };
+  /* Ein Link ist aktiv, wenn die Ansicht sein Ziel ist oder in seiner Liste data-views steht (Sprungziele mit data-jump nie) */
+  function linkOn(a, view) {
+    return !a.dataset.jump && (a.getAttribute('href') === '#' + view || (' ' + (a.dataset.views || '') + ' ').indexOf(' ' + view + ' ') !== -1);
+  }
+  window.SC_NAV = { groupOf: groupOf, linkOn: linkOn };
   var pinned = null, hover = null, hideT = null;
   function subState() {
     clearTimeout(hideT);
@@ -3736,6 +3778,28 @@ window.SC_MINE = (function () {
   sub.addEventListener('focusout', function (e) {
     if (!sub.contains(e.relatedTarget) && groupTabs.indexOf(e.relatedTarget) === -1) { hover = null; subState(); }
   });
+  /* Tastatur: Pfeil links/rechts wandert durch Tabs und zweite Reihe, Pfeil unten springt vom Tab in seine Reihe, Pfeil oben zurück, Escape klappt die Reihe ein */
+  document.querySelector('.nav').addEventListener('keydown', function (e) {
+    var t = e.target, box = t.closest && (t.closest('.tabs') || t.closest('.subnav-in'));
+    if (!box || e.altKey || e.ctrlKey || e.metaKey) return;
+    var inTabs = box.classList.contains('tabs');
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      var all = Array.prototype.slice.call(box.querySelectorAll('a')), i = all.indexOf(t);
+      if (i < 0) return;
+      e.preventDefault();
+      all[(i + (e.key === 'ArrowRight' ? 1 : all.length - 1)) % all.length].focus();
+    } else if (e.key === 'ArrowDown' && inTabs && t.dataset.group) {
+      hover = t.dataset.group; subState();
+      var first = sub.querySelector('.subnav-in[data-group="' + t.dataset.group + '"] a');
+      if (first) { e.preventDefault(); first.focus(); }
+    } else if (e.key === 'ArrowUp' && !inTabs) {
+      var tab = groupTabs.filter(function (a) { return a.dataset.group === box.dataset.group; })[0];
+      if (tab) { e.preventDefault(); tab.focus(); }
+    } else if (e.key === 'Escape' && hover) {
+      var back = inTabs ? t : groupTabs.filter(function (a) { return a.dataset.group === box.dataset.group; })[0];
+      hover = null; subState(); if (back) back.focus();
+    }
+  });
   function show() {
     var h = (location.hash || '#start').slice(1);
     if (h === 'hotas') h = 'hosas';
@@ -3761,7 +3825,7 @@ window.SC_MINE = (function () {
     var titles = { patchnotes: 'Patchnotes · SC HANDBUCH', wissen: 'Wissen · SC HANDBUCH', tools: 'Werkzeuge · SC HANDBUCH', start: 'SC HANDBUCH – Dein Begleiter durch das Verse', news: 'News · SC HANDBUCH', tutorial: 'Tutorials · SC HANDBUCH', einsaetze: 'Einsätze · SC HANDBUCH', 'exec-hangar': 'Executive Hangar · SC HANDBUCH', 'siege-orison': 'Siege of Orison · SC HANDBUCH', vanduul: 'Vanduul-Aufträge · SC HANDBUCH', hathor: 'Hathor & Wikelo · SC HANDBUCH', bunker: 'Bunker-Missionen · SC HANDBUCH', recco: 'Recco Battaglia · SC HANDBUCH', heimat: 'Heimatstadt · SC HANDBUCH', 't-mining': 'Mining lernen · SC HANDBUCH', 't-salvage': 'Salvage lernen · SC HANDBUCH', 't-crafting': 'Crafting lernen · SC HANDBUCH', 'erste-schritte': 'Erste Schritte · SC HANDBUCH', tasten: 'Tasten · SC HANDBUCH', mining: 'Mining · SC HANDBUCH', salvage: 'Salvage · SC HANDBUCH', hauling: 'Hauling · SC HANDBUCH', berufe: 'Berufe · SC HANDBUCH', bugs: 'Bugs & Workarounds · SC HANDBUCH', 't-hauling': 'Hauling lernen · SC HANDBUCH', ueberleben: 'Überleben · SC HANDBUCH', crafting: 'Crafting · SC HANDBUCH', ruf: 'Ruf · SC HANDBUCH', 'ccu-radar': 'CCU-Radar · SC HANDBUCH', glossar: 'Glossar · SC HANDBUCH', schiffe: 'Schiffe · SC HANDBUCH', training: 'Training · SC HANDBUCH', hosas: 'HOSAS · SC HANDBUCH' };
     document.title = titles[h];
     Array.prototype.forEach.call(sub.querySelectorAll('a'), function (a) {
-      if (a.getAttribute('href') === '#' + h && !a.dataset.jump) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      if (linkOn(a, h)) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     subState();
     var sr = sub.querySelector('.subnav-in:not([hidden])'), sc = sr && sr.querySelector('a[aria-current]');
@@ -6390,7 +6454,7 @@ window.SC_MINE = (function () {
   $('tm-ships').textContent = ships || '–';
   $('tm-pages').textContent = document.querySelectorAll('section.view').length;
   var row = function (g) { var r = document.querySelector('.subnav-in[data-group="' + g + '"]'); return r ? r.querySelectorAll('a').length - 1 : 0; };
-  $('tm-tut').textContent = row('lernen') || '–';
+  $('tm-tut').textContent = document.querySelectorAll('#view-tutorial .chapter').length || '–';
   $('tm-ops').textContent = row('einsaetze') || '–';
   var tiles = Array.prototype.slice.call(document.querySelectorAll('#launcher .t-tile')), info = $('t-info-t'), sel = document.querySelector('#launcher .t-tile.sel');
   function say(t) { info.textContent = (t && t.dataset.d) || ''; }

@@ -1748,3 +1748,22 @@ select { min-height: 44px; border-radius: 2px; }
   .pn-links .btn, .pn-links .btn2 { flex: 1 1 100%; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) { .pn-unit > summary::after { transition: none; } }
+
+/* ---------- Navigation: Berufe als Anlaufstelle (Leiste je Beruf, Übersicht) ---------- */
+.pf-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 0 0 18px; padding: 8px 10px; border: 1px solid var(--border); border-left: 3px solid var(--accent-cyan); border-radius: var(--radius-xs); background: var(--bg-card); }
+.pf-bar b { font: 600 13px var(--f-display); letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); margin-right: 4px; }
+.pf-bar a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; font: 600 14px var(--f-display); letter-spacing: .02em; color: var(--text-primary); text-decoration: none; border: 1px solid var(--border); border-radius: var(--radius-xs); }
+.pf-bar a:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: var(--cyan-soft); }
+.pf-bar a[aria-current="page"] { color: var(--accent-cyan); border-color: var(--accent-cyan); background: var(--cyan-soft); }
+.pf-hub { margin-top: 26px; }
+.pf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 12px; }
+.pf-card { padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-xs); background: var(--bg-card); }
+.pf-card h3 { margin: 0 0 8px; font: 600 17px var(--f-display); }
+.pf-links { display: flex; flex-wrap: wrap; gap: 6px; }
+.pf-links a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; font: 500 14px var(--f-body); color: var(--text-primary); text-decoration: none; border: 1px solid var(--border); border-radius: var(--radius-xs); }
+.pf-links a:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: var(--cyan-soft); }
+/* sieben Reiter: enger gesetzt und Marken-Untertitel früher aus, damit die Leiste nie scrollt */
+@media (min-width: 861px) { .tabs { gap: 0; } .tabs a { padding: 8px 11px; font-size: 14px; } .tabs a[aria-current="page"]::before { left: 11px; right: 11px; } }
+@media (min-width: 861px) and (max-width: 1240px) { .tabs a { padding: 8px 8px; font-size: 13.5px; } .tabs a[aria-current="page"]::before { left: 8px; right: 8px; } .nav-search span { display: none; } }
+@media (max-width: 1500px) { .brand .brand-sub { display: none; } }
+@media (min-width: 861px) and (max-width: 960px) { .brand .brand-name { display: none; } }
