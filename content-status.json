@@ -138,7 +138,7 @@
       "basis": "Datenstand: Schiffsdaten und Preise aus Spielversion 4.10.2-LIVE.12881860 (Kopf von ships.js)",
       "kind": "Datenstand",
       "state": "teilweise",
-      "reason": "RSI Galaxy und Anvil Liberator (neu in 4.10.3) fehlen noch in der Datenbank, weil Wiki und UEX sie nicht führen. Bei mehreren Schiffen fehlt der aUEC-Preis noch."
+      "reason": "Übrige Schiffsdaten (Werte, Ausrüstung, Detaildaten) noch auf 4.10.2. Nur die aUEC-Preise der acht in 4.10.3 neu verkauften Schiffe sowie Galaxy und Liberator (ohne Preis, nicht im Handel) sind aktualisiert; deren Detaildaten fehlen."
     }
   },
   "hubs": {
