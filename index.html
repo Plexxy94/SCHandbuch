@@ -17,7 +17,7 @@
 <script>try{if(JSON.parse(localStorage.getItem("sc-handbuch-me")||"{}").ss)document.documentElement.classList.add("ss")}catch(e){}</script>
 <script>/* gleiche JSON-Adressen mit Zeitstempel (news.json?t=…) werden pro Seitenaufruf nur einmal geladen und an alle Nutzer weitergereicht */(function(){var f=window.fetch,c={};if(!f)return;window.fetch=function(u,o){if(typeof u==="string"&&!o&&/\.json\?t=\d+$/.test(u)){if(!c[u])c[u]=f.call(window,u);return c[u].then(function(r){return r.clone();});}return f.apply(this,arguments);};})();</script>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261136">
+<link rel="stylesheet" href="style.css?v=20261144">
 </head>
 <body>
 
@@ -151,15 +151,15 @@
   </div>
 
   <!-- 2 · Vier Schnellzugriffe -->
-  <section class="hx-sec" aria-labelledby="st-h-qa">
+  <section class="hx-sec" id="st-qa-sec" aria-labelledby="st-h-qa">
     <h2 class="hx-eyebrow" id="st-h-qa">Was möchtest du gerade tun?</h2>
     <div class="qa">
       <a class="chapter qa-card prime" id="st-new" href="#heimat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-launch"/></svg><h3>Neu im Verse?</h3><p>Heimatstadt wählen, Schritt für Schritt bis zum ersten Auftrag.</p><span class="go"><span id="st-newgo">Los geht’s →</span><span class="prog" id="st-prog"></span></span></a>
-      <a class="chapter qa-card" href="#plan"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg><h3>Was mache ich heute?</h3><p>Drei Vorschläge nach Zeit, Gruppe und Hangar.</p><span class="go">Planer öffnen →</span></a>
-      <a class="chapter qa-card" href="#tools"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg><h3>Werkzeuge</h3><p>Rechner, Suchen und Timer für Mining, Fracht, Schiffe, Ruf.</p><span class="go">Alle Werkzeuge →</span></a>
-      <a class="chapter qa-card" href="#bugs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-help"/></svg><h3>Ein Problem?</h3><p>Bekannte Bugs mit Workarounds, Überleben und Server-Status.</p><span class="go">Hilfe finden →</span></a>
+      <a class="chapter qa-card" id="qa-plan" href="#plan" aria-controls="st-plan" aria-expanded="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg><h3>Was mache ich heute?</h3><p>Drei Vorschläge nach Zeit, Gruppe und Hangar.</p><span class="go"><span id="qa-plan-go">Planer öffnen →</span></span></a>
+      <a class="chapter qa-card" href="#tools"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg><h3>Werkzeuge</h3><p>Rechner, Suchen und Timer für Mining, Fracht, Schiffe, Ruf.</p><span class="go"><span>Alle Werkzeuge →</span></span></a>
+      <a class="chapter qa-card" href="#bugs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-help"/></svg><h3>Ein Problem?</h3><p>Bekannte Bugs mit Workarounds, Überleben und Server-Status.</p><span class="go"><span>Hilfe finden →</span></span></a>
     </div>
-    <details class="st-plan" id="st-plan">
+    <details class="st-plan hx-plan" id="st-plan">
       <summary><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plan"/></svg>Was mache ich heute? <small>Drei Vorschläge für deine Zeit und deinen Hangar</small></summary>
   <div class="tool" id="plan">
     <div class="tool-head"><span class="tool-tag">Planer</span><h3>Was mache ich heute?</h3></div>
@@ -176,13 +176,13 @@
   </section>
 
   <!-- 3 · Berufe (Karten erzeugt das Skript aus der Berufe-Liste) -->
-  <section class="hx-sec" aria-labelledby="st-h-prof">
+  <section class="hx-sec" id="st-prof-sec" aria-labelledby="st-h-prof">
     <div class="hx-h"><h2 id="st-h-prof">Berufe</h2><a href="#berufe">Alle Berufe →</a></div>
     <div class="st-prof" id="st-prof"></div>
   </section>
 
   <!-- 4 · Wichtige Werkzeuge -->
-  <section class="hx-sec" aria-labelledby="st-h-tools">
+  <section class="hx-sec" id="st-tools-sec" aria-labelledby="st-h-tools">
     <div class="hx-h"><h2 id="st-h-tools">Häufig genutzte Werkzeuge</h2><a href="#tools">Alle Werkzeuge →</a></div>
     <div id="st-tools-groups"></div>
   </section>
@@ -191,13 +191,9 @@
   <section class="hx-sec" id="st-me-sec" aria-labelledby="st-h-me">
     <div class="hx-h"><h2 id="st-h-me">Deine Schnellzugriffe</h2><button type="button" class="me-ss" data-me="ss" aria-pressed="false"><span aria-hidden="true">▭</span> Second-Screen-Modus</button></div>
     <div class="me-chips" id="st-me"></div>
+    <div id="st-mine-sec" hidden><div class="st-mine" id="st-mine"></div></div>
   </section>
 
-  <!-- 5b · Dein Stand (nur sichtbar, wenn im Browser etwas gespeichert ist) -->
-  <section class="hx-sec" id="st-mine-sec" aria-labelledby="st-h-mine" hidden>
-    <div class="hx-h"><h2 id="st-h-mine">Dein Stand</h2><span class="small">nur in diesem Browser gespeichert</span></div>
-    <div class="st-mine" id="st-mine"></div>
-  </section>
 
   <!-- 6 · Schiff im Fokus -->
   <section class="hx-sec hx-deco" id="st-ship-sec" aria-labelledby="st-h-ship">
@@ -245,13 +241,13 @@
       </div>
       <div class="hx-shipinfo">
         <p>Zufällig ausgewählt, drehbar mit der Maus oder dem Finger. Die Datenbank kennt alle flugfähigen Schiffe mit Einsatzzweck, Fracht, Crew, Preisen im Spiel und Budget-Filter.</p>
-        <div class="st-links"><a href="#schiffe">Schiffsdatenbank</a><a href="#schiffe" data-jump="shmine">Meine Schiffe</a><a href="#ccu-radar">CCU-Radar</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a></div>
+        <div class="st-links"><a href="#schiffe" data-jump="shmine">Meine Schiffe</a></div>
       </div>
     </div>
   </section>
 
   <!-- 7 · Server-Status, News, Patchnotes -->
-  <section class="hx-sec" aria-labelledby="st-h-now">
+  <section class="hx-sec" id="st-news-sec" aria-labelledby="st-h-now">
     <div class="hx-h"><h2 id="st-h-now">News und Status</h2><a href="#news">Alle News →</a></div>
     <div class="st-now hx-now">
       <div class="st-panel">
@@ -261,7 +257,7 @@
         <div id="st-ccu" class="small">Wird geladen …</div>
       </div>
       <div class="st-panel">
-        <h3>Neues von RSI <a href="#news">Alle News →</a></h3>
+        <h3>Neues von RSI</h3>
         <div id="st-news"><span class="small">Wird geladen …</span></div>
       </div>
       <div class="st-panel">
@@ -331,7 +327,6 @@
     <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Hilfe · Alle Inhalte</span><span class="chead-tag vtag" data-vpage="wissen" hidden></span><span class="chead-tag">Nachschlagen</span></div>
     <h1>Wissen</h1>
     <p class="lede">Alles zum Nachschlagen an einem Ort: Berufe und Zahlen, Steuerung, Schiffe, Einsätze und Begriffe. Anleitungen Schritt für Schritt findest du unter Einstieg und Berufe.</p>
-    <div class="chead-act"><a href="#tutorial">Zu den Tutorials</a><a href="#berufe">Zu den Berufen</a><a href="#tools">Zu den Werkzeugen</a></div>
   </div>
   <div class="st-kb">
     <div class="st-group">
@@ -3601,7 +3596,7 @@ window.SC_MINE = (function () {
       { f: 1, n: 'Mining-Rechner', d: 'Signatur eingeben, Gestein und Menge ablesen.', ic: 'ore', h: '#mining', j: 'rs-tool' },
       { f: 1, n: 'Erz- und Fundort-Suche', d: 'Wo es ein Erz gibt, beste Raffinerie und Verkaufsort.', ic: 'target', h: '#mining', j: 'loc-tool' },
       { f: 1, n: 'Frachter-Finder', d: 'Welches Schiff schafft den Auftrag in wie vielen Fahrten?', ic: 'box', h: '#hauling', j: 'hq-tool' },
-      { n: 'Ruf-Rechner', d: 'Rang, nächste Stufe und wie viele Aufträge noch fehlen.', ic: 'rep', h: '#ruf', j: 'rufwho' }
+      { f: 1, n: 'Ruf-Rechner', d: 'Rang, nächste Stufe und wie viele Aufträge noch fehlen.', ic: 'rep', h: '#ruf', j: 'rufwho' }
     ] },
     { id: 'schiffe', name: 'Schiffe', desc: 'Finden, vergleichen und im Blick behalten, was Schiffe kosten.', items: [
       { f: 1, n: 'Schiffsdatenbank', d: 'Alle Schiffe mit Preis, Fracht, Crew, Budget-Filter und 3D-Modell.', ic: 'ship', h: '#schiffe' },
@@ -3610,7 +3605,7 @@ window.SC_MINE = (function () {
       { f: 1, n: 'CCU-Radar', d: 'Meldet Schiffe, die im Pledge-Store teurer werden.', ic: 'radar', h: '#ccu-radar' }
     ] },
     { id: 'planung', name: 'Planung und Training', desc: 'Den Abend planen, die Steuerung belegen und üben.', items: [
-      { f: 1, n: 'Tagesplaner', d: 'Was mache ich heute? Vorschläge nach Zeit, Gruppe und Hangar.', ic: 'plan', plan: true },
+      { n: 'Tagesplaner', d: 'Was mache ich heute? Vorschläge nach Zeit, Gruppe und Hangar.', ic: 'plan', plan: true },
       { n: 'HOSAS-Belegung', d: 'Zwei Sticks, jede Taste mit Funktion, mit Suche.', ic: 'stick', h: '#hosas' },
       { f: 1, n: 'Tasten-Suche', d: 'Aktion oder Taste eintippen, für QWERTZ.', ic: 'keys', h: '#tasten', j: 'q' },
       { n: 'Tastentraining', d: 'Tasten und Abläufe am PC üben, bevor es ernst wird.', ic: 'learn', h: '#training' }
@@ -3687,7 +3682,7 @@ window.SC_MINE = (function () {
     var d = document.createElement('details');
     d.className = 'toc';
     d.open = window.matchMedia('(min-width: 900px)').matches;
-    d.innerHTML = '<summary>Inhalt <small>' + items.length + ' Abschnitte</small></summary><ol>' + tocList(view, items) + '</ol>';
+    d.innerHTML = '<summary>Auf dieser Seite <small>' + items.length + ' Abschnitte</small></summary><ol>' + tocList(view, items) + '</ol>';
     head.appendChild(d);
   }
 
@@ -3757,7 +3752,7 @@ window.SC_MINE = (function () {
   var TOPICS = {
     mining: { title: 'Mining auf einen Blick', rows: [
       ['Tutorials', [['Mining lernen: eine ganze Runde', 't-mining'], ['Raffinieren Schritt für Schritt', 't-mining', 'a-tm-raff'], ['Handabbau zu Fuß', 't-mining', 'a-tm-start']]],
-      ['Rechner', [['RS-Rechner: Signatur auswerten', 'mining', 'rs-tool']]],
+      ['Rechner', [['RS-Rechner: Signatur auswerten', 'mining', 'rs-tool'], ['Ruf-Rechner', 'ruf', 'rufwho']]],
       ['Fundorte', [['Erz- und Fundort-Suche', 'mining', 'loc-tool']]],
       ['Ausrüstung', [['Multitool, Aufsatz, Rucksack', 't-mining', 'a-tm-gear']]],
       ['Schiffe', [['Schiffe und Wege ins Mining', 'mining', 'a-mn-schiffe'], ['Industrie-Schiffe in der Datenbank', 'schiffe', '', 'ship:Industrie']]],
@@ -3806,18 +3801,40 @@ window.SC_MINE = (function () {
   /* Ansicht -> Thema; das Tutorial eines Berufs zeigt dasselbe Thema, eingeklappt */
   var TOPIC_OF = { mining: 'mining', salvage: 'salvage', hauling: 'hauling', crafting: 'crafting', ruf: 'ruf', 't-mining': 'mining', 't-salvage': 'salvage', 't-hauling': 'hauling', 't-crafting': 'crafting', schiffe: 'schiffe', tasten: 'steuerung', hosas: 'steuerung', training: 'steuerung' };
   var HOME = { mining: 'mining', salvage: 'salvage', hauling: 'hauling', crafting: 'crafting', ruf: 'ruf', schiffe: 'schiffe', steuerung: 'tasten' };
-  function topicLink(it, view) {
-    var attr = it[2] ? ' data-jump="' + it[2] + '"' : '', pre = it[3] ? ' data-pre="' + it[3] + '"' : '';
-    var cur = !it[2] && !it[3] && it[1] === view ? ' aria-current="page"' : '';
-    return '<li><a href="#' + it[1] + '"' + attr + pre + cur + '>' + esc(it[0]) + '</a></li>';
-  }
+  /* Schnellzugriff-Bereich (.qk) im Kopf einer Seite, drei klar getrennte Arten von Verweisen:
+     1. Aktionen (gefüllte Knöpfe): Werkzeuge, die man benutzt (Rechner, Suchen, Filter), auch wenn sie auf einer anderen Seite stehen
+     2. Weiter zu (Chips mit Rubrik): andere Seiten und Stellen zum Thema (Tutorials, Ausrüstung, Schiffe, Wirtschaft, Bugs)
+     3. Auf dieser Seite (Inhaltsverzeichnis mit Scrollspy): Navigation innerhalb der Seite
+     Alles aus TOPICS und der Seitengliederung, keine eigenen Inhalte. */
+  var TOOL_ROWS = { 'Rechner': 1, 'Fundorte': 1 };
+  var TOOL_IDS = { 'rs-tool': 1, 'loc-tool': 1, 'hq-tool': 1, 'rufwho': 1, 'recco-rep': 1, 'shmine': 1, 'shmore': 1, 'q': 1, 'wkchips': 1 };
+  function qkAttrs(it) { return ' href="#' + it[1] + '"' + (it[2] ? ' data-jump="' + it[2] + '"' : '') + (it[3] ? ' data-pre="' + it[3] + '"' : ''); }
   function profBars(view) {
-    var key = TOPIC_OF[view], T = key && TOPICS[key];
     var v = document.getElementById('view-' + view), head = v && v.querySelector('.chead');
-    if (!T || !head || v.querySelector('.tm')) return;
-    var open = !!HOME[key] && HOME[key] === view && window.matchMedia('(min-width: 700px)').matches;   /* Handy: eingeklappt, damit der Inhalt der Seite zuerst kommt */
-    head.insertAdjacentHTML('afterend', '<details class="tm"' + (open ? ' open' : '') + '><summary><b>' + esc(T.title) + '</b><small>alles Vorhandene zum Thema, ohne Umweg</small></summary><div class="tm-grid">' +
-      T.rows.map(function (r) { return '<div class="tm-c"><p class="tm-h">' + esc(r[0]) + '</p><ul>' + r[1].map(function (it) { return topicLink(it, view); }).join('') + '</ul></div>'; }).join('') + '</div></details>');
+    if (!head || head.querySelector('.qk')) return;
+    var key = TOPIC_OF[view], T = key && TOPICS[key], tocEl = head.querySelector('.toc');
+    if (!T && !tocEl) return;
+    var acts = [], more = [], tutOf = PROF.filter(function (x) { return x.tut === view; })[0];
+    if (T) {
+      T.rows.forEach(function (r) {
+        r[1].forEach(function (it) {
+          if (TOOL_ROWS[r[0]] || TOOL_IDS[it[2]]) acts.push(it);
+          else if (it[1] !== view && !(tutOf && it[1] === tutOf.wiki)) more.push([r[0], it]);   /* Abschnitte dieser Seite stehen im Verzeichnis; Tutorials verweisen für Zahlen mit einem Chip auf die Wissensseite */
+        });
+      });
+      var pf = PROF.filter(function (x) { return x.tut === view; })[0];
+      if (pf) more.unshift(['Wissen', [pf.name + ': Wissen und Zahlen', pf.wiki]]);
+      var old = head.querySelector('.chead-act'); if (old) old.remove();   /* dieselben Knöpfe stehen jetzt in den Aktionen */
+    }
+    var q = document.createElement('div');
+    q.className = 'qk'; q.setAttribute('role', 'group'); q.setAttribute('aria-label', 'Schnellzugriff');
+    var html = '';
+    if (acts.length) html += '<div class="qk-act"><span class="qk-l">Werkzeuge</span>' + acts.map(function (it) { return '<a class="qk-btn"' + qkAttrs(it) + '>' + esc(it[0].replace(/: .*$/, '')) + '</a>'; }).join('') + '</div>';
+    if (more.length) html += '<details class="qk-more"' + (window.matchMedia('(min-width: 900px)').matches ? ' open' : '') + '><summary>Weiter zu <small>' + more.length + ' Verweise</small></summary><div class="qk-chips">' +
+      more.map(function (m) { return '<a class="qk-chip"' + qkAttrs(m[1]) + '><span class="qk-k">' + esc(m[0]) + '</span>' + esc(m[1][0]) + '</a>'; }).join('') + '</div></details>';
+    q.innerHTML = html;
+    if (tocEl) q.appendChild(tocEl);   /* Scrollspy markiert weiter die Einträge im Verzeichnis */
+    head.appendChild(q);
   }
   /* Vorauswahl nach dem Sprung: Bugliste nach Bereich, Schiffsdatenbank nach Einsatzzweck */
   document.addEventListener('click', function (e) {
@@ -4020,7 +4037,7 @@ window.SC_MINE = (function () {
       var d = document.getElementById('st-plan'); if (!d) return;
       d.open = true;
       d.scrollIntoView({ block: 'start' });
-      var sm = d.querySelector('summary'); if (sm) sm.focus({ preventScroll: true });
+      var pl = document.getElementById('plan'); if (pl) { pl.tabIndex = -1; pl.focus({ preventScroll: true }); }
     }, 200);
   }
   window.addEventListener('hashchange', show);
@@ -6584,9 +6601,19 @@ window.SC_MINE = (function () {
     var id = a.dataset.jump;
     setTimeout(function () { var el = document.getElementById(id); if (el && el.getClientRects().length) el.scrollIntoView({ block: 'start' }); }, 120);
   });
-  $('st-planbtn').addEventListener('click', function () {
-    var d = $('st-plan'); d.open = true;
-    d.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  /* Planer: die Karte „Was mache ich heute?“ klappt ihn auf und zu (ein Bedienelement statt Karte plus Zeile); #plan und die Werkzeugkachel öffnen ihn weiterhin */
+  var planD = $('st-plan'), planC = $('qa-plan');
+  function planSync() { if (!planC) return; planC.setAttribute('aria-expanded', String(planD.open)); $('qa-plan-go').textContent = planD.open ? 'Planer schließen ↑' : 'Planer öffnen →'; }
+  if (planD && planC) {
+    planD.addEventListener('toggle', planSync); planSync();
+    planC.addEventListener('click', function (e) {
+      e.preventDefault(); planD.open = !planD.open;
+      if (planD.open) planD.scrollIntoView({ block: 'nearest', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    });
+  }
+  if ($('st-planbtn')) $('st-planbtn').addEventListener('click', function () {
+    planD.open = true;
+    planD.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   });
   /* Aktuelles aus den Dateien, die die Seite ohnehin lädt */
   var t = '?t=' + Math.floor(Date.now() / 6e5);
