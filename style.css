@@ -1914,3 +1914,35 @@ select { min-height: 44px; border-radius: 2px; }
 .tm-c a { display: flex; align-items: center; min-height: 34px; padding: 2px 8px; margin-left: -8px; font: 500 15px/1.3 var(--f-body); color: var(--text-primary); text-decoration: none; border-radius: 2px; }
 .tm-c a:hover { background: var(--cyan-soft); color: var(--accent-cyan); }
 .tm-c a[aria-current="page"] { color: var(--accent-cyan); font-weight: 600; }
+
+/* ---------- Inhaltsverzeichnis mit Scrollspy: Leiste (breit) und Knopf „Inhalt“ (Handy, Tablet, schmaler Desktop) ---------- */
+.toc-rail { display: none; }
+.toc-fab { position: fixed; left: max(14px, env(safe-area-inset-left, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 6; max-width: calc(100vw - 84px - env(safe-area-inset-left, 0px)); }
+.toc-fab[hidden], .toc-pop[hidden] { display: none; }
+.toc-fab > button { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; min-height: 44px; padding: 0 16px 0 12px; font: 600 14.5px var(--f-display); letter-spacing: .02em; color: var(--text-primary); background: var(--bg-card); border: 1px solid var(--accent-cyan); border-radius: 22px; box-shadow: 0 8px 22px -8px var(--shade); cursor: pointer; }
+.toc-fab > button svg { width: 18px; height: 18px; flex: none; color: var(--accent-cyan); }
+.toc-fab > button span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.toc-fab > button:hover, .toc-fab > button:focus-visible { background: var(--cyan-soft); }
+.toc-pop { position: absolute; left: 0; bottom: calc(100% + 8px); width: min(340px, calc(100vw - 28px)); max-height: min(60vh, 460px); overflow-y: auto; overscroll-behavior: contain; background: var(--bg-card); border: 1px solid var(--accent-cyan); border-radius: var(--radius-xs); box-shadow: 0 16px 40px -12px var(--shade); }
+.toc-pop ol, .toc-rail ol { margin: 0; padding: 6px 8px; list-style: none; counter-reset: toc; }
+.toc-pop li, .toc-rail li { counter-increment: toc; }
+.toc-pop a, .toc-rail a { display: flex; align-items: baseline; gap: 10px; min-height: 40px; padding: 8px 10px; color: var(--text-primary); text-decoration: none; font: 500 15px/1.3 var(--f-body); border-left: 2px solid transparent; }
+.toc-pop a::before, .toc-rail a::before, .toc li a::before { content: counter(toc, decimal-leading-zero); flex: none; font: 500 12px var(--f-mono); color: var(--accent-cyan); }
+.toc-pop a:hover, .toc-rail a:hover { background: var(--cyan-soft); }
+.toc a[aria-current], .toc-pop a[aria-current], .toc-rail a[aria-current] { color: var(--accent-cyan); border-left-color: var(--accent-cyan); background: var(--cyan-soft); font-weight: 600; }
+.toc li a { border-left: 2px solid transparent; padding-left: 8px; }
+@media (min-width: 1600px) {
+  .toc-fab { display: none !important; }
+  .toc-rail:not([hidden]) { display: block; position: fixed; z-index: 5; top: 96px; left: calc(50% - 560px - 236px); width: 216px; max-height: calc(100vh - 132px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding: 8px 0; border-left: 1px solid var(--border); }
+  .toc-rail > b { display: block; padding: 4px 18px 6px; font: 600 12.5px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-secondary); }
+  .toc-rail a { font-size: 14px; min-height: 34px; padding: 6px 10px 6px 16px; border-left-width: 2px; margin-left: -1px; }
+  html:has(#view-hosas:not([hidden])) .toc-rail { display: none; }
+}
+@media print { .toc-rail, .toc-fab { display: none !important; } }
+/* Sprungziele (Inhaltsverzeichnis, data-jump): Überschrift landet knapp unter der Leiste statt 150 px tiefer */
+.view h2, .view h3, .view .step h3, .view .term, .view .row, .view .bug, .view .wk { scroll-margin-top: 14px; }
+
+/* Bedienelemente im Inhalt: einheitliche Mindest-Trefferfläche (Nachschlagen im Spiel, auch mit Touch) */
+.view details:not([class]) > summary, .view details.ref > summary, .view details.sh-more > summary { padding-block: 9px; cursor: pointer; }
+.mine-btn, .d3 { min-height: 32px; }
+@media (pointer: coarse) { .mine-btn, .d3 { min-height: 40px; } .view details:not([class]) > summary, .view details.ref > summary, .view details.sh-more > summary { padding-block: 12px; } }

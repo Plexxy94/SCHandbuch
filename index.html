@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261116">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261125">
+<link rel="stylesheet" href="style.css?v=20261128">
 </head>
 <body>
 
@@ -3650,24 +3650,85 @@ window.SC_MINE = (function () {
     crumbs.hidden = false;
   }
 
-  /* Inhaltsverzeichnis: Köpfe mit data-toc="<Selektor>" bekommen es aus den Überschriften ihrer Ansicht (Sprung per data-jump) */
-  function toc(view) {
+  /* Inhaltsverzeichnis: Köpfe mit data-toc="<Selektor>" bekommen es aus den Überschriften ihrer Ansicht (Sprung per data-jump).
+     Eine Quelle (tocItems), drei Darstellungen: aufklappbar im Kopf, mitlaufende Leiste neben dem Inhalt (breite Bildschirme),
+     Knopf „Inhalt“ unten links mit Liste (Handy und Tablet). Scrollspy markiert in allen dreien das aktuelle Kapitel. */
+  function tocItems(view) {
     var v = document.getElementById('view-' + view), head = v && v.querySelector('.chead[data-toc]');
-    if (!head || head.dataset.tocDone) return;
+    if (!head) return null;
     var hs = Array.prototype.slice.call(v.querySelectorAll(head.dataset.toc));
-    if (hs.length < 3) return;
-    head.dataset.tocDone = '1';
-    var li = hs.map(function (el, i) {
+    if (hs.length < 3) return null;
+    return hs.map(function (el, i) {
       if (!el.id) el.id = 'ch-' + view + '-' + (i + 1);
       var c = el.cloneNode(true);
       Array.prototype.forEach.call(c.querySelectorAll('.pill, small, .count, .gb'), function (x) { x.remove(); });
-      return '<li><a href="#' + view + '" data-jump="' + el.id + '">' + esc(c.textContent.replace(/\s+/g, ' ').trim()) + '</a></li>';
-    }).join('');
+      return { id: el.id, el: el, text: c.textContent.replace(/\s+/g, ' ').trim() };
+    });
+  }
+  function tocList(view, items) {
+    return items.map(function (it) { return '<li><a href="#' + view + '" data-jump="' + it.id + '">' + esc(it.text) + '</a></li>'; }).join('');
+  }
+  function toc(view) {
+    var v = document.getElementById('view-' + view), head = v && v.querySelector('.chead[data-toc]');
+    var items = tocItems(view);
+    if (!items || head.dataset.tocDone) return;
+    head.dataset.tocDone = '1';
     var d = document.createElement('details');
     d.className = 'toc';
     d.open = window.matchMedia('(min-width: 900px)').matches;
-    d.innerHTML = '<summary>Inhalt <small>' + hs.length + ' Abschnitte</small></summary><ol>' + li + '</ol>';
+    d.innerHTML = '<summary>Inhalt <small>' + items.length + ' Abschnitte</small></summary><ol>' + tocList(view, items) + '</ol>';
     head.appendChild(d);
+  }
+
+  var rail = document.createElement('nav');
+  rail.className = 'toc-rail'; rail.id = 'toc-rail'; rail.hidden = true; rail.setAttribute('aria-label', 'Inhalt dieser Seite');
+  rail.innerHTML = '<b>Inhalt</b><ol></ol>';
+  var fab = document.createElement('div');
+  fab.className = 'toc-fab'; fab.id = 'toc-fab'; fab.hidden = true;
+  fab.innerHTML = '<button type="button" id="toc-btn" aria-expanded="false" aria-controls="toc-pop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg><span id="toc-cur">Inhalt</span></button><div class="toc-pop" id="toc-pop" hidden><ol></ol></div>';
+  document.body.appendChild(rail); document.body.appendChild(fab);
+  var spy = { view: null, items: null, head: null, raf: 0 };
+  var tocBtn = fab.querySelector('#toc-btn'), tocPop = fab.querySelector('#toc-pop'), tocCur = fab.querySelector('#toc-cur');
+  function popClose() { tocPop.hidden = true; tocBtn.setAttribute('aria-expanded', 'false'); }
+  tocBtn.addEventListener('click', function () { var o = tocPop.hidden; tocPop.hidden = !o; tocBtn.setAttribute('aria-expanded', String(o)); if (o) { var c = tocPop.querySelector('[aria-current]'); if (c) c.scrollIntoView({ block: 'nearest' }); } });
+  tocPop.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('a')) popClose(); });
+  document.addEventListener('click', function (e) { if (!tocPop.hidden && !fab.contains(e.target)) popClose(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !tocPop.hidden) { popClose(); tocBtn.focus(); } });
+  function spyUpdate() {
+    spy.raf = 0;
+    if (!spy.items) return;
+    var cur = -1;
+    spy.items.forEach(function (it, i) { if (it.el.getClientRects().length && it.el.getBoundingClientRect().top <= 130) cur = i; });
+    var id = cur >= 0 ? spy.items[cur].id : '';
+    [rail, tocPop, spy.head && spy.head.querySelector('.toc')].forEach(function (box) {
+      if (!box) return;
+      Array.prototype.forEach.call(box.querySelectorAll('a[data-jump]'), function (a) {
+        if (a.dataset.jump === id) { if (a.getAttribute('aria-current') !== 'true') { a.setAttribute('aria-current', 'true'); } } else a.removeAttribute('aria-current');
+      });
+    });
+    tocCur.textContent = cur >= 0 ? spy.items[cur].text : 'Inhalt';
+    /* Knopf erst, wenn der Kopf der Seite weggescrollt ist */
+    var past = spy.head && spy.head.getBoundingClientRect().bottom < 60;
+    fab.hidden = !past;
+    if (!past) popClose();
+    if (rail.querySelector('[aria-current]') && !rail.hidden && window.matchMedia('(min-width: 1600px)').matches) {
+      var c = rail.querySelector('[aria-current]'), rr = rail.getBoundingClientRect(), cr = c.getBoundingClientRect();
+      if (cr.top < rr.top + 30 || cr.bottom > rr.bottom - 10) rail.scrollTop += cr.top - rr.top - rr.height / 2;
+    }
+  }
+  function spyKick() { if (!spy.raf) spy.raf = setTimeout(spyUpdate, 60); }
+  window.addEventListener('scroll', spyKick, { passive: true });
+  window.addEventListener('resize', spyKick);
+  function spyView(view) {
+    var items = tocItems(view), v = document.getElementById('view-' + view);
+    spy.view = view; spy.items = items; spy.head = v && v.querySelector('.chead');
+    popClose();
+    rail.hidden = !items; fab.hidden = true;
+    if (!items) { document.documentElement.classList.remove('has-toc'); return; }
+    document.documentElement.classList.add('has-toc');
+    rail.querySelector('ol').innerHTML = tocList(view, items);
+    tocPop.querySelector('ol').innerHTML = tocList(view, items);
+    spyKick();
   }
 
   /* Berufe als Anlaufstelle: je Beruf Tutorial, Wissen und Werkzeuge. Eine Liste speist die Leiste auf den Berufs- und Tutorial-Seiten und die Übersicht „Berufe“. */
@@ -3793,7 +3854,7 @@ window.SC_MINE = (function () {
   window.addEventListener('load', mine);
   mine();
 
-  document.addEventListener('viewchange', function (e) { crumb(e.detail); toc(e.detail); profBars(e.detail); if (e.detail === 'start') mine(); });
+  document.addEventListener('viewchange', function (e) { crumb(e.detail); toc(e.detail); profBars(e.detail); spyView(e.detail); if (e.detail === 'start') mine(); });
 
   /* Menü (Handy und Tablet): Blatt aus den zweiten Reihen aufgebaut, damit es nie von der Leiste abweicht */
   var dlg = $('menu'), btn = $('navmenu'), list = $('menu-list'), mq = window.matchMedia('(max-width: 860px)');
