@@ -68,7 +68,7 @@
     </div>
     <div class="subnav-in" role="group" aria-label="Schiffe" data-group="schiffe">
       <a href="#schiffe">Schiffsdatenbank</a>
-      <a href="#schiffe" data-jump="shmine">Meine Schiffe</a>
+      <a href="#schiffe" data-pre="ship:mine">Meine Schiffe</a>
       <a href="#ccu-radar" data-sep>CCU-Radar</a>
       <a href="#hauling" data-jump="hq-tool">Frachter-Finder</a>
     </div>
@@ -245,7 +245,7 @@
       </div>
       <div class="hx-shipinfo">
         <p>Zufällig ausgewählt, drehbar mit der Maus oder dem Finger. Die Datenbank kennt alle flugfähigen Schiffe mit Einsatzzweck, Fracht, Crew, Preisen im Spiel und Budget-Filter.</p>
-        <div class="st-links"><a href="#schiffe" data-jump="shmine">Meine Schiffe</a></div>
+        <div class="st-links"><a href="#schiffe" data-pre="ship:mine">Meine Schiffe</a></div>
       </div>
     </div>
   </section>
@@ -3288,7 +3288,7 @@
     <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg>Schiffe · Datenbank</span><span class="chead-tag vtag" data-vpage="schiffe" hidden></span><span class="chead-tag">Preise in aUEC</span></div>
     <h1>Schiffe</h1>
     <p class="lede">Alle flugfähigen Schiffe und Fahrzeuge mit Einsatzzweck, Fracht, Crew und Preisen im Spiel. Jedes Schiff kannst du in 3D drehen.</p>
-    <div class="chead-act"><a href="#schiffe" data-jump="shmine">Meine Schiffe</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a><a href="#ccu-radar">CCU-Radar</a></div>
+    <div class="chead-act"><a href="#schiffe" data-pre="ship:mine">Meine Schiffe</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a><a href="#ccu-radar">CCU-Radar</a></div>
     <div class="hint" style="margin-bottom:12px"><b>Neu in 4.10.3:</b> Die RSI Galaxy (Multi-Crew-Schiff mit Wechselmodul: Fracht bis 720 SCU oder Lazarett) und die Anvil Liberator (Träger für Schiffe und Bodenfahrzeuge) sind spielbar, stehen aber noch nicht in unserer Datenbank, weil Wiki und UEX sie noch nicht führen. Bei Tiburon, Starlite, Ironclad, Ironclad Assault, Pitbull, Basher, M80 und Tyilui kommt der aUEC-Preis nach, sobald UEX ihn kennt. Carrack, Perseus, Starlancer, Starlancer TAC, Hammerhead und Tiburon haben jetzt Size-3-Radare.</div>
   </div>
   <section class="fpanel sh-filter" aria-labelledby="sh-fh">
@@ -3608,7 +3608,7 @@ window.SC_MINE = (function () {
     ] },
     { id: 'schiffe', name: 'Schiffe', desc: 'Finden, vergleichen und im Blick behalten, was Schiffe kosten.', items: [
       { f: 1, n: 'Schiffsdatenbank', d: 'Alle Schiffe mit Preis, Fracht, Crew, Budget-Filter und 3D-Modell.', ic: 'ship', h: '#schiffe' },
-      { n: 'Meine Schiffe', d: 'Schiffe markieren, die du hast. Der Tagesplaner nutzt das.', ic: 'ship', h: '#schiffe', j: 'shmine' },
+      { n: 'Meine Schiffe', d: 'Zeigt nur die Schiffe, die du als „Hab ich“ markiert hast. Der Tagesplaner nutzt das.', ic: 'ship', h: '#schiffe', pre: 'ship:mine' },
       { n: 'Frachter-Finder', d: 'Welches Schiff schafft den Auftrag in wie vielen Fahrten?', ic: 'box', h: '#hauling', j: 'hq-tool' },
       { f: 1, n: 'CCU-Radar', d: 'Meldet Schiffe, die im Pledge-Store teurer werden.', ic: 'radar', h: '#ccu-radar' }
     ] },
@@ -3627,7 +3627,7 @@ window.SC_MINE = (function () {
   function tile(t, hub) {
     var inner = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-' + t.ic + '"/></svg><b>' + esc(t.n) + '</b><span>' + esc(t.d) + '</span>';
     if (t.plan) return hub ? '<a class="st-tool" href="#start" data-jump="st-plan">' + inner + '</a>' : '<button type="button" class="st-tool" id="st-planbtn">' + inner + '</button>';
-    return '<a class="st-tool" href="' + t.h + '"' + (t.j ? ' data-jump="' + t.j + '"' : '') + '>' + inner + '</a>';
+    return '<a class="st-tool" href="' + t.h + '"' + (t.j ? ' data-jump="' + t.j + '"' : '') + (t.pre ? ' data-pre="' + t.pre + '"' : '') + '>' + inner + '</a>';
   }
   function groups(hub) {
     return TOOL_GROUPS.map(function (g) {
@@ -3795,9 +3795,10 @@ window.SC_MINE = (function () {
       ['Einsätze', [['Hathor und Wikelo', 'hathor'], ['Recco Battaglia', 'recco']]],
       ['Bekannte Bugs', [['Bugs: Missionen', 'bugs', '', 'bug:mission']]] ] },
     schiffe: { title: 'Schiffe auf einen Blick', rows: [
-      ['Rechner', [['Meine Schiffe', 'schiffe', 'shmine'], ['Frachter-Finder', 'hauling', 'hq-tool'], ['CCU-Radar', 'ccu-radar']]],
+      ['Schnellfilter', [['Nur meine Schiffe', 'schiffe', '', 'ship:mine'], ['Budget-Filter', 'schiffe', '', 'ship:budget']]],
+      ['Weitere Werkzeuge', [['Frachter-Finder', 'hauling', 'hq-tool'], ['CCU-Radar', 'ccu-radar']]],
       ['Für den Beruf', [['Mining', 'mining', 'a-mn-schiffe'], ['Salvage', 'salvage', 'a-sv-wege'], ['Hauling', 'hauling', 'a-hl-oben']]],
-      ['Wirtschaftlichkeit', [['Budget-Filter', 'schiffe', 'shmore'], ['Mieten oder kaufen?', 'hauling', 'a-hl-miete']]],
+      ['Wirtschaftlichkeit', [['Mieten oder kaufen?', 'hauling', 'a-hl-miete']]],
       ['Einsätze', [['Wikelo-Tauschliste', 'hathor', 'wkchips'], ['Executive Hangar', 'exec-hangar']]],
       ['Bekannte Bugs', [['Bugs: Schiffe und Hangar', 'bugs', '', 'bug:schiff']]] ] },
     steuerung: { title: 'Steuerung auf einen Blick', rows: [
@@ -3814,7 +3815,7 @@ window.SC_MINE = (function () {
      2. Weiter zu (Chips mit Rubrik): andere Seiten und Stellen zum Thema (Tutorials, Ausrüstung, Schiffe, Wirtschaft, Bugs)
      3. Auf dieser Seite (Inhaltsverzeichnis mit Scrollspy): Navigation innerhalb der Seite
      Alles aus TOPICS und der Seitengliederung, keine eigenen Inhalte. */
-  var TOOL_ROWS = { 'Rechner': 1, 'Fundorte': 1 };
+  var TOOL_ROWS = { 'Rechner': 1, 'Fundorte': 1, 'Schnellfilter': 1 };
   var TOOL_IDS = { 'rs-tool': 1, 'loc-tool': 1, 'hq-tool': 1, 'rufwho': 1, 'recco-rep': 1, 'shmine': 1, 'shmore': 1, 'q': 1, 'wkchips': 1 };
   function qkAttrs(it) { return ' href="#' + it[1] + '"' + (it[2] ? ' data-jump="' + it[2] + '"' : '') + (it[3] ? ' data-pre="' + it[3] + '"' : ''); }
   function profBars(view) {
@@ -3826,7 +3827,7 @@ window.SC_MINE = (function () {
     if (T) {
       T.rows.forEach(function (r) {
         r[1].forEach(function (it) {
-          if (TOOL_ROWS[r[0]] || TOOL_IDS[it[2]]) acts.push(it);
+          if (TOOL_ROWS[r[0]] || (TOOL_IDS[it[2]] && it[1] === view)) acts.push(it);
           else if (it[1] !== view && !(tutOf && it[1] === tutOf.wiki)) more.push([r[0], it]);   /* Abschnitte dieser Seite stehen im Verzeichnis; Tutorials verweisen für Zahlen mit einem Chip auf die Wissensseite */
         });
       });
@@ -3837,7 +3838,7 @@ window.SC_MINE = (function () {
     var q = document.createElement('div');
     q.className = 'qk'; q.setAttribute('role', 'group'); q.setAttribute('aria-label', 'Schnellzugriff');
     var html = '';
-    if (acts.length) html += '<div class="qk-act"><span class="qk-l">Werkzeuge</span>' + acts.map(function (it) { return '<a class="qk-btn"' + qkAttrs(it) + '>' + esc(it[0].replace(/: .*$/, '')) + '</a>'; }).join('') + '</div>';
+    if (acts.length) html += '<div class="qk-act"><span class="qk-l">' + (view === 'schiffe' ? 'Schnellfilter' : 'Werkzeuge') + '</span>' + acts.map(function (it) { return '<a class="qk-btn"' + qkAttrs(it) + '>' + esc(it[0].replace(/: .*$/, '')) + '</a>'; }).join('') + '</div>';
     if (more.length) html += '<details class="qk-more"' + (window.matchMedia('(min-width: 900px)').matches ? ' open' : '') + '><summary>Weiter zu <small>' + more.length + ' Verweise</small></summary><div class="qk-chips">' +
       more.map(function (m) { return '<a class="qk-chip"' + qkAttrs(m[1]) + '><span class="qk-k">' + esc(m[0]) + '</span>' + esc(m[1][0]) + '</a>'; }).join('') + '</div></details>';
     q.innerHTML = html;
@@ -3868,12 +3869,12 @@ window.SC_MINE = (function () {
     Array.prototype.forEach.call(document.querySelectorAll('#steps input[type=checkbox]'), function (b) { if (b.checked) done++; });
     if (done) items.push(['Erste Schritte', done + ' von ' + total + ' geschafft', done === total ? '#tutorial' : '#erste-schritte', done === total ? 'Weitere Tutorials →' : 'Weitermachen →']);
     var ships = window.SC_MINE ? window.SC_MINE.list().length : 0;
-    if (ships) items.push(['Meine Schiffe', ships + (ships === 1 ? ' Schiff' : ' Schiffe') + ' markiert', '#schiffe', 'Hangar ansehen →', 'shmine']);
+    if (ships) items.push(['Meine Schiffe', ships + (ships === 1 ? ' Schiff' : ' Schiffe') + ' markiert', '#schiffe', 'Hangar ansehen →', '', 'ship:mine']);
     var xh = 0; try { var o = JSON.parse(localStorage.getItem('sc-exec-check') || '{}'); Object.keys(o).forEach(function (k) { if (o[k]) xh++; }); } catch (e) {}
     if (xh) items.push(['Executive Hangar', xh + (xh === 1 ? ' Punkt' : ' Punkte') + ' abgehakt', '#exec-hangar', 'Weiter abhaken →']);
     sec.hidden = !items.length;
     box.innerHTML = items.map(function (it) {
-      return '<a class="mn-card" href="' + it[2] + '"' + (it[4] ? ' data-jump="' + it[4] + '"' : '') + '><span class="mn-k">' + esc(it[0]) + '</span><b>' + esc(it[1]) + '</b><span class="mn-go">' + esc(it[3]) + '</span></a>';
+      return '<a class="mn-card" href="' + it[2] + '"' + (it[4] ? ' data-jump="' + it[4] + '"' : '') + (it[5] ? ' data-pre="' + it[5] + '"' : '') + '><span class="mn-k">' + esc(it[0]) + '</span><b>' + esc(it[1]) + '</b><span class="mn-go">' + esc(it[3]) + '</span></a>';
     }).join('');
   }
   document.addEventListener('minechange', mine);
@@ -6918,7 +6919,7 @@ window.SC_MINE = (function () {
 </script>
 <script src="version.js?v=20261119"></script>
 <script src="personal.js?v=20261118"></script>
-<script src="filters.js?v=20261120"></script>
+<script src="filters.js?v=20261121"></script>
 <script src="patchnotes.js?v=20261118" defer></script>
 </body>
 </html>

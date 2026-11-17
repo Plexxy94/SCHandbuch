@@ -113,10 +113,15 @@
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[data-pre]'); if (!a) return;
     var p = a.dataset.pre.split(':'), id = p[0] === 'bug' ? 'bugs' : 'ships';
+    if (p[0] === 'ship' && p[1] === 'budget') {   /* Budget ist kein Zurücksetzen: Bereich „Erweitert“ öffnen und ins Feld springen */
+      setTimeout(function () { var d = $('#shmore'), i = $('#shbudget'); if (d) d.open = true; if (i) { i.scrollIntoView({ block: 'center' }); i.focus(); } }, 160);
+      return;
+    }
     var src = (a.lastChild && a.lastChild.textContent || a.textContent).trim();
     setTimeout(function () {
       var bar = F.bars[id]; if (!bar) return;
       bar.preset(function () {
+        if (p[0] === 'ship' && p[1] === 'mine') { var mn = $('#shmine'); if (mn) { mn.checked = true; fire(mn, 'change'); } return; }
         var btn = p[0] === 'bug' ? $('#bugchips .chip[data-cat="' + p[1] + '"]')
           : Array.prototype.filter.call(document.querySelectorAll('#shcat .chip'), function (c) { return c.textContent === p[1]; })[0];
         if (btn) btn.click();
