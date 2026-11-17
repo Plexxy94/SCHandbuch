@@ -1946,3 +1946,15 @@ select { min-height: 44px; border-radius: 2px; }
 .view details:not([class]) > summary, .view details.ref > summary, .view details.sh-more > summary { padding-block: 9px; cursor: pointer; }
 .mine-btn, .d3 { min-height: 32px; }
 @media (pointer: coarse) { .mine-btn, .d3 { min-height: 40px; } .view details:not([class]) > summary, .view details.ref > summary, .view details.sh-more > summary { padding-block: 12px; } }
+
+/* ---------- Seitenstand (version.js): neutral, wenn auf LIVE-Stand; Bernstein, wenn vor LIVE; gestrichelt, wenn nicht erfasst ---------- */
+.chead-tag.vtag[hidden] { display: none; }
+.chead-tag.vtag { cursor: help; }
+.chead-tag.vtag.ok::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--ok, #226339); vertical-align: 1px; }
+.chead-tag.vtag.old { color: var(--accent-amber); }
+.chead-tag.vtag.old::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--accent-amber); vertical-align: 1px; }
+.chead-tag.vtag.unknown { color: var(--text-secondary); text-decoration: underline dotted; text-underline-offset: 3px; }
+.chead-tag.vtag + .chead-tag::before, .chead-meta .chead-cat + .chead-tag.vtag::before { content: none; }
+.hx-patch .hx-test { color: var(--am-x); }
+.hx-patch .hx-test[hidden] { display: none; }
+.hx-patch .hx-test b { color: inherit; }

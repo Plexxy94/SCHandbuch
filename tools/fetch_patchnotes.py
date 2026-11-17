@@ -12,7 +12,7 @@ Datenform pro Patch:
 Texte bleiben Englisch (Originalwortlaut). Bereits geholte Patches werden nur neu gelesen, wenn Spectrum eine Änderung meldet.
 """
 import html as H
-import json
+import json, os
 import re
 import sys
 import time
@@ -247,6 +247,30 @@ def classify(subj):
     return None
 
 
+def vkey(v):
+    """'4.10.3' -> (4, 10, 3); fehlende Teile zaehlen als 0"""
+    parts = [int(x) for x in re.findall(r"\d+", v or "")][:3]
+    return tuple(parts + [0] * (3 - len(parts)))
+
+
+def write_version(path, patches):
+    """version.json: die EINE Quelle fuer die globale Version (LIVE) und die laufende Testversion.
+    LIVE = neuester LIVE-Release, Test = neuester PTU-Build mit hoeherer Version als LIVE. Kein Zeitstempel der Pruefung,
+    damit die Datei sich nur aendert, wenn sich der Patchstand aendert."""
+    def pick(kind, newer_than=None):
+        c = [x for x in patches if x.get("kind") == kind and x.get("version")]
+        if newer_than: c = [x for x in c if vkey(x["version"]) > vkey(newer_than)]
+        c.sort(key=lambda x: x["date"], reverse=True)
+        if not c: return None
+        x = c[0]
+        return {"version": x["version"], "build": x.get("build"), "date": x["date"][:10], "url": x.get("full") or x.get("spectrum"), "kind": kind}
+    live = pick("live")
+    out = {"live": live, "test": pick("ptu", live["version"] if live else None), "source": "patchnotes.json"}
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(out, fh, ensure_ascii=False, indent=1)
+        fh.write("\n")
+
+
 def main(path):
     try:
         old = json.load(open(path, encoding="utf-8"))
@@ -308,6 +332,7 @@ def main(path):
     new["checked"] = now
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(new, fh, ensure_ascii=False, separators=(",", ":"))
+    write_version(os.path.join(os.path.dirname(os.path.abspath(path)), "version.json"), patches)
     print("unverändert" if same else "aktualisiert", len(patches), "Patches")
 
 

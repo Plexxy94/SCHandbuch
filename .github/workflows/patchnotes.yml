@@ -21,7 +21,7 @@ jobs:
         run: python3 tools/fetch_patchnotes.py patchnotes.json
       - name: Änderungen speichern
         run: |
-          git add patchnotes.json
+          git add patchnotes.json version.json
           if git diff --cached --quiet; then
             echo "Keine Änderungen"
             exit 0

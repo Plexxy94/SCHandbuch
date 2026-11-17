@@ -1,0 +1,171 @@
+{
+  "_hinweis": "Prüfstand je Seite, von Hand gepflegt. Eine Seite gilt nur dann als aktuell, wenn hier der Patch der globalen LIVE-Version (version.json, automatisch) eingetragen ist. Eine neue LIVE-Version ändert diese Datei NICHT: Seiten mit älterem Prüfstand werden dadurch automatisch als älter als LIVE gekennzeichnet. Erst nach einer echten Durchsicht der Seite patch und date hier anheben. patch = Spielversion, auf die sich die Zahlen und Aussagen der Seite beziehen. date = Tag der Durchsicht oder der Quelle (JJJJ-MM-TT, auch JJJJ-MM). basis = woher die Angabe stammt. Hubs (from) zeigen den ältesten Prüfstand ihrer Unterseiten.",
+  "pages": {
+    "mining": {
+      "patch": "4.10.2",
+      "date": "2026-10-09",
+      "basis": "Seitentext: Spieldaten 4.10.2, Stand 9. Oktober 2026 · Kopfzeile 4.10.3 war nur ein Stempel"
+    },
+    "t-mining": {
+      "patch": "4.10.2",
+      "date": "2026-10",
+      "basis": "Seitentext: Fundorte laut Community-Datenbanken, Patch 4.10.2"
+    },
+    "salvage": {
+      "patch": "4.10.2",
+      "date": "2026-10-30",
+      "basis": "Seitentext: UEX-Preise Stand 30. Oktober (4.10.2)",
+      "note": "Puffergrößen sind bereits für 4.10.3 eingetragen."
+    },
+    "t-salvage": {
+      "patch": "4.10.2",
+      "date": null,
+      "basis": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
+    },
+    "hauling": {
+      "patch": "4.10.2",
+      "date": "2026-10",
+      "basis": "Seitentext: Fracht, Löhne und Handel aus Patch 4.10.2",
+      "note": "Einzelne Fehlerbehebungen aus 4.10.3 sind vermerkt."
+    },
+    "t-hauling": {
+      "patch": "4.10.2",
+      "date": null,
+      "basis": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
+    },
+    "crafting": {
+      "patch": "4.10.2",
+      "date": null,
+      "basis": "Seitentext: Stand laut Community-Guides für Alpha 4.10.2 · Kopfzeile 4.10.3 war nur ein Stempel"
+    },
+    "t-crafting": {
+      "patch": "4.10.2",
+      "date": null,
+      "basis": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
+    },
+    "ruf": {
+      "patch": "4.10.2",
+      "date": "2026-10-11",
+      "basis": "Seitentext: Schwellen laut Community-Guides für 4.10.2, Stand 11. Oktober",
+      "note": "Einzelne Änderungen aus 4.10.3 sind eingetragen."
+    },
+    "ueberleben": {
+      "patch": "4.10.2",
+      "date": null,
+      "basis": "Seitentext: Stand laut Community-Guides und Wiki für Alpha 4.10.2 · Kopfzeile 4.10.3 war nur ein Stempel"
+    },
+    "erste-schritte": {
+      "patch": "4.10.2",
+      "date": null,
+      "basis": "Kopfzeile vor der Versionsanhebung (Commit 137960d, 12. Nov. 2026): bei der Anhebung auf 4.10.3 wurde nur der Stempel geändert, der Inhalt nicht"
+    },
+    "heimat": {
+      "patch": "4.10.3",
+      "date": "2026-11-12",
+      "basis": "Seitentext: Stand 12. Nov. 2026, Patch 4.10.3"
+    },
+    "bugs": {
+      "patch": "4.10.2",
+      "date": "2026-11-03",
+      "basis": "Kopfzeile: Stand 3. Nov. 2026",
+      "note": "Enthält Hinweise zu 4.10.3. Die offizielle CIG-Bugliste darunter wird stündlich automatisch geladen."
+    },
+    "vanduul": {
+      "patch": "4.10.3",
+      "date": null,
+      "basis": "Kopfzeile: neu in 4.10.3"
+    },
+    "recco": {
+      "patch": "4.10",
+      "date": "2026-09-20",
+      "basis": "Seitentext: Werte aus Community-Guides für 4.10 (Stand 20. September 2026)",
+      "note": "Eine Fehlerbehebung aus 4.10.3 ist vermerkt."
+    },
+    "exec-hangar": {
+      "patch": "4.10.2",
+      "date": "2026-10-30",
+      "basis": "Seitentext: Stand 30. Oktober 2026, Patch 4.10.2 · Kopfzeile 4.10.3 war nur ein Stempel"
+    },
+    "siege-orison": {
+      "patch": "4.10.2",
+      "date": "2026-10-30",
+      "basis": "Seitentext: Stand 30. Oktober 2026, Patch 4.10.2 · Kopfzeile 4.10.3 war nur ein Stempel"
+    },
+    "hathor": {
+      "patch": "4.10.2",
+      "date": "2026-10-30",
+      "basis": "Seitentext: Stand 30. Oktober 2026, Patch 4.10.2",
+      "note": "Die Wikelo-Tauschliste ist vom 4. November 2026."
+    },
+    "bunker": {
+      "patch": null,
+      "date": null,
+      "basis": "Im Seitentext kein Prüfstand angegeben"
+    },
+    "tasten": {
+      "patch": "4.10.2",
+      "date": null,
+      "basis": "Kopfzeile: Standardbelegung Alpha 4.10.2"
+    },
+    "hosas": {
+      "patch": "4.10",
+      "date": "2026-08-05",
+      "basis": "Kopfzeile: Stand 5. Aug 2026, Alpha 4.10"
+    },
+    "glossar": {
+      "patch": "4.10",
+      "date": null,
+      "basis": "Kopfzeile: Stand Alpha 4.10"
+    },
+    "schiffe": {
+      "patch": "4.10.2",
+      "date": null,
+      "basis": "Datenstand: Schiffsdaten und Preise aus Spielversion 4.10.2-LIVE.12881860 (Kopf von ships.js)",
+      "kind": "Datenstand"
+    }
+  },
+  "hubs": {
+    "berufe": {
+      "from": [
+        "mining",
+        "salvage",
+        "hauling",
+        "crafting",
+        "ruf"
+      ]
+    },
+    "tutorial": {
+      "from": [
+        "heimat",
+        "erste-schritte",
+        "ueberleben",
+        "t-mining",
+        "t-salvage",
+        "t-hauling",
+        "t-crafting"
+      ]
+    },
+    "einsaetze": {
+      "from": [
+        "vanduul",
+        "recco",
+        "exec-hangar",
+        "siege-orison",
+        "hathor",
+        "bunker"
+      ]
+    },
+    "wissen": {
+      "from": [
+        "berufe",
+        "tutorial",
+        "einsaetze",
+        "tasten",
+        "hosas",
+        "schiffe",
+        "glossar",
+        "bugs"
+      ]
+    }
+  }
+}

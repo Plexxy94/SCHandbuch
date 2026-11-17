@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Inoffizielles Star-Citizen-Handbuch auf Deutsch (Alpha 4.10.3, QWERTZ): Tutorials, Tasten, Mining, Salvage, Hauling, Crafting, Ruf, Einsätze, alle Schiffe und aktuelle Bugs mit Workarounds.">
+<meta name="description" content="Inoffizielles Star-Citizen-Handbuch auf Deutsch (QWERTZ): Tutorials, Tasten, Mining, Salvage, Hauling, Crafting, Ruf, Einsätze, alle Schiffe und aktuelle Bugs mit Workarounds.">
 <meta name="theme-color" content="#131b23" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261116">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261128">
+<link rel="stylesheet" href="style.css?v=20261129">
 </head>
 <body>
 
@@ -136,7 +136,7 @@
       <p class="t-sub">Dein Begleiter durch das Verse.</p>
       <button type="button" class="t-search" data-gs aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Handbuch durchsuchen: Schiff, Taste, Erz, Begriff, Bug …</span><kbd>/</kbd></button>
       <div class="hx-status">
-        <a class="hx-patch" href="#patchnotes"><i aria-hidden="true"></i>LIVE <b>Alpha 4.10.3</b><span>Patchnotes</span></a>
+        <a class="hx-patch" href="#patchnotes"><i aria-hidden="true"></i>LIVE <b data-sc="live-label">aktuell</b><span class="hx-test" data-sc-if="test" hidden>Test <b data-sc="test-label"></b></span><span>Patchnotes</span></a>
         <div class="st-read" id="st-read" aria-live="polite"></div>
       </div>
       <div class="hx-foot">
@@ -256,7 +256,8 @@
       </div>
       <div class="st-panel">
         <h3>Patchnotes <a href="#patchnotes">Öffnen →</a></h3>
-        <p class="hx-pn"><b>Alpha 4.10.3</b><span>LIVE</span></p>
+        <p class="hx-pn"><b data-sc="live-label">Aktuell</b><span>LIVE</span></p>
+        <p class="small" data-sc-if="test" hidden>Im Test: <b data-sc="test-label"></b></p>
         <p class="small">Die Änderungen je Patch: LIVE-Releases, PTU-Builds und Hotfixes, filterbar und durchsuchbar.</p>
         <p class="small"><a href="#bugs">Bekannte Bugs und Workarounds →</a></p>
       </div>
@@ -317,7 +318,7 @@
 <!-- ============ WISSEN (Übersicht) ============ -->
 <section class="view" id="view-wissen" data-view="wissen" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Hilfe · Alle Inhalte</span><span class="chead-tag">Nachschlagen</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Hilfe · Alle Inhalte</span><span class="chead-tag vtag" data-vpage="wissen" hidden></span><span class="chead-tag">Nachschlagen</span></div>
     <h1>Wissen</h1>
     <p class="lede">Alles zum Nachschlagen an einem Ort: Berufe und Zahlen, Steuerung, Schiffe, Einsätze und Begriffe. Anleitungen Schritt für Schritt findest du unter Einstieg und Berufe.</p>
     <div class="chead-act"><a href="#tutorial">Zu den Tutorials</a><a href="#berufe">Zu den Berufen</a><a href="#tools">Zu den Werkzeugen</a></div>
@@ -365,7 +366,7 @@
 <!-- ============ ERSTE SCHRITTE ============ -->
 <section class="view" id="view-erste-schritte" data-view="erste-schritte" hidden>
   <div class="head chead" data-toc=".step h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">7 Etappen</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorial</span><span class="chead-tag vtag" data-vpage="erste-schritte" hidden></span><span class="chead-tag">7 Etappen</span></div>
     <h1>Erste Schritte</h1>
     <p class="lede">Sieben Etappen von deinem ersten Login bis zum ersten verdienten Geld. Hak ab, was du geschafft hast. Der Fortschritt bleibt in diesem Browser gespeichert.</p>
     <div class="chead-act"><a href="#heimat">Heimatstadt wählen</a><a href="#tasten">Tasten nachschlagen</a><a href="#ueberleben">Überleben</a></div>
@@ -492,7 +493,7 @@
 <!-- ============ TUTORIALS: ÜBERSICHT ============ -->
 <section class="view" id="view-tutorial" data-view="tutorial" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorials</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">QWERTZ</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorials</span><span class="chead-tag vtag" data-vpage="tutorial" hidden></span><span class="chead-tag">QWERTZ</span></div>
     <h1>Tutorials</h1>
     <p class="lede">Schritt-für-Schritt-Anleitungen für den Einstieg. Wenn du weißt, wie es geht, findest du Werkzeuge und Nachschlage-Infos unter <a href="#berufe">Berufe</a>.</p>
   </div>
@@ -551,7 +552,7 @@
 <!-- ============ TUTORIAL: HEIMATSTADT ============ -->
 <section class="view" id="view-heimat" data-view="heimat" hidden>
   <div class="head chead" data-toc="h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorial</span><span class="chead-tag">Stand 12. Nov. 2026</span><span class="chead-tag">Patch 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorial</span><span class="chead-tag vtag" data-vpage="heimat" hidden></span></div>
     <h1>Heimatstadt wählen</h1>
     <p class="lede">Beim ersten Login wählst du deine Heimatstadt <i class="gb">Primary Residence</i>. Dort wachst du nach dem Einloggen auf, dort liegt dein Inventar, und dorthin schickt das Spiel Belohnungen. Wechseln kannst du laut Wiki nur beim ersten Login nach einem neuen Patch. Zur Wahl stehen die vier Städte in Stanton sowie Orte in Nyx und Pyro, die weiter unten stehen.</p>
   </div>
@@ -745,7 +746,7 @@
 <!-- ============ TUTORIAL: ÜBERLEBEN ============ -->
 <section class="view" id="view-ueberleben" data-view="ueberleben" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Einstieg · Tutorial</span><span class="chead-tag vtag" data-vpage="ueberleben" hidden></span></div>
     <h1>Überleben</h1>
     <p class="lede">Irgendwann bist du verletzt, stirbst, verlierst ein Schiff oder hast plötzlich einen CrimeStat. Kein Drama. Hier steht, was dann passiert, was es kostet und wie du es vermeidest.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -854,7 +855,7 @@
 <!-- ============ BUGS & WORKAROUNDS ============ -->
 <section class="view" id="view-bugs" data-view="bugs" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Hilfe · Bugs</span><span class="chead-tag">LIVE 4.10.2 · 4.10.3 im Test</span><span class="chead-tag">Stand 3. Nov. 2026</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Hilfe · Bugs</span><span class="chead-tag vtag" data-vpage="bugs" hidden></span><span class="chead-tag" data-sc="live-test">LIVE</span></div>
     <h1>Bugs &amp; Workarounds</h1>
     <p class="lede">Star Citizen ist eine Alpha, irgendwas hakt immer. Hier stehen die Fehler, die gerade am häufigsten nerven, und was dagegen hilft. Gesammelt aus der offiziellen Liste von CIG, den Patch Notes und aktuellen Spielerberichten.</p>
     <div class="bug-status" id="bugstatus" hidden></div>
@@ -876,7 +877,7 @@
         </ol>
       </div>
       <div class="card-plain">
-        <h3>Vor dem nächsten Patch <span class="pill later">4.10.3 kommt bald</span></h3>
+        <h3>Vor dem nächsten Patch <span class="pill later" data-sc-if="test" hidden><span data-sc="test-label"></span> im Test</span></h3>
         <ul>
           <li>Raffinerie-Aufträge abholen. Laufende Aufträge und lose Fracht im Schiff können beim Patch verloren gehen.</li>
           <li>Fracht verkaufen oder ins Lager bringen. Kisten im Lager überstehen Patches.</li>
@@ -1250,7 +1251,7 @@
 <!-- ============ TUTORIAL: MINING ============ -->
 <section class="view" id="view-t-mining" data-view="t-mining" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag vtag" data-vpage="t-mining" hidden></span></div>
     <h1>Mining lernen</h1>
     <p class="lede">Eine ganze Runde vom ersten Ping bis zum Geld auf dem Konto. Am einfachsten mit dem Golem, zu Fuß mit dem Multitool geht es auch.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Werkzeuge wie den RS-Rechner und die Erz-Suche findest du im <a href="#mining">Mining-Kapitel</a>.</p>
@@ -1362,7 +1363,7 @@
 <!-- ============ TUTORIAL: SALVAGE ============ -->
 <section class="view" id="view-t-salvage" data-view="t-salvage" hidden>
   <div class="head chead" data-toc="h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag vtag" data-vpage="t-salvage" hidden></span></div>
     <h1>Salvage lernen</h1>
     <p class="lede">Eine ganze Runde mit der Salvation: Auftrag holen, Wrack prüfen, Hülle abkratzen, zerlegen und verkaufen. Nichts kann explodieren, und Bergungsaufträge kosten keine Gebühr.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Preise, Schiffe und Regeln findest du im <a href="#salvage">Salvage-Kapitel</a>.</p>
@@ -1432,7 +1433,7 @@
 <!-- ============ TUTORIAL: HAULING ============ -->
 <section class="view" id="view-t-hauling" data-view="t-hauling" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag vtag" data-vpage="t-hauling" hidden></span></div>
     <h1>Hauling lernen</h1>
     <p class="lede">Dein erster Frachtauftrag: annehmen, Kisten holen, einladen, fliegen, abliefern. Eigenes Geld brauchst du dafür nicht, nur ein Schiff mit Frachtgitter und einen Traktorstrahl.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Ränge, Schiffe und den Frachter-Finder findest du im <a href="#hauling">Hauling-Kapitel</a>.</p>
@@ -1490,7 +1491,7 @@
 <!-- ============ TUTORIAL: CRAFTING ============ -->
 <section class="view" id="view-t-crafting" data-view="t-crafting" hidden>
   <div class="head chead" data-toc="h3">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-learn"/></svg>Berufe · Tutorial</span><span class="chead-tag vtag" data-vpage="t-crafting" hidden></span></div>
     <h1>Crafting lernen</h1>
     <p class="lede">Vom Bauplan bis zum fertigen Gegenstand in drei Schritten.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt. Was Qualität bewirkt und was du alles bauen kannst, steht im <a href="#crafting">Crafting-Kapitel</a>.</p>
@@ -1544,7 +1545,7 @@
 <!-- ============ EINSÄTZE: ÜBERSICHT ============ -->
 <section class="view" id="view-einsaetze" data-view="einsaetze" hidden>
   <div class="head chead am">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze</span><span class="chead-tag vtag" data-vpage="einsaetze" hidden></span></div>
     <h1>Einsätze</h1>
     <p class="lede">Anleitungen für größere Aktivitäten im Spiel, mit Ablauf, Tipps und aktuellen Bugs. Für den Einstieg in den Kampf zu Fuß eignen sich die Bunker-Missionen, für Gruppen Siege of Orison.</p>
   </div>
@@ -1601,7 +1602,7 @@
 <!-- ============ EINSATZ: VANDUUL-AUFTRÄGE ============ -->
 <section class="view" id="view-vanduul" data-view="vanduul" hidden>
   <div class="head chead am" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">neu in 4.10.3</span><span class="chead-tag">Nyx</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag vtag" data-vpage="vanduul" hidden></span><span class="chead-tag">neu in 4.10.3</span><span class="chead-tag">Nyx</span></div>
     <h1>Vanduul-Aufträge</h1>
     <p class="lede">Die Vanduul dringen in Nyx ein, und InterSec Defense Solutions heuert Piloten an, um sie zurückzudrängen. Neue Aufträge führen dich zu Orten im All, in Kämpfe gegen Vanduul-Clans, gegen den Mauler und zu Raids auf Stellungen der Shattered Blade.</p>
   </div>
@@ -1692,7 +1693,7 @@
 <!-- ============ EINSATZ: RECCO BATTAGLIA ============ -->
 <section class="view" id="view-recco" data-view="recco" hidden>
   <div class="head chead am" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Nyx · Levski</span><span class="chead-tag">allein machbar</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag vtag" data-vpage="recco" hidden></span><span class="chead-tag">Nyx · Levski</span><span class="chead-tag">allein machbar</span></div>
     <h1>Recco Battaglia</h1>
     <p class="lede">Recco Battaglia vergibt in Levski Mining-Aufträge für die People's Alliance. Wer bei ihr genug Ruf sammelt, bekommt Sonderaufträge, die eine Golem, eine Prospector und am Ende eine MOLE einbringen, jeweils als „Alliance“-Version mit eigener Lackierung.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -1802,7 +1803,7 @@
 <!-- ============ EINSATZ: EXECUTIVE HANGAR ============ -->
 <section class="view" id="view-exec-hangar" data-view="exec-hangar" hidden>
   <div class="head chead am" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">PvP-Gebiet</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag vtag" data-vpage="exec-hangar" hidden></span><span class="chead-tag">PvP-Gebiet</span></div>
     <h1>Executive Hangar</h1>
     <p class="lede">In Pyro liegen drei gesicherte Hangars voller Beute. Wer sieben Platinen <i class="gb">Compboards</i> aus den umkämpften Zonen <i class="gb">Contested Zones</i> sammelt, öffnet einen davon und darf eines von acht Schiffen dauerhaft behalten.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -1987,7 +1988,7 @@
 <!-- ============ EINSATZ: SIEGE OF ORISON ============ -->
 <section class="view" id="view-siege-orison" data-view="siege-orison" hidden>
   <div class="head chead am" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">1 bis 4 Spieler</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag vtag" data-vpage="siege-orison" hidden></span><span class="chead-tag">1 bis 4 Spieler</span></div>
     <h1>Siege of Orison</h1>
     <p class="lede">Die Bande Nine Tails hat drei Plattformen von Orison besetzt. Ihr holt sie euch zu Fuß zurück, Plattform für Plattform, bis zum Kampf gegen ihren Anführer Mendo Ren. Läuft in einer eigenen Instanz nur für eure Gruppe, ohne fremde Spieler.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -2059,7 +2060,7 @@
 <!-- ============ EINSATZ: HATHOR & WIKELO ============ -->
 <section class="view" id="view-hathor" data-view="hathor" hidden>
   <div class="head chead am" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Stanton</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag vtag" data-vpage="hathor" hidden></span><span class="chead-tag">Stanton</span></div>
     <h1>Hathor &amp; Wikelo</h1>
     <p class="lede">Auf Daymar und Aberdeen stehen stillgelegte Laser-Plattformen der Firma Hathor. Wer sie wieder in Gang bringt, schießt eine Höhle voller seltener Erze frei, darunter Carinit. Das tauscht der Händler Wikelo gegen Schiffe, Waffen und Rüstung.</p>
     <p class="small">Im Spiel heißt die Aktivität „Align &amp; Mine“. Grau dahinter steht jeweils der englische Begriff.</p>
@@ -2168,13 +2169,13 @@
     </div>
   </section>
 
-  <p class="small" style="margin-top:18px">Quellen: <a href="https://starcitizen.tools/Align_%26_Mine" target="_blank" rel="noopener">Star Citizen Wiki (Align &amp; Mine)</a>, <a href="https://starcitizen.tools/Carinite_(Pure)" target="_blank" rel="noopener">Carinit (Pure)</a>, <a href="https://starcitizen.tools/Wikelo" target="_blank" rel="noopener">Wikelo</a>, <a href="https://timesaver.gg/blog/star-citizen-wikelo-guide-alpha-4-10-2" target="_blank" rel="noopener">timesaver.gg</a> (Tausche 4.10.2), <a href="https://wikelotracker.com/" target="_blank" rel="noopener">Bobby’s Wikelo Tracker</a>. Stand 30. Oktober 2026, Patch 4.10.2. Patch 4.10.3 ist im Test und kann Angebote ändern.</p>
+  <p class="small" style="margin-top:18px">Quellen: <a href="https://starcitizen.tools/Align_%26_Mine" target="_blank" rel="noopener">Star Citizen Wiki (Align &amp; Mine)</a>, <a href="https://starcitizen.tools/Carinite_(Pure)" target="_blank" rel="noopener">Carinit (Pure)</a>, <a href="https://starcitizen.tools/Wikelo" target="_blank" rel="noopener">Wikelo</a>, <a href="https://timesaver.gg/blog/star-citizen-wikelo-guide-alpha-4-10-2" target="_blank" rel="noopener">timesaver.gg</a> (Tausche 4.10.2), <a href="https://wikelotracker.com/" target="_blank" rel="noopener">Bobby’s Wikelo Tracker</a>. Stand 30. Oktober 2026, Patch 4.10.2. Seit Patch 4.10.3 (LIVE seit 12. November) können sich Angebote geändert haben.</p>
 </section>
 
 <!-- ============ EINSATZ: BUNKER-MISSIONEN ============ -->
 <section class="view" id="view-bunker" data-view="bunker" hidden>
   <div class="head chead am" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag">Einstieg</span><span class="chead-tag">allein machbar</span></div>
+    <div class="chead-meta"><span class="chead-cat am"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg>Einsätze · Einsatzakte</span><span class="chead-tag vtag" data-vpage="bunker" hidden></span><span class="chead-tag">Einstieg</span><span class="chead-tag">allein machbar</span></div>
     <h1>Bunker-Missionen</h1>
     <p class="lede">Der Klassiker für den Einstieg in den Kampf zu Fuß: Ein Söldner-Auftrag schickt dich zu einem Bunker auf einem Mond in Stanton. Dort verteidigst du ihn oder räumst ihn von Gegnern. Kurz, gut allein machbar und mit Beute.</p>
   </div>
@@ -2247,7 +2248,7 @@
 <!-- ============ TASTEN ============ -->
 <section class="view" id="view-tasten" data-view="tasten" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg>Einstieg · Steuerung</span><span class="chead-tag">Standardbelegung Alpha 4.10.2</span><span class="chead-tag">QWERTZ</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-keys"/></svg>Einstieg · Steuerung</span><span class="chead-tag vtag" data-vpage="tasten" hidden></span><span class="chead-tag">QWERTZ</span></div>
     <h1>Tasten</h1>
     <p class="lede">Die Tasten, die du in den ersten Stunden brauchst. Belegungen ändern sich mit Patches, unsichere Einträge sind markiert.</p>
     <div class="chead-act"><a href="#tasten" data-jump="q">Taste suchen</a><a href="#hosas">HOSAS-Belegung</a><a href="#training">Training</a></div>
@@ -2404,7 +2405,7 @@
 <!-- ============ BERUFE: ÜBERSICHT ============ -->
 <section class="view" id="view-berufe" data-view="berufe" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg>Berufe</span><span class="chead-tag">Stand Alpha 4.10.3</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-credits"/></svg>Berufe</span><span class="chead-tag vtag" data-vpage="berufe" hidden></span></div>
     <h1>Berufe</h1>
     <p class="lede">Womit du im Verse Geld verdienst oder deine Ausrüstung verbesserst. Hier siehst du die Berufe im Vergleich. In den Kapiteln stehen Werkzeuge, Preise und Tabellen zum Nachschlagen.</p>
   </div>
@@ -2474,7 +2475,7 @@
 <!-- ============ MINING ============ -->
 <section class="view" id="view-mining" data-view="mining" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg>Berufe · Wissen</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ore"/></svg>Berufe · Wissen</span><span class="chead-tag vtag" data-vpage="mining" hidden></span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Mining</h1>
     <p class="lede">Werkzeuge und Infos fürs Mining: Signaturen auswerten, Erze und Fundorte suchen, die besten Raffinerien und Verkaufsorte finden, Schiffe und Methoden vergleichen.</p>
     <div class="chead-act"><a href="#mining" data-jump="rs-tool">RS-Rechner</a><a href="#mining" data-jump="loc-tool">Fundort-Suche</a><a href="#t-mining">Mining lernen</a><a href="#ruf">Ruf-Rechner</a></div>
@@ -2678,7 +2679,7 @@
 <!-- ============ SALVAGE ============ -->
 <section class="view" id="view-salvage" data-view="salvage" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Berufe · Wissen</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Berufe · Wissen</span><span class="chead-tag vtag" data-vpage="salvage" hidden></span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Salvage</h1>
     <p class="lede">Bergung heißt: Wracks finden, die Hülle zu Recycling-Material abkratzen, den Rest zerlegen und alles verkaufen. Hier findest du Schiffe, Preise, Baumaterial und die Regeln rund um Bauteile.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -2832,7 +2833,7 @@
 <!-- ============ HAULING ============ -->
 <section class="view" id="view-hauling" data-view="hauling" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg>Berufe · Wissen</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Preise schwanken</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-box"/></svg>Berufe · Wissen</span><span class="chead-tag vtag" data-vpage="hauling" hidden></span><span class="chead-tag">Preise schwanken</span></div>
     <h1>Hauling</h1>
     <p class="lede">Hauling heißt Fracht fahren: Kisten an einem Ort abholen und an einem anderen abliefern. Mit Frachtaufträgen bekommst du dafür einen festen Lohn und riskierst kein eigenes Geld. Hier steht, welches Schiff du wann brauchst, wie du im Rang aufsteigst und was es bringt.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3022,7 +3023,7 @@
       <div class="ore"><b>Hull C, Large Solar</b><span class="v">~313.000 aUEC</span><span class="w">~2.500 SCU, Spielerbericht</span></div>
     </div>
     <p class="small" style="margin-top:8px">Beispiel-Aufträge aus Patch 4.10.2 (Community-Guides, Oktober 2026). Pro Stunde ergibt das mit einem einzelnen Auftrag etwa 75.000–150.000 aUEC. Wer mehrere Aufträge mit demselben Ziel gleichzeitig fährt, kommt höher.</p>
-    <div class="hint" style="margin-top:10px">In Patch 4.8 lagen die Löhne viel höher (Member ~745.000, Senior 1,3–1,7 Mio. aUEC). Ältere Videos und Guides versprechen deshalb Millionen pro Stunde, das gilt heute nicht mehr. Die Testversion von 4.10.3 bringt laut Patch Notes eine weitere Überarbeitung der Auftragslöhne.</div>
+    <div class="hint" style="margin-top:10px">In Patch 4.8 lagen die Löhne viel höher (Member ~745.000, Senior 1,3–1,7 Mio. aUEC). Ältere Videos und Guides versprechen deshalb Millionen pro Stunde, das gilt heute nicht mehr. Für 4.10.3 hatten die Patch Notes der Testversion eine weitere Überarbeitung der Auftragslöhne angekündigt. Ob sie in LIVE so angekommen ist, ist hier noch nicht geprüft.</div>
   </section>
 
   <section>
@@ -3074,7 +3075,7 @@
 <!-- ============ RUF ============ -->
 <section class="view" id="view-ruf" data-view="ruf" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-rep"/></svg>Berufe · Ruf</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Richtwerte</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-rep"/></svg>Berufe · Ruf</span><span class="chead-tag vtag" data-vpage="ruf" hidden></span><span class="chead-tag">Richtwerte</span></div>
     <h1>Ruf</h1>
     <p class="lede">Jeder Auftraggeber merkt sich, wie gut du für ihn arbeitest. Mehr Ruf <i class="gb">Reputation</i> heißt bessere Aufträge, Baupläne und bei manchen sogar Schiffe. Wer früh weiß, bei wem er sammelt, spart sich viele Stunden.</p>
     <p class="small">Deinen Ruf siehst du im mobiGlas unter Ruf <i class="gb">Reputation</i>. Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3151,7 +3152,7 @@
 <!-- ============ CRAFTING ============ -->
 <section class="view" id="view-crafting" data-view="crafting" hidden>
   <div class="head chead" data-toc="h2">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Berufe · Wissen</span><span class="chead-tag">Stand Alpha 4.10.3</span><span class="chead-tag">Crafting seit 4.7</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fix"/></svg>Berufe · Wissen</span><span class="chead-tag vtag" data-vpage="crafting" hidden></span><span class="chead-tag">Crafting seit 4.7</span></div>
     <h1>Crafting</h1>
     <p class="lede">Seit Alpha 4.7 kannst du Waffen, Rüstung, Munition und Schiffsteile selbst herstellen. Du brauchst drei Dinge: einen Bauplan, das passende Material und eine Werkbank. Je besser das Material, desto besser das Ergebnis.</p>
     <p class="small">Grau dahinter steht jeweils der englische Begriff, wie er im Spiel heißt.</p>
@@ -3275,7 +3276,7 @@
 
 <section class="view" id="view-schiffe" data-view="schiffe" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg>Schiffe · Datenbank</span><span class="chead-tag">Spielversion 4.10.2</span><span class="chead-tag">Preise in aUEC</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ship"/></svg>Schiffe · Datenbank</span><span class="chead-tag vtag" data-vpage="schiffe" hidden></span><span class="chead-tag">Preise in aUEC</span></div>
     <h1>Schiffe</h1>
     <p class="lede">Alle flugfähigen Schiffe und Fahrzeuge mit Einsatzzweck, Fracht, Crew und Preisen im Spiel. Jedes Schiff kannst du in 3D drehen.</p>
     <div class="chead-act"><a href="#schiffe" data-jump="shmine">Meine Schiffe</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a><a href="#ccu-radar">CCU-Radar</a></div>
@@ -3382,7 +3383,7 @@
 <!-- ============ GLOSSAR ============ -->
 <section class="view" id="view-glossar" data-view="glossar" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Hilfe · Glossar</span><span class="chead-tag">Stand Alpha 4.10</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg>Hilfe · Glossar</span><span class="chead-tag vtag" data-vpage="glossar" hidden></span></div>
     <h1>Glossar</h1>
     <p class="lede">Die Begriffe und Abkürzungen, über die du in den ersten Wochen stolperst, kurz erklärt.</p>
     <div class="search">
@@ -3459,7 +3460,7 @@
 <!-- ============ HOSAS ============ -->
 <section class="view" id="view-hosas" data-view="hosas" hidden>
   <div class="head chead">
-    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-stick"/></svg>Einstieg · Steuerung</span><span class="chead-tag">Dual Virpil Alpha Prime</span><span class="chead-tag">Buzzzkiller-Profil</span><span class="chead-tag">Stand 5. Aug 2026 · Alpha 4.10</span></div>
+    <div class="chead-meta"><span class="chead-cat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-stick"/></svg>Einstieg · Steuerung</span><span class="chead-tag vtag" data-vpage="hosas" hidden></span><span class="chead-tag">Dual Virpil Alpha Prime</span><span class="chead-tag">Buzzzkiller-Profil</span></div>
     <h1>HOSAS</h1>
     <p class="lede">Tipp auf einen Knopf am Stick und sieh, was er in jeder Richtung macht. Oder such nach einer Funktion und finde heraus, wo sie liegt.</p>
     <div class="ho-bar">
@@ -6097,7 +6098,6 @@ window.SC_MINE = (function () {
 <script>
 /* ---------- Globale Suche, Nach-oben-Knopf, Patch-Hinweis ---------- */
 (function () {
-  var PAGE_PATCH = '4.10.3';   /* Stand der handgepflegten Inhalte; bei einem neuen Patch nach der Durchsicht hochsetzen */
   var gs = document.getElementById('gs'), q = document.getElementById('gsq'), list = document.getElementById('gslist');
   var idx = null, shown = [], cur = 0, lastFocus = null;
   function norm(s) { return String(s).toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss').replace(/[’'`´]/g, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
@@ -6265,19 +6265,7 @@ window.SC_MINE = (function () {
   var top = document.getElementById('totop');
   window.addEventListener('scroll', function () { top.classList.toggle('on', window.scrollY > 1400); }, { passive: true });
   top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
-
-  /* Patch-Hinweis: meldet CIG eine neuere Version als den Stand dieser Seite, steht das oben auf jeder Ansicht */
-  function cmp(a, b) { a = a.split('.'); b = b.split('.'); for (var i = 0; i < 3; i++) { var d = (+a[i] || 0) - (+b[i] || 0); if (d) return d; } return 0; }
-  fetch('news.json?t=' + Math.floor(Date.now() / 6e4)).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) {
-    var m = d && d.issues && /(\d+\.\d+(?:\.\d+)?)/.exec(d.issues.title || ''); if (!m || cmp(m[1], PAGE_PATCH) <= 0) return;
-    var seen = ''; try { seen = localStorage.getItem('sc-handbuch-patch') || ''; } catch (e) {}
-    if (seen === m[1]) return;
-    var n = document.getElementById('patchnote');
-    n.querySelector('strong').textContent = 'Patch ' + m[1] + ' ist live';
-    n.querySelector('span').textContent = 'Diese Seite ist noch auf Stand ' + PAGE_PATCH + '. Tasten, Preise, Ruf-Werte und Bugs können abweichen, bis sie durchgesehen ist.';
-    n.hidden = false;
-    document.getElementById('patchok').addEventListener('click', function () { n.hidden = true; try { localStorage.setItem('sc-handbuch-patch', m[1]); } catch (e) {} });
-  }).catch(function () {});
+  /* Patch-Hinweis und Seitenstände: version.js (LIVE aus version.json, Prüfstand je Seite aus content-status.json) */
 })();
 </script>
 <script>
@@ -6848,6 +6836,7 @@ window.SC_MINE = (function () {
   });
 })();
 </script>
+<script src="version.js"></script>
 <script src="patchnotes.js" defer></script>
 </body>
 </html>
