@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-16T16:10:57+00:00",
+ "checked": "2026-11-17T00:19:19+00:00",
  "threads": 16,
  "errors": [],
  "hits": [
@@ -106,7 +106,7 @@
    "ccu": 10,
    "value": 50,
    "saving": 40,
-   "new": true
+   "new": false
   },
   {
    "ship": "Constellation Mk V Centaurus",
