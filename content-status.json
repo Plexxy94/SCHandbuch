@@ -133,12 +133,12 @@
       "basis": "Kopfzeile: Stand Alpha 4.10"
     },
     "schiffe": {
-      "patch": "4.10.2",
-      "date": null,
-      "basis": "Datenstand: Schiffsdaten und Preise aus Spielversion 4.10.2-LIVE.12881860 (Kopf von ships.js)",
+      "patch": "4.10.3",
+      "date": "2026-11-17",
+      "basis": "Datenstand: Preise, Händler und Fracht am 17.11.2026 gegen die Wiki-API (Spielversion 4.10.3-LIVE.13165946) abgeglichen",
       "kind": "Datenstand",
       "state": "teilweise",
-      "reason": "Übrige Schiffsdaten (Werte, Ausrüstung, Detaildaten) noch auf 4.10.2. Nur die aUEC-Preise der acht in 4.10.3 neu verkauften Schiffe sowie Galaxy und Liberator (ohne Preis, nicht im Handel) sind aktualisiert; deren Detaildaten fehlen."
+      "reason": "Preise, Händler und Fracht entsprechen 4.10.3. Die Besatzungsangaben und Gewichte einzelner Schiffe sind noch nicht abgeglichen, weil das Wiki dort teils widersprüchliche Werte liefert. Galaxy und Liberator sind im Spiel noch bei keinem Händler gelistet."
     }
   },
   "hubs": {

@@ -19,7 +19,7 @@
 <link rel="preload" href="fonts/chakra-petch-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/chakra-petch-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="ships.js?v=20261118" as="script">
+<link rel="preload" href="ships.js?v=20261120" as="script">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css?v=20261153">
 </head>
@@ -3288,7 +3288,6 @@
     <h1>Schiffe</h1>
     <p class="lede">Alle flugfähigen Schiffe und Fahrzeuge mit Einsatzzweck, Fracht, Crew und Preisen im Spiel. Jedes Schiff kannst du in 3D drehen.</p>
     <div class="chead-act"><a href="#schiffe" data-pre="ship:mine">Meine Schiffe</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a><a href="#ccu-radar">CCU-Radar</a></div>
-    <div class="hint" style="margin-bottom:12px"><b>Neu in 4.10.3:</b> Die RSI Galaxy (Multi-Crew-Schiff mit Wechselmodul: Fracht bis 720 SCU oder Lazarett) und die Anvil Liberator (Träger für Schiffe und Bodenfahrzeuge) stehen jetzt in der Datenbank, allerdings ohne aUEC-Preis, weil sie im Spiel noch bei keinem Händler gelistet sind. Für Tiburon, Starlite, Ironclad, Ironclad Assault, Pitbull, Basher, M80 und Tyilui sind die aUEC-Preise nachgetragen (Stand 17.11.2026). Carrack, Perseus, Starlancer, Starlancer TAC, Hammerhead und Tiburon haben jetzt Size-3-Radare.</div>
   </div>
   <section class="fpanel sh-filter" aria-labelledby="sh-fh">
     <h2 class="sr-only" id="sh-fh">Filter</h2>
@@ -4937,7 +4936,7 @@ window.SC_MINE = (function () {
 })();
 </script>
 
-<script src="ships.js?v=20261118"></script>
+<script src="ships.js?v=20261120"></script>
 <script>
 /* ---------- Schiffe ---------- */
 (function () {
@@ -5218,7 +5217,7 @@ window.SC_MINE = (function () {
     if (detailReady) return detailReady;
     detailReady = new Promise(function (ok) {
       var sc = document.createElement('script');
-      sc.src = 'ships-detail.js?v=20261030'; sc.onload = ok; sc.onerror = ok;
+      sc.src = 'ships-detail.js?v=20261119'; sc.onload = ok; sc.onerror = ok;
       document.head.appendChild(sc);
     });
     return detailReady;
@@ -5279,7 +5278,7 @@ window.SC_MINE = (function () {
         (s.u ? '<a href="' + esc(s.u) + '" target="_blank" rel="noopener">RSI-Seite ↗</a>' : '') +
         (s.fy ? '<a href="' + esc(s.fy) + '" target="_blank" rel="noopener">FleetYards ↗</a>' : '') +
         '<button type="button" id="shdt-copy">Link kopieren</button></div>' +
-      '<p class="small">Werte laut Star Citizen Wiki (Spielversion 4.10.2), Preise über UEX. Der grün markierte Händler ist der günstigste.</p>' +
+      '<p class="small">Werte laut Star Citizen Wiki, Preise über UEX, Preise und Fracht für Spielversion 4.10.3 geprüft. Der grün markierte Händler ist der günstigste.</p>' +
       '</div>';
     $('shdt-close').addEventListener('click', function () { dt.close(); });
     var b3 = $('shdt-3d'); if (b3) b3.addEventListener('click', function () { open3d(s); });
