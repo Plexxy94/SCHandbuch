@@ -15,9 +15,13 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261116">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <script>try{if(JSON.parse(localStorage.getItem("sc-handbuch-me")||"{}").ss)document.documentElement.classList.add("ss")}catch(e){}</script>
-<script>/* gleiche JSON-Adressen mit Zeitstempel (news.json?t=…) werden pro Seitenaufruf nur einmal geladen und an alle Nutzer weitergereicht */(function(){var f=window.fetch,c={};if(!f)return;window.fetch=function(u,o){if(typeof u==="string"&&!o&&/\.json\?t=\d+$/.test(u)){if(!c[u])c[u]=f.call(window,u);return c[u].then(function(r){return r.clone();});}return f.apply(this,arguments);};})();</script>
+<script>/* Gemeinsamer JSON-Abruf: gleiche Dateien (news.json, ccu.json, …) mit beliebigem Zeitstempel-Parameter werden 60 Sekunden lang nur einmal geladen und an alle Nutzer weitergereicht. Die vier Startdateien beginnen schon hier, nicht erst am Ende der Seite. */(function(){var f=window.fetch,c={};if(!f)return;function key(u){var m=/^([\w.-]+\.json)\?(?:t|v)=\d+$/.exec(u);return m&&m[1];}window.fetch=function(u,o){var k=typeof u==="string"&&!o&&key(u);if(k){var e=c[k];if(!e||Date.now()-e.t>6e4){e=c[k]={t:Date.now(),p:f.call(window,u)};}return e.p.then(function(r){return r.clone();});}return f.apply(this,arguments);};["news.json","ccu.json","version.json","content-status.json"].forEach(function(n){var m=Math.floor(Date.now()/6e5);window.fetch(n+"?t="+m).catch(function(){});});})();</script>
+<link rel="preload" href="fonts/chakra-petch-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/chakra-petch-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="ships.js?v=20261112" as="script">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261148">
+<link rel="stylesheet" href="style.css?v=20261149">
 </head>
 <body>
 
@@ -4526,7 +4530,6 @@ window.SC_MINE = (function () {
 })();
 </script>
 
-<script src="sticks.js?v=20261028c"></script>
 <script>
 /* ---------- HOTAS: Dual Virpil Alpha Prime, Belegung von Buzzzkiller (Alpha 4.10, 5. Aug 2026) ----------
    Eintrag: "tags|Deutsch|English". Tags: M Modifier, H halten, T tippen, D doppelt, T/H tippen/halten,
@@ -4919,8 +4922,19 @@ window.SC_MINE = (function () {
   $('hoen').addEventListener('change', function () { view.classList.toggle('ho-hide-en', !this.checked); });
   $('hom').addEventListener('change', function () { showM = this.checked; render(); });
   q.addEventListener('input', render);
-  bar();
-  render();
+  /* Belegung und Zeichnungen erst beim ersten Öffnen der HOSAS-Ansicht: sticks.js (113 KB) wird dann nachgeladen */
+  var started = false;
+  function loadSticks() {
+    return new Promise(function (ok) {
+      if (window.STICK_ART) return ok();
+      var sc = document.createElement('script');
+      sc.src = 'sticks.js?v=20261028c'; sc.onload = ok; sc.onerror = ok;   /* ohne Zeichnungen bleibt die Belegung benutzbar */
+      document.head.appendChild(sc);
+    });
+  }
+  function start() { if (started) return; started = true; loadSticks().then(function () { bar(); render(); }); }
+  document.addEventListener('viewchange', function (e) { if (e.detail === 'hosas') start(); });
+  if (!view.hidden) start();
 })();
 </script>
 
@@ -4951,7 +4965,9 @@ window.SC_MINE = (function () {
     $('shcat').appendChild(b);
   });
 
-  /* Karten einmal bauen */
+  /* Karten einmal bauen: erst beim ersten Öffnen der Schiffe-Ansicht (ensure), nicht beim Seitenstart. Suche, Planer, Frachter-Finder und Startseite brauchen nur die Daten (window.SHIPS). */
+  var built = false;
+  function buildCards() {
   SH.forEach(function (s, i) {
     var el = document.createElement('article');
     el.className = 'sh' + (s.tip ? ' tip' : s.later ? ' later' : '');
@@ -4982,8 +4998,12 @@ window.SC_MINE = (function () {
     s._t = (s.n + ' ' + s.full + ' ' + s.mn + ' ' + s.m + ' ' + s.c + ' ' + s.f.join(' ')).toLowerCase();
     grid.appendChild(el);
   });
+  SH.forEach(function (s) { s._el.dataset.slug = s.slug; s._el.classList.add('clickable'); });
+  }
+  function ensure() { if (built) return; built = true; buildCards(); window.SC_MINE.sync(); apply(); }
 
   function apply() {
+    if (!built) { ensure(); return; }
     var v = q.value.trim().toLowerCase();
     var tip = $('shtip').checked, buy = $('shbuy').checked, rent = $('shrent').checked, veh = $('shveh').checked;
     var M = window.SC_MINE, mine = $('shmine').checked;
@@ -5071,14 +5091,15 @@ window.SC_MINE = (function () {
       $('shmine-note').hidden = false;
     }
   }
-  document.addEventListener('minechange', function () { mineState(); if ($('shmine').checked) { keepLimit = true; apply(); } });
+  document.addEventListener('minechange', function () { mineState(); if (built && $('shmine').checked) { keepLimit = true; apply(); } });
   $('shmine-link').addEventListener('click', function () {
     var u = $('shmine-url'), b = this; u.value = window.SC_MINE.link(); u.hidden = false; u.focus(); u.select();
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(u.value).then(function () { b.textContent = 'Link kopiert ✓'; setTimeout(function () { b.textContent = 'Link zum Übertragen'; }, 2500); }, function () {});
   });
   $('shmine-clear').addEventListener('click', function () { if (confirm('Alle markierten Schiffe aus „Meine Schiffe“ entfernen?')) window.SC_MINE.clear(); });
-  mineState(); window.SC_MINE.sync();
-  apply();
+  mineState();
+  document.addEventListener('viewchange', function (e) { if (e.detail === 'schiffe') ensure(); });
+  if (!$('view-schiffe').hidden) ensure();
 
   /* 3D-Viewer: three.js r147 mit glTF- und Draco-Loader, erst beim ersten Öffnen geladen */
   var dlg = $('sh3d-dlg'), stage = $('sh3d-stage'), msg = $('sh3d-msg');
@@ -5192,7 +5213,7 @@ window.SC_MINE = (function () {
   /* ---------- Detailansicht: #s-<slug> ---------- */
   var dt = $('shdt'), dtBody = $('shdt-body');
   var bySlug = {};
-  SH.forEach(function (s) { bySlug[s.slug] = s; s._el.dataset.slug = s.slug; s._el.classList.add('clickable'); });
+  SH.forEach(function (s) { bySlug[s.slug] = s; });
   var detailReady = null;
   function loadDetail() {
     if (detailReady) return detailReady;
@@ -6047,11 +6068,20 @@ window.SC_MINE = (function () {
   var by = {};
   (window.SHIPS || []).forEach(function (x) { by[x.slug] = x; });
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  /* Daten sofort (Suche, Filter), Karten erst beim ersten Öffnen der Ansicht (745 DOM-Knoten) */
+  WK.forEach(function (w) {
+    var sh = by[w.s] || {};
+    w.kind = (w.r.match(/Wikelo (War|Work|Sneak|Speedy|Savior)/) || [])[1] || '';
+    w.cat = sh.c || '';
+    w.title = sh.n || w.r;
+    w.blurb = [w.r, w.c, w.i.map(function (x) { return x[0] + ' ' + x[1]; }).join(' '), w.n || ''].join(' ');
+  });
+  window.SC_WK = WK;
+  var wbuilt = false;
+  function buildWk() {
   WK.forEach(function (w) {
     var sh = by[w.s] || {}, el = document.createElement('article');
     el.className = 'wk';
-    w.kind = (w.r.match(/Wikelo (War|Work|Sneak|Speedy|Savior)/) || [])[1] || '';
-    w.cat = sh.c || '';
     el.innerHTML = '<div class="wk-img">' + (sh.img ? '<img src="' + esc(sh.img) + '" alt="' + esc(sh.n || '') + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">' : '') + '</div>' +
       '<div class="wk-b"><h4>' + (sh.n ? '<a class="ship-a" href="#s-' + esc(w.s) + '">' + esc(sh.n) + '</a>' : esc(w.r)) + '</h4>' +
       '<span class="var">' + esc(w.r) + '<br>Auftrag „' + esc(w.c) + '“</span>' +
@@ -6064,8 +6094,13 @@ window.SC_MINE = (function () {
     w.el = el;
     grid.appendChild(el);
   });
+  }
+  function ensureWk() { if (wbuilt) return; wbuilt = true; buildWk(); apply(currentF); }
+  var currentF = '';
   var chips = Array.prototype.slice.call(document.querySelectorAll('#wkchips .chip'));
   function apply(f) {
+    currentF = f || '';
+    if (!wbuilt) { ensureWk(); return; }
     var n = 0;
     WK.forEach(function (w) {
       var ok = !f || (f === 'cheap' ? w.f && w.f <= 10 : f === 'Work' ? w.kind === 'Work' || /Industrie|Fracht/.test(w.cat) : w.kind === f);
@@ -6079,7 +6114,8 @@ window.SC_MINE = (function () {
       apply(c.dataset.f);
     });
   });
-  apply('');
+  document.addEventListener('viewchange', function (e) { if (e.detail === 'hathor') ensureWk(); });
+  if (!document.getElementById('view-hathor').hidden) ensureWk();
 })();
 </script>
 <script>
@@ -6200,9 +6236,8 @@ window.SC_MINE = (function () {
       add('Bug', 35, txt(c), 'Bugs & Workarounds' + (ent ? ' · ' + ent : ''), ent + ' bug fehler workaround ' + txt(b).slice(0, 400), function () { showBug(b); });
     });
     /* Wikelo-Tausche */
-    Array.prototype.forEach.call(document.querySelectorAll('#wkgrid .wk'), function (w) {
-      var h = w.querySelector('h3, h4, b'); if (!h) return;
-      add('Wikelo', 20, txt(h), 'Hathor & Wikelo · Tausch', 'wikelo ' + txt(w).slice(0, 200), function () { showWk(w); });
+    (window.SC_WK || []).forEach(function (w) {
+      add('Wikelo', 20, w.title, 'Hathor & Wikelo · Tausch', 'wikelo ' + w.blurb.slice(0, 200), function () { showWk(w); });
     });
   }
   function showBug(b) {
@@ -6218,8 +6253,10 @@ window.SC_MINE = (function () {
   function showWk(w) {
     go('hathor');
     setTimeout(function () {
-      if (w.hidden || !w.getClientRects().length) { var all = document.querySelector('#wkchips .chip'); if (all) all.click(); }
-      jump(w);
+      var el = w.el;   /* die Karten entstehen beim Öffnen der Ansicht */
+      if (!el) return;
+      if (el.hidden || !el.getClientRects().length) { var all = document.querySelector('#wkchips .chip'); if (all) all.click(); }
+      jump(el);
     }, 90);
   }
   var QUICK = ['Golem', 'Landen', 'Quantanium', 'Aufzug', 'CrimeStat', 'Wikelo', 'Versicherung'];
@@ -6836,6 +6873,7 @@ window.SC_MINE = (function () {
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (en) {
       visible = en[0].isIntersecting;
+      if (visible) loadPool();
       if (visible && cur && !want3d && !compact.matches) load3d();
       if (view) view.kick();
     }, { rootMargin: '120px' }).observe(stage);
@@ -6843,12 +6881,18 @@ window.SC_MINE = (function () {
   compact.addEventListener && compact.addEventListener('change', function () { if (!compact.matches && cur && !want3d && visible) load3d(); });
 
   nextBtn.disabled = true;
+  /* focus-pool.json (34 KB) erst laden, wenn das Panel in die Nähe des Bildschirms kommt (nie im Second-Screen-Modus, dort ist es ausgeblendet) */
+  var poolReq = false;
+  function loadPool() {
+  if (poolReq) return; poolReq = true;
   fetch('focus-pool.json?v=' + Math.floor(Date.now() / 864e5)).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     pool = (d && d.ships || []).filter(function (p) { return SH[p.slug] && p.holo; });
     if (!pool.length) return fallback('');
     /* erst nach dem ersten Bild der Seite anfangen */
     (window.requestIdleCallback || function (f) { setTimeout(f, 300); })(start);
   }).catch(function () { fallback(''); });
+  }
+  if (!('IntersectionObserver' in window)) loadPool();
 })();
 </script>
 <script>

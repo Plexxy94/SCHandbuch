@@ -2152,3 +2152,9 @@ html.ss .fbar { margin-top: 6px; padding: 6px 10px; }
 .search + .fbar { margin-top: 2px; }
 @media (max-width: 640px) { .sh-opts { gap: 0 14px; } .sh-opts .check { min-height: 40px; } }
 .fbar { scroll-margin-top: 74px; }
+
+/* Platz für asynchron gefüllte Panels der Startseite reservieren (kein Springen beim Eintreffen von news.json und ccu.json) */
+#st-news { min-height: 230px; }
+#st-status { min-height: 128px; }
+#st-ccu { min-height: 44px; }
+@media (max-width: 640px) { #st-news { min-height: 270px; } }
