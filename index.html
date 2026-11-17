@@ -14,8 +14,9 @@
 <meta property="og:locale" content="de_DE">
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261116">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
+<script>try{if(JSON.parse(localStorage.getItem("sc-handbuch-me")||"{}").ss)document.documentElement.classList.add("ss")}catch(e){}</script>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261129">
+<link rel="stylesheet" href="style.css?v=20261132">
 </head>
 <body>
 
@@ -33,6 +34,7 @@
     </div>
     <a class="nav-led" id="navled" href="#news" hidden><i></i><span>Server</span></a>
     <button type="button" class="nav-search" id="navsearch" aria-label="Seite durchsuchen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Suche</span><kbd>/</kbd></button>
+    <button type="button" class="nav-ccu nav-me" id="navme" aria-label="Meine Seiten: Favoriten, zuletzt besucht, Second-Screen-Modus" title="Meine Seiten" aria-haspopup="dialog" aria-expanded="false" aria-controls="me-pop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4l2.5 5.2 5.7.8-4.1 4 1 5.7-5.1-2.7-5.1 2.7 1-5.7-4.1-4 5.7-.8z"/></svg></button>
     <a class="nav-ccu" href="#ccu-radar" aria-label="CCU-Radar" title="CCU-Radar: lohnende Schiffs-Upgrades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="4.6"/><path d="M12 12 18.6 5.4"/><circle cx="16.4" cy="14.6" r="1.1" fill="currentColor" stroke="none"/></svg><span class="news-dot" id="ccudot" title="Neue Meldung" hidden></span></a>
     <button type="button" class="nav-menu" id="navmenu" aria-label="Menü öffnen" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
@@ -183,14 +185,20 @@
     <div id="st-tools-groups"></div>
   </section>
 
-  <!-- 5 · Persönliche Schnellzugriffe (nur sichtbar, wenn im Browser etwas gespeichert ist) -->
+  <!-- 5 · Persönliche Schnellzugriffe: Favoriten und zuletzt besucht (personal.js) -->
+  <section class="hx-sec" id="st-me-sec" aria-labelledby="st-h-me">
+    <div class="hx-h"><h2 id="st-h-me">Deine Schnellzugriffe</h2><button type="button" class="me-ss" data-me="ss" aria-pressed="false"><span aria-hidden="true">▭</span> Second-Screen-Modus</button></div>
+    <div class="me-chips" id="st-me"></div>
+  </section>
+
+  <!-- 5b · Dein Stand (nur sichtbar, wenn im Browser etwas gespeichert ist) -->
   <section class="hx-sec" id="st-mine-sec" aria-labelledby="st-h-mine" hidden>
     <div class="hx-h"><h2 id="st-h-mine">Dein Stand</h2><span class="small">nur in diesem Browser gespeichert</span></div>
     <div class="st-mine" id="st-mine"></div>
   </section>
 
   <!-- 6 · Schiff im Fokus -->
-  <section class="hx-sec" aria-labelledby="st-h-ship">
+  <section class="hx-sec hx-deco" id="st-ship-sec" aria-labelledby="st-h-ship">
     <div class="hx-h"><h2 id="st-h-ship">Schiff im Fokus</h2><a href="#schiffe">Schiffsdatenbank →</a></div>
     <div class="hx-ship">
       <div class="t-blk sf" id="sf" role="group" aria-label="Schiff im Fokus">
@@ -265,7 +273,7 @@
   </section>
 
   <!-- Rest: alles, was bisher auf der Startseite stand, eingeklappt -->
-  <section class="hx-sec" aria-labelledby="st-h-more">
+  <section class="hx-sec hx-deco" id="st-more-sec" aria-labelledby="st-h-more">
     <h2 class="hx-eyebrow" id="st-h-more">Mehr im Handbuch</h2>
     <details class="hx-more">
       <summary>Alle Bereiche im Überblick <small>Tutorials, Steuerung, Berufe, Einsätze, Schiffe, Hilfe</small></summary>
@@ -6837,6 +6845,7 @@ window.SC_MINE = (function () {
 })();
 </script>
 <script src="version.js"></script>
+<script src="personal.js"></script>
 <script src="patchnotes.js" defer></script>
 </body>
 </html>
