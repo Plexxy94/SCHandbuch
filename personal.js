@@ -148,8 +148,8 @@
   pop.className = 'me-pop'; pop.id = 'me-pop'; pop.hidden = true; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', 'Meine Seiten');
   pop.innerHTML = '<div class="me-top"><b>Meine Seiten</b><button type="button" class="me-x" data-me="close" aria-label="Schließen">✕</button></div>' +
     '<button type="button" class="me-cur" id="me-cur" data-me="cur" aria-pressed="false"></button>' +
-    '<h3>Favoriten</h3><ul id="me-fav"></ul><h3>Zuletzt besucht</h3><ul id="me-rec"></ul>' +
-    '<h3>Anzeige</h3><button type="button" class="me-ss" data-me="ss" aria-pressed="false"><span aria-hidden="true">▭</span> Second-Screen-Modus</button>' +
+    '<p class="me-h">Favoriten</p><ul id="me-fav"></ul><p class="me-h">Zuletzt besucht</p><ul id="me-rec"></ul>' +
+    '<p class="me-h">Anzeige</p><button type="button" class="me-ss" data-me="ss" aria-pressed="false"><span aria-hidden="true">▭</span> Second-Screen-Modus</button>' +
     '<p class="small">Kompakter, ohne Dekoration und Animationen, für ein zweites Fenster oder einen zweiten Monitor.</p>' +
     '<button type="button" class="me-clear" data-me="clear">Favoriten und Verlauf löschen</button>' +
     '<p class="small">Nur in diesem Browser gespeichert. „Meine Schiffe“, Häkchen, Planer und Hangar-Liste bleiben davon unberührt.</p>';

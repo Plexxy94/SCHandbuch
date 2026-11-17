@@ -15,11 +15,13 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261116">
 <title>SC HANDBUCH – Dein Begleiter durch das Verse</title>
 <script>try{if(JSON.parse(localStorage.getItem("sc-handbuch-me")||"{}").ss)document.documentElement.classList.add("ss")}catch(e){}</script>
+<script>/* gleiche JSON-Adressen mit Zeitstempel (news.json?t=…) werden pro Seitenaufruf nur einmal geladen und an alle Nutzer weitergereicht */(function(){var f=window.fetch,c={};if(!f)return;window.fetch=function(u,o){if(typeof u==="string"&&!o&&/\.json\?t=\d+$/.test(u)){if(!c[u])c[u]=f.call(window,u);return c[u].then(function(r){return r.clone();});}return f.apply(this,arguments);};})();</script>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261132">
+<link rel="stylesheet" href="style.css?v=20261136">
 </head>
 <body>
 
+<button type="button" class="skip" id="skip">Zum Inhalt springen</button>
 <nav class="nav" aria-label="Hauptnavigation">
   <div class="nav-in">
     <a class="brand" href="#start" aria-label="SC HANDBUCH, zur Startseite"><svg class="brand-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 2.2l12.4 7.1v13.4L16 29.8 3.6 22.7V9.3z" stroke-width="1.6"/><path d="M16 8.4l7 4v7.2l-7 4-7-4v-7.2z" stroke-width="1.2" fill="currentColor" fill-opacity=".16"/><path d="M16 2.2V8M3.6 9.3l5.4 3.1M28.4 9.3l-5.4 3.1" stroke-width="1.2" opacity=".7"/><circle cx="16" cy="16" r="2.1" fill="var(--accent-amber)" stroke="none"/></svg><span class="brand-name">SC <b>HANDBUCH</b></span><span class="brand-sub">Dein Begleiter durch das Verse</span></a>
@@ -122,7 +124,7 @@
   <symbol id="i-craft" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.4"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1"/></symbol>
   <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/><path d="M5.7 5.7l3.7 3.7M14.6 14.6l3.7 3.7M18.3 5.7l-3.7 3.7M9.4 14.6l-3.7 3.7"/></symbol>
 </svg>
-<main class="wrap">
+<main class="wrap" id="main" tabindex="-1">
 <nav class="crumbs" id="crumbs" aria-label="Brotkrumen" hidden><ol></ol></nav>
 
 <!-- ============ START ============ -->
@@ -508,49 +510,49 @@
   <div class="chapters">
     <a class="chapter first" href="#heimat">
       <span class="no">1 · VOR DEM ERSTEN LOGIN</span>
-      <h3>Heimatstadt wählen</h3>
+      <h2>Heimatstadt wählen</h2>
       <p>Die vier Städte in Stanton im Vergleich: Wege, Raffinerien, Läden, Preise und aktuelle Bug-Warnungen.</p>
       <span class="go">Vergleichen →</span>
     </a>
     <a class="chapter" href="#erste-schritte">
       <span class="no">2 · IM SPIEL</span>
-      <h3>Erste Schritte</h3>
+      <h2>Erste Schritte</h2>
       <p>Vom Aufwachen im Quartier über den ersten Flug und Quantensprung bis zum ersten bezahlten Auftrag. Sieben Etappen zum Abhaken.</p>
       <span class="go">Starten →</span>
     </a>
     <a class="chapter" href="#ueberleben">
       <span class="no">3 · WENN WAS SCHIEFGEHT</span>
-      <h3>Überleben</h3>
+      <h2>Überleben</h2>
       <p>Verletzt, gestorben, Schiff zerstört oder CrimeStat: was dann passiert, was es kostet und wie du es vermeidest.</p>
       <span class="go">Nachlesen →</span>
     </a>
     <a class="chapter" href="#t-mining">
       <span class="no">GELD VERDIENEN</span>
-      <h3>Mining lernen</h3>
+      <h2>Mining lernen</h2>
       <p>Eine ganze Runde mit dem Golem: Scannen, Stein brechen, Erz einsaugen, raffinieren, verkaufen. Dazu Handabbau zu Fuß.</p>
       <span class="go">Abbauen →</span>
     </a>
     <a class="chapter" href="#t-salvage">
       <span class="no">GELD VERDIENEN</span>
-      <h3>Salvage lernen</h3>
+      <h2>Salvage lernen</h2>
       <p>Eine ganze Runde mit der Salvation: Auftrag, Hülle abkratzen, Wrack zerlegen, RMC und Baumaterial zu Geld machen.</p>
       <span class="go">Bergen →</span>
     </a>
     <a class="chapter" href="#t-hauling">
       <span class="no">GELD VERDIENEN</span>
-      <h3>Hauling lernen</h3>
+      <h2>Hauling lernen</h2>
       <p>Dein erster Frachtauftrag: annehmen, Kisten holen, einladen, fliegen, abliefern. Ganz ohne eigenes Geld.</p>
       <span class="go">Laden →</span>
     </a>
     <a class="chapter" href="#t-crafting">
       <span class="no">HERSTELLEN</span>
-      <h3>Crafting lernen</h3>
+      <h2>Crafting lernen</h2>
       <p>Bauplan bekommen, Fabricator aufstellen, Material einsetzen, Gegenstand abholen.</p>
       <span class="go">Bauen →</span>
     </a>
     <a class="chapter" href="#training">
       <span class="no">ÜBEN · BETA</span>
-      <h3>Training</h3>
+      <h2>Training</h2>
       <p>Tastatur-Karte, Tasten-Trainer und eine Mining-Übung zum Ausprobieren, bevor du im Cockpit sitzt.</p>
       <span class="go">Üben →</span>
     </a>
@@ -1570,37 +1572,37 @@
   <div class="chapters">
     <a class="chapter first" href="#exec-hangar">
       <span class="no">PYRO · GRUPPE · PVP</span>
-      <h3>Executive Hangar</h3>
+      <h2>Executive Hangar</h2>
       <p>Sieben Platinen aus den umkämpften Zonen sammeln, den Hangar öffnen und eines von acht Schiffen dauerhaft behalten. Mit Live-Timer und Abhak-Liste.</p>
       <span class="go">Zur Anleitung →</span>
     </a>
     <a class="chapter" href="#siege-orison">
       <span class="no">ORISON · 1–4 SPIELER · NUR KI</span>
-      <h3>Siege of Orison</h3>
+      <h2>Siege of Orison</h2>
       <p>Drei Plattformen von Orison von den Nine Tails zurückholen, bis zum Bosskampf. Eigene Instanz für eure Gruppe, neu seit 4.10.</p>
       <span class="go">Zur Anleitung →</span>
     </a>
     <a class="chapter" href="#vanduul">
       <span class="no">NYX · INTERSEC · NEU IN 4.10.3</span>
-      <h3>Vanduul-Aufträge</h3>
+      <h2>Vanduul-Aufträge</h2>
       <p>InterSec Defense Solutions schickt dich gegen die Vanduul: Banden ausräuchern, Schiffe zurückholen, Mauler jagen. Dazu das Skarnov-Gewehr.</p>
       <span class="go">Zur Anleitung →</span>
     </a>
     <a class="chapter" href="#hathor">
       <span class="no">DAYMAR · ABERDEEN · WIKELO</span>
-      <h3>Hathor &amp; Wikelo</h3>
+      <h2>Hathor &amp; Wikelo</h2>
       <p>Laser-Plattformen wieder in Gang bringen, eine Höhle mit Carinit freischießen und bei Wikelo gegen Schiffe tauschen.</p>
       <span class="go">Zur Anleitung →</span>
     </a>
     <a class="chapter" href="#recco">
       <span class="no">NYX · LEVSKI · ALLEIN MACHBAR</span>
-      <h3>Recco Battaglia</h3>
+      <h2>Recco Battaglia</h2>
       <p>Mining-Aufträge in Levski: Ruf sammeln und Golem, Prospector und MOLE als Alliance-Version gratis bekommen. Mit Ruf-Rechner.</p>
       <span class="go">Zur Anleitung →</span>
     </a>
     <a class="chapter" href="#bunker">
       <span class="no">EINSTIEG · ALLEIN MACHBAR</span>
-      <h3>Bunker-Missionen</h3>
+      <h2>Bunker-Missionen</h2>
       <p>Der Klassiker zum Lernen: Bunker auf Monden verteidigen oder räumen. Kurz, mit Beute und Ruf.</p>
       <span class="go">Zur Anleitung →</span>
     </a>
@@ -2420,31 +2422,31 @@
   <div class="chapters">
     <a class="chapter first" href="#mining">
       <span class="no">GELD VERDIENEN</span>
-      <h3>Mining</h3>
+      <h2>Mining</h2>
       <p>RS-Rechner, Erz- und Fundort-Suche mit den besten Raffinerien und Verkaufsorten, Schiffe und Methoden im Vergleich.</p>
       <span class="go">Abbauen →</span>
     </a>
     <a class="chapter" href="#salvage">
       <span class="no">GELD VERDIENEN</span>
-      <h3>Salvage</h3>
+      <h2>Salvage</h2>
       <p>Schiffe und Puffer, wo RMC am meisten bringt, Baumaterial, Bricking und Regeln.</p>
       <span class="go">Bergen →</span>
     </a>
     <a class="chapter" href="#hauling">
       <span class="no">GELD VERDIENEN</span>
-      <h3>Hauling</h3>
+      <h2>Hauling</h2>
       <p>Frachtaufträge und Handel: welches Schiff wann, Ränge, Kistengrößen und ein Frachter-Finder.</p>
       <span class="go">Laden →</span>
     </a>
     <a class="chapter" href="#crafting">
       <span class="no">HERSTELLEN</span>
-      <h3>Crafting</h3>
+      <h2>Crafting</h2>
       <p>Baupläne, Material und Qualität: was du bauen kannst und was dein Material bewirkt.</p>
       <span class="go">Bauen →</span>
     </a>
     <a class="chapter" href="#ruf">
       <span class="no">FÜR ALLE BERUFE</span>
-      <h3>Ruf</h3>
+      <h2>Ruf</h2>
       <p>Bei wem sich Ruf lohnt, was er bringt und wie du ihn am schnellsten sammelst. Mit Ruf-Rechner.</p>
       <span class="go">Ruf sammeln →</span>
     </a>
@@ -3815,7 +3817,7 @@ window.SC_MINE = (function () {
     if (!T || !head || v.querySelector('.tm')) return;
     var open = !!HOME[key] && HOME[key] === view && window.matchMedia('(min-width: 700px)').matches;   /* Handy: eingeklappt, damit der Inhalt der Seite zuerst kommt */
     head.insertAdjacentHTML('afterend', '<details class="tm"' + (open ? ' open' : '') + '><summary><b>' + esc(T.title) + '</b><small>alles Vorhandene zum Thema, ohne Umweg</small></summary><div class="tm-grid">' +
-      T.rows.map(function (r) { return '<div class="tm-c"><h3>' + esc(r[0]) + '</h3><ul>' + r[1].map(function (it) { return topicLink(it, view); }).join('') + '</ul></div>'; }).join('') + '</div></details>');
+      T.rows.map(function (r) { return '<div class="tm-c"><p class="tm-h">' + esc(r[0]) + '</p><ul>' + r[1].map(function (it) { return topicLink(it, view); }).join('') + '</ul></div>'; }).join('') + '</div></details>');
   }
   /* Vorauswahl nach dem Sprung: Bugliste nach Bereich, Schiffsdatenbank nach Einsatzzweck */
   document.addEventListener('click', function (e) {
@@ -4011,6 +4013,9 @@ window.SC_MINE = (function () {
     }
     if (!keepScroll) window.scrollTo(0, 0);
     document.dispatchEvent(new CustomEvent('viewchange', { detail: h }));
+    /* Tastatur und Screenreader: nach einem Seitenwechsel steht der Fokus auf der Überschrift der neuen Seite (nicht beim ersten Laden) */
+    if (window.__scShown) { var t1 = document.querySelector('#view-' + h + ' h1'); if (t1) { t1.tabIndex = -1; try { t1.focus({ preventScroll: true }); } catch (e) {} } }
+    window.__scShown = true;
     if (wantPlan) setTimeout(function () {
       var d = document.getElementById('st-plan'); if (!d) return;
       d.open = true;
@@ -4019,6 +4024,8 @@ window.SC_MINE = (function () {
     }, 200);
   }
   window.addEventListener('hashchange', show);
+  var skip = document.getElementById('skip');
+  if (skip) skip.addEventListener('click', function () { var m = document.getElementById('main'); m.focus({ preventScroll: true }); m.scrollIntoView({ block: 'start' }); });
   show();
   /* Handy: Leiste beim Runterscrollen ausblenden, beim Hochscrollen sofort zeigen */
   var navEl = document.querySelector('.nav'), narrow = window.matchMedia('(max-width: 860px)'), lastY = window.scrollY;

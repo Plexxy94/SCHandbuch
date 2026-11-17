@@ -1822,7 +1822,7 @@ select { min-height: 44px; border-radius: 2px; }
 .pr-links a:hover { border-color: var(--cy-x); color: var(--cy-x); }
 
 /* 4 · Werkzeuge: ruhiger, Titel und eine Zeile */
-.st-tools.hx-tools { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+#st-tools-groups .st-tools.hx-tools { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .hx-tools .st-tool { padding: 12px 14px 12px 16px; text-align: left; font: inherit; cursor: pointer; color: var(--text-primary); }
 .hx-tools .st-tool b { font-size: 15.5px; }
 .hx-tools .st-tool span { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
@@ -1865,7 +1865,7 @@ select { min-height: 44px; border-radius: 2px; }
 @media (max-width: 1100px) {
   .qa { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .st-prof { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .st-tools.hx-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #st-tools-groups .st-tools.hx-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .st-now.hx-now { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .st-now.hx-now > :nth-child(2) { grid-column: 1 / -1; order: 3; }
 }
@@ -1886,7 +1886,7 @@ select { min-height: 44px; border-radius: 2px; }
   .pr-main .ic { width: 30px; height: 30px; padding: 5px; grid-row: auto; }
   .pr-main span { display: none; }
   .pr-main b { font-size: 16px; }
-  .st-tools.hx-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  #st-tools-groups .st-tools.hx-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .hx-tools .st-tool { grid-template-columns: 30px minmax(0, 1fr); gap: 0 9px; padding: 10px 10px 10px 12px; }
   .hx-tools .st-tool .ic { width: 30px; height: 30px; padding: 6px; grid-row: auto; }
   .hx-tools .st-tool span { display: none; }
@@ -1909,7 +1909,7 @@ select { min-height: 44px; border-radius: 2px; }
 .tm[open] > summary::after { content: "schließen"; }
 .tm > summary:hover b { color: var(--accent-cyan); }
 .tm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 14px 22px; padding: 4px 16px 16px; }
-.tm-c h3 { margin: 0 0 6px; font: 600 12.5px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
+.tm-c .tm-h { margin: 0 0 6px; font: 600 12.5px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
 .tm-c ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
 .tm-c a { display: flex; align-items: center; min-height: 34px; padding: 2px 8px; margin-left: -8px; font: 500 15px/1.3 var(--f-body); color: var(--text-primary); text-decoration: none; border-radius: 2px; }
 .tm-c a:hover { background: var(--cyan-soft); color: var(--accent-cyan); }
@@ -1985,7 +1985,7 @@ html.ss .nav-me { color: var(--accent-amber); }
 .me-top b { font: 600 17px var(--f-display); }
 .me-x { width: 36px; height: 36px; font-size: 16px; color: var(--text-secondary); background: transparent; border: 1px solid var(--border); border-radius: var(--radius-xs); cursor: pointer; }
 .me-x:hover, .me-x:focus-visible { color: var(--accent-cyan); border-color: var(--accent-cyan); }
-.me-pop h3 { margin: 14px 0 4px; font: 600 12.5px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
+.me-pop .me-h { margin: 14px 0 4px; font: 600 12.5px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary); }
 .me-pop ul { list-style: none; margin: 0; padding: 0; }
 .me-row { display: flex; align-items: center; gap: 4px; }
 .me-row a { flex: 1; min-width: 0; display: flex; align-items: center; min-height: 38px; padding: 4px 8px; color: var(--text-primary); text-decoration: none; font: 500 15px/1.3 var(--f-body); border-radius: 2px; }
@@ -2051,3 +2051,31 @@ html.ss .toc-fab { bottom: 10px; }
 html.ss .patchnote { margin-bottom: 10px; }
 @media (min-width: 861px) and (max-width: 1500px) { .nav-search span { display: none; } }
 @media (min-width: 861px) and (max-width: 1100px) { .tabs a { padding: 8px 6px; font-size: 13px; } .tabs a[aria-current="page"]::before { left: 6px; right: 6px; } .nav-in { column-gap: 8px; } }
+
+/* Feinschliff nach Überprüfung: Überschrift „Was möchtest du gerade tun?“ wie die übrigen Abschnittsköpfe, Leiste auf schmalen Handys, Patch-Chip ohne Zeilenumbruch in den Teilen */
+.hx-sec h2.hx-eyebrow { margin: 0; font: 600 13.5px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; }
+.hx-patch > * { white-space: nowrap; }
+.hx-patch { flex-wrap: wrap; row-gap: 2px; }
+@media (max-width: 430px) {
+  .nav-in { column-gap: 6px; }
+  .nav-search, .nav-me, .nav-ccu { width: 38px; height: 38px; }
+  .nav-menu { width: 40px; height: 40px; }
+  .brand .brand-name { font-size: 15px; letter-spacing: .02em; }
+}
+@media (max-width: 640px) {
+  .hx-patch > span:last-child { display: none; }
+  .hx-hero .st-read > :nth-child(n+2) { display: none; }
+}
+
+/* Skip-Link und Fokus auf der Seitenüberschrift */
+.skip { position: fixed; left: 12px; top: -60px; z-index: 60; min-height: 44px; padding: 0 16px; font: 600 15px var(--f-display); color: var(--text-primary); background: var(--bg-card); border: 2px solid var(--accent-cyan); border-radius: var(--radius-xs); cursor: pointer; transition: none; }
+.skip:focus, .skip:focus-visible { top: 10px; }
+#main:focus, .view h1:focus { outline: none; }
+/* Second-Screen: persönliche Schnellzugriffe vor alles andere auf der Startseite */
+html.ss #view-start .t-stage { order: -3; }
+html.ss #st-me-sec { order: -2; }
+
+/* Kapitelkarten der Übersichten: Überschrift ist semantisch h2 (Gliederung h1, h2), sieht aber aus wie bisher */
+.chapters .chapter h2 { margin: 0; padding: 0; border: 0; font-family: var(--f-display); font-size: 24px; font-weight: 600; line-height: 1.2; letter-spacing: normal; text-transform: none; color: inherit; }
+.chapters .chapter h2::before, .chapters .chapter h2::after { content: none; }
+html.ss .chapters .chapter h2 { font-size: 19px; }
