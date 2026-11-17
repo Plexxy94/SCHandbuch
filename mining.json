@@ -1138,12 +1138,16 @@
   "aluminum": {
    "ref": [
     [
-     4400,
-     "Port Tressler"
-    ],
-    [
      4300,
      "Terra Gateway (Stanton)"
+    ],
+    [
+     4200,
+     "Everus Harbor"
+    ],
+    [
+     4000,
+     "Dudley & Daughters"
     ],
     [
      3800,
@@ -1152,10 +1156,6 @@
     [
      3800,
      "TDD New Babbage"
-    ],
-    [
-     3800,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1227,7 +1227,7 @@
     ],
     [
      30000,
-     "Canard View"
+     "Dudley & Daughters"
     ]
    ]
   },
@@ -1314,7 +1314,7 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     4100,
+     4000,
      "Everus Harbor"
     ],
     [
@@ -1414,8 +1414,8 @@
      "Megumi"
     ],
     [
-     3600,
-     "Dudley & Daughters"
+     3500,
+     "Nyx Gateway (Stanton)"
     ]
    ],
    "raw": [
@@ -1452,16 +1452,12 @@
   "laranite": {
    "ref": [
     [
-     9800,
-     "HUR-L1"
-    ],
-    [
      9700,
      "Rod's Fuel"
     ],
     [
-     8700,
-     "Ruin Station"
+     9700,
+     "Dudley & Daughters"
     ],
     [
      8700,
@@ -1470,6 +1466,10 @@
     [
      8700,
      "Starlight Service"
+    ],
+    [
+     8700,
+     "Endgame"
     ]
    ]
   },
@@ -1620,16 +1620,16 @@
      "Terra Gateway (Stanton)"
     ],
     [
-     2900,
-     "Patch City"
-    ],
-    [
      2600,
      "Gaslight"
     ],
     [
      2600,
      "Rat's Nest"
+    ],
+    [
+     2400,
+     "Patch City"
     ],
     [
      2400,
@@ -1712,8 +1712,8 @@
   "titanium": {
    "ref": [
     [
-     9800,
-     "Megumi"
+     8800,
+     "Starlight Service"
     ],
     [
      8700,
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-17T11:56:55+00:00"
+ "updated": "2026-11-17T20:58:48+00:00"
 }
