@@ -103,6 +103,7 @@
     main.innerHTML = html;
     $('pn-upd').textContent = 'Zuletzt geprüft ' + fmtT(data.checked || data.updated);
     bind();
+    filterBar();
   }
 
   function units(sel) {
@@ -131,6 +132,27 @@
         rows.slice(0, 60).map(function (r) { return nodeHtml(r[1]).replace('<li', '<li data-u="' + esc(r[0].t) + '"'); }).join('') + '</ul>' + (rows.length > 60 ? '<p class="small">Weitere ' + (rows.length - 60) + ' Treffer: Patch öffnen und dort suchen.</p>' : '') + '</div></details>';
     });
     return out || '<p class="empty">In keinem Patch gefunden.</p>';
+  }
+
+  /* Einheitliche Filterleiste (filters.js): zeigt Suche, Art der Änderung und „in allen Patches“ als entfernbare Chips */
+  var bar = null;
+  function filterBar() {
+    if (!window.SC_FILTER) return;
+    if (bar) { bar.refresh(); return; }
+    function kindLabel() { var k = KINDS.filter(function (x) { return x[0] === st.kind; })[0]; return k ? k[1] : st.kind; }
+    bar = window.SC_FILTER.watch('patch', {
+      view: 'patchnotes', noun: ['Abschnitt', 'Abschnitten'], after: '#pn-pick',
+      count: function () {
+        var n = document.querySelectorAll('#pn-main .pn-unit').length;
+        return { text: st.q && st.all ? n + (n === 1 ? ' Patch mit Treffern' : ' Patches mit Treffern') : n + (n === 1 ? ' Abschnitt angezeigt' : ' Abschnitte angezeigt') };
+      },
+      controls: [
+        { kind: 'custom', label: 'Suche', active: function () { return !!st.q; }, text: function () { return 'Suche: „' + st.q + '“'; }, clear: function () { st.q = ''; render(); } },
+        { kind: 'custom', label: 'Art', active: function () { return st.kind !== 'all'; }, text: function () { return 'Art: ' + kindLabel(); }, clear: function () { st.kind = 'all'; render(); } },
+        { kind: 'custom', label: 'Alle Patches', active: function () { return !!st.all; }, text: function () { return 'in allen Patches suchen'; }, clear: function () { st.all = false; render(); } }
+      ]
+    });
+    if (bar) bar.refresh();
   }
 
   function bind() {

@@ -17,7 +17,7 @@
 <script>try{if(JSON.parse(localStorage.getItem("sc-handbuch-me")||"{}").ss)document.documentElement.classList.add("ss")}catch(e){}</script>
 <script>/* gleiche JSON-Adressen mit Zeitstempel (news.json?t=…) werden pro Seitenaufruf nur einmal geladen und an alle Nutzer weitergereicht */(function(){var f=window.fetch,c={};if(!f)return;window.fetch=function(u,o){if(typeof u==="string"&&!o&&/\.json\?t=\d+$/.test(u)){if(!c[u])c[u]=f.call(window,u);return c[u].then(function(r){return r.clone();});}return f.apply(this,arguments);};})();</script>
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=20261144">
+<link rel="stylesheet" href="style.css?v=20261148">
 </head>
 <body>
 
@@ -3286,6 +3286,9 @@
     <p class="lede">Alle flugfähigen Schiffe und Fahrzeuge mit Einsatzzweck, Fracht, Crew und Preisen im Spiel. Jedes Schiff kannst du in 3D drehen.</p>
     <div class="chead-act"><a href="#schiffe" data-jump="shmine">Meine Schiffe</a><a href="#hauling" data-jump="hq-tool">Frachter-Finder</a><a href="#ccu-radar">CCU-Radar</a></div>
     <div class="hint" style="margin-bottom:12px"><b>Neu in 4.10.3:</b> Die RSI Galaxy (Multi-Crew-Schiff mit Wechselmodul: Fracht bis 720 SCU oder Lazarett) und die Anvil Liberator (Träger für Schiffe und Bodenfahrzeuge) sind spielbar, stehen aber noch nicht in unserer Datenbank, weil Wiki und UEX sie noch nicht führen. Bei Tiburon, Starlite, Ironclad, Ironclad Assault, Pitbull, Basher, M80 und Tyilui kommt der aUEC-Preis nach, sobald UEX ihn kennt. Carrack, Perseus, Starlancer, Starlancer TAC, Hammerhead und Tiburon haben jetzt Size-3-Radare.</div>
+  </div>
+  <section class="fpanel sh-filter" aria-labelledby="sh-fh">
+    <h2 class="sr-only" id="sh-fh">Filter</h2>
     <div class="search">
       <input id="shq" type="search" placeholder="Schiff oder Hersteller suchen, z. B. „Cutlass“ oder „Drake“" aria-label="Schiffe durchsuchen">
       <span class="count" id="shcount"></span>
@@ -3321,7 +3324,8 @@
       </div>
     </details>
     <p class="sh-mine-note" id="shmine-note" hidden></p>
-  </div>
+  </section>
+  <h2 class="sr-only" id="sh-lh">Schiffsliste</h2>
   <div class="sh-grid" id="shgrid"></div>
   <button type="button" class="sh-morebtn" id="shmorebtn" hidden></button>
   <p class="empty" id="shnone" hidden>Kein Schiff passt zu diesen Filtern.</p>
@@ -3836,16 +3840,7 @@ window.SC_MINE = (function () {
     if (tocEl) q.appendChild(tocEl);   /* Scrollspy markiert weiter die Einträge im Verzeichnis */
     head.appendChild(q);
   }
-  /* Vorauswahl nach dem Sprung: Bugliste nach Bereich, Schiffsdatenbank nach Einsatzzweck */
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[data-pre]'); if (!a) return;
-    var p = a.dataset.pre.split(':');
-    setTimeout(function () {
-      var btn = p[0] === 'bug' ? document.querySelector('#bugchips .chip[data-cat="' + p[1] + '"]')
-        : Array.prototype.filter.call(document.querySelectorAll('#shcat .chip'), function (c) { return c.textContent === p[1]; })[0];
-      if (btn) btn.click();
-    }, 160);
-  });
+  /* Vorauswahl (data-pre) setzt filters.js, mit Markierung als Schnellzugriff */
   if ($('st-prof')) $('st-prof').innerHTML = PROF.map(function (p) {
     var l = (p.tut ? '<a href="#' + p.tut + '">Tutorial</a>' : '') + '<a href="#' + p.wiki + '">Wissen</a>' +
       (p.tools[0] ? '<a href="#' + p.wiki + '" data-jump="' + p.tools[0][1] + '">' + esc(p.tools[0][0].replace(/ und Fundort-Suche/, '-Suche')) + '</a>' : '');
@@ -6878,8 +6873,9 @@ window.SC_MINE = (function () {
   });
 })();
 </script>
-<script src="version.js"></script>
-<script src="personal.js"></script>
-<script src="patchnotes.js" defer></script>
+<script src="version.js?v=20261118"></script>
+<script src="personal.js?v=20261118"></script>
+<script src="filters.js?v=20261120"></script>
+<script src="patchnotes.js?v=20261118" defer></script>
 </body>
 </html>
