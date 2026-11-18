@@ -1115,6 +1115,10 @@
    "ref": [
     [
      11000,
+     "Rod's Fuel"
+    ],
+    [
+     11000,
      "ARC-L4"
     ],
     [
@@ -1128,19 +1132,11 @@
     [
      10000,
      "CBD Lorville"
-    ],
-    [
-     10000,
-     "Rod's Fuel"
     ]
    ]
   },
   "aluminum": {
    "ref": [
-    [
-     4300,
-     "Port Tressler"
-    ],
     [
      4000,
      "Dudley & Daughters"
@@ -1156,6 +1152,10 @@
     [
      3800,
      "CBD Lorville"
+    ],
+    [
+     3800,
+     "TDD Orison"
     ]
    ]
   },
@@ -1186,7 +1186,7 @@
   "beryl": {
    "ref": [
     [
-     23000,
+     24000,
      "Rod's Fuel"
     ],
     [
@@ -1215,7 +1215,7 @@
     ],
     [
      30000,
-     "Patch City"
+     "Rod's Fuel"
     ],
     [
      30000,
@@ -1276,12 +1276,12 @@
      "Rat's Nest"
     ],
     [
-     4000,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      3900,
      "Pyro Gateway (Stanton)"
+    ],
+    [
+     3800,
+     "Terra Gateway (Stanton)"
     ]
    ],
    "raw": [
@@ -1303,10 +1303,6 @@
    "ref": [
     [
      4400,
-     "Rod's Fuel"
-    ],
-    [
-     4400,
      "Orbituary"
     ],
     [
@@ -1314,21 +1310,21 @@
      "Everus Harbor"
     ],
     [
-     3700,
-     "TDD Area 18"
+     4000,
+     "Terra Gateway (Stanton)"
+    ],
+    [
+     3900,
+     "Rod's Fuel"
     ],
     [
      3700,
-     "TDD New Babbage"
+     "TDD Area 18"
     ]
    ]
   },
   "diamond": {
    "ref": [
-    [
-     8200,
-     "Rod's Fuel"
-    ],
     [
      7700,
      "TDD New Babbage"
@@ -1344,6 +1340,10 @@
     [
      7700,
      "Rappel"
+    ],
+    [
+     7700,
+     "Dunboro"
     ]
    ]
   },
@@ -1374,6 +1374,10 @@
   "hephaestanite": {
    "ref": [
     [
+     5000,
+     "CRU-L4"
+    ],
+    [
      4800,
      "TDD Area 18"
     ],
@@ -1388,23 +1392,11 @@
     [
      4800,
      "ARC-L4"
-    ],
-    [
-     4800,
-     "CRU-L5"
     ]
    ]
   },
   "iron": {
    "ref": [
-    [
-     3900,
-     "Terra Gateway (Stanton)"
-    ],
-    [
-     3700,
-     "Endgame"
-    ],
     [
      3700,
      "Gaslight"
@@ -1416,6 +1408,14 @@
     [
      3600,
      "Megumi"
+    ],
+    [
+     3500,
+     "Nyx Gateway (Stanton)"
+    ],
+    [
+     3500,
+     "Dudley & Daughters"
     ]
    ],
    "raw": [
@@ -1456,6 +1456,10 @@
      "Dudley & Daughters"
     ],
     [
+     9200,
+     "Rod's Fuel"
+    ],
+    [
      8700,
      "Patch City"
     ],
@@ -1466,10 +1470,6 @@
     [
      8700,
      "Endgame"
-    ],
-    [
-     8700,
-     "Gaslight"
     ]
    ]
   },
@@ -1524,14 +1524,6 @@
   "quartz": {
    "ref": [
     [
-     5500,
-     "Pyro Gateway (Stanton)"
-    ],
-    [
-     5400,
-     "Nyx Gateway (Stanton)"
-    ],
-    [
      4700,
      "Seraphim"
     ],
@@ -1542,6 +1534,14 @@
     [
      4400,
      "TDD Area 18"
+    ],
+    [
+     4400,
+     "TDD New Babbage"
+    ],
+    [
+     4400,
+     "CBD Lorville"
     ]
    ]
   },
@@ -1616,10 +1616,6 @@
   "silicon": {
    "ref": [
     [
-     3100,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      2600,
      "Gaslight"
     ],
@@ -1630,6 +1626,10 @@
     [
      2400,
      "Patch City"
+    ],
+    [
+     2400,
+     "Terra Gateway (Stanton)"
     ],
     [
      2400,
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-18T02:55:54+00:00"
+ "updated": "2026-11-18T11:48:11+00:00"
 }
