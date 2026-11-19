@@ -1138,12 +1138,12 @@
   "aluminum": {
    "ref": [
     [
-     4000,
-     "Dudley & Daughters"
+     4100,
+     "Terra Gateway (Stanton)"
     ],
     [
-     3900,
-     "Everus Harbor"
+     4000,
+     "Dudley & Daughters"
     ],
     [
      3800,
@@ -1306,12 +1306,12 @@
      "Orbituary"
     ],
     [
-     4000,
-     "Terra Gateway (Stanton)"
-    ],
-    [
      3900,
      "Rod's Fuel"
+    ],
+    [
+     3800,
+     "Everus Harbor"
     ],
     [
      3700,
@@ -1398,20 +1398,20 @@
   "iron": {
    "ref": [
     [
-     3900,
-     "Gaslight"
-    ],
-    [
      3600,
      "Rod's Fuel"
     ],
     [
-     3500,
-     "Nyx Gateway (Stanton)"
+     3600,
+     "Megumi"
+    ],
+    [
+     3600,
+     "Gaslight"
     ],
     [
      3500,
-     "Megumi"
+     "Nyx Gateway (Stanton)"
     ],
     [
      3500,
@@ -1461,15 +1461,15 @@
     ],
     [
      8700,
+     "Ruin Station"
+    ],
+    [
+     8700,
      "Patch City"
     ],
     [
      8700,
      "Starlight Service"
-    ],
-    [
-     8700,
-     "Endgame"
     ]
    ]
   },
@@ -1629,11 +1629,11 @@
     ],
     [
      2400,
-     "Terra Gateway (Stanton)"
+     "Seraphim"
     ],
     [
      2400,
-     "Seraphim"
+     "CBD Lorville"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-18T20:36:26+00:00"
+ "updated": "2026-11-19T02:36:18+00:00"
 }
