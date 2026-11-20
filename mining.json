@@ -1460,16 +1460,16 @@
      "Dudley & Daughters"
     ],
     [
-     9100,
-     "CBD Lorville"
-    ],
-    [
      8700,
      "Ruin Station"
     ],
     [
      8700,
      "Patch City"
+    ],
+    [
+     8700,
+     "Starlight Service"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-19T20:41:34+00:00"
+ "updated": "2026-11-20T02:21:48+00:00"
 }
