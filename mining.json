@@ -1114,10 +1114,6 @@
   "agricium": {
    "ref": [
     [
-     11000,
-     "ARC-L3"
-    ],
-    [
      10000,
      "TDD Area 18"
     ],
@@ -1132,15 +1128,15 @@
     [
      10000,
      "Rod's Fuel"
+    ],
+    [
+     10000,
+     "HUR-L3"
     ]
    ]
   },
   "aluminum": {
    "ref": [
-    [
-     4000,
-     "Dudley & Daughters"
-    ],
     [
      3800,
      "TDD Area 18"
@@ -1156,6 +1152,10 @@
     [
      3800,
      "Port Tressler"
+    ],
+    [
+     3800,
+     "TDD Orison"
     ]
    ]
   },
@@ -1210,14 +1210,6 @@
   "bexalite": {
    "ref": [
     [
-     32000,
-     "The Golden Riviera"
-    ],
-    [
-     30000,
-     "Rod's Fuel"
-    ],
-    [
      30000,
      "Patch City"
     ],
@@ -1228,6 +1220,14 @@
     [
      30000,
      "Jackson's Swap"
+    ],
+    [
+     30000,
+     "Dudley & Daughters"
+    ],
+    [
+     30000,
+     "Canard View"
     ]
    ]
   },
@@ -1268,6 +1268,10 @@
      "Terra Gateway (Stanton)"
     ],
     [
+     4500,
+     "Rod's Fuel"
+    ],
+    [
      4400,
      "Stanton Gateway (Pyro)"
     ],
@@ -1278,10 +1282,6 @@
     [
      3900,
      "Baijini Point"
-    ],
-    [
-     3800,
-     "Rod's Fuel"
     ]
    ],
    "raw": [
@@ -1303,6 +1303,10 @@
    "ref": [
     [
      4400,
+     "Rod's Fuel"
+    ],
+    [
+     4400,
      "Orbituary"
     ],
     [
@@ -1316,10 +1320,6 @@
     [
      3700,
      "TDD New Babbage"
-    ],
-    [
-     3700,
-     "CBD Lorville"
     ]
    ]
   },
@@ -1327,10 +1327,6 @@
    "ref": [
     [
      8200,
-     "ARC-L5"
-    ],
-    [
-     7900,
      "Rod's Fuel"
     ],
     [
@@ -1344,6 +1340,10 @@
     [
      7700,
      "Pickers Field"
+    ],
+    [
+     7700,
+     "Rappel"
     ]
    ]
   },
@@ -1399,7 +1399,15 @@
    "ref": [
     [
      3600,
+     "Rod's Fuel"
+    ],
+    [
+     3600,
      "Megumi"
+    ],
+    [
+     3600,
+     "Dudley & Daughters"
     ],
     [
      3600,
@@ -1408,14 +1416,6 @@
     [
      3500,
      "Nyx Gateway (Stanton)"
-    ],
-    [
-     3500,
-     "Rod's Fuel"
-    ],
-    [
-     3500,
-     "Dudley & Daughters"
     ]
    ],
    "raw": [
@@ -1452,14 +1452,6 @@
   "laranite": {
    "ref": [
     [
-     9700,
-     "Rod's Fuel"
-    ],
-    [
-     9700,
-     "Dudley & Daughters"
-    ],
-    [
      8700,
      "Ruin Station"
     ],
@@ -1470,6 +1462,14 @@
     [
      8700,
      "Starlight Service"
+    ],
+    [
+     8700,
+     "Endgame"
+    ],
+    [
+     8700,
+     "Gaslight"
     ]
    ]
   },
@@ -1501,6 +1501,10 @@
    "ref": [
     [
      170000,
+     "TDD Orison"
+    ],
+    [
+     170000,
      "ArcCorp 141"
     ],
     [
@@ -1514,10 +1518,6 @@
     [
      160000,
      "Ashland"
-    ],
-    [
-     160000,
-     "TDD Orison"
     ]
    ]
   },
@@ -1528,12 +1528,12 @@
      "Nyx Gateway (Stanton)"
     ],
     [
-     4700,
-     "Seraphim"
+     4600,
+     "Patch City"
     ],
     [
      4600,
-     "Patch City"
+     "Seraphim"
     ],
     [
      4400,
@@ -1549,10 +1549,6 @@
    "ref": [
     [
      91000,
-     "ArcCorp 141"
-    ],
-    [
-     91000,
      "ArcCorp 157"
     ],
     [
@@ -1566,6 +1562,10 @@
     [
      74000,
      "Sacren's Plot"
+    ],
+    [
+     72000,
+     "ArcCorp 141"
     ]
    ]
   },
@@ -1664,7 +1664,7 @@
   "taranite": {
    "ref": [
     [
-     28000,
+     29000,
      "TDD Orison"
     ],
     [
@@ -1712,6 +1712,10 @@
   "titanium": {
    "ref": [
     [
+     9500,
+     "Megumi"
+    ],
+    [
      8300,
      "TDD Area 18"
     ],
@@ -1726,10 +1730,6 @@
     [
      8300,
      "Ruin Station"
-    ],
-    [
-     8300,
-     "Checkmate"
     ]
    ]
   },
@@ -1760,7 +1760,7 @@
   "tungsten": {
    "ref": [
     [
-     11000,
+     12000,
      "Megumi"
     ],
     [
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-20T02:21:48+00:00"
+ "updated": "2026-11-20T11:46:19+00:00"
 }
