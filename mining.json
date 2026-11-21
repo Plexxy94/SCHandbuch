@@ -1460,16 +1460,16 @@
      "TDD New Babbage"
     ],
     [
+     8800,
+     "Stanton Gateway (Nyx)"
+    ],
+    [
      8700,
      "Ruin Station"
     ],
     [
      8700,
      "Patch City"
-    ],
-    [
-     8700,
-     "Starlight Service"
     ]
    ]
   },
@@ -1712,10 +1712,6 @@
   "titanium": {
    "ref": [
     [
-     9500,
-     "Megumi"
-    ],
-    [
      8300,
      "TDD Area 18"
     ],
@@ -1730,6 +1726,10 @@
     [
      8300,
      "Ruin Station"
+    ],
+    [
+     8300,
+     "Checkmate"
     ]
    ]
   },
@@ -1782,5 +1782,5 @@
    ]
   }
  },
- "updated": "2026-11-20T20:25:50+00:00"
+ "updated": "2026-11-21T02:20:56+00:00"
 }
